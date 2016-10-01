@@ -101,6 +101,6 @@ li:hover{
 	font-family: 微软雅黑;
 }
 
-li:hover{
+.content div ol li:hover{
 	background-color: transparent;
 }
