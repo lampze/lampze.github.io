@@ -55,7 +55,7 @@ nav ul li a{
 	right: 20px;
 	top:15px;
 	border: none;
-	background-color: #2cc4df;
+	background-color: transparent;
 }
 
 li:hover{
