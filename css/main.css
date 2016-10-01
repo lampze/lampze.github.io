@@ -16,9 +16,9 @@ nav p{
 	position: fixed;
 	margin: 0;
 	top: 80px;
-	left: 25px;
-	font-size: 30px;
-	font-family: 微软雅黑;
+	left: 15px;
+	font-size: 25px;
+	font-family: "微软雅黑";
 }
 
 nav ul {
@@ -30,9 +30,8 @@ nav ul {
 
 nav ul li{
 	display: block;
-	margin-left: 20px;
+	margin-left: 15px;
 	margin-top: 8px;
-	padding:5px;
 	background-color: #2cc4df;
 	float:left;
 	border: 2px solid;
@@ -45,7 +44,7 @@ nav ul li a{
 	letter-spacing: 2px;
 	color: #c9f7ff;
 	font-size: 25px;
-	font-family: 微软雅黑;
+	font-family: "微软雅黑";
 }
 
 #list{
@@ -63,7 +62,7 @@ li:hover{
 }
 
 .content div h2{
-	font-family: 微软雅黑;
+	font-family: "微软雅黑";
 	font-size: 90px;
 	font-weight: normal;
 	text-align: center;
@@ -72,7 +71,7 @@ li:hover{
 }
 
 .content div p{
-	font-family: 微软雅黑;
+	font-family: "微软雅黑";
 	font-size: 35px;
 	text-align: center;
 	margin: 0 auto;
@@ -95,10 +94,10 @@ li:hover{
 
 .content div ol li{
 	margin: 0 auto;
-	width: 50%;
+	width: 60%;
 	text-align: center;
 	font-size: 23px;
-	font-family: 微软雅黑;
+	font-family: "微软雅黑";
 }
 
 .content div ol li:hover{
