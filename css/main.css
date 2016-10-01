@@ -49,8 +49,11 @@ nav ul li a{
 }
 
 #list{
-	float: right;
-	margin-right: 30px;
+	position: fixed;
+	margin: 0;
+	padding: 0;
+	right: 20px;
+	top:15px;
 	border: none;
 	background-color: #2cc4df;
 }
@@ -96,4 +99,8 @@ li:hover{
 	text-align: center;
 	font-size: 23px;
 	font-family: 微软雅黑;
+}
+
+li:hover{
+	background-color: transparent;
 }
