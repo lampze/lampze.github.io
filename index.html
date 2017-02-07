@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>HitWord</title>
 		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+		<script src="jquery-3.1.1.min.js"></script>
 		<style media="screen">
 
 
@@ -128,31 +128,31 @@
 			<div class="write">
 				<div class="a-write-block">
 					<div class="read-line line" id="read-line1"></div>
-					<input class="hit-line line" id="hit-line1" contenteditable="true" oninput="writing('read-line1', 'hit-line1')">
+					<input class="hit-line line" id="hit-line1" name="hit-line1" oninput="writing('read-line1', 'hit-line1')">
 				</div>
 				<div class="a-write-block">
 					<div class="read-line line" id="read-line2"></div>
-					<input class="hit-line line" id="hit-line2" contenteditable="true" oninput="writing('read-line2', 'hit-line2')">
+					<input class="hit-line line" id="hit-line2" name="hit-line2" oninput="writing('read-line2', 'hit-line2')">
 				</div>
 				<div class="a-write-block">
 					<div class="read-line line" id="read-line3"></div>
-					<input class="hit-line line" id="hit-line3" contenteditable="true" oninput="writing('read-line3', 'hit-line3')">
+					<input class="hit-line line" id="hit-line3" name="hit-line3" oninput="writing('read-line3', 'hit-line3')">
 				</div>
 				<div class="a-write-block">
-					<div class="read-line line" id="read-line4">this is text</div>
-					<input class="hit-line line" id="hit-line4" contenteditable="true" oninput="writing('read-line4', 'hit-line4')">
+					<div class="read-line line" id="read-line4"></div>
+					<input class="hit-line line" id="hit-line4" name="hit-line4" oninput="writing('read-line4', 'hit-line4')">
 				</div>
 				<div class="a-write-block">
-					<div class="read-line line" id="read-line5">this is text</div>
-					<input class="hit-line line" id="hit-line5" contenteditable="true" oninput="writing('read-line5', 'hit-line5')">
+					<div class="read-line line" id="read-line5"></div>
+					<input class="hit-line line" id="hit-line5" name="hit-line5" oninput="writing('read-line5', 'hit-line5')">
 				</div>
 				<div class="a-write-block">
-					<div class="read-line line" id="read-line6">this is text</div>
-					<input class="hit-line line" id="hit-line6" contenteditable="true" oninput="writing('read-line6', 'hit-line6')">
+					<div class="read-line line" id="read-line6"></div>
+					<input class="hit-line line" id="hit-line6" name="hit-line6" oninput="writing('read-line6', 'hit-line6')">
 				</div>
 				<div class="a-write-block">
-					<div class="read-line line" id="read-line7">this is text</div>
-					<input class="hit-line line" id="hit-line7" contenteditable="true" oninput="writing('read-line7', 'hit-line7')">
+					<div class="read-line line" id="read-line7"></div>
+					<input class="hit-line line" id="hit-line7" name="hit-line7" oninput="writing('read-line7', 'hit-line7')">
 				</div>
 			</div>
 		</div>
@@ -170,8 +170,21 @@
 			document.getElementById("read-line5").innerHTML=line[4];
 			document.getElementById("read-line6").innerHTML=line[5];
 			document.getElementById("read-line7").innerHTML=line[6];
+			$(function(){
+    			$("#hit-line1").focus();
+			})
 		</script>
 		<script type="text/javascript">
+			$("input").keydown(function(back){
+				var hit_id=$(this).attr('id');
+				var hit_word=document.getElementById(hit_id).value;
+				var hit_num=hit_id.substr(8,8);
+				if(hit_word.length==0 && back.which == 8 && hit_num != 1) {
+					hit_num--;
+					hit_num="#" + hit_id.substr(0,8) + hit_num;
+					$(hit_num).focus();
+				}
+			});
 			function writing (read, hit){
 				var x=document.getElementById(read).innerHTML;
 				var y=document.getElementById(hit).value;
@@ -180,8 +193,17 @@
 				} else {
 					document.getElementById(read).style.color="#f00";
 				}
+				var num = hit.substr(8,8);
+				if (x.length>y.length && num<7) {
+					num++;
+					num="#" + hit.substr(0,8) + num;
+					$(document).keypress(function(enter) {
+						if(enter.which == 13) {
+							$(num).focus();
+						}
+					});
+				}
 			}
-
 		</script>
 	</body>
 </html>
