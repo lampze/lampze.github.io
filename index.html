@@ -127,34 +127,61 @@
 			</div>
 			<div class="write">
 				<div class="a-write-block">
-					<div class="read-line line" id="read-line1">this is text</div>
-					<div class="hit-line line" id="hit-line1" contenteditable="true">this is text</div>
+					<div class="read-line line" id="read-line1"></div>
+					<input class="hit-line line" id="hit-line1" contenteditable="true" oninput="writing('read-line1', 'hit-line1')">
 				</div>
 				<div class="a-write-block">
-					<div class="read-line line" id="read-line1">this is text</div>
-					<div class="hit-line line" id="hit-line1" contenteditable="true">this is text</div>
+					<div class="read-line line" id="read-line2"></div>
+					<input class="hit-line line" id="hit-line2" contenteditable="true" oninput="writing('read-line2', 'hit-line2')">
 				</div>
 				<div class="a-write-block">
-					<div class="read-line line" id="read-line1">this is text</div>
-					<div class="hit-line line" id="hit-line1" contenteditable="true">this is text</div>
+					<div class="read-line line" id="read-line3"></div>
+					<input class="hit-line line" id="hit-line3" contenteditable="true" oninput="writing('read-line3', 'hit-line3')">
 				</div>
 				<div class="a-write-block">
-					<div class="read-line line" id="read-line1">this is text</div>
-					<div class="hit-line line" id="hit-line1" contenteditable="true">this is text</div>
+					<div class="read-line line" id="read-line4">this is text</div>
+					<input class="hit-line line" id="hit-line4" contenteditable="true" oninput="writing('read-line4', 'hit-line4')">
 				</div>
 				<div class="a-write-block">
-					<div class="read-line line" id="read-line1">this is text</div>
-					<div class="hit-line line" id="hit-line1" contenteditable="true">this is text</div>
+					<div class="read-line line" id="read-line5">this is text</div>
+					<input class="hit-line line" id="hit-line5" contenteditable="true" oninput="writing('read-line5', 'hit-line5')">
 				</div>
 				<div class="a-write-block">
-					<div class="read-line line" id="read-line1">this is text</div>
-					<div class="hit-line line" id="hit-line1" contenteditable="true">this is text</div>
+					<div class="read-line line" id="read-line6">this is text</div>
+					<input class="hit-line line" id="hit-line6" contenteditable="true" oninput="writing('read-line6', 'hit-line6')">
 				</div>
 				<div class="a-write-block">
-					<div class="read-line line" id="read-line1">this is text</div>
-					<div class="hit-line line" id="hit-line1" contenteditable="true">this is text</div>
+					<div class="read-line line" id="read-line7">this is text</div>
+					<input class="hit-line line" id="hit-line7" contenteditable="true" oninput="writing('read-line7', 'hit-line7')">
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript">
+			var text="的一是了不在有个人这上中大为来我到出要以时和地们得可下对生也子就过能他会多发说而于自之用年行家方后作成开面事好小心前所道法如进着同经分定都然与本还其当起动已两点从问里主实天高去现长此三将无国全文理明日些看只公等十意正外想间把情者没重相那向知因样学应又手但信关使种见力名二处门并口么先位头回话很再由身入内第平被给次别几月真立新通少机打水果最部何安接报声才体今合性西你放表目加常做己老四件解路更走比总金管光工结提任东原便美及教难世至气神山数利书代直色场变记张必受交非服化求风度太万各算边王什快许连五活思该步海指物则女或完马强言条特命感清带认保望转传儿制干计民白住字它义车像反象题却流且即深近形取往系量论告息让决未花收满每华业南觉电空眼听远师元请容她军士百办语期北林识半夫客战院城候单音台死视领失司亲始极双令改功程爱德复切随李员离轻观青足落叫根怎持精送众影八首包准兴红达早尽故房引火站似找备调断设格消拉照布友整术石展紧据终周式举飞片虽易运笑云建谈界务写钱商乐推注越千微若约英集示呢待坐议乎留称品志黑存六造低江念产刻节尔吃势依图共曾响底装具喜严九况跟罗须显热病证刚治绝群市阳确究久除闻答段官政类黄武七支费父统";
+			var line=new Array(6);
+			for (var i=0;i<7;i++) {
+				line[i] = text.substr(0, 35);
+				text = text.substring(36);
+			}
+			document.getElementById("read-line1").innerHTML=line[0];
+			document.getElementById("read-line2").innerHTML=line[1];
+			document.getElementById("read-line3").innerHTML=line[2];
+			document.getElementById("read-line4").innerHTML=line[3];
+			document.getElementById("read-line5").innerHTML=line[4];
+			document.getElementById("read-line6").innerHTML=line[5];
+			document.getElementById("read-line7").innerHTML=line[6];
+		</script>
+		<script type="text/javascript">
+			function writing (read, hit){
+				var x=document.getElementById(read).innerHTML;
+				var y=document.getElementById(hit).value;
+				if (y[y.length - 1] == x[y.length - 1]) {
+					document.getElementById(read).style.color="#aaa";
+				} else {
+					document.getElementById(read).style.color="#f00";
+				}
+			}
+
+		</script>
 	</body>
 </html>
