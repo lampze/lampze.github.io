@@ -38,6 +38,10 @@
 			/*重置样式 End*/
 
 
+			body {
+				background-color: #f4f4f4;
+			}
+
 			.index-header {
 				text-align: center;
 				height: 38px;
@@ -62,7 +66,7 @@
 				height: 100%;
 				top: 0;
 				border-right: 3px solid #999999;
-				background-color: #f7f7f7;
+				background-color: #eee;
 				overflow: auto;
 			}
 			.banner-body ol {
@@ -102,6 +106,7 @@
 				font-size: 22px;
 			}
 			.count {
+				background-color: #fff;
 				border: 3px solid #ccc;
 				margin: 0 auto;
 				margin-top: 15px;
@@ -176,7 +181,7 @@
 
 
 				<div class="count">
-					<div class="count-block" id="count-time">时间 0:0:0</div>
+					<div class="count-block" id="count-time">时间 00:00:00</div>
 					<div class="count-block" id="count-spead">速度 0字/分</div>
 					<div class="count-block" id="count-sche">进度 0%</div>
 					<div class="count-block" id="count-true">正确率 0%</div>
@@ -249,8 +254,19 @@
 					m=0;
 					h++;
 				}
+				s=checkTime(s);
+				m=checkTime(m);
+				h=checkTime(h);
 				document.getElementById("count-time").innerHTML="时间 "+h+":"+m+":"+s;
 				t=setTimeout('start()',1000);
+			}
+			function checkTime(i) {//让时间以00:00:00的形式出现
+				if (i<10) {
+					i-=1;
+					i+=1;
+					i = "0" + i;
+				}
+				return i;
 			}
 		</script>
 	</body>
