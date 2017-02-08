@@ -75,7 +75,7 @@
 				margin-left: 200px;
 			}
 			.write {
-				margin-top: 60px;
+				margin-top: 35px;
 				margin-left: 2%;
 				margin-right: 2%;
 				position: relative;
@@ -100,6 +100,25 @@
 				top: 5px;
 				text-align: left;
 				font-size: 22px;
+			}
+			.count {
+				border: 3px solid #ccc;
+				margin: 0 auto;
+				margin-top: 15px;
+				position: relative;
+				text-align: center;
+				width: 800px;
+				height: 50px;
+			}
+			.count-block {
+				position: relative;
+				float: left;
+				height: 40px;
+				width: 190px;
+				top: 5px;
+				background-color: #fff;
+				padding-top: 3px;
+				font-size: 20px;
 			}
 		</style>
 	</head>
@@ -154,6 +173,14 @@
 					<div class="read-line line" id="read-line7"></div>
 					<input class="hit-line line" id="hit-line7" name="hit-line7" oninput="writing('read-line7', 'hit-line7')">
 				</div>
+
+
+				<div class="count">
+					<div class="count-block" id="count-time">时间 0:0:0</div>
+					<div class="count-block" id="count-spead">速度 0字/分</div>
+					<div class="count-block" id="count-sche">进度 0%</div>
+					<div class="count-block" id="count-true">正确率 0%</div>
+				</div>
 			</div>
 		</div>
 		<script type="text/javascript">
@@ -170,12 +197,14 @@
 			document.getElementById("read-line5").innerHTML=line[4];
 			document.getElementById("read-line6").innerHTML=line[5];
 			document.getElementById("read-line7").innerHTML=line[6];
-			$(function(){
-    			$("#hit-line1").focus();
-			})
+			//填充文字
 		</script>
 		<script type="text/javascript">
-			$("input").keydown(function(back){
+			var h=0;
+			var m=0;
+			var s=0;
+			var startnum=0;
+			$("input").keydown(function(back){ //backspace回到上一个input
 				var hit_id=$(this).attr('id');
 				var hit_word=document.getElementById(hit_id).value;
 				var hit_num=hit_id.substr(8,8);
@@ -188,13 +217,13 @@
 			function writing (read, hit){
 				var x=document.getElementById(read).innerHTML;
 				var y=document.getElementById(hit).value;
-				if (y[y.length - 1] == x[y.length - 1]) {
+				if (y == x.substr(0,y.length)) {
 					document.getElementById(read).style.color="#aaa";
 				} else {
 					document.getElementById(read).style.color="#f00";
-				}
+				}//判断打字的对错
 				var num = hit.substr(8,8);
-				if (x.length>y.length && num<7) {
+				if (x.length>y.length && num<7) {//回车键到下一个input
 					num++;
 					num="#" + hit.substr(0,8) + num;
 					$(document).keypress(function(enter) {
@@ -203,6 +232,25 @@
 						}
 					});
 				}
+				startnum++;
+			}
+			$("input").keydown(function (){//只进行一次计时函数
+				if(startnum == 1) {
+					start();
+				}
+			});
+			function start () {//计时函数
+				s++;
+				if(s>=60) {
+					s=0;
+					m++;
+				}
+				if(m>=60) {
+					m=0;
+					h++;
+				}
+				document.getElementById("count-time").innerHTML="时间 "+h+":"+m+":"+s;
+				t=setTimeout('start()',1000);
 			}
 		</script>
 	</body>
