@@ -1,4 +1,4 @@
-var font = Array("（￣▽￣）", "(⌒▽⌒)", "(･∀･)", "(￣3￣)", "(<_<)", "(>_>)", "（￣へ￣）", "´･ᆺ･`", "(˘ω˘)", "(ㅎ.ㅎ)", "(◉３◉)", "（＝。＝）", "(ーー゛)", "(⊙﹏⊙)", "（´Д`）", "○|￣|_");
+var font = Array("（￣▽￣）", "(⌒▽⌒)", "(･∀･)", "(￣3￣)", "(<_<)", "(>_>)", "（￣へ￣）", "´･ᆺ･`", "(˘ω˘)", "(ㅎ.ㅎ)", "(◉３◉)", "（＝。＝）", "(ーー゛)", "(⊙﹏⊙)", "（´Д`）", "○|￣|_", "你好坏坏！", "大坏蛋！！", "你好讨厌！", "锤你胸口！");
 var audio = document.getElementById("main-audio");
 function chang(arr) {
 	setTimeout(function() {
@@ -33,5 +33,5 @@ function getRandom(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
 }
 setInterval(function () {
-	chang(font[getRandom(0, font.length-1)])
+	chang(font[getRandom(0, font.length)])
 }, 4000);
