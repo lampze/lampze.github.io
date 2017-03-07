@@ -2,20 +2,23 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>小林</title>
-		<link rel="stylesheet" href="main.css">
+		<title>canvas</title>
+		<style media="screen">
+		body {
+			margin: 0;
+			padding: 0;
+		}
+			#canvas {
+				display: block;
+			}
+		</style>
 	</head>
 	<body>
-		<div class="block">
-			<div class="font" id="font1">·</div>
-			<div class="font" id="font2">·</div>
-			<div class="font" id="font3">·</div>
-			<div class="font" id="font4">·</div>
-			<div class="font" id="font5">·</div>
-		</div>
-		<audio src="main.mp3" id="main-audio">
-
-		</audio>
-		<script src="main.js"></script>
+		<canvas id="canvas"></canvas>
+		<script src="./getRandom.js"></script>
+		<script src="./getRandColor.js"></script>
+		<script src="./Ball.js"></script>
+		<script src="./drawBall.js"></script>
+		<script src="./main.js"></script>
 	</body>
 </html>
