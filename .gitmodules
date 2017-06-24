@@ -1,3 +1,6 @@
 [submodule "view/xiaolin"]
 	path = view/xiaolin
 	url = https://github.com/shi-rui/xiaolin.git
+[submodule "view/hitword"]
+	path = view/hitword
+	url = https://github.com/shi-rui/hitword.git
