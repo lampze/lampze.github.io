@@ -5,5 +5,5 @@
 	path = view/hitword
 	url = https://github.com/shi-rui/hitword.git
 [submodule "view/examSystem"]
-	path = view/examSystem
+	path = view/examsystem
 	url = https://github.com/lampze/examSystem
