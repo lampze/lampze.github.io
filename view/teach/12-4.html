@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>算法基础</title>
+    <style type="text/css">
+      .underline {
+        text-decoration: underline;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@3/css/reveal.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@3/css/theme/black.css"
+      id="theme"
+    />
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if (window.location.search.match(/print-pdf/gi)) {
+        var link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.type = "text/css";
+        link.href =
+          "https://cdn.jsdelivr.net/npm/reveal.js@3/css/print/pdf.css";
+        document.getElementsByTagName("head")[0].appendChild(link);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section id="sec-title-slide">
+          <h1 class="title">算法基础</h1>
+          <p class="date">Created: 2019-12-04 三 17:49</p>
+        </section>
+        <section id="table-of-contents-section">
+          <div id="table-of-contents">
+            <h2>Table of Contents</h2>
+            <div id="text-table-of-contents">
+              <ul>
+                <li>
+                  <a href="#/slide-1">1. 复杂度</a>
+                  <ul>
+                    <li><a href="#/slide-1-1">1.1. 定义</a></li>
+                    <li><a href="#/slide-1-2">1.2. 常见复杂度</a></li>
+                    <li><a href="#/slide-1-3">1.3. 图像</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#/slide-2">2. 模拟</a>
+                  <ul>
+                    <li><a href="#/slide-2-1">2.1. 思维</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#/slide-3">3. 搜索</a>
+                  <ul>
+                    <li><a href="#/slide-3-1">3.1. 思维</a></li>
+                    <li><a href="#/slide-3-2">3.2. 题目一</a></li>
+                    <li><a href="#/slide-3-3">3.3. 题目二</a></li>
+                    <li><a href="#/slide-3-4">3.4. 题目三</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#/slide-4">4. 分治</a>
+                  <ul>
+                    <li><a href="#/slide-4-1">4.1. 思维</a></li>
+                    <li><a href="#/slide-4-2">4.2. 题目一</a></li>
+                    <li><a href="#/slide-4-3">4.3. 题目二</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#/slide-5">5. 贪心</a>
+                  <ul>
+                    <li><a href="#/slide-5-1">5.1. 思维</a></li>
+                    <li><a href="#/slide-5-2">5.2. 题目一</a></li>
+                    <li><a href="#/slide-5-3">5.3. 题目二</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#/slide-6">6. 动态规划</a>
+                  <ul>
+                    <li>
+                      <a href="#/slide-6-1">6.1. 思维</a>
+                      <ul>
+                        <li><a href="#/slide-6-1-1">6.1.1. 记忆化搜索</a></li>
+                        <li><a href="#/slide-6-1-2">6.1.2. 递推</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#/slide-6-2">6.2. 题目一</a></li>
+                    <li><a href="#/slide-6-3">6.3. 题目二</a></li>
+                    <li><a href="#/slide-6-4">6.4. 题目三</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#/slide-7">7. extra</a>
+                  <ul>
+                    <li><a href="#/slide-7-1">7.1. fib</a></li>
+                    <li><a href="#/slide-7-2">7.2. prime</a></li>
+                    <li><a href="#/slide-7-3">7.3. 数据结构</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section>
+          <section id="slide-1">
+            <h2 id="1"><span class="section-number-2">1</span> 复杂度</h2>
+            <div class="outline-text-2" id="text-1"></div>
+          </section>
+          <section id="slide-1-1">
+            <h3 id="1-1"><span class="section-number-3">1.1</span> 定义</h3>
+            <p>
+              程序运行时的时间或空间，随着输入的增大的改变趋势
+            </p>
+          </section>
+          <section id="slide-1-2">
+            <h3 id="1-2">
+              <span class="section-number-3">1.2</span> 常见复杂度
+            </h3>
+            <p>
+              &Omicron; (1) 、&Omicron; (n)、&Omicron; (logn)、&Omicron; (nlogn)
+              &Omicron; (n<sup>2</sup>) 、&Omicron; (2<sup>n</sup>)、&Omicron;
+              (n<sup>n</sup>)
+            </p>
+          </section>
+          <section id="slide-1-3">
+            <h3 id="1-3"><span class="section-number-3">1.3</span> 图像</h3>
+            <p>
+              <a href="https://juejin.im/post/5c11ac8c6fb9a049e412912d"
+                >时间复杂度介绍</a
+              >
+            </p>
+          </section>
+        </section>
+        <section>
+          <section id="slide-2">
+            <h2 id="2"><span class="section-number-2">2</span> 模拟</h2>
+            <div class="outline-text-2" id="text-2"></div>
+          </section>
+          <section id="slide-2-1">
+            <h3 id="2-1"><span class="section-number-3">2.1</span> 思维</h3>
+            <p>
+              直接根据题目意思写程序
+            </p>
+          </section>
+        </section>
+        <section>
+          <section id="slide-3">
+            <h2 id="3"><span class="section-number-2">3</span> 搜索</h2>
+            <div class="outline-text-2" id="text-3"></div>
+          </section>
+          <section id="slide-3-1">
+            <h3 id="3-1"><span class="section-number-3">3.1</span> 思维</h3>
+            <p>
+              把解空间的数据一一列出来，找到正确的解
+            </p>
+          </section>
+          <section id="slide-3-2">
+            <h3 id="3-2"><span class="section-number-3">3.2</span> 题目一</h3>
+            <p>
+              a + b = c，题目给出 c ，a、b、c都为正整数，求有多少个 a 和 b
+              满足要求
+            </p>
+          </section>
+          <section id="slide-3-3">
+            <h3 id="3-3"><span class="section-number-3">3.3</span> 题目二</h3>
+            <p>
+              查找一个数是否在一个集合内
+            </p>
+          </section>
+          <section id="slide-3-4">
+            <h3 id="3-4"><span class="section-number-3">3.4</span> 题目三</h3>
+            <p>
+              给出二维地图，求从原点出发有多少种方案到终点
+            </p>
+          </section>
+        </section>
+        <section>
+          <section id="slide-4">
+            <h2 id="4"><span class="section-number-2">4</span> 分治</h2>
+            <div class="outline-text-2" id="text-4"></div>
+          </section>
+          <section id="slide-4-1">
+            <h3 id="4-1"><span class="section-number-3">4.1</span> 思维</h3>
+            <p>
+              把问题分为多个小问题，然后求解小问题，得到小问题的答案再合并成最终的答案
+            </p>
+          </section>
+          <section id="slide-4-2">
+            <h3 id="4-2"><span class="section-number-3">4.2</span> 题目一</h3>
+            <p>
+              给出一个有序数列，查找一个数是否在内
+            </p>
+          </section>
+          <section id="slide-4-3">
+            <h3 id="4-3"><span class="section-number-3">4.3</span> 题目二</h3>
+            <p>
+              归并排序
+            </p>
+          </section>
+        </section>
+        <section>
+          <section id="slide-5">
+            <h2 id="5"><span class="section-number-2">5</span> 贪心</h2>
+            <div class="outline-text-2" id="text-5"></div>
+          </section>
+          <section id="slide-5-1">
+            <h3 id="5-1"><span class="section-number-3">5.1</span> 思维</h3>
+            <p>
+              每次操作选择最优解，不考虑全局，需要先证明局部最优不会影响最终解
+            </p>
+          </section>
+          <section id="slide-5-2">
+            <h3 id="5-2"><span class="section-number-3">5.2</span> 题目一</h3>
+            <p>
+              有三种硬币 1、2、5，给定一个金额，求最少的硬币组成数
+            </p>
+          </section>
+          <section id="slide-5-3">
+            <h3 id="5-3"><span class="section-number-3">5.3</span> 题目二</h3>
+            <p>
+              最小生成树
+            </p>
+          </section>
+        </section>
+        <section>
+          <section id="slide-6">
+            <h2 id="6"><span class="section-number-2">6</span> 动态规划</h2>
+            <div class="outline-text-2" id="text-6"></div>
+          </section>
+          <section id="slide-6-1">
+            <h3 id="6-1"><span class="section-number-3">6.1</span> 思维</h3>
+            <div class="outline-text-3" id="text-6-1"></div>
+          </section>
+          <section id="slide-6-1-1">
+            <h4 id="6-1-1">
+              <span class="section-number-4">6.1.1</span> 记忆化搜索
+            </h4>
+            <p>
+              保存每个子问题的解，下次直接用
+            </p>
+          </section>
+          <section id="slide-6-1-2">
+            <h4 id="6-1-2"><span class="section-number-4">6.1.2</span> 递推</h4>
+            <p>
+              推出题目的公式，从底开始向上递推，与递归方向相反
+            </p>
+          </section>
+          <section id="slide-6-2">
+            <h3 id="6-2"><span class="section-number-3">6.2</span> 题目一</h3>
+            <p>
+              任意硬币面值的方案数（背包问题）
+            </p>
+          </section>
+          <section id="slide-6-3">
+            <h3 id="6-3"><span class="section-number-3">6.3</span> 题目二</h3>
+            <p>
+              只能向下或向右，从原点到地图右下角的方案数
+            </p>
+          </section>
+          <section id="slide-6-4">
+            <h3 id="6-4"><span class="section-number-3">6.4</span> 题目三</h3>
+            <p>
+              最长上升子序列
+            </p>
+          </section>
+        </section>
+        <section>
+          <section id="slide-7">
+            <h2 id="7"><span class="section-number-2">7</span> extra</h2>
+            <div class="outline-text-2" id="text-7"></div>
+          </section>
+          <section id="slide-7-1">
+            <h3 id="7-1"><span class="section-number-3">7.1</span> fib</h3>
+          </section>
+          <section id="slide-7-2">
+            <h3 id="7-2"><span class="section-number-3">7.2</span> prime</h3>
+          </section>
+          <section id="slide-7-3">
+            <h3 id="7-3"><span class="section-number-3">7.3</span> 数据结构</h3>
+          </section>
+        </section>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@3/lib/js/head.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@3/js/reveal.js"></script>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: false,
+        center: true,
+        slideNumber: "c",
+        rollingLinks: false,
+        keyboard: true,
+        mouseWheel: false,
+        fragmentInURL: false,
+        hashOneBasedIndex: false,
+        pdfSeparateFragments: true,
+
+        overview: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || "convex", // see README of reveal.js for options
+        transitionSpeed: "default",
+
+        // Optional libraries used to extend reveal.js
+        dependencies: [
+          {
+            src:
+              "https://cdn.jsdelivr.net/npm/reveal.js@3/plugin/markdown/marked.js",
+            condition: function() {
+              return !!document.querySelector("[data-markdown]");
+            }
+          },
+          {
+            src:
+              "https://cdn.jsdelivr.net/npm/reveal.js@3/plugin/markdown/markdown.js",
+            condition: function() {
+              return !!document.querySelector("[data-markdown]");
+            }
+          },
+          {
+            src:
+              "https://cdn.jsdelivr.net/npm/reveal.js@3/plugin/notes/notes.js",
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          {
+            src:
+              "https://cdn.jsdelivr.net/npm/reveal.js@3/plugin/search/search.js",
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          {
+            src:
+              "https://cdn.jsdelivr.net/npm/reveal.js@3/plugin/zoom-js/zoom.js",
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }
+        ]
+      });
+    </script>
+  </body>
+</html>
