@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>Tag Index - org-page</title>
+    <title> - org-page</title>
     <meta charset="utf-8" />
     <meta name="author" content="" />
+    <meta name="description" content="doom下的org-page配置" />
+    <meta name="keywords" content="org-page,emacs,Doom" />
     <link rel="stylesheet" href="/media/css/main.css" type="text/css">
     <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
   </head>
@@ -25,17 +27,52 @@
         </form>
       </header>
     </div>
+
+<div>
+<div class="post">
+<h1></h1>
+<div id="outline-container-org41c4f2a" class="outline-2">
+<h2 id="org41c4f2a">前言</h2>
+<div class="outline-text-2" id="text-org41c4f2a">
+<p>
+以前用过几个博客的生成器，感觉都太复杂，笨重了，而且对 org 的支持也不好，最后还是换到了 org-page
+</p>
+</div>
+</div>
+<div id="outline-container-org2214b70" class="outline-2">
+<h2 id="org2214b70">Doom 的配置</h2>
+<div class="outline-text-2" id="text-org2214b70">
+<div class="org-src-container">
+<pre class="src src-lisp">;; 安装org-page
+(package! org-page)
+;; 配置
+(def-package! org-page
+  :config
+  (setq op/repository-directory "~/codehome/lampze.github.io"
+        op/repository-org-branch "source"
+        op/repository-html-branch "master"
+        ;; 因为Doom安装时会用链接，所以我们要把org-page的真实目录设置好
+        op/theme-root-directory "/home/shirui/.emacs.d/.local/straight/repos/org-page/themes"
+        op/load-directory "/home/shirui/.emacs.d/.local/straight/repos/org-page/"
+        op/personal-github-link "https://github.com/lampze/"
+        op/site-domain "https://lampze.github.io/"))
+</pre>
+</div>
+</div>
+</div>
+
+</div>
+</div>
     <div>
-      <div class="post">
-        <h1>Tag Index</h1>
-        <ul class="org-ul">
-          <li><a href="/tags/doom/">Doom (1)</a></li>
-          <li><a href="/tags/emacs/">emacs (1)</a></li>
-          <li><a href="/tags/org-page/">org-page (1)</a></li>
-        </ul>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2020-03-04</span>
+        <span title="last modification date" class="post-info">2020-03-04</span>
+        <span title="tags" class="post-info"><a href="/tags/org-page/">org-page</a>, <a href="/tags/emacs/">emacs</a>, <a href="/tags/doom/">Doom</a></span>
+        <span title="author" class="post-info"></span>
       </div>
-    </div>
-    <div>
+      <section>
+        <h1>Comments</h1>
+      </section>
       <script src="//code.jquery.com/jquery-latest.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -50,5 +87,6 @@
         </p>
       </div>
     </div>
+
   </body>
 </html>
