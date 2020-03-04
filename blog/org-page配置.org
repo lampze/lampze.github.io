@@ -1,0 +1,30 @@
+#+TITLE:
+#+TITLE:       org-page 配置
+#+AUTHOR:
+#+EMAIL:       shirui@gentoo
+#+DATE:        2020-03-04 三
+#+URI:         /blog/%y/%m/%d/org-page-配置
+#+KEYWORDS:    org-page,emacs,Doom
+#+TAGS:        org-page,emacs,Doom
+#+LANGUAGE:    zh-CN
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: doom下的org-page配置
+* 前言
+以前用过几个博客的生成器，感觉都太复杂，笨重了，而且对 org 的支持也不好，最后还是
+换到了 org-page
+* Doom 的配置
+#+BEGIN_SRC lisp
+;; 安装org-page
+(package! org-page)
+;; 配置
+(def-package! org-page
+  :config
+  (setq op/repository-directory "~/codehome/lampze.github.io"
+        op/repository-org-branch "source"
+        op/repository-html-branch "master"
+        ;; 因为Doom安装时会用链接，所以我们要把org-page的真实目录设置好
+        op/theme-root-directory "/home/shirui/.emacs.d/.local/straight/repos/org-page/themes"
+        op/load-directory "/home/shirui/.emacs.d/.local/straight/repos/org-page/"
+        op/personal-github-link "https://github.com/lampze/"
+        op/site-domain "https://lampze.github.io/"))
+#+END_SRC
