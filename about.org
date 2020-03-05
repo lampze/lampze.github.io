@@ -1,5 +1,3 @@
 #+TITLE: About
 
-* About
-
 一名低调的东方众
