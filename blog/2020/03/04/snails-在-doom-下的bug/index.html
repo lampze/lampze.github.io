@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>org-page 配置 - org-page</title>
+    <title>snails 在 Doom 下的bug - org-page</title>
     <meta charset="utf-8" />
     <meta name="author" content="lampze" />
-    <meta name="description" content="doom下的org-page配置" />
-    <meta name="keywords" content="org-page,emacs,Doom" />
+    <meta name="description" content="snails报错(split-window: Window #&lt;window 9 on  *snails tips*&gt; too small for splitting)的解决办法" />
+    <meta name="keywords" content="snails,emacs,Doom" />
     <link rel="stylesheet" href="/media/css/main.css" type="text/css">
     <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
   </head>
@@ -30,43 +30,49 @@
 
 <div>
 <div class="post">
-<h1>org-page 配置</h1>
-<div id="outline-container-org7e704c1" class="outline-2">
-<h2 id="org7e704c1">前言</h2>
-<div class="outline-text-2" id="text-org7e704c1">
+<h1>snails 在 Doom 下的bug</h1>
+
+<div id="outline-container-org9d82617" class="outline-2">
+<h2 id="org9d82617">问题</h2>
+<div class="outline-text-2" id="text-org9d82617">
 <p>
-以前用过几个博客的生成器，感觉都太复杂，太笨重了，而且对 org 的支持也不好，最后还是换到了 org-page
+自从 snails 加入了 tips 后，在 Doom 里 snails 就打不开了，会报错 <code>split-window:
+Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
+</p>
+
+<p>
+但在 <code>emacs -q</code> 下就完全没有问题
 </p>
 </div>
 </div>
-<div id="outline-container-orgd4ff81f" class="outline-2">
-<h2 id="orgd4ff81f">Doom 的配置</h2>
-<div class="outline-text-2" id="text-orgd4ff81f">
+
+<div id="outline-container-org2df090e" class="outline-2">
+<h2 id="org2df090e">原因</h2>
+<div class="outline-text-2" id="text-org2df090e">
+<p>
+经过一番调试，发现是因为 <code>(line-pixel-height)</code> 返回的值太小了，导致不能分割窗口。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5a803fa" class="outline-2">
+<h2 id="org5a803fa">解决</h2>
+<div class="outline-text-2" id="text-org5a803fa">
+<p>
+两种方法
+</p>
+<ol class="org-ol">
+<li>修改源码把 <code>(line-pixel-height)</code> 改成可以分割的值，比如在原基础上乘二，但以后更新就比较难维护</li>
+
+<li>把字体调大，snails 调字体需要配置 face。</li>
+</ol>
 <div class="org-src-container">
-<pre class="src src-lisp">;; 安装org-page
-(package! org-page)
-;; 配置
-(def-package! org-page
+<pre class="src src-elisp">(def-package! snails
+  ;; 要在载入完之后修改face
   :config
-  (setq op/repository-directory "~/codehome/lampze.github.io"
-        op/repository-org-branch "source"
-        op/repository-html-branch "master"
-        ;; 因为Doom安装时是用软链接，所以我们要把org-page的真实目录设置好
-        op/theme-root-directory "/home/shirui/.emacs.d/.local/straight/repos/org-page/themes"
-        op/load-directory "/home/shirui/.emacs.d/.local/straight/repos/org-page/"
-        op/personal-github-link "https://github.com/lampze/"
-        op/site-domain "https://lampze.github.io/"))
+  (set-face-attribute 'snails-content-buffer-face nil :height 240))
 </pre>
 </div>
-</div>
-</div>
-<div id="outline-container-orga461857" class="outline-2">
-<h2 id="orga461857">org-page 的坑</h2>
-<div class="outline-text-2" id="text-orga461857">
-<ol class="org-ol">
-<li>文章的名字不能使用中文</li>
-<li>自动生成的 org 文件有两个 title，需要删掉一个，可能是 Doom的问题</li>
-</ol>
 </div>
 </div>
 
@@ -76,7 +82,7 @@
       <div class="post-meta">
         <span title="post date" class="post-info">2020-03-04</span>
         <span title="last modification date" class="post-info">2020-03-04</span>
-        <span title="tags" class="post-info"><a href="/tags/org-page/">org-page</a>, <a href="/tags/emacs/">emacs</a>, <a href="/tags/doom/">Doom</a></span>
+        <span title="tags" class="post-info"><a href="/tags/snails/">snails</a>, <a href="/tags/emacs/">emacs</a>, <a href="/tags/doom/">Doom</a></span>
         <span title="author" class="post-info">lampze</span>
       </div>
       <section>
