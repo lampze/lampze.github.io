@@ -31,17 +31,37 @@
 <div>
 <div class="post">
 <h1>obs直播配置</h1>
-<div id="outline-container-orgb850f0c" class="outline-2">
-<h2 id="orgb850f0c">obs 配置</h2>
-<div class="outline-text-2" id="text-orgb850f0c">
+<div id="outline-container-org74cbb12" class="outline-2">
+<h2 id="org74cbb12">obs 配置</h2>
+<div class="outline-text-2" id="text-org74cbb12">
 <p>
 没什么好说的，把推流地址写好，串流的输出主要调比特率，根据自己家的上行网速来填，最好比最大上行低一点，不然直播的延迟很大。配置好 n 卡的尽量用硬件编码。
 </p>
 </div>
 </div>
-<div id="outline-container-org9c8f20a" class="outline-2">
-<h2 id="org9c8f20a">弹幕配置</h2>
-<div class="outline-text-2" id="text-org9c8f20a">
+<div id="outline-container-org1210d4e" class="outline-2">
+<h2 id="org1210d4e">音频输入配置</h2>
+<div class="outline-text-2" id="text-org1210d4e">
+<p>
+主要是配置麦的滤镜，下面是我配置的滤镜，基本都是默认设置，不要随意更改顺序
+</p>
+<ol class="org-ol">
+<li>压缩器
+<ul class="org-ul">
+<li>避免来源：桌面音频</li>
+</ul></li>
+<li>扩展效果</li>
+<li>噪声抑制
+<ul class="org-ul">
+<li>抑制程度：-60 dB</li>
+</ul></li>
+<li>限幅</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgbb4911c" class="outline-2">
+<h2 id="orgbb4911c">弹幕配置</h2>
+<div class="outline-text-2" id="text-orgbb4911c">
 <p>
 一般是用 obs 的浏览器场景的，但 Linux 下没有这个，非要用的话倒是有插件，但只适用于比较低版本的 obs，所以我打算利用系统通知结合网页的爬虫直接显示弹幕。
 </p>
@@ -130,7 +150,7 @@ func main() {
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2020-03-05</span>
-        <span title="last modification date" class="post-info">2020-03-05</span>
+        <span title="last modification date" class="post-info">2020-04-24</span>
         <span title="tags" class="post-info"><a href="/tags/obs/">obs</a>, <a href="/tags/bilibili/">bilibili</a>, <a href="/tags/linux/">Linux</a></span>
         <span title="author" class="post-info"></span>
       </div>
