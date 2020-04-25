@@ -1,5 +1,5 @@
 #+TITLE:       华夏学院抢课分析
-#+AUTHOR:
+#+AUTHOR:      lampze
 #+EMAIL:       shirui@gentoo
 #+DATE:        2020-03-31 二
 #+URI:         /blog/%y/%m/%d/华夏学院抢课分析

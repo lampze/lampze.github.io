@@ -1,5 +1,5 @@
 #+TITLE:       记2020年3月25日核酸检测
-#+AUTHOR:
+#+AUTHOR:      lampze
 #+EMAIL:       shirui@gentoo
 #+DATE:        2020-03-25 三
 #+URI:         /blog/%y/%m/%d/记2020年3月25日核酸检测
