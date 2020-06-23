@@ -32,15 +32,19 @@
 <div class="post">
 <h1>华夏学院抢课分析</h1>
 
-<div id="outline-container-org9ef3c8e" class="outline-2">
-<h2 id="org9ef3c8e">前言</h2>
-<div class="outline-text-2" id="text-org9ef3c8e">
+<div id="outline-container-orgc3ce1f9" class="outline-2">
+<h2 id="orgc3ce1f9">前言</h2>
+<div class="outline-text-2" id="text-orgc3ce1f9">
 <p>
-因为我上次抢课时认真的掐准时间时间进去抢，然后发现所有的课都秒没了，所以一怒之下就写了个脚本来帮我抢课。这次一试，果然选上了我想要的课。
+因为我上次抢课时认真的掐准时间时间进去抢，然后发现所有的课都秒没了，
+所以一怒之下就写了个脚本来帮我抢课。这次一试，果然选上了我想要的课。
 </p>
 
 <p>
-其实以前选课时都是无所谓的，只要修满 10 学分就行，但最近学校要求我们三种类型的课程必须每个都要修满 2 学分，所以有一种类型的课就变得特别难抢。这次抢课正常抢的同学都说没有选上那种类型的，看来早就有人写了这种脚本了。
+其实以前选课时都是无所谓的，只要修满 10 学分就行，但最近学校要求我们三种类型的课程必须
+每个都要修满 2 学分，所以有一种类型的课就变得特别难抢。
+这次抢课正常抢的同学都说没有选上那种类型的，
+看来早就有人写了这种脚本了。
 </p>
 
 <p>
@@ -49,11 +53,13 @@
 </div>
 </div>
 
-<div id="outline-container-org9ab9042" class="outline-2">
-<h2 id="org9ab9042">API</h2>
-<div class="outline-text-2" id="text-org9ab9042">
+<div id="outline-container-org5ace3b9" class="outline-2">
+<h2 id="org5ace3b9">API</h2>
+<div class="outline-text-2" id="text-org5ace3b9">
 <p>
-我使用的方法是直接获取页面上的 <code>DOM</code> 然后使用 <code>DOM</code> 的 <code>click</code> 函数，比直接用后端的接口肯定要慢许多，但我也不想把整个网页的代码看一遍，而且使用这种技术的人应该也不多，我认为只要在 1 秒内完成就差不多了。
+我使用的方法是直接获取页面上的 <code>DOM</code> 然后使用 <code>DOM</code> 的 <code>click</code> 函数，比直接用后
+端的接口肯定要慢许多，但我也不想把整个网页的代码看一遍，而且使用这种技术的人应该
+也不多，我认为只要在 1 秒内完成就差不多了。
 </p>
 
 <p>
@@ -75,11 +81,13 @@ loadCoursesByPaged();                      // 加载剩余的课程
 </div>
 </div>
 
-<div id="outline-container-orga5dd3ca" class="outline-2">
-<h2 id="orga5dd3ca">代码</h2>
-<div class="outline-text-2" id="text-orga5dd3ca">
+<div id="outline-container-orgc9fffaf" class="outline-2">
+<h2 id="orgc9fffaf">代码</h2>
+<div class="outline-text-2" id="text-orgc9fffaf">
 <p>
-然后就可以开始写代码了，我只实现了基本的抢课功能，没有写定时，如果没开放系统可能会把网页卡住，想改的自己改。学校的系统是用 <code>Bootstrap</code> 和 <code>jQuery</code> 写的，不用自己导入了。
+然后就可以开始写代码了，
+我只实现了基本的抢课功能，没有写定时，如果没开放系统可能会把网页卡住，想改的自己改。
+学校的系统是用 <code>Bootstrap</code> 和 <code>jQuery</code> 写的，不用自己导入了。
 </p>
 
 <div class="org-src-container">

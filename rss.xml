@@ -4,10 +4,24 @@
     <title>org-page</title>
     <link>https://lampze.github.io/</link>
     <description>static site generator</description>
-    <pubDate>六, 25 4月 2020 12:36:42 CST</pubDate>
-    <lastBuildDate>六, 25 4月 2020 12:36:42 CST</lastBuildDate>
+    <pubDate>二, 23 6月 2020 21:36:15 CST</pubDate>
+    <lastBuildDate>二, 23 6月 2020 21:36:15 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>krunner工作目录在根目录的问题</title>
+      <link>https://lampze.github.io/blog/2020/06/23/krunner-cwd</link>
+      <description><![CDATA[找到了如何避免krunner运行在根目录下的方法]]></description>
+      <pubDate>2020-06-23</pubDate>
+      <guid>https://lampze.github.io/blog/2020/06/23/krunner-cwd</guid>
+    </item>
+    <item>
+      <title>谈谈Funtoo</title>
+      <link>https://lampze.github.io/blog/2020/06/12/about-funtoo</link>
+      <description><![CDATA[<TODO: insert your description here>]]></description>
+      <pubDate>2020-06-12</pubDate>
+      <guid>https://lampze.github.io/blog/2020/06/12/about-funtoo</guid>
+    </item>
     <item>
       <title>记2020年3月25日核酸检测</title>
       <link>https://lampze.github.io/blog/2020/03/25/记2020年3月25日核酸检测</link>

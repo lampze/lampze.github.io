@@ -32,9 +32,9 @@
 <div class="post">
 <h1>snails 在 Doom 下的bug</h1>
 
-<div id="outline-container-org2df3596" class="outline-2">
-<h2 id="org2df3596">问题</h2>
-<div class="outline-text-2" id="text-org2df3596">
+<div id="outline-container-org8361c7f" class="outline-2">
+<h2 id="org8361c7f">问题</h2>
+<div class="outline-text-2" id="text-org8361c7f">
 <p>
 自从 snails 加入了 tips 后，在 Doom 里 snails 就打不开了，会报错 <code>split-window:
 Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
@@ -46,23 +46,24 @@ Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
 </div>
 </div>
 
-<div id="outline-container-org9758f77" class="outline-2">
-<h2 id="org9758f77">原因</h2>
-<div class="outline-text-2" id="text-org9758f77">
+<div id="outline-container-org4bcffa5" class="outline-2">
+<h2 id="org4bcffa5">原因</h2>
+<div class="outline-text-2" id="text-org4bcffa5">
 <p>
 经过一番调试，发现是因为 <code>(line-pixel-height)</code> 返回的值太小了，导致不能分割窗口。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orge87b407" class="outline-2">
-<h2 id="orge87b407">解决</h2>
-<div class="outline-text-2" id="text-orge87b407">
+<div id="outline-container-org4a5b3dc" class="outline-2">
+<h2 id="org4a5b3dc">解决</h2>
+<div class="outline-text-2" id="text-org4a5b3dc">
 <p>
 两种方法
 </p>
 <ol class="org-ol">
-<li>修改源码把 <code>(line-pixel-height)</code> 改成可以分割的值，比如在原基础上乘二，但以后更新就比较难维护</li>
+<li>修改源码把 <code>(line-pixel-height)</code> 改成可以分割的值，比如在原基础上乘二，但以后
+更新就比较难维护</li>
 
 <li>把字体调大，snails 调字体需要配置 face。</li>
 </ol>
