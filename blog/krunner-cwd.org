@@ -5,7 +5,7 @@
 #+URI:         /blog/%y/%m/%d/krunner-cwd
 #+KEYWORDS:    plasma, krunner, Linux
 #+TAGS:        plasma, krunner, Linux
-#+LANGUAGE:    en
+#+LANGUAGE:    zh
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: 找到了如何避免krunner运行在根目录下的方法
 

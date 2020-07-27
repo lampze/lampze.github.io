@@ -2,10 +2,10 @@
 #+AUTHOR:      lampze
 #+EMAIL:       1229408499@qq.com
 #+DATE:        2020-03-04 三
-#+URI:         /blog/%y/%m/%d/snails-在-doom-下的bug
-#+KEYWORDS:    snails,emacs,Doom
-#+TAGS:        snails,emacs,Doom
-#+LANGUAGE:    en
+#+URI:         /blog/%y/%m/%d/snails-to-small
+#+KEYWORDS:    snails,Emacs,Doom
+#+TAGS:        snails,Emacs,Doom
+#+LANGUAGE:    zh
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: snails报错(split-window: Window #<window 9 on  *snails tips*> too small for splitting)的解决办法
 

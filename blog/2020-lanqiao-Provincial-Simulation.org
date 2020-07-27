@@ -2,10 +2,10 @@
 #+AUTHOR:      lampze
 #+EMAIL:       shirui@gentoo
 #+DATE:        2020-04-20 一
-#+URI:         /blog/%y/%m/%d/2020年蓝桥杯省模拟赛
+#+URI:         /blog/%y/%m/%d/2020-lanqiao-Provincial-Stimulation
 #+KEYWORDS:    蓝桥杯, 算法, 题解
 #+TAGS:        蓝桥杯, 算法, 题解
-#+LANGUAGE:    en
+#+LANGUAGE:    zh
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: 2020年蓝桥杯省模拟赛题目解析
 

@@ -2,10 +2,10 @@
 #+AUTHOR:      lampze
 #+EMAIL:       1229408499@qq.com
 #+DATE:        2020-03-04 三
-#+URI:         /blog/%y/%m/%d/org-page-配置
-#+KEYWORDS:    org-page,emacs,Doom
-#+TAGS:        org-page,emacs,Doom
-#+LANGUAGE:    zh-CN
+#+URI:         /blog/%y/%m/%d/org-page-config
+#+KEYWORDS:    org-page,Emacs,Doom
+#+TAGS:        org-page,Emacs,Doom
+#+LANGUAGE:    zh
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: doom下的org-page配置
 * 前言

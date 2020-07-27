@@ -2,10 +2,10 @@
 #+AUTHOR:      lampze
 #+EMAIL:       shirui@gentoo
 #+DATE:        2020-03-05 四
-#+URI:         /blog/%y/%m/%d/obs直播配置
+#+URI:         /blog/%y/%m/%d/obs-config
 #+KEYWORDS:    obs,bilibili,Linux
 #+TAGS:        obs,bilibili,Linux
-#+LANGUAGE:    en
+#+LANGUAGE:    zh
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: linux下的obs开播配置
 * obs 配置
@@ -26,6 +26,8 @@
 于比较低版本的 obs，所以我打算利用系统通知结合网页的爬虫直接显示弹幕。
 
 爬虫已经有人写过了，我就直接拿来用了。
+
+*以下代码可能已经不可用，后续会另开一篇文章*
 #+BEGIN_SRC go
 package main
 

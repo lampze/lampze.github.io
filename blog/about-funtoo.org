@@ -7,7 +7,7 @@
 #+TAGS:        Linux, Funtoo
 #+LANGUAGE:    zh
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
-#+DESCRIPTION: <TODO: insert your description here>
+#+DESCRIPTION: 谈谈安装Funtoo后的感受
 
 * 前言
 先来说说我用过的 Linux 发行版吧，在初学 Linux 时我跟着教程用的 Centos，当时还在用虚拟机，因为 centos 不适合日常使用，所以我又尝试了 Ubuntu。慢慢的又听说了 Arch 的好玩之处，觉得对自己学习 Linux 有用，就一步一步的跟着 Arch 的 wiki 用命令行安装到电脑上了。好像是尝试了三四遍才把 Arch 安装好，配置好 Arch 后我也算是正式入门 Linux 了。随后就是在摸爬滚打中慢慢的学一些操作了，平时也在论坛里学习一些额外的知识，众所周知论坛 Arch 的地方一定有人说 gentoo，这也为我再次换系统埋下了种子。

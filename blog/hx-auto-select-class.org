@@ -2,10 +2,10 @@
 #+AUTHOR:      lampze
 #+EMAIL:       shirui@gentoo
 #+DATE:        2020-03-31 二
-#+URI:         /blog/%y/%m/%d/华夏学院抢课分析
+#+URI:         /blog/%y/%m/%d/hx-auto-select-class
 #+KEYWORDS:    前端
 #+TAGS:        前端
-#+LANGUAGE:    en
+#+LANGUAGE:    zh
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: 记录在学校抢课的事情
 

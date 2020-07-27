@@ -2,10 +2,10 @@
 #+AUTHOR:      lampze
 #+EMAIL:       shirui@gentoo
 #+DATE:        2020-03-25 三
-#+URI:         /blog/%y/%m/%d/记2020年3月25日核酸检测
+#+URI:         /blog/%y/%m/%d/2020-3-25-detect
 #+KEYWORDS:    wuhan
 #+TAGS:        wuhan
-#+LANGUAGE:    en
+#+LANGUAGE:    zh
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: 做新冠肺炎核酸检测的记录
 * 前言
