@@ -1,0 +1,218 @@
+#+TITLE:       2020年gentoo安装分析
+#+AUTHOR:      shirui
+#+EMAIL:       1229408499@qq.com
+#+DATE:        2020-06-30 二
+#+URI:         /blog/%y/%m/%d/2020-gentoo-install
+#+KEYWORDS:    Linux, Gentoo, Guide
+#+TAGS:        Linux, Gentoo, Guide
+#+LANGUAGE:    zh
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 2020年的gentoo安装分析
+
+* 前言
+我使用Gentoo也有一段时间了，之前还尝试了一下Funtoo最后还是换到了Gentoo下，正好把安装的过程记录一下。相比原来，现在的Gentoo变化也挺大的，没了一些坑，但又新增了一些坑。
+
+新手安装配置Gentoo时最好先把教程文档都大致看一遍，最好把[[https://wiki.archlinux.org/index.php/Main_page][Arch]]、[[https://wiki.gentoo.org/wiki/Handbook:AMD64][Gentoo]]、[[https://www.funtoo.org/Install/Introduction][Funtoo]]的文档都浏览一下。\\
+建议最好看英文的，更新的最即时坑最少，毕竟你要安装的是一个滚动更新的系统，太老的教程是要出事的。
+
+因为一些东西是变来变去的，所以我尽量把原理讲清楚，具体的命令最好参考我给出的文档。
+
+在安装过程中如果提示找不到命令，请自行百度你的Linux发行版怎么安装这个命令。
+
+* 安装
+** 准备
+*** 配置选择
+Gentoo是把初始系统的所有文件打包起来，用户只需要把它解压到指定位置然后配置好内核和引导就可以正常使用了。
+
+为了满足不同人的需要，这个初始环境有多种配置可以选择，配置的种类有cpu架构、 =stage= 、软件包配置等等。当然这些选项都可以后期自己配置更改，只不过官方为了方便用户先集成起来了。
+
+cpu架构基本所有平台都有，我们一般人主要就选择x86的64或32位架构。其中 =amd64= 表示64位， =x86= 表示32位。
+
+=stage= 就是系统配置的集成程度，想了解可以看[[https://wiki.gentoo.org/wiki/Stage_tarball][stage_tarball]]。 =stage= 分为4个级别，数字越高表示系统配置程序越高，1和2基本想当于从零开始了，一般人就不要选了，而 =stage 4= 就相当于开箱即用了，官方推荐的是 =stage 3= 。
+
+最后就是一些什么不要32位的软件、最小配置、使用 =systemd= 、注重系统安全...的选项了，这些就看个人。桌面用户就考虑一下 =systemd= 就行了，但我觉得都玩Gentoo了体验一下 =openrc= 也不错，其它的一般人玩不动。
+
+*** 安装环境
+因为是命令行安装的，所以要想安装Gentoo需要一个现成的Linux环境，如果你已经安装了一个Linux就可以直接使用它安装Gentoo，如果没有就下个 =ISO= 境像刻录到u盘。Gentoo官方有专门的最小安装环境，最好找个和将要安装的Gentoo相同配置的环境。
+
+刻录 =ISO= 文件可以参照这个[[https://wiki.gentoo.org/wiki/FAQ#How_do_I_burn_an_ISO_file.3F][How do I burn an ISO file?]]。反正Linux直接用 =dd= 就行了， win就用 =EasyCD= 。刻录好后重启进 =BIOS= 使用 u盘启动就进入安装环境了。
+
+国内最好找个镜像下文件，比如[[https://mirrors.tuna.tsinghua.edu.cn/gentoo/releases/amd64/autobuilds/current-stage3-amd64/][清华大学镜像站]]。
+
+*** 安装准备
+准备无非就是看看能不能联网，要安装的硬盘能不能找到。联网一般不用特别配置，如果没网就安装 =NetworkManager= ，还不行就看这个[[https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Networking][网络配置]]。
+
+查看硬盘就用 =lsblk= 或者 =fdisk -l= ，找到硬盘记住硬盘号，sda或者sdb什么的，如果记错的话，在后面的安装过程中你的数据就上天了。
+
+现在要开始分区了，参考[[https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks][Preparing the disks]]。一般人选择官方给出的分区配置就行了， =boot= 分区可以给大一点，内存够大的话 =swap= 分区可以不给，不想改的话直接翻到下面的分区命令，跟着文档按就分好区了。文档里有两种工具 =parted= 和 =fdisk= 随便选一个，介绍的都很详细，当然分区之前一定要确定好硬盘路径。
+
+接下来就是选择文件系统， =boot= 分区使用 =ext2= 比较稳， =swap= 有固定的类型。用户自定义的就是 =root= 分区了，一般使用 =ext4= 就行了， 也可以选 =xfs= 。但如果想要更多特性的话可以选 =btrfs= 或 =zfs= ，有软raid、cow（写时复制）、动态分区大小之类的特性，当然配置更复杂，读写效率更低。当然用 =lvm= 工具 也可以实现一些特性。桌面用户就不要瞎凑合了。
+
+使用 =mkfs= 格式化这些分区之后，再用 =mount= 挂载这些分区，先挂载 =root= 分区到 =/mnt/gentoo= 再把 =boot= 分区挂载到 =/mnt/gentoo/boot= ，不然后面安装引导会出事的。这样装备工作就完成了，接下来就是安装了。
+
+** 安装
+*** 初始系统
+首先进入 =root= 分区挂载的目录，如果跟着官方教程走的话就是 =/mnt/gentoo= ，然后把下载的 =stage= 压缩包复制到这个目录。如果关心安全的话可以验证一下，下载页面有密钥的。然后直接解压 =stage= 就行了。
+#+BEGIN_SRC shell
+tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
+#+END_SRC
+
+*** chroot
+复制dns的配置文件，不然 =chroot= 后是没网的。
+#+BEGIN_SRC shell
+cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
+#+END_SRC
+
+然后还要 =mount= 一些分区，不然有些设备是用不了的，这些分区都是系统开机自动生成的，因为我们是 =chroot= 所以不会自动生成。
+#+BEGIN_SRC shell
+mount --types proc /proc /mnt/gentoo/proc
+mount --rbind /sys /mnt/gentoo/sys
+mount --make-rslave /mnt/gentoo/sys
+mount --rbind /dev /mnt/gentoo/dev
+mount --make-rslave /mnt/gentoo/dev
+#+END_SRC
+
+仔细检查分区的挂载情况，然后直接 =chroot= 就进入安装的系统了，后面如果有地方配置不对，就从这一小节重新开始。
+注意这三条命令不能一起复制到 =shell= 执行，因为 =chroot= 后就是新系统了。
+#+BEGIN_SRC shell
+chroot /mnt/gentoo /bin/bash
+source /etc/profile
+export PS1="(chroot) ${PS1}"
+#+END_SRC
+
+*** 配置包管理
+因为Gentoo安装软件是在本机编译再安装的，所以可以自定义编译时的优化配置，比如可以专门针对你的cpu进行优化什么的，我们只需要更改几个选项就行了。
+
+修改 =/etc/portage/make.conf= 文件，也可以不改，但后面安装软件时会比较慢，这个文件简单来说就是 =make= 时的参数配置，还没 =chroot= 的加上挂载目录的前缀。
+#+BEGIN_SRC shell
+# 后面数字改成你cpu的线程数加1，表示并行编译数
+MAKEOPTS="-j5"
+# 这个就是更新时的镜像地址
+GENTOO_MIRRORS="https://mirrors.neusoft.edu.cn/gentoo/"
+#+END_SRC
+
+Gentoo的包管理有个叫 =portage= 的东西，管理所有软件包的安装文件，存放的文件叫 =ebuild= ，作用是表示软件怎么下载、编译、安装等等。 =portage= 默认没有配置 =repos= ，所以我们要先加入官方的 =repos= 。官方有默认的配置文件，复制就行了，默认是使用 =rsync= 同步的，后期可以改成 =git= 的形式同步。下面的路径自己注意，指向安装的系统。
+#+BEGIN_SRC shell
+mkdir --parents /etc/portage/repos.conf
+cp /usr/share/portage/config/repos.conf /etc/portage/repos.conf/gentoo.conf
+
+# 下载portage树
+emerge-webrsync
+#+END_SRC
+
+然后选择一个 =profile= ，它对一些软件包做了配置，因为有一些配置是通用的，选择和自己使用方式贴近的就行了。比如桌面用户就选择带 =desktop= 的，懂点英文的同学应该可以看懂，不懂的跟着文档选择就行了。
+#+BEGIN_SRC shell
+# 查看全部profile
+eselect profile list
+
+# 选择profile为x
+eselect profile set X
+#+END_SRC
+
+编译过大型软件的同学应该清楚，编译时有很多选项的，Gentoo就把这些选项做成了 =USE= 标记，只需要设置 =USE= 变量，编译时就能自动选择需要的功能，比如我想要软件支持声音就在 =USE= 里加入 =audio= 字段。如果字段前面有减号，表示去掉这个功能。在 =make.conf= 设置的 =USE= 变量是全局生效的， =/etc/portage/package.use= 可以针对单独软件设置 =USE= 。
+
+*** 内核
+内核是安装Gentoo最难的地方了，不管怎么样首先要把内核的源码安装好。
+#+BEGIN_SRC shell
+emerge --ask sys-kernel/gentoo-sources
+#+END_SRC
+
+编译内核的时候可以去配置其它的东西，当然引导必须内核安装好后再配置。
+
+因为内核编译需要配置，一般有三种方法
+**** 手动配置
+进入内核源码的目录，然后参照[[http://www.jinbuguo.com/kernel/longterm-linux-kernel-options.html][Linux-4.4-x86_64 内核配置选项简介]]一个一个选项进行配置。
+#+BEGIN_SRC shell
+# 这是个软链接，可以使用eselect kernel管理
+cd /usr/src/linux
+# 配置内核，我比较喜欢 make nconfig
+make menuconfig
+# -j后面跟你的cpu线程数加1
+make -j5
+make modules_install
+make intall
+#+END_SRC
+**** 现有配置
+一般的Linux都有个 =/proc/config.gz= 文件，保存着内核的配置，使用 =zcat= 命令可以读取。所以可以直接使用这个配置，当然你也可以网上下载不错的配置。
+#+BEGIN_SRC shell
+cd /usr/src/linux
+# .config 就是编译时使用的配置文件
+zcat /proc/config.gz > .config
+# 跟当前内核同步一下，毕竟参数经常变动
+make syncconfig
+# -j后面跟你的cpu线程数加1
+make -j5
+make modules_install
+make intall
+#+END_SRC
+**** genkernel
+使用这个命令可以直接编译内核，会把所有的选项都编译一遍，记得先更新 =/etc/fstab= ，缺点就是编译时间太长了。
+#+BEGIN_SRC shell
+emerge --ask sys-kernel/genkernel
+genkernel all
+#+END_SRC
+
+*** 必备配置
+开机必需的配置，比如自动挂载、网络、密码什么的
+**** fstab
+这个是启动系统前自动挂载的分区，文件是 =/etc/fstab= 。使用 =lsblk= 看分区的情况，根据官方的例子修改一下就行了。
+#+BEGIN_EXAMPLE
+# 分区地址  挂载位置     类型    参数
+/dev/sda2   /boot        ext2    defaults,noatime     0 2
+/dev/sda3   none         swap    sw                   0 0
+/dev/sda4   /            ext4    noatime              0 1
+
+# 这个可以不要
+/dev/cdrom  /mnt/cdrom   auto    noauto,user          0 0
+#+END_EXAMPLE
+
+**** 网络
+要我说直接 =emerge networkmanager= 就行了，官方其它的配置都是一些可有可无的东西。
+#+BEGIN_SRC shell
+# 开机自动打开 NetworkManager
+rc-update add NetworkManager default
+#+END_SRC
+
+**** 设置密码
+使用 =passwd= 设置 =root= 用户密码。
+
+*** 引导
+一般都用 =grub= 来引导的，现在主板有两种 =BIOS= 和 =UEFI= ，比较新的主板都是 =UEFI= 的形式了，特点是界面非常漂亮。 \\
+自己根据情况在[[https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Bootloader][配置引导]]里找相应的配置方法，我主要列出 =BIOS= 的配置过程。
+#+BEGIN_SRC shell
+emerge --ask --verbose sys-boot/grub:2
+# 安装引导到硬盘上，找到自己的硬盘位置，后面不要带数字
+grub-install /dev/sda
+# 这个包可以自动检测所有硬盘上的系统并配置
+emerge os-prober
+# 生成引导文件
+grub-mkconfig -o /boot/grub/grub.cfg
+#+END_SRC
+
+以上全部弄好后就可以重启了，在 =BIOS= 里设置硬盘启动顺序，如果没有引导菜单，自己重新 =chroot= 查找原因。
+
+** 配置
+*** 地区配置
+设置时区
+#+BEGIN_SRC shell
+# 设置时区为上海，只要是在中国就这样设置
+echo "Asia/Shanghai" > /etc/timezone
+emerge --config sys-libs/timezone-data
+#+END_SRC
+
+设置语言，编辑 =/etc/locale.gen=
+#+BEGIN_EXAMPLE
+en_US.UTF-8 UTF-8
+zh_CN.UTF_8 UTF-8
+C.UTF8 UTF-8
+#+END_EXAMPLE
+
+#+BEGIN_SRC shell
+locale-gen
+# 查看locale选项
+eselect locale list
+# 选择中文或者英文
+eselect locale set x
+#+END_SRC
+* 后记
+只列举了一些必要的配置，其它应用的配置在其它 =blog= 里展示。
