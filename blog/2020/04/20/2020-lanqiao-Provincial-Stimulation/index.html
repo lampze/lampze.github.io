@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>2020年蓝桥杯省模拟赛题解 - org-page</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="lampze" />
+    <meta name="description" content="2020年蓝桥杯省模拟赛题目解析" />
+    <meta name="keywords" content="蓝桥杯, 算法, 题解" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">org-page</a></h1>
+        <p>static site generator</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/lampze/">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="lampze.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>2020年蓝桥杯省模拟赛题解</h1>
+
+<div id="outline-container-orgd967319" class="outline-2">
+<h2 id="orgd967319">题解</h2>
+<div class="outline-text-2" id="text-orgd967319">
+</div>
+<div id="outline-container-org2ca67cc" class="outline-3">
+<h3 id="org2ca67cc">第一题</h3>
+<div class="outline-text-3" id="text-org2ca67cc">
+</div>
+<div id="outline-container-orgf1eca18" class="outline-4">
+<h4 id="orgf1eca18">题目</h4>
+<div class="outline-text-4" id="text-orgf1eca18">
+<p>
+在计算机存储中，12.5MB 是多少字节？
+</p>
+</div>
+</div>
+<div id="outline-container-orgb4b6c27" class="outline-4">
+<h4 id="orgb4b6c27">解析</h4>
+<div class="outline-text-4" id="text-orgb4b6c27">
+<p>
+1MB=1024KB，1KB=1024B
+</p>
+</div>
+</div>
+<div id="outline-container-org027a443" class="outline-4">
+<h4 id="org027a443">答案</h4>
+<div class="outline-text-4" id="text-org027a443">
+<p>
+13107200
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org21667ed" class="outline-3">
+<h3 id="org21667ed">第二题</h3>
+<div class="outline-text-3" id="text-org21667ed">
+</div>
+<div id="outline-container-orga4c0952" class="outline-4">
+<h4 id="orga4c0952">题目</h4>
+<div class="outline-text-4" id="text-orga4c0952">
+<p>
+由 1 对括号，可以组成一种合法括号序列：()。
+</p>
+
+<p>
+由 2 对括号，可以组成两种合法括号序列：()()、(())。
+</p>
+
+<p>
+由 4 对括号组成的合法括号序列一共有多少种？
+</p>
+</div>
+</div>
+<div id="outline-container-org5103128" class="outline-4">
+<h4 id="org5103128">解析</h4>
+<div class="outline-text-4" id="text-org5103128">
+<ul class="org-ul">
+<li>直接查找卡特兰数</li>
+<li>用栈模拟，左括号相当于入栈，右括号相当于出栈，这样将题目转换成了统计出入栈序列总数了。</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbbccc87" class="outline-4">
+<h4 id="orgbbccc87">答案</h4>
+<div class="outline-text-4" id="text-orgbbccc87">
+<p>
+14
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4efabac" class="outline-3">
+<h3 id="org4efabac">第三题</h3>
+<div class="outline-text-3" id="text-org4efabac">
+</div>
+<div id="outline-container-orge071189" class="outline-4">
+<h4 id="orge071189">题目</h4>
+<div class="outline-text-4" id="text-orge071189">
+<p>
+将 LANQIAO 中的字母重新排列，可以得到不同的单词，LANQIAO、AAILNOQ 等，注意这 7 个字母都要被用上，单词不一定有具体的英文意义。请问，总共能排列如多少个不同的单词。
+</p>
+</div>
+</div>
+<div id="outline-container-org81b5160" class="outline-4">
+<h4 id="org81b5160">解析</h4>
+<div class="outline-text-4" id="text-org81b5160">
+<ul class="org-ul">
+<li>有两个字母相同，其余都是不同字母，所以可以用组合数求出： \(\tbinom{7}{2}\tbinom{5}{1}\tbinom{4}{1}\tbinom{3}{1}\tbinom{2}{1}\tbinom{1}{1}\)</li>
+<li>头铁的可以写全排序，然后去掉重复的。</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbc1d787" class="outline-4">
+<h4 id="orgbc1d787">答案</h4>
+<div class="outline-text-4" id="text-orgbc1d787">
+<p>
+2520
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc134924" class="outline-3">
+<h3 id="orgc134924">第四题</h3>
+<div class="outline-text-3" id="text-orgc134924">
+</div>
+<div id="outline-container-org1a64e69" class="outline-4">
+<h4 id="org1a64e69">题目</h4>
+<div class="outline-text-4" id="text-org1a64e69">
+<p>
+一个包含有 2019 个结点的无向连通图，最少包含多少条边？
+</p>
+</div>
+</div>
+<div id="outline-container-org7ae5299" class="outline-4">
+<h4 id="org7ae5299">解析</h4>
+<div class="outline-text-4" id="text-org7ae5299">
+<p>
+随便画一下两个三个结点的情况就明白了
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge269e16" class="outline-4">
+<h4 id="orge269e16">答案</h4>
+<div class="outline-text-4" id="text-orge269e16">
+<p>
+2018
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0001a1a" class="outline-3">
+<h3 id="org0001a1a">第五题</h3>
+<div class="outline-text-3" id="text-org0001a1a">
+</div>
+<div id="outline-container-orgd38e42c" class="outline-4">
+<h4 id="orgd38e42c">题目</h4>
+<div class="outline-text-4" id="text-orgd38e42c">
+<pre class="example">
+问题描述
+　　给定三个整数 a, b, c，如果一个整数既不是 a 的整数倍也不是 b 的整数倍还不是 c 的整数倍，则这个数称为反倍数。
+　　请问在 1 至 n 中有多少个反倍数。
+输入格式
+　　输入的第一行包含一个整数 n。
+　　第二行包含三个整数 a, b, c，相邻两个数之间用一个空格分隔。
+输出格式
+　　输出一行包含一个整数，表示答案。
+样例输入
+30
+2 3 6
+样例输出
+10
+样例说明
+　　以下这些数满足要求：1, 5, 7, 11, 13, 17, 19, 23, 25, 29。
+评测用例规模与约定
+　　对于 40% 的评测用例，1 &lt;= n &lt;= 10000。
+　　对于 80% 的评测用例，1 &lt;= n &lt;= 100000。
+　　对于所有评测用例，1 &lt;= n &lt;= 1000000，1 &lt;= a &lt;= n，1 &lt;= b &lt;= n，1 &lt;= c &lt;= n。
+</pre>
+</div>
+</div>
+<div id="outline-container-org0c4cfb3" class="outline-4">
+<h4 id="org0c4cfb3">解析</h4>
+<div class="outline-text-4" id="text-org0c4cfb3">
+<p>
+直接枚举 1 至 n 所有数，然后统计就行了。
+</p>
+</div>
+</div>
+<div id="outline-container-org4953a33" class="outline-4">
+<h4 id="org4953a33">答案</h4>
+<div class="outline-text-4" id="text-org4953a33">
+<div class="org-src-container">
+<pre class="src src-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+	long n;
+	cin &gt;&gt; n;
+	long a, b, c;
+	cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+	long cou = 0;
+	for (long i = 1; i &lt;= n; i++) {
+		if (i % a &amp;&amp; i % b &amp;&amp; i % c)
+			cou++;
+	}
+	cout &lt;&lt; cou &lt;&lt; endl;
+	return 0;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org060427c" class="outline-3">
+<h3 id="org060427c">第六题</h3>
+<div class="outline-text-3" id="text-org060427c">
+</div>
+<div id="outline-container-org39c7f46" class="outline-4">
+<h4 id="org39c7f46">题目</h4>
+<div class="outline-text-4" id="text-org39c7f46">
+<pre class="example">
+问题描述
+　　给定一个单词，请使用凯撒密码将这个单词加密。
+　　凯撒密码是一种替换加密的技术，单词中的所有字母都在字母表上向后偏移3位后被替换成密文。即a变为d，b变为e，...，w变为z，x变为a，y变为b，z变为c。
+　　例如，lanqiao会变成odqtldr。
+输入格式
+　　输入一行，包含一个单词，单词中只包含小写英文字母。
+输出格式
+　　输出一行，表示加密后的密文。
+样例输入
+lanqiao
+样例输出
+odqtldr
+评测用例规模与约定
+　　对于所有评测用例，单词中的字母个数不超过100。
+</pre>
+</div>
+</div>
+<div id="outline-container-org67abbc1" class="outline-4">
+<h4 id="org67abbc1">解析</h4>
+<div class="outline-text-4" id="text-org67abbc1">
+<p>
+记录字符相对于 a 的偏移，然后加 3 并对 26 取余，这样就不会超过字符 z
+</p>
+</div>
+</div>
+<div id="outline-container-org9d33bb3" class="outline-4">
+<h4 id="org9d33bb3">答案</h4>
+<div class="outline-text-4" id="text-org9d33bb3">
+<div class="org-src-container">
+<pre class="src src-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+char se(char c) {
+	int p = c - 'a';
+	p = (p + 3) % 26;
+	return 'a' + p;
+}
+
+int main() {
+	char c;
+	while (cin &gt;&gt; c) {
+		cout &lt;&lt; se(c);
+	}
+	cout &lt;&lt; endl;
+	return 0;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org24b7c2a" class="outline-3">
+<h3 id="org24b7c2a">第七题</h3>
+<div class="outline-text-3" id="text-org24b7c2a">
+</div>
+<div id="outline-container-orge8c6d2a" class="outline-4">
+<h4 id="orge8c6d2a">题目</h4>
+<div class="outline-text-4" id="text-orge8c6d2a">
+<pre class="example">
+问题描述
+　　如果一个序列的奇数项都比前一项大，偶数项都比前一项小，则称为一个摆动序列。即 a[2i]&lt;a[2i-1], a[2i+1]&gt;a[2i]。
+　　小明想知道，长度为 m，每个数都是 1 到 n 之间的正整数的摆动序列一共有多少个。
+输入格式
+　　输入一行包含两个整数 m，n。
+输出格式
+　　输出一个整数，表示答案。答案可能很大，请输出答案除以10000的余数。
+样例输入
+3 4
+样例输出
+14
+样例说明
+　　以下是符合要求的摆动序列：
+2 1 2
+2 1 3
+2 1 4
+3 1 2
+3 1 3
+3 1 4
+3 2 3
+3 2 4
+4 1 2
+4 1 3
+4 1 4
+4 2 3
+4 2 4
+4 3 4
+评测用例规模与约定
+　　对于 20% 的评测用例，1 &lt;= n, m &lt;= 5；
+　　对于 50% 的评测用例，1 &lt;= n, m &lt;= 10；
+　　对于 80% 的评测用例，1 &lt;= n, m &lt;= 100；
+　　对于所有评测用例，1 &lt;= n, m &lt;= 1000。
+</pre>
+</div>
+</div>
+<div id="outline-container-org411f82d" class="outline-4">
+<h4 id="org411f82d">解析</h4>
+<div class="outline-text-4" id="text-org411f82d">
+<p>
+最朴素的做法就是用 <code>dfs</code> 搜索，但 n m 的范围太大了，会超时。
+</p>
+
+<p>
+所以我们就要用 dp 来做，首先确定公式的含义。
+</p>
+
+<p>
+我们定义 <code>dp[i][j]</code> 表示第 i 项上放置比 j 大或小的数字的方案数，如何是偶数项就是比 j 小，奇数项就是比 j 大。
+</p>
+
+<p>
+然后预处理初始条件，第一项的情况是固定的， <code>dp[1][j]</code> 肯定是 <code>n - j + 1</code> 因为比 j 大的数只有这么多。
+</p>
+
+<p>
+接下来就是遍历每一行了。
+</p>
+
+<p>
+奇数项的公式为 dp[i][j] = dp[i - 1][j - 1] + dp[i][j + 1] ，找到等于 j 的情况数和大于 j 的情况数然后加起来， <code>dp[i - 1][j - 1]</code> 表示前一项所有小于 <code>j - 1</code> 的情况数， <code>dp[i][j + 1]</code> 表示当前项所有大于 <code>j</code> 的情况数。
+</p>
+
+<p>
+偶数项的公式为 dp[i][j] = dp[i-1][j+1] + dp[i][j-1] ，具体思路和上面一样，只不过方向换了。
+</p>
+
+<p>
+最后注意遍历顺序就行了。
+</p>
+</div>
+</div>
+<div id="outline-container-orgff88d90" class="outline-4">
+<h4 id="orgff88d90">答案</h4>
+<div class="outline-text-4" id="text-orgff88d90">
+<div class="org-src-container">
+<pre class="src src-c++">#include &lt;iostream&gt;
+using namespace std;
+int dp[1004][1004];
+int main() {
+    int m,n;
+    cin&gt;&gt;m&gt;&gt;n;
+
+    for(int i = 1; i &lt;= n; i++)
+        dp[1][i] = n - i + 1;
+
+    for(int i = 2; i &lt;= m; i++)
+        if(i % 2)
+            for(int j = n; j &gt;= 1; j--)
+                dp[i][j] = (dp[i-1][j-1] + dp[i][j+1]) % 10000;
+        else
+            for(int j = 1; j &lt;= n; j++)
+                dp[i][j] = (dp[i-1][j+1] + dp[i][j-1]) % 10000;
+
+    cout &lt;&lt; (m % 2 ? dp[m][1] : dp[m][n]) &lt;&lt; endl;
+    return 0;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org781e7d1" class="outline-3">
+<h3 id="org781e7d1">第八题</h3>
+<div class="outline-text-3" id="text-org781e7d1">
+</div>
+<div id="outline-container-orgf97ba72" class="outline-4">
+<h4 id="orgf97ba72">题目</h4>
+<div class="outline-text-4" id="text-orgf97ba72">
+<pre class="example">
+问题描述
+　　对于一个 n 行 m 列的表格，我们可以使用螺旋的方式给表格依次填上正整数，我们称填好的表格为一个螺旋矩阵。
+　　例如，一个 4 行 5 列的螺旋矩阵如下：
+1 2 3 4 5
+14 15 16 17 6
+13 20 19 18 7
+12 11 10 9 8
+输入格式
+　　输入的第一行包含两个整数 n, m，分别表示螺旋矩阵的行数和列数。
+　　第二行包含两个整数 r, c，表示要求的行号和列号。
+输出格式
+　　输出一个整数，表示螺旋矩阵中第 r 行第 c 列的元素的值。
+样例输入
+4 5
+2 2
+样例输出
+15
+评测用例规模与约定
+　　对于 30% 的评测用例，2 &lt;= n, m &lt;= 20。
+　　对于 70% 的评测用例，2 &lt;= n, m &lt;= 100。
+　　对于所有评测用例，2 &lt;= n, m &lt;= 1000，1 &lt;= r &lt;= n，1 &lt;= c &lt;= m。
+</pre>
+</div>
+</div>
+<div id="outline-container-org7a409df" class="outline-4">
+<h4 id="org7a409df">解析</h4>
+<div class="outline-text-4" id="text-org7a409df">
+<p>
+最简单的方法就是把整个螺旋矩阵画出来，然后输出特定位置的数。
+</p>
+</div>
+</div>
+<div id="outline-container-org3e0d305" class="outline-4">
+<h4 id="org3e0d305">答案</h4>
+<div class="outline-text-4" id="text-org3e0d305">
+<div class="org-src-container">
+<pre class="src src-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+	int n, m;
+	cin &gt;&gt; n &gt;&gt; m;
+	int r, c;
+	cin &gt;&gt; r &gt;&gt; c;
+	int all[n][m], tot = 1, x = 0, y = 0;
+	for (int i = 0; i &lt; n; i++)
+		for (int j = 0; j &lt; m; j++)
+			all[i][j] = 0;
+	all[0][0] = 1;
+	while (tot != n * m) {
+		while (y + 1 &lt; m &amp;&amp; !all[x][y + 1])
+			all[x][++y] = ++tot;
+		while (x + 1 &lt; n &amp;&amp; !all[x + 1][y])
+			all[++x][y] = ++tot;
+		while (y - 1 &gt;= 0 &amp;&amp; !all[x][y - 1])
+			all[x][--y] = ++tot;
+		while (x - 1 &gt;= 0 &amp;&amp; !all[x - 1][y])
+			all[--x][y] = ++tot;
+	}
+	cout &lt;&lt; all[r - 1][c - 1] &lt;&lt; endl;
+	return 0;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org8906d98" class="outline-3">
+<h3 id="org8906d98">第九题</h3>
+<div class="outline-text-3" id="text-org8906d98">
+</div>
+<div id="outline-container-org4aa333c" class="outline-4">
+<h4 id="org4aa333c">题目</h4>
+<div class="outline-text-4" id="text-org4aa333c">
+<pre class="example">
+问题描述
+　　2015年，全中国实现了户户通电。作为一名电力建设者，小明正在帮助一带一路上的国家通电。
+　　这一次，小明要帮助 n 个村庄通电，其中 1 号村庄正好可以建立一个发电站，所发的电足够所有村庄使用。
+　　现在，这 n 个村庄之间都没有电线相连，小明主要要做的是架设电线连接这些村庄，使得所有村庄都直接或间接的与发电站相通。
+　　小明测量了所有村庄的位置（坐标）和高度，如果要连接两个村庄，小明需要花费两个村庄之间的坐标距离加上高度差的平方，形式化描述为坐标为 (x_1, y_1) 高度为 h_1 的村庄与坐标为 (x_2, y_2) 高度为 h_2 的村庄之间连接的费用为
+　　sqrt((x_1-x_2)*(x_1-x_2)+(y_1-y_2)*(y_1-y_2))+(h_1-h_2)*(h_1-h_2)。
+　　在上式中 sqrt 表示取括号内的平方根。请注意括号的位置，高度的计算方式与横纵坐标的计算方式不同。
+　　由于经费有限，请帮助小明计算他至少要花费多少费用才能使这 n 个村庄都通电。
+输入格式
+　　输入的第一行包含一个整数 n ，表示村庄的数量。
+　　接下来 n 行，每个三个整数 x, y, h，分别表示一个村庄的横、纵坐标和高度，其中第一个村庄可以建立发电站。
+输出格式
+　　输出一行，包含一个实数，四舍五入保留 2 位小数，表示答案。
+样例输入
+4
+1 1 3
+9 9 7
+8 8 6
+4 5 4
+样例输出
+17.41
+评测用例规模与约定
+　　对于 30% 的评测用例，1 &lt;= n &lt;= 10；
+　　对于 60% 的评测用例，1 &lt;= n &lt;= 100；
+　　对于所有评测用例，1 &lt;= n &lt;= 1000，0 &lt;= x, y, h &lt;= 10000。
+</pre>
+</div>
+</div>
+<div id="outline-container-orgb38208b" class="outline-4">
+<h4 id="orgb38208b">解析</h4>
+<div class="outline-text-4" id="text-orgb38208b">
+<p>
+可以抽象成有 n 个全相连结点的图，边是拉电线的费用，然后找最小生成树就好了。
+</p>
+</div>
+</div>
+<div id="outline-container-orgacd2e5f" class="outline-4">
+<h4 id="orgacd2e5f">答案</h4>
+<div class="outline-text-4" id="text-orgacd2e5f">
+<div class="org-src-container">
+<pre class="src src-c++">#include &lt;iostream&gt;
+#include &lt;queue&gt;
+#include &lt;cmath&gt;
+#include &lt;cstdio&gt;
+
+using namespace std;
+
+struct poi {
+	int x, y, h;
+};
+
+struct roa {
+	int to;
+	float len;
+	bool operator&lt;(const roa&amp; a) const {
+		return len &gt; a.len;
+	}
+};
+
+float calc(poi a, poi b) {
+	int x = a.x - b.x, y = a.y - b.y,h = a.h - b.h;
+	return sqrt(x * x + y * y) + h * h;
+}
+
+int check[1001];
+
+int main() {
+	int n;
+	cin &gt;&gt; n;
+	poi all[n];
+	for (int i = 0; i &lt; n; i++)
+		cin &gt;&gt; all[i].x &gt;&gt; all[i].y &gt;&gt; all[i].h;
+
+	//for (int i = 0; i &lt; n; i++) {
+	//	for (int j = 0; j &lt; n; j++)
+	//		cout &lt;&lt; calc(all[i], all[j]) &lt;&lt; " ";
+	//	cout &lt;&lt; endl;
+	//}
+
+	priority_queue&lt;roa&gt; q;
+	for (int i = 1; i &lt; n; i++) {
+		roa *a = new roa;
+		a-&gt;to = i;
+		a-&gt;len = calc(all[i], all[0]);
+		q.push(*a);
+	}
+	int cou = 1;
+	float sum = 0;
+	check[0] = true;
+	while (!q.empty() &amp;&amp; cou &lt; n) {
+		roa a = q.top();
+		q.pop();
+		if (check[a.to])
+			continue;
+		sum += a.len;
+		cou++;
+		check[a.to] = true;
+		for (int i = 0; i &lt; n; i++)
+			if (!check[i]) {
+				roa *nex = new roa;
+				nex-&gt;to = i;
+				nex-&gt;len = calc(all[i], all[a.to]);
+				q.push(*nex);
+			}
+	}
+	printf("%.2f\n",round(sum * 100) / 100);
+	return 0;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbfe6ba6" class="outline-3">
+<h3 id="orgbfe6ba6">第十题</h3>
+<div class="outline-text-3" id="text-orgbfe6ba6">
+</div>
+<div id="outline-container-org29df036" class="outline-4">
+<h4 id="org29df036">题目</h4>
+<div class="outline-text-4" id="text-org29df036">
+<pre class="example">
+问题描述
+　　小明和朋友们一起去郊外植树，他们带了一些在自己实验室精心研究出的小树苗。
+　　小明和朋友们一共有 n 个人，他们经过精心挑选，在一块空地上每个人挑选了一个适合植树的位置，总共 n 个。他们准备把自己带的树苗都植下去。
+　　然而，他们遇到了一个困难：有的树苗比较大，而有的位置挨太近，导致两棵树植下去后会撞在一起。
+　　他们将树看成一个圆，圆心在他们找的位置上。如果两棵树对应的圆相交，这两棵树就不适合同时植下（相切不受影响），称为两棵树冲突。
+　　小明和朋友们决定先合计合计，只将其中的一部分树植下去，保证没有互相冲突的树。他们同时希望这些树所能覆盖的面积和（圆面积和）最大。
+输入格式
+　　输入的第一行包含一个整数 n ，表示人数，即准备植树的位置数。
+　　接下来 n 行，每行三个整数 x, y, r，表示一棵树在空地上的横、纵坐标和半径。
+输出格式
+　　输出一行包含一个整数，表示在不冲突下可以植树的面积和。由于每棵树的面积都是圆周率的整数倍，请输出答案除以圆周率后的值（应当是一个整数）。
+样例输入
+6
+1 1 2
+1 4 2
+1 7 2
+4 1 2
+4 4 2
+4 7 2
+样例输出
+12
+评测用例规模与约定
+　　对于 30% 的评测用例，1 &lt;= n &lt;= 10；
+　　对于 60% 的评测用例，1 &lt;= n &lt;= 20；
+　　对于所有评测用例，1 &lt;= n &lt;= 30，0 &lt;= x, y &lt;= 1000，1 &lt;= r &lt;= 1000。
+</pre>
+</div>
+</div>
+<div id="outline-container-org54eaa21" class="outline-4">
+<h4 id="org54eaa21">解析</h4>
+<div class="outline-text-4" id="text-org54eaa21">
+<p>
+只想出了 <code>dfs</code> 搜索的方法，最高有 30 层，每层最多有两个分支，所以最高会有 <code>2^30</code> 次操作，但大部分都会被剪掉，不知道能不能过全部用例。
+</p>
+
+<p>
+简单来说就是每次有两种操作，种或者不种，不种是每次都可以选的，种的话就要和之前种下的树检测一下有没有冲突，记录好树的状态并写好回溯就行了。
+</p>
+</div>
+</div>
+<div id="outline-container-org7f856a6" class="outline-4">
+<h4 id="org7f856a6">答案</h4>
+<div class="outline-text-4" id="text-org7f856a6">
+<div class="org-src-container">
+<pre class="src src-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+int n;
+
+struct tree {
+	int x, y, r;
+};
+
+long long m = 0;
+
+tree all[31];
+bool check[31];
+
+bool ch(tree a, tree b) {
+	int r = a.r + b.r, x = a.x - b.x, y = a.y - b.y;
+	return r * r &gt; x * x + y * y;
+}
+
+void dfs(int now, long long sum) {
+	if (now &gt;= n) {
+		if (sum &gt; m)
+			m = sum;
+		return;
+	}
+	dfs(now + 1, sum);
+	for (int i = 0; i &lt; n; i++)
+		if (check[i])
+			if (ch(all[i], all[now]))
+				return;
+	check[now] = true;
+	dfs(now + 1, sum + all[now].r * all[now].r);
+	check[now] = false;
+}
+
+int main() {
+	cin &gt;&gt; n;
+	for (int i = 0; i &lt; n; i++)
+		cin &gt;&gt; all[i].x &gt;&gt; all[i].y &gt;&gt; all[i].r;
+	dfs(0, 0);
+	cout &lt;&lt; m &lt;&lt; endl;
+	return 0;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2020-04-20</span>
+        <span title="last modification date" class="post-info">2020-07-27</span>
+        <span title="tags" class="post-info"><a href="/tags/蓝桥杯/">蓝桥杯</a>, <a href="/tags/算法/">算法</a>, <a href="/tags/题解/">题解</a></span>
+        <span title="author" class="post-info">lampze</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 28.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:shirui &lt;at&gt; gentoo">lampze</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

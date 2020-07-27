@@ -4,65 +4,79 @@
     <title>org-page</title>
     <link>https://lampze.github.io/</link>
     <description>static site generator</description>
-    <pubDate>二, 23 6月 2020 21:36:15 CST</pubDate>
-    <lastBuildDate>二, 23 6月 2020 21:36:15 CST</lastBuildDate>
+    <pubDate>一, 27 7月 2020 22:15:37 CST</pubDate>
+    <lastBuildDate>一, 27 7月 2020 22:15:37 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
-      <title>krunner工作目录在根目录的问题</title>
-      <link>https://lampze.github.io/blog/2020/06/23/krunner-cwd</link>
-      <description><![CDATA[找到了如何避免krunner运行在根目录下的方法]]></description>
-      <pubDate>2020-06-23</pubDate>
-      <guid>https://lampze.github.io/blog/2020/06/23/krunner-cwd</guid>
+      <title>记2020年3月25日核酸检测</title>
+      <link>https://lampze.github.io/blog/2020/03/25/2020-3-25-detect</link>
+      <description><![CDATA[做新冠肺炎核酸检测的记录]]></description>
+      <pubDate>2020-07-27</pubDate>
+      <guid>https://lampze.github.io/blog/2020/03/25/2020-3-25-detect</guid>
+    </item>
+    <item>
+      <title>2020年gentoo安装分析</title>
+      <link>https://lampze.github.io/blog/2020/06/30/2020-gentoo-install</link>
+      <description><![CDATA[2020年的gentoo安装分析]]></description>
+      <pubDate>2020-07-27</pubDate>
+      <guid>https://lampze.github.io/blog/2020/06/30/2020-gentoo-install</guid>
+    </item>
+    <item>
+      <title>2020年蓝桥杯省模拟赛题解</title>
+      <link>https://lampze.github.io/blog/2020/04/20/2020-lanqiao-Provincial-Stimulation</link>
+      <description><![CDATA[2020年蓝桥杯省模拟赛题目解析]]></description>
+      <pubDate>2020-07-27</pubDate>
+      <guid>https://lampze.github.io/blog/2020/04/20/2020-lanqiao-Provincial-Stimulation</guid>
+    </item>
+    <item>
+      <title>R6900v2安装LEDE.org</title>
+      <link>https://lampze.github.io/blog/2020/07/27/2020-R6900v2-lede</link>
+      <description><![CDATA[讲解R6900v2安装配置LEDE]]></description>
+      <pubDate>2020-07-27</pubDate>
+      <guid>https://lampze.github.io/blog/2020/07/27/2020-R6900v2-lede</guid>
     </item>
     <item>
       <title>谈谈Funtoo</title>
       <link>https://lampze.github.io/blog/2020/06/12/about-funtoo</link>
-      <description><![CDATA[<TODO: insert your description here>]]></description>
-      <pubDate>2020-06-12</pubDate>
+      <description><![CDATA[谈谈安装Funtoo后的感受]]></description>
+      <pubDate>2020-07-27</pubDate>
       <guid>https://lampze.github.io/blog/2020/06/12/about-funtoo</guid>
     </item>
     <item>
-      <title>记2020年3月25日核酸检测</title>
-      <link>https://lampze.github.io/blog/2020/03/25/记2020年3月25日核酸检测</link>
-      <description><![CDATA[做新冠肺炎核酸检测的记录]]></description>
-      <pubDate>2020-04-25</pubDate>
-      <guid>https://lampze.github.io/blog/2020/03/25/记2020年3月25日核酸检测</guid>
-    </item>
-    <item>
-      <title>2020年蓝桥杯省模拟赛题解</title>
-      <link>https://lampze.github.io/blog/2020/04/20/2020年蓝桥杯省模拟赛</link>
-      <description><![CDATA[2020年蓝桥杯省模拟赛题目解析]]></description>
-      <pubDate>2020-04-25</pubDate>
-      <guid>https://lampze.github.io/blog/2020/04/20/2020年蓝桥杯省模拟赛</guid>
-    </item>
-    <item>
       <title>华夏学院抢课分析</title>
-      <link>https://lampze.github.io/blog/2020/03/31/华夏学院抢课分析</link>
+      <link>https://lampze.github.io/blog/2020/03/31/hx-auto-select-class</link>
       <description><![CDATA[记录在学校抢课的事情]]></description>
-      <pubDate>2020-04-25</pubDate>
-      <guid>https://lampze.github.io/blog/2020/03/31/华夏学院抢课分析</guid>
+      <pubDate>2020-07-27</pubDate>
+      <guid>https://lampze.github.io/blog/2020/03/31/hx-auto-select-class</guid>
+    </item>
+    <item>
+      <title>krunner工作目录在根目录的问题</title>
+      <link>https://lampze.github.io/blog/2020/06/23/krunner-cwd</link>
+      <description><![CDATA[找到了如何避免krunner运行在根目录下的方法]]></description>
+      <pubDate>2020-07-27</pubDate>
+      <guid>https://lampze.github.io/blog/2020/06/23/krunner-cwd</guid>
     </item>
     <item>
       <title>obs直播配置</title>
-      <link>https://lampze.github.io/blog/2020/03/05/obs直播配置</link>
+      <link>https://lampze.github.io/blog/2020/03/05/obs-config</link>
       <description><![CDATA[linux下的obs开播配置]]></description>
-      <pubDate>2020-04-25</pubDate>
-      <guid>https://lampze.github.io/blog/2020/03/05/obs直播配置</guid>
+      <pubDate>2020-07-27</pubDate>
+      <guid>https://lampze.github.io/blog/2020/03/05/obs-config</guid>
     </item>
     <item>
       <title>org-page 配置</title>
-      <link>https://lampze.github.io/blog/2020/03/04/org-page-配置</link>
+      <link>https://lampze.github.io/blog/2020/03/04/org-page-config</link>
       <description><![CDATA[doom下的org-page配置]]></description>
-      <pubDate>2020-03-04</pubDate>
-      <guid>https://lampze.github.io/blog/2020/03/04/org-page-配置</guid>
+      <pubDate>2020-07-27</pubDate>
+      <guid>https://lampze.github.io/blog/2020/03/04/org-page-config</guid>
     </item>
     <item>
       <title>snails 在 Doom 下的bug</title>
-      <link>https://lampze.github.io/blog/2020/03/04/snails-在-doom-下的bug</link>
+      <link>https://lampze.github.io/blog/2020/03/04/snails-to-small</link>
       <description><![CDATA[snails报错(split-window: Window #<window 9 on  *snails tips*> too small for splitting)的解决办法]]></description>
-      <pubDate>2020-03-04</pubDate>
-      <guid>https://lampze.github.io/blog/2020/03/04/snails-在-doom-下的bug</guid>
+      <pubDate>2020-07-27</pubDate>
+      <guid>https://lampze.github.io/blog/2020/03/04/snails-to-small</guid>
     </item>
   </channel>
 </rss>
