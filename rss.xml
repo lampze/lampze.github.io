@@ -4,10 +4,17 @@
     <title>org-page</title>
     <link>https://lampze.github.io/</link>
     <description>static site generator</description>
-    <pubDate>一, 27 7月 2020 22:15:37 CST</pubDate>
-    <lastBuildDate>一, 27 7月 2020 22:15:37 CST</lastBuildDate>
+    <pubDate>三, 19 8月 2020 15:10:55 CST</pubDate>
+    <lastBuildDate>三, 19 8月 2020 15:10:55 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>论如何在Linux下直播显示弹幕</title>
+      <link>https://lampze.github.io/blog/2020/08/19/nodebilibili</link>
+      <description><![CDATA[用node写了个弹幕显示程序]]></description>
+      <pubDate>2020-08-19</pubDate>
+      <guid>https://lampze.github.io/blog/2020/08/19/nodebilibili</guid>
+    </item>
     <item>
       <title>记2020年3月25日核酸检测</title>
       <link>https://lampze.github.io/blog/2020/03/25/2020-3-25-detect</link>
@@ -70,13 +77,6 @@
       <description><![CDATA[doom下的org-page配置]]></description>
       <pubDate>2020-07-27</pubDate>
       <guid>https://lampze.github.io/blog/2020/03/04/org-page-config</guid>
-    </item>
-    <item>
-      <title>snails 在 Doom 下的bug</title>
-      <link>https://lampze.github.io/blog/2020/03/04/snails-to-small</link>
-      <description><![CDATA[snails报错(split-window: Window #<window 9 on  *snails tips*> too small for splitting)的解决办法]]></description>
-      <pubDate>2020-07-27</pubDate>
-      <guid>https://lampze.github.io/blog/2020/03/04/snails-to-small</guid>
     </item>
   </channel>
 </rss>

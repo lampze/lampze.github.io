@@ -32,9 +32,9 @@
 <div class="post">
 <h1>R6900v2安装LEDE.org</h1>
 
-<div id="outline-container-org4075cd2" class="outline-2">
-<h2 id="org4075cd2">前言</h2>
-<div class="outline-text-2" id="text-org4075cd2">
+<div id="outline-container-org7c8de14" class="outline-2">
+<h2 id="org7c8de14">前言</h2>
+<div class="outline-text-2" id="text-org7c8de14">
 <p>
 首先我先劝退一波想买这个路由器的同学，以下是理由。
 </p>
@@ -54,7 +54,7 @@
 </p>
 
 <p>
-有些自己编译过的同学可能会发现，配置的时候找不到这个路由器，根据这个<a href="https://github.com/openwrt/openwrt/pull/2614#issuecomment-569452109">PR</a>里说的情况， <code>R6700v2</code> <code>R6800</code> 、 <code>R6900v2</code> 、 <code>R7450</code> 这几个路由器的核心硬件是相同的，甚至它们的官方固件都有相同的 <code>md5</code> ，理论上来说在配置时选择这个几个路由器都行，我测试过确实是可行的，目前我选择了 <code>R6700v2</code> 。
+有些自己编译过的同学可能会发现，配置的时候找不到这个路由器，根据这个<a href="https://github.com/openwrt/openwrt/pull/2614#issuecomment-569452109">PR</a>里说的情况， <code>R6700v2</code> 、 <code>R6800</code> 、 <code>R6900v2</code> 、 <code>R7450</code> 这几个路由器的核心硬件是相同的，甚至它们的官方固件都有相同的 <code>md5</code> ，理论上来说在配置时选择这个几个路由器都行，我测试过确实是可行的，目前我选择了 <code>R6700v2</code> 。
 </p>
 
 <p>
@@ -63,9 +63,9 @@
 </div>
 </div>
 
-<div id="outline-container-org72d3d72" class="outline-2">
-<h2 id="org72d3d72">准备</h2>
-<div class="outline-text-2" id="text-org72d3d72">
+<div id="outline-container-org3ccb625" class="outline-2">
+<h2 id="org3ccb625">准备</h2>
+<div class="outline-text-2" id="text-org3ccb625">
 <p>
 请自行准备好以下的东西再进行刷机
 </p>
@@ -82,13 +82,13 @@
 </div>
 </div>
 
-<div id="outline-container-orgbf55507" class="outline-2">
-<h2 id="orgbf55507">制作固件</h2>
-<div class="outline-text-2" id="text-orgbf55507">
+<div id="outline-container-org34d13e5" class="outline-2">
+<h2 id="org34d13e5">制作固件</h2>
+<div class="outline-text-2" id="text-org34d13e5">
 </div>
-<div id="outline-container-org5057377" class="outline-3">
-<h3 id="org5057377">准备</h3>
-<div class="outline-text-3" id="text-org5057377">
+<div id="outline-container-orgcf98d6a" class="outline-3">
+<h3 id="orgcf98d6a">准备</h3>
+<div class="outline-text-3" id="text-orgcf98d6a">
 <p>
 进入 <code>LEDE</code> 目录，编辑 <code>feeds.conf.default</code> 文件，取消 <code>helloworld</code> 所在行的注释，这样就能选择 <code>ssr</code> 了，以下是示例。
 </p>
@@ -118,9 +118,9 @@ src-git helloworld https://github.com/fw876/helloworld
 </div>
 </div>
 
-<div id="outline-container-org5556097" class="outline-3">
-<h3 id="org5556097">make menuconfig</h3>
-<div class="outline-text-3" id="text-org5556097">
+<div id="outline-container-orgaf0cc90" class="outline-3">
+<h3 id="orgaf0cc90">make menuconfig</h3>
+<div class="outline-text-3" id="text-orgaf0cc90">
 <p>
 然后就是配置 <code>LEDE</code> 了， 运行命令 <code>make menuconfig</code> 。我来展示一些必要选项。
 </p>
@@ -163,9 +163,9 @@ Utilities  ---&gt;
 </div>
 </div>
 
-<div id="outline-container-org6646465" class="outline-3">
-<h3 id="org6646465">编译</h3>
-<div class="outline-text-3" id="text-org6646465">
+<div id="outline-container-orgad38b0d" class="outline-3">
+<h3 id="orgad38b0d">编译</h3>
+<div class="outline-text-3" id="text-orgad38b0d">
 <p>
 <code>make download V=s</code> 先下载要编译的源码
 </p>
@@ -184,29 +184,29 @@ Utilities  ---&gt;
 </div>
 </div>
 
-<div id="outline-container-org0e0ed66" class="outline-3">
-<h3 id="org0e0ed66">刷机</h3>
-<div class="outline-text-3" id="text-org0e0ed66">
+<div id="outline-container-orgbf3fe26" class="outline-3">
+<h3 id="orgbf3fe26">刷机</h3>
+<div class="outline-text-3" id="text-orgbf3fe26">
 </div>
-<div id="outline-container-orgd5ba7b8" class="outline-4">
-<h4 id="orgd5ba7b8">原生刷LEDE</h4>
-<div class="outline-text-4" id="text-orgd5ba7b8">
+<div id="outline-container-orge1b9408" class="outline-4">
+<h4 id="orge1b9408">原生刷LEDE</h4>
+<div class="outline-text-4" id="text-orge1b9408">
 <p>
 直接在原生的管理界面点击升级固件，上传带有字段 <code>factory</code> 的固件即可。
 </p>
 </div>
 </div>
-<div id="outline-container-org8e61d99" class="outline-4">
-<h4 id="org8e61d99">LEDE升级</h4>
-<div class="outline-text-4" id="text-org8e61d99">
+<div id="outline-container-org6f3ea6e" class="outline-4">
+<h4 id="org6f3ea6e">LEDE升级</h4>
+<div class="outline-text-4" id="text-org6f3ea6e">
 <p>
 在固件升级页面使用带有字段 <code>sysupgrade</code> 的固件。
 </p>
 </div>
 </div>
-<div id="outline-container-org4dbc45d" class="outline-4">
-<h4 id="org4dbc45d">救砖或LEDE刷回原生</h4>
-<div class="outline-text-4" id="text-org4dbc45d">
+<div id="outline-container-orge7eb912" class="outline-4">
+<h4 id="orge7eb912">救砖或LEDE刷回原生</h4>
+<div class="outline-text-4" id="text-orge7eb912">
 <p>
 使用 <code>nmrpflash -L</code> 列出所有网卡，找到正确的网卡，如果不知道就一个个试。
 </p>
