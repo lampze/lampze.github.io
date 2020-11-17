@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>C/C++简明教程 - org-page</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="lampze" />
+    <meta name="description" content="C/C++的简单教程" />
+    <meta name="keywords" content="tutorial, C/C++" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">org-page</a></h1>
+        <p>static site generator</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/lampze/">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="lampze.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>C/C++简明教程</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgd3de01d">前言</a></li>
+<li><a href="#org230dd7d">C语言</a>
+<ul>
+<li><a href="#orgae4317f">编程与运行流程</a>
+<ul>
+<li><a href="#org976c7e1">写代码</a></li>
+<li><a href="#org971df5d">编译</a></li>
+<li><a href="#orgf7ffc55">运行过程</a></li>
+</ul>
+</li>
+<li><a href="#orgb8c0241">简单输入输出</a></li>
+<li><a href="#orgb0ca3a9">变量</a></li>
+<li><a href="#orgfbab726">输入输出</a></li>
+<li><a href="#orgfe1174e">选择</a></li>
+<li><a href="#org38fd550">循环</a></li>
+<li><a href="#org5d3c02e">数组</a></li>
+<li><a href="#orgcbfec53">指针</a></li>
+<li><a href="#org58c1434">结构体</a></li>
+<li><a href="#org3e6dc47">函数</a></li>
+<li><a href="#orgb5b465c">递归</a></li>
+<li><a href="#org23a2e2c">其它</a></li>
+</ul>
+</li>
+<li><a href="#org983392c">C++</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd3de01d" class="outline-2">
+<h2 id="orgd3de01d">前言</h2>
+<div class="outline-text-2" id="text-orgd3de01d">
+<p>
+编程语言是让我们使用一个大部分人能理解的方式控制计算机，所以写代码时最重要的是可读性，对自己要求高的同学可以思考怎么保持代码的整洁与优雅。
+</p>
+
+<p>
+本文只把基础的逻辑与用法讲清楚，最后可能会附带几个例题，想要真正的学会编程还是要多写代码。
+</p>
+
+<p>
+最后请看看这篇文章《<a href="https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md">提问的智慧</a>》，如果有人问我比较蠢问题的问题那就原谅我也敷衍一下。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org230dd7d" class="outline-2">
+<h2 id="org230dd7d">C语言</h2>
+<div class="outline-text-2" id="text-org230dd7d">
+</div>
+<div id="outline-container-orgae4317f" class="outline-3">
+<h3 id="orgae4317f">编程与运行流程</h3>
+<div class="outline-text-3" id="text-orgae4317f">
+</div>
+<div id="outline-container-org976c7e1" class="outline-4">
+<h4 id="org976c7e1">写代码</h4>
+<div class="outline-text-4" id="text-org976c7e1">
+<p>
+对于 <code>windows</code> 来说，我推荐新手使用 <code>Dev-C++</code> 这个 <code>IDE</code> 来编写代码，这个软件虽然有些年头了，也很长时间没有更新了，但作为一个编程集成环境还是及格的，具体的操作还是比较简单，很多事情都能一键完成。\
+对于参加蓝桥杯的同学， <code>Dev-C++</code> 也是官方指定的编程环境。\
+请不要使用 <code>vc++</code> ！！！
+</p>
+
+<p>
+对于 <code>Linux</code> 来说，新手可以使用 <code>nano</code> 来编写代码，有基础的同学可以学下 <code>vim</code> ，进阶的话可以玩玩 <code>Emacs</code> 。
+</p>
+</div>
+</div>
+<div id="outline-container-org971df5d" class="outline-4">
+<h4 id="org971df5d">编译</h4>
+<div class="outline-text-4" id="text-org971df5d">
+<p>
+对于 <code>IDE</code> 来说只需要按下按钮就能自动的编译了，没有什么需要动脑的地方。
+</p>
+
+<p>
+当然我们不能这样就行了，下面简单介绍下编译是什么。我们写的代码其实都是文本文件，计算机并不认识，计算机只能处理2进制的指令，也就是机器语言，每种 <code>CPU</code> 的机器语言都是不一样的，所以我们需要把我们认识的代码转换成计算机认识机器代码，这个过程叫做编译。
+</p>
+
+<p>
+目前使用最广的编译器是 <code>gcc</code> ， <code>Dev-C++</code> 也是使用的这个编译器，安装 <code>gcc</code> 后可以在命令行使用 <code>gcc</code> 命令，这个命令给定一个源代码文件，然后输出一个二进制文件，然后计算机就能执行这个二进制文件了。
+</p>
+</div>
+</div>
+<div id="outline-container-orgf7ffc55" class="outline-4">
+<h4 id="orgf7ffc55">运行过程</h4>
+<div class="outline-text-4" id="text-orgf7ffc55">
+<div class="org-src-container">
+<pre class="src src-c">#include &lt;stdio.h&gt;
+
+int main() {
+  printf("Hello, World\n");
+  return 0;
+}
+</pre>
+</div>
+
+<p>
+对于 <code>C</code> 来说，它运行时总会从 <code>main</code> 函数开始，只要 <code>main</code> 函数结束整个程序就结束了。对于上面这个代码来说，它输出了一行 <code>Hello，World</code> 文本，并返回了0。需要注意这个0是返回给了操作系统，作用只有一个，就是告诉操作系统这个程序运行过程是否有错误，0表示没有错误。
+</p>
+
+<p>
+注意 <code>main</code> 只是第一个执行的函数，定义语句、引入库函数语句、宏语句等肯定是要优先执行的。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb8c0241" class="outline-3">
+<h3 id="orgb8c0241">简单输入输出</h3>
+</div>
+<div id="outline-container-orgb0ca3a9" class="outline-3">
+<h3 id="orgb0ca3a9">变量</h3>
+</div>
+<div id="outline-container-orgfbab726" class="outline-3">
+<h3 id="orgfbab726">输入输出</h3>
+</div>
+<div id="outline-container-orgfe1174e" class="outline-3">
+<h3 id="orgfe1174e">选择</h3>
+</div>
+<div id="outline-container-org38fd550" class="outline-3">
+<h3 id="org38fd550">循环</h3>
+</div>
+<div id="outline-container-org5d3c02e" class="outline-3">
+<h3 id="org5d3c02e">数组</h3>
+</div>
+<div id="outline-container-orgcbfec53" class="outline-3">
+<h3 id="orgcbfec53">指针</h3>
+</div>
+<div id="outline-container-org58c1434" class="outline-3">
+<h3 id="org58c1434">结构体</h3>
+</div>
+<div id="outline-container-org3e6dc47" class="outline-3">
+<h3 id="org3e6dc47">函数</h3>
+</div>
+<div id="outline-container-orgb5b465c" class="outline-3">
+<h3 id="orgb5b465c">递归</h3>
+</div>
+<div id="outline-container-org23a2e2c" class="outline-3">
+<h3 id="org23a2e2c">其它</h3>
+</div>
+</div>
+<div id="outline-container-org983392c" class="outline-2">
+<h2 id="org983392c">C++</h2>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2020-11-17</span>
+        <span title="last modification date" class="post-info">2020-11-17</span>
+        <span title="tags" class="post-info"><a href="/tags/tutorial/">tutorial</a>, <a href="/tags/c-c++/">C/C++</a></span>
+        <span title="author" class="post-info">lampze</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 28.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:1229408499 &lt;at&gt; qq &lt;dot&gt; com">lampze</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

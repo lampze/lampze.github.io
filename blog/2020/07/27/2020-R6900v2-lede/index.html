@@ -32,9 +32,9 @@
 <div class="post">
 <h1>R6900v2安装LEDE.org</h1>
 
-<div id="outline-container-org7c8de14" class="outline-2">
-<h2 id="org7c8de14">前言</h2>
-<div class="outline-text-2" id="text-org7c8de14">
+<div id="outline-container-org16fde6d" class="outline-2">
+<h2 id="org16fde6d">前言</h2>
+<div class="outline-text-2" id="text-org16fde6d">
 <p>
 首先我先劝退一波想买这个路由器的同学，以下是理由。
 </p>
@@ -63,9 +63,9 @@
 </div>
 </div>
 
-<div id="outline-container-org3ccb625" class="outline-2">
-<h2 id="org3ccb625">准备</h2>
-<div class="outline-text-2" id="text-org3ccb625">
+<div id="outline-container-orgfcdf8c4" class="outline-2">
+<h2 id="orgfcdf8c4">准备</h2>
+<div class="outline-text-2" id="text-orgfcdf8c4">
 <p>
 请自行准备好以下的东西再进行刷机
 </p>
@@ -82,18 +82,18 @@
 </div>
 </div>
 
-<div id="outline-container-org34d13e5" class="outline-2">
-<h2 id="org34d13e5">制作固件</h2>
-<div class="outline-text-2" id="text-org34d13e5">
+<div id="outline-container-orge95a72a" class="outline-2">
+<h2 id="orge95a72a">制作固件</h2>
+<div class="outline-text-2" id="text-orge95a72a">
 </div>
-<div id="outline-container-orgcf98d6a" class="outline-3">
-<h3 id="orgcf98d6a">准备</h3>
-<div class="outline-text-3" id="text-orgcf98d6a">
+<div id="outline-container-orgfffa520" class="outline-3">
+<h3 id="orgfffa520">准备</h3>
+<div class="outline-text-3" id="text-orgfffa520">
 <p>
 进入 <code>LEDE</code> 目录，编辑 <code>feeds.conf.default</code> 文件，取消 <code>helloworld</code> 所在行的注释，这样就能选择 <code>ssr</code> 了，以下是示例。
 </p>
 
-<pre class="example">
+<pre class="example" id="org19f2d5b">
 src-git packages https://github.com/coolsnowwolf/packages
 src-git luci https://github.com/coolsnowwolf/luci
 src-git routing https://git.openwrt.org/feed/routing.git
@@ -118,14 +118,14 @@ src-git helloworld https://github.com/fw876/helloworld
 </div>
 </div>
 
-<div id="outline-container-orgaf0cc90" class="outline-3">
-<h3 id="orgaf0cc90">make menuconfig</h3>
-<div class="outline-text-3" id="text-orgaf0cc90">
+<div id="outline-container-org949ab94" class="outline-3">
+<h3 id="org949ab94">make menuconfig</h3>
+<div class="outline-text-3" id="text-org949ab94">
 <p>
 然后就是配置 <code>LEDE</code> 了， 运行命令 <code>make menuconfig</code> 。我来展示一些必要选项。
 </p>
 
-<pre class="example">
+<pre class="example" id="org9fdc0eb">
 Target System (MediaTek Ralink MIPS)  ---&gt;
 Subtarget (MT7621 based boards)  ---&gt;
 Target Profile (NETGEAR R7200 v1 (NETGEAR R6700 v2))  ---&gt;
@@ -139,7 +139,7 @@ Target Profile (NETGEAR R7200 v1 (NETGEAR R6700 v2))  ---&gt;
 选择了上面的内容就可进行下一步了，下面展示一些我的配置。
 </p>
 
-<pre class="example">
+<pre class="example" id="orge4e37eb">
 Extra packages  ---&gt;
   &lt;*&gt; ipv6helper................... IPv6 Helper and Dynamic Update he.net of ip
 LuCI  ---&gt;
@@ -163,9 +163,9 @@ Utilities  ---&gt;
 </div>
 </div>
 
-<div id="outline-container-orgad38b0d" class="outline-3">
-<h3 id="orgad38b0d">编译</h3>
-<div class="outline-text-3" id="text-orgad38b0d">
+<div id="outline-container-org104dfd8" class="outline-3">
+<h3 id="org104dfd8">编译</h3>
+<div class="outline-text-3" id="text-org104dfd8">
 <p>
 <code>make download V=s</code> 先下载要编译的源码
 </p>
@@ -184,29 +184,29 @@ Utilities  ---&gt;
 </div>
 </div>
 
-<div id="outline-container-orgbf3fe26" class="outline-3">
-<h3 id="orgbf3fe26">刷机</h3>
-<div class="outline-text-3" id="text-orgbf3fe26">
+<div id="outline-container-orgac5e47e" class="outline-3">
+<h3 id="orgac5e47e">刷机</h3>
+<div class="outline-text-3" id="text-orgac5e47e">
 </div>
-<div id="outline-container-orge1b9408" class="outline-4">
-<h4 id="orge1b9408">原生刷LEDE</h4>
-<div class="outline-text-4" id="text-orge1b9408">
+<div id="outline-container-org95d14b7" class="outline-4">
+<h4 id="org95d14b7">原生刷LEDE</h4>
+<div class="outline-text-4" id="text-org95d14b7">
 <p>
 直接在原生的管理界面点击升级固件，上传带有字段 <code>factory</code> 的固件即可。
 </p>
 </div>
 </div>
-<div id="outline-container-org6f3ea6e" class="outline-4">
-<h4 id="org6f3ea6e">LEDE升级</h4>
-<div class="outline-text-4" id="text-org6f3ea6e">
+<div id="outline-container-org4938865" class="outline-4">
+<h4 id="org4938865">LEDE升级</h4>
+<div class="outline-text-4" id="text-org4938865">
 <p>
 在固件升级页面使用带有字段 <code>sysupgrade</code> 的固件。
 </p>
 </div>
 </div>
-<div id="outline-container-orge7eb912" class="outline-4">
-<h4 id="orge7eb912">救砖或LEDE刷回原生</h4>
-<div class="outline-text-4" id="text-orge7eb912">
+<div id="outline-container-org293c8f0" class="outline-4">
+<h4 id="org293c8f0">救砖或LEDE刷回原生</h4>
+<div class="outline-text-4" id="text-org293c8f0">
 <p>
 使用 <code>nmrpflash -L</code> 列出所有网卡，找到正确的网卡，如果不知道就一个个试。
 </p>
