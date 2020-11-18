@@ -35,92 +35,103 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd3de01d">前言</a></li>
-<li><a href="#org230dd7d">C语言</a>
+<li><a href="#org4d5a274">前言</a></li>
+<li><a href="#orgeaecc09">C语言</a>
 <ul>
-<li><a href="#orgae4317f">编程与运行流程</a>
+<li><a href="#org4032e75">编程与运行流程</a>
 <ul>
-<li><a href="#org976c7e1">写代码</a></li>
-<li><a href="#org971df5d">编译</a></li>
-<li><a href="#orgf7ffc55">运行过程</a></li>
+<li><a href="#org457153a">写代码</a></li>
+<li><a href="#org7462a53">编译</a></li>
+<li><a href="#orgaaaa654">运行过程</a></li>
 </ul>
 </li>
-<li><a href="#orgb8c0241">简单输入输出</a></li>
-<li><a href="#orgb0ca3a9">变量</a></li>
-<li><a href="#orgfbab726">输入输出</a></li>
-<li><a href="#orgfe1174e">选择</a></li>
-<li><a href="#org38fd550">循环</a></li>
-<li><a href="#org5d3c02e">数组</a></li>
-<li><a href="#orgcbfec53">指针</a></li>
-<li><a href="#org58c1434">结构体</a></li>
-<li><a href="#org3e6dc47">函数</a></li>
-<li><a href="#orgb5b465c">递归</a></li>
-<li><a href="#org23a2e2c">其它</a></li>
+<li><a href="#orgd7b31d5">语法简介</a></li>
+<li><a href="#orgdef741f">变量</a>
+<ul>
+<li><a href="#orgec5171e">简介</a></li>
+<li><a href="#org196d4a7">类型</a></li>
+<li><a href="#orgdcdaabb">创建</a></li>
+<li><a href="#orge5d8557">使用</a></li>
 </ul>
 </li>
-<li><a href="#org983392c">C++</a></li>
+<li><a href="#org850df4f">输入输出</a></li>
+<li><a href="#orgd83c103">选择</a></li>
+<li><a href="#org5935283">循环</a></li>
+<li><a href="#org1af1e5a">数组</a></li>
+<li><a href="#org46d1ce8">指针</a></li>
+<li><a href="#org3bce362">结构体</a></li>
+<li><a href="#orgd57dc96">函数</a></li>
+<li><a href="#orga4bce64">递归</a></li>
+<li><a href="#org4bb4c71">其它</a></li>
+</ul>
+</li>
+<li><a href="#org0baa682">C++</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgd3de01d" class="outline-2">
-<h2 id="orgd3de01d">前言</h2>
-<div class="outline-text-2" id="text-orgd3de01d">
+<div id="outline-container-org4d5a274" class="outline-2">
+<h2 id="org4d5a274">前言</h2>
+<div class="outline-text-2" id="text-org4d5a274">
 <p>
-编程语言是让我们使用一个大部分人能理解的方式控制计算机，所以写代码时最重要的是可读性，对自己要求高的同学可以思考怎么保持代码的整洁与优雅。
+编程语言是让我们使用一个大部分人能理解的方式控制计算机，所以写代码时最重要的是可读性，对自己要求高的同学可以思考怎么保持代码的整洁与优雅。<br />
 </p>
 
 <p>
-本文只把基础的逻辑与用法讲清楚，最后可能会附带几个例题，想要真正的学会编程还是要多写代码。
+本文不会把每种表都列出来（如优先级、关键字等），这些网上或课本上都有，请自行翻阅，本书仅仅是讲清原理与我自己理解的逻辑。<br />
 </p>
 
 <p>
-最后请看看这篇文章《<a href="https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md">提问的智慧</a>》，如果有人问我比较蠢问题的问题那就原谅我也敷衍一下。
+本文只把基础的逻辑与用法讲清楚，最后可能会附带几个例题，想要真正的学会编程还是要多写代码。<br />
+</p>
+
+<p>
+最后请看看这篇文章《<a href="https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md">提问的智慧</a>》，如果有人问我比较蠢问题的问题那就原谅我也敷衍一下。<br />
 </p>
 </div>
 </div>
 
-<div id="outline-container-org230dd7d" class="outline-2">
-<h2 id="org230dd7d">C语言</h2>
-<div class="outline-text-2" id="text-org230dd7d">
+<div id="outline-container-orgeaecc09" class="outline-2">
+<h2 id="orgeaecc09">C语言</h2>
+<div class="outline-text-2" id="text-orgeaecc09">
 </div>
-<div id="outline-container-orgae4317f" class="outline-3">
-<h3 id="orgae4317f">编程与运行流程</h3>
-<div class="outline-text-3" id="text-orgae4317f">
+<div id="outline-container-org4032e75" class="outline-3">
+<h3 id="org4032e75">编程与运行流程</h3>
+<div class="outline-text-3" id="text-org4032e75">
 </div>
-<div id="outline-container-org976c7e1" class="outline-4">
-<h4 id="org976c7e1">写代码</h4>
-<div class="outline-text-4" id="text-org976c7e1">
+<div id="outline-container-org457153a" class="outline-4">
+<h4 id="org457153a">写代码</h4>
+<div class="outline-text-4" id="text-org457153a">
 <p>
-对于 <code>windows</code> 来说，我推荐新手使用 <code>Dev-C++</code> 这个 <code>IDE</code> 来编写代码，这个软件虽然有些年头了，也很长时间没有更新了，但作为一个编程集成环境还是及格的，具体的操作还是比较简单，很多事情都能一键完成。\
-对于参加蓝桥杯的同学， <code>Dev-C++</code> 也是官方指定的编程环境。\
-请不要使用 <code>vc++</code> ！！！
+对于 <code>windows</code> 来说，我推荐新手使用 <code>Dev-C++</code> 这个 <code>IDE</code> 来编写代码，这个软件虽然有些年头了，也很长时间没有更新了，但作为一个编程集成环境还是及格的，具体的操作还是比较简单，很多事情都能一键完成。<br />
+对于参加蓝桥杯的同学， <code>Dev-C++</code> 也是官方指定的编程环境。<br />
+请不要使用 <code>vc++</code> ！！！<br />
 </p>
 
 <p>
-对于 <code>Linux</code> 来说，新手可以使用 <code>nano</code> 来编写代码，有基础的同学可以学下 <code>vim</code> ，进阶的话可以玩玩 <code>Emacs</code> 。
+对于 <code>Linux</code> 来说，新手可以使用 <code>nano</code> 来编写代码，有基础的同学可以学下 <code>vim</code> ，进阶的话可以玩玩 <code>Emacs</code> 。<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org971df5d" class="outline-4">
-<h4 id="org971df5d">编译</h4>
-<div class="outline-text-4" id="text-org971df5d">
+<div id="outline-container-org7462a53" class="outline-4">
+<h4 id="org7462a53">编译</h4>
+<div class="outline-text-4" id="text-org7462a53">
 <p>
-对于 <code>IDE</code> 来说只需要按下按钮就能自动的编译了，没有什么需要动脑的地方。
+对于 <code>IDE</code> 来说只需要按下按钮就能自动的编译了，没有什么需要动脑的地方。<br />
 </p>
 
 <p>
-当然我们不能这样就行了，下面简单介绍下编译是什么。我们写的代码其实都是文本文件，计算机并不认识，计算机只能处理2进制的指令，也就是机器语言，每种 <code>CPU</code> 的机器语言都是不一样的，所以我们需要把我们认识的代码转换成计算机认识机器代码，这个过程叫做编译。
+当然我们不能这样就行了，下面简单介绍下编译是什么。我们写的代码其实都是文本文件，计算机并不认识，计算机只能处理2进制的指令，也就是机器语言，每种 <code>CPU</code> 的机器语言都是不一样的，所以我们需要把我们认识的代码转换成计算机认识机器代码，这个过程叫做编译。<br />
 </p>
 
 <p>
-目前使用最广的编译器是 <code>gcc</code> ， <code>Dev-C++</code> 也是使用的这个编译器，安装 <code>gcc</code> 后可以在命令行使用 <code>gcc</code> 命令，这个命令给定一个源代码文件，然后输出一个二进制文件，然后计算机就能执行这个二进制文件了。
+目前使用最广的编译器是 <code>gcc</code> ， <code>Dev-C++</code> 也是使用的这个编译器，安装 <code>gcc</code> 后可以在命令行使用 <code>gcc</code> 命令，这个命令给定一个源代码文件，然后输出一个二进制文件，然后计算机就能执行这个二进制文件了。<br />
 </p>
 </div>
 </div>
-<div id="outline-container-orgf7ffc55" class="outline-4">
-<h4 id="orgf7ffc55">运行过程</h4>
-<div class="outline-text-4" id="text-orgf7ffc55">
+<div id="outline-container-orgaaaa654" class="outline-4">
+<h4 id="orgaaaa654">运行过程</h4>
+<div class="outline-text-4" id="text-orgaaaa654">
 <div class="org-src-container">
 <pre class="src src-c">#include &lt;stdio.h&gt;
 
@@ -132,52 +143,170 @@ int main() {
 </div>
 
 <p>
-对于 <code>C</code> 来说，它运行时总会从 <code>main</code> 函数开始，只要 <code>main</code> 函数结束整个程序就结束了。对于上面这个代码来说，它输出了一行 <code>Hello，World</code> 文本，并返回了0。需要注意这个0是返回给了操作系统，作用只有一个，就是告诉操作系统这个程序运行过程是否有错误，0表示没有错误。
+对于 <code>C</code> 来说，它运行时总会从 <code>main</code> 函数开始，只要 <code>main</code> 函数结束整个程序就结束了。对于上面这个代码来说，它输出了一行 <code>Hello，World</code> 文本，并返回了0。需要注意这个0是返回给了操作系统，作用只有一个，就是告诉操作系统这个程序运行过程是否有错误，0表示没有错误。<br />
 </p>
 
 <p>
-注意 <code>main</code> 只是第一个执行的函数，定义语句、引入库函数语句、宏语句等肯定是要优先执行的。
+注意 <code>main</code> 只是第一个执行的函数，定义语句、引入库函数语句、宏语句等肯定是要优先执行的。<br />
 </p>
 </div>
 </div>
 </div>
+<div id="outline-container-orgd7b31d5" class="outline-3">
+<h3 id="orgd7b31d5">语法简介</h3>
+<div class="outline-text-3" id="text-orgd7b31d5">
+<p>
+我们从简单的语句开始，语句由表达式组成，一条语句必须有一个分号当作结尾，比如 <code>1+1;</code> 就是一条语句。这条语句中的 <code>+</code> 是 <code>C</code> 自带的一些操作符，数学上常用的运算符都有。这里需要强调一下 <code>=</code> 是赋值运算符，比如 <code>a=b;</code> 的意思就是把a的值设置成b的值，也即对等号右边的表达式进行求值，然后把返回值赋值给左边。变量可以简单理解为一个箱子，箱子可以放置或取出数据。<br />
+</p>
 
-<div id="outline-container-orgb8c0241" class="outline-3">
-<h3 id="orgb8c0241">简单输入输出</h3>
-</div>
-<div id="outline-container-orgb0ca3a9" class="outline-3">
-<h3 id="orgb0ca3a9">变量</h3>
-</div>
-<div id="outline-container-orgfbab726" class="outline-3">
-<h3 id="orgfbab726">输入输出</h3>
-</div>
-<div id="outline-container-orgfe1174e" class="outline-3">
-<h3 id="orgfe1174e">选择</h3>
-</div>
-<div id="outline-container-org38fd550" class="outline-3">
-<h3 id="org38fd550">循环</h3>
-</div>
-<div id="outline-container-org5d3c02e" class="outline-3">
-<h3 id="org5d3c02e">数组</h3>
-</div>
-<div id="outline-container-orgcbfec53" class="outline-3">
-<h3 id="orgcbfec53">指针</h3>
-</div>
-<div id="outline-container-org58c1434" class="outline-3">
-<h3 id="org58c1434">结构体</h3>
-</div>
-<div id="outline-container-org3e6dc47" class="outline-3">
-<h3 id="org3e6dc47">函数</h3>
-</div>
-<div id="outline-container-orgb5b465c" class="outline-3">
-<h3 id="orgb5b465c">递归</h3>
-</div>
-<div id="outline-container-org23a2e2c" class="outline-3">
-<h3 id="org23a2e2c">其它</h3>
+<p>
+下面讲解表达式，每个表达式都有返回值，同一时刻只能运算一个操作。对于 <code>1+1+1</code> 这个表达式，它的求值过程是这样的：<br />
+</p>
+<ol class="org-ol">
+<li>先运算第一个 <code>1+1</code> ，它的返回值是 <code>2</code><br /></li>
+<li>表达式变成 <code>2+1</code><br /></li>
+<li>得出返回值 <code>3</code><br /></li>
+</ol>
+
+<p>
+记住分辩操作是跟根据操作符来的，有些操作符是需要两边都有数据，有些只需要一个，并且每个操作符都有优先级的，计算机会优先执行优先级高的操作，优先级一般来说符合直觉<br />
+如果是同级的操作，根据操作符的类型来判定是从左到右还是从右到左。<br />
+如果记不住执行的顺序，可以简单的使用括号把你想要独立执行的操作括起来，括号内的会优先执行。<br />
+比如 <code>(1 + 2) * 3</code> -&gt; <code>(3) * 3</code> -&gt; <code>3 * 3</code> -&gt; <code>9</code><br />
+</p>
+
+<p>
+这样就是最基本的 <code>C</code> 语法，更加复杂的语法在后面讲解。<br />
+</p>
 </div>
 </div>
-<div id="outline-container-org983392c" class="outline-2">
-<h2 id="org983392c">C++</h2>
+<div id="outline-container-orgdef741f" class="outline-3">
+<h3 id="orgdef741f">变量</h3>
+<div class="outline-text-3" id="text-orgdef741f">
+</div>
+<div id="outline-container-orgec5171e" class="outline-4">
+<h4 id="orgec5171e">简介</h4>
+<div class="outline-text-4" id="text-orgec5171e">
+<p>
+变量可以理解成一个箱子，我们可以把一些东西放到箱子，也可以从箱子内把东西取出来。<br />
+类型的作用只是为每个箱子打上了标签，规定了箱子内不能随便放东西，比如一个放水果的箱子就不能把水倒进去。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org196d4a7" class="outline-4">
+<h4 id="org196d4a7">类型</h4>
+<div class="outline-text-4" id="text-org196d4a7">
+<p>
+<code>C</code> 是一个强类型的语言，它的意思就是每个数据都有类型，不同类型的数据不能随便使用，比如一个整数类型的变量就不能放入一个小数数据。<br />
+</p>
+
+<p>
+<code>C</code> 里有三种简单常用的类型：整数、小数、字符；<br />
+</p>
+
+<p>
+我们需要记下这些类型的名称<br />
+整数有： <code>short</code> 、 <code>int</code> 、 <code>long</code> 、 <code>long long</code><br />
+小数有： <code>float</code> 、 <code>doubel</code><br />
+字符有： <code>char</code><br />
+</p>
+
+<p>
+这些不同的类型之间的区别只是它们用来存储数据的空间大小，比如 <code>short</code> 只用2个字节存储整数。<br />
+对于初学者只需要记下 <code>int</code> 、 <code>float</code>  、 <code>char</code> 就行了。<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdcdaabb" class="outline-4">
+<h4 id="orgdcdaabb">创建</h4>
+<div class="outline-text-4" id="text-orgdcdaabb">
+<p>
+创建一个变量需要使用变量声明语句，大概是这种形式 <code>&lt;变量类型&gt; &lt;变量名&gt;;</code> ，举个例子 <code>int a;</code> 这样就创建了一个 <code>int</code> 类型的变量 <code>a</code> 。<br />
+</p>
+
+<p>
+如果使用这种形式 <code>&lt;变量类型&gt; &lt;变量名&gt; = &lt;表达式&gt;;</code> 的语句声明变量的话，就会给这个变量一个初始值，比如 <code>float pi = 3.1415926;</code> 就定义了一个 <code>float</code> 类型的变量 <code>pi</code> ，它的初始值为 <code>3.1415926</code> 。<br />
+</p>
+
+<p>
+注意一点，变量名不能与 <code>C</code> 的关键字重名，已经使用过的名字不能重复定义。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orge5d8557" class="outline-4">
+<h4 id="orge5d8557">使用</h4>
+<div class="outline-text-4" id="text-orge5d8557">
+<p>
+在表达式内，我们可以把变量当作一个求值操作，这个操作的返回值为变量内的值，比如 <code>int a = 1;</code> 后 <code>a</code> 这个表示式的值就为 <code>1</code> ， <code>(a + 1) * a</code> -&gt; <code>(1 + 1) * a</code> -&gt; <code>2 * a</code> -&gt; <code>2 * 1</code> -&gt; <code>2</code> 。<br />
+</p>
+
+<p>
+对于变量我们还可以对它使用赋值运算符，比如 <code>=</code> 、 <code>++</code> 、 <code>--</code> <br />
+<code>=</code> 就是简单的把等号右边的表示式求值，放到等号左边的变量内<br />
+<code>++</code> 是把变量内的值加上1，然后放到变量内<br />
+<code>--</code> 是把变量内的值减去1，然后放入变量内<br />
+</p>
+
+<p>
+赋值运算也是一个表示式，这意味着它也会返回一个值<br />
+比如 <code>1 + (a = 3)</code> -&gt; <code>1 + 3</code> -&gt; <code>4</code><br />
+需要注意这个表示式会有一个副作用，它把 <code>a</code> 的值改变成 <code>3</code> 了<br />
+</p>
+
+<p>
+后面两个运算符有些许的复杂<br />
+<code>a++</code> 的返回值是 <code>a</code><br />
+<code>++a</code> 的返回值是 <code>a+1</code><br />
+<code>a--</code> 的返回值是 <code>a--</code><br />
+<code>--a</code> 的返回值是 <code>a-1</code><br />
+注意，虽然返回值不一样，但这个变量的值都改变了，也即是一个副作用<br />
+</p>
+
+<p>
+下面举些例子 <code>int a = 1;</code><br />
+<code>1 + a++</code> -&gt; <code>1 + 1</code> -&gt; <code>2</code><br />
+<code>a</code> -&gt; <code>2</code><br />
+<code>1 + (++a)</code> -&gt; <code>1 + 3</code> -&gt; <code>4</code><br />
+<code>a</code> -&gt; <code>3</code><br />
+<code>1 + a--</code> -&gt; <code>1 + 3</code> -&gt; <code>4</code><br />
+<code>a</code> -&gt; <code>2</code><br />
+<code>1 + (--a)</code> -&gt; <code>1 + 1</code> -&gt; <code>2</code><br />
+<code>a</code> -&gt; <code>1</code><br />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org850df4f" class="outline-3">
+<h3 id="org850df4f">输入输出</h3>
+</div>
+<div id="outline-container-orgd83c103" class="outline-3">
+<h3 id="orgd83c103">选择</h3>
+</div>
+<div id="outline-container-org5935283" class="outline-3">
+<h3 id="org5935283">循环</h3>
+</div>
+<div id="outline-container-org1af1e5a" class="outline-3">
+<h3 id="org1af1e5a">数组</h3>
+</div>
+<div id="outline-container-org46d1ce8" class="outline-3">
+<h3 id="org46d1ce8">指针</h3>
+</div>
+<div id="outline-container-org3bce362" class="outline-3">
+<h3 id="org3bce362">结构体</h3>
+</div>
+<div id="outline-container-orgd57dc96" class="outline-3">
+<h3 id="orgd57dc96">函数</h3>
+</div>
+<div id="outline-container-orga4bce64" class="outline-3">
+<h3 id="orga4bce64">递归</h3>
+</div>
+<div id="outline-container-org4bb4c71" class="outline-3">
+<h3 id="org4bb4c71">其它</h3>
+</div>
+</div>
+<div id="outline-container-org0baa682" class="outline-2">
+<h2 id="org0baa682">C++</h2>
 </div>
 
 </div>
@@ -185,7 +314,7 @@ int main() {
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2020-11-17</span>
-        <span title="last modification date" class="post-info">2020-11-17</span>
+        <span title="last modification date" class="post-info">2020-11-18</span>
         <span title="tags" class="post-info"><a href="/tags/tutorial/">tutorial</a>, <a href="/tags/c-c++/">C/C++</a></span>
         <span title="author" class="post-info">lampze</span>
       </div>

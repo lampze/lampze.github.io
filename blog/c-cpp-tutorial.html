@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+<head>
+<!-- 2020-11-18 三 10:53 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>C/C++简明教程</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="lampze" />
+<meta name="description" content="C/C++的简单教程"
+ />
+<meta name="keywords" content="tutorial, C/C++" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">C/C++简明教程</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgac1a90d">前言</a></li>
+<li><a href="#orgd049943">C语言</a>
+<ul>
+<li><a href="#org7ffe8bd">编程与运行流程</a>
+<ul>
+<li><a href="#org4c3abf9">写代码</a></li>
+<li><a href="#org7740af3">编译</a></li>
+<li><a href="#org549fd6c">运行过程</a></li>
+</ul>
+</li>
+<li><a href="#org4f18251">语法简介</a></li>
+<li><a href="#org9671424">变量</a>
+<ul>
+<li><a href="#org84a1ae7">类型</a></li>
+<li><a href="#orgf21c4fe">创建</a></li>
+<li><a href="#org81d9c9a">使用</a></li>
+</ul>
+</li>
+<li><a href="#org4daec77">简单输入输出</a></li>
+<li><a href="#org841d541">输入输出</a></li>
+<li><a href="#orgbab6f52">选择</a></li>
+<li><a href="#orgb75d2b1">循环</a></li>
+<li><a href="#orgb4854a2">数组</a></li>
+<li><a href="#orgb5234e0">指针</a></li>
+<li><a href="#org65205fa">结构体</a></li>
+<li><a href="#orgb60a7b4">函数</a></li>
+<li><a href="#org20aed0f">递归</a></li>
+<li><a href="#orgbde350a">其它</a></li>
+</ul>
+</li>
+<li><a href="#org009aae9">C++</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgac1a90d" class="outline-2">
+<h2 id="orgac1a90d">前言</h2>
+<div class="outline-text-2" id="text-orgac1a90d">
+<p>
+编程语言是让我们使用一个大部分人能理解的方式控制计算机，所以写代码时最重要的是可读性，对自己要求高的同学可以思考怎么保持代码的整洁与优雅。<br />
+</p>
+
+<p>
+本文不会把每种表都列出来（如优先级、关键字等），这些网上或课本上都有，请自行翻阅，本书仅仅是讲清原理与我自己理解的逻辑。<br />
+</p>
+
+<p>
+本文只把基础的逻辑与用法讲清楚，最后可能会附带几个例题，想要真正的学会编程还是要多写代码。<br />
+</p>
+
+<p>
+最后请看看这篇文章《<a href="https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md">提问的智慧</a>》，如果有人问我比较蠢问题的问题那就原谅我也敷衍一下。<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd049943" class="outline-2">
+<h2 id="orgd049943">C语言</h2>
+<div class="outline-text-2" id="text-orgd049943">
+</div>
+<div id="outline-container-org7ffe8bd" class="outline-3">
+<h3 id="org7ffe8bd">编程与运行流程</h3>
+<div class="outline-text-3" id="text-org7ffe8bd">
+</div>
+<div id="outline-container-org4c3abf9" class="outline-4">
+<h4 id="org4c3abf9">写代码</h4>
+<div class="outline-text-4" id="text-org4c3abf9">
+<p>
+对于 <code>windows</code> 来说，我推荐新手使用 <code>Dev-C++</code> 这个 <code>IDE</code> 来编写代码，这个软件虽然有些年头了，也很长时间没有更新了，但作为一个编程集成环境还是及格的，具体的操作还是比较简单，很多事情都能一键完成。<br />
+对于参加蓝桥杯的同学， <code>Dev-C++</code> 也是官方指定的编程环境。<br />
+请不要使用 <code>vc++</code> ！！！<br />
+</p>
+
+<p>
+对于 <code>Linux</code> 来说，新手可以使用 <code>nano</code> 来编写代码，有基础的同学可以学下 <code>vim</code> ，进阶的话可以玩玩 <code>Emacs</code> 。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org7740af3" class="outline-4">
+<h4 id="org7740af3">编译</h4>
+<div class="outline-text-4" id="text-org7740af3">
+<p>
+对于 <code>IDE</code> 来说只需要按下按钮就能自动的编译了，没有什么需要动脑的地方。<br />
+</p>
+
+<p>
+当然我们不能这样就行了，下面简单介绍下编译是什么。我们写的代码其实都是文本文件，计算机并不认识，计算机只能处理2进制的指令，也就是机器语言，每种 <code>CPU</code> 的机器语言都是不一样的，所以我们需要把我们认识的代码转换成计算机认识机器代码，这个过程叫做编译。<br />
+</p>
+
+<p>
+目前使用最广的编译器是 <code>gcc</code> ， <code>Dev-C++</code> 也是使用的这个编译器，安装 <code>gcc</code> 后可以在命令行使用 <code>gcc</code> 命令，这个命令给定一个源代码文件，然后输出一个二进制文件，然后计算机就能执行这个二进制文件了。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org549fd6c" class="outline-4">
+<h4 id="org549fd6c">运行过程</h4>
+<div class="outline-text-4" id="text-org549fd6c">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #51afef; font-weight: bold;">#include</span> <span style="color: #51afef;">&lt;</span><span style="color: #98be65;">stdio.h</span><span style="color: #51afef;">&gt;</span>
+
+<span style="color: #ECBE7B;">int</span> <span style="color: #c678dd;">main</span><span style="color: #51afef;">()</span> <span style="color: #51afef;">{</span>
+  printf<span style="color: #c678dd;">(</span><span style="color: #98be65;">"Hello, World\n"</span><span style="color: #c678dd;">)</span>;
+  <span style="color: #51afef;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+<span style="color: #51afef;">}</span>
+</pre>
+</div>
+
+<p>
+对于 <code>C</code> 来说，它运行时总会从 <code>main</code> 函数开始，只要 <code>main</code> 函数结束整个程序就结束了。对于上面这个代码来说，它输出了一行 <code>Hello，World</code> 文本，并返回了0。需要注意这个0是返回给了操作系统，作用只有一个，就是告诉操作系统这个程序运行过程是否有错误，0表示没有错误。<br />
+</p>
+
+<p>
+注意 <code>main</code> 只是第一个执行的函数，定义语句、引入库函数语句、宏语句等肯定是要优先执行的。<br />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org4f18251" class="outline-3">
+<h3 id="org4f18251">语法简介</h3>
+<div class="outline-text-3" id="text-org4f18251">
+<p>
+我们从简单的语句开始，语句由表达式组成，一条语句必须有一个分号当作结尾，比如 <code>1+1;</code> 就是一条语句。这条语句中的 <code>+</code> 是 <code>C</code> 自带的一些操作符，数学上常用的运算符都有。这里需要强调一下 <code>=</code> 是赋值运算符，比如 <code>a=b;</code> 的意思就是把a的值设置成b的值，也即对等号右边的表达式进行求值，然后把返回值赋值给左边。变量可以简单理解为一个箱子，箱子可以放置或取出数据。<br />
+</p>
+
+<p>
+下面讲解表达式，每个表达式都有返回值，同一时刻只能运算一个操作。对于 <code>1+1+1</code> 这个表达式，它的求值过程是这样的：<br />
+</p>
+<ol class="org-ol">
+<li>先运算第一个 <code>1+1</code> ，它的返回值是 <code>2</code><br /></li>
+<li>表达式变成 <code>2+1</code><br /></li>
+<li>得出返回值 <code>3</code><br /></li>
+</ol>
+
+<p>
+记住分辩操作是跟根据操作符来的，有些操作符是需要两边都有数据，有些只需要一个，并且每个操作符都有优先级的，计算机会优先执行优先级高的操作，优先级一般来说符合直觉<br />
+如果是同级的操作，根据操作符的类型来判定是从左到右还是从右到左。<br />
+如果记不住执行的顺序，可以简单的使用括号把你想要独立执行的操作括起来，括号内的会优先执行。<br />
+比如 <code>(1 + 2) * 3</code> -&gt; <code>(3) * 3</code> -&gt; <code>3 * 3</code> -&gt; <code>9</code><br />
+</p>
+
+<p>
+这样就是最基本的 <code>C</code> 语法，更加复杂的语法在后面讲解。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org9671424" class="outline-3">
+<h3 id="org9671424">变量</h3>
+<div class="outline-text-3" id="text-org9671424">
+</div>
+<div id="outline-container-org84a1ae7" class="outline-4">
+<h4 id="org84a1ae7">类型</h4>
+<div class="outline-text-4" id="text-org84a1ae7">
+<p>
+<code>C</code> 是一个强类型的语言，它的意思就是每个数据都有类型，不同类型的数据不能随便使用，比如一个整数类型的变量就不能放入一个小数数据。<br />
+</p>
+
+<p>
+<code>C</code> 里有三种简单常用的类型：整数、小数、字符；<br />
+</p>
+
+<p>
+我们需要记下这些类型的名称<br />
+整数有： <code>short</code> 、 <code>int</code> 、 <code>long</code> 、 <code>long long</code> <br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf21c4fe" class="outline-4">
+<h4 id="orgf21c4fe">创建</h4>
+</div>
+<div id="outline-container-org81d9c9a" class="outline-4">
+<h4 id="org81d9c9a">使用</h4>
+</div>
+</div>
+<div id="outline-container-org4daec77" class="outline-3">
+<h3 id="org4daec77">简单输入输出</h3>
+</div>
+<div id="outline-container-org841d541" class="outline-3">
+<h3 id="org841d541">输入输出</h3>
+</div>
+<div id="outline-container-orgbab6f52" class="outline-3">
+<h3 id="orgbab6f52">选择</h3>
+</div>
+<div id="outline-container-orgb75d2b1" class="outline-3">
+<h3 id="orgb75d2b1">循环</h3>
+</div>
+<div id="outline-container-orgb4854a2" class="outline-3">
+<h3 id="orgb4854a2">数组</h3>
+</div>
+<div id="outline-container-orgb5234e0" class="outline-3">
+<h3 id="orgb5234e0">指针</h3>
+</div>
+<div id="outline-container-org65205fa" class="outline-3">
+<h3 id="org65205fa">结构体</h3>
+</div>
+<div id="outline-container-orgb60a7b4" class="outline-3">
+<h3 id="orgb60a7b4">函数</h3>
+</div>
+<div id="outline-container-org20aed0f" class="outline-3">
+<h3 id="org20aed0f">递归</h3>
+</div>
+<div id="outline-container-orgbde350a" class="outline-3">
+<h3 id="orgbde350a">其它</h3>
+</div>
+</div>
+<div id="outline-container-org009aae9" class="outline-2">
+<h2 id="org009aae9">C++</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2020-11-17 二</p>
+<p class="author">Author: lampze</p>
+<p class="date">Created: 2020-11-18 三 10:53</p>
+</div>
+</body>
+</html>
