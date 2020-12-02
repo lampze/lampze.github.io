@@ -35,44 +35,63 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4d5a274">前言</a></li>
-<li><a href="#orgeaecc09">C语言</a>
+<li><a href="#org2cb48ba">前言</a></li>
+<li><a href="#orgddb6210">C语言</a>
 <ul>
-<li><a href="#org4032e75">编程与运行流程</a>
+<li><a href="#org8a162ad">编程与运行流程</a>
 <ul>
-<li><a href="#org457153a">写代码</a></li>
-<li><a href="#org7462a53">编译</a></li>
-<li><a href="#orgaaaa654">运行过程</a></li>
+<li><a href="#org6edf977">写代码</a></li>
+<li><a href="#org534da43">编译</a></li>
+<li><a href="#org1c43777">运行过程</a></li>
 </ul>
 </li>
-<li><a href="#orgd7b31d5">语法简介</a></li>
-<li><a href="#orgdef741f">变量</a>
+<li><a href="#org511d1cd">语法简介</a></li>
+<li><a href="#org118725d">变量</a>
 <ul>
-<li><a href="#orgec5171e">简介</a></li>
-<li><a href="#org196d4a7">类型</a></li>
-<li><a href="#orgdcdaabb">创建</a></li>
-<li><a href="#orge5d8557">使用</a></li>
+<li><a href="#org74935e7">简介</a></li>
+<li><a href="#org496c12d">类型</a></li>
+<li><a href="#org90ece58">创建</a></li>
+<li><a href="#orgfd957a5">使用</a></li>
 </ul>
 </li>
-<li><a href="#org850df4f">输入输出</a></li>
-<li><a href="#orgd83c103">选择</a></li>
-<li><a href="#org5935283">循环</a></li>
-<li><a href="#org1af1e5a">数组</a></li>
-<li><a href="#org46d1ce8">指针</a></li>
-<li><a href="#org3bce362">结构体</a></li>
-<li><a href="#orgd57dc96">函数</a></li>
-<li><a href="#orga4bce64">递归</a></li>
-<li><a href="#org4bb4c71">其它</a></li>
+<li><a href="#org68f336d">输入输出</a>
+<ul>
+<li><a href="#orgb9d2a76">简介</a></li>
+<li><a href="#orge75e88b">输出</a></li>
+<li><a href="#org8d81c8b">输入</a></li>
 </ul>
 </li>
-<li><a href="#org0baa682">C++</a></li>
+<li><a href="#orgfb3e8d9">选择</a>
+<ul>
+<li><a href="#org99a0865">简介</a></li>
+<li><a href="#orgae121f9">if</a></li>
+<li><a href="#org101714e">switch</a></li>
+<li><a href="#org542cbd3">三元运算符</a></li>
+</ul>
+</li>
+<li><a href="#orgfde3f27">循环</a>
+<ul>
+<li><a href="#org5c38a67">简介</a></li>
+<li><a href="#orgf88208f">while</a></li>
+<li><a href="#orge6dee2f">for</a></li>
+</ul>
+</li>
+<li><a href="#orgcf4b047">数组</a></li>
+<li><a href="#org05ae098">指针</a></li>
+<li><a href="#org404e768">结构体</a></li>
+<li><a href="#org599f445">函数</a></li>
+<li><a href="#org9fb50a2">递归</a></li>
+<li><a href="#orgeaf5131">其它</a></li>
+</ul>
+</li>
+<li><a href="#org8ec2b9f">C++</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org4d5a274" class="outline-2">
-<h2 id="org4d5a274">前言</h2>
-<div class="outline-text-2" id="text-org4d5a274">
+<div id="outline-container-org2cb48ba" class="outline-2">
+<h2 id="org2cb48ba">前言</h2>
+<div class="outline-text-2" id="text-org2cb48ba">
 <p>
 编程语言是让我们使用一个大部分人能理解的方式控制计算机，所以写代码时最重要的是可读性，对自己要求高的同学可以思考怎么保持代码的整洁与优雅。<br />
 </p>
@@ -86,22 +105,22 @@
 </p>
 
 <p>
-最后请看看这篇文章《<a href="https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md">提问的智慧</a>》，如果有人问我比较蠢问题的问题那就原谅我也敷衍一下。<br />
+最后请看看这篇文章《<a href="https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md">提问的智慧</a>》，问问题时请按照这上面做。<br />
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgeaecc09" class="outline-2">
-<h2 id="orgeaecc09">C语言</h2>
-<div class="outline-text-2" id="text-orgeaecc09">
+<div id="outline-container-orgddb6210" class="outline-2">
+<h2 id="orgddb6210">C语言</h2>
+<div class="outline-text-2" id="text-orgddb6210">
 </div>
-<div id="outline-container-org4032e75" class="outline-3">
-<h3 id="org4032e75">编程与运行流程</h3>
-<div class="outline-text-3" id="text-org4032e75">
+<div id="outline-container-org8a162ad" class="outline-3">
+<h3 id="org8a162ad">编程与运行流程</h3>
+<div class="outline-text-3" id="text-org8a162ad">
 </div>
-<div id="outline-container-org457153a" class="outline-4">
-<h4 id="org457153a">写代码</h4>
-<div class="outline-text-4" id="text-org457153a">
+<div id="outline-container-org6edf977" class="outline-4">
+<h4 id="org6edf977">写代码</h4>
+<div class="outline-text-4" id="text-org6edf977">
 <p>
 对于 <code>windows</code> 来说，我推荐新手使用 <code>Dev-C++</code> 这个 <code>IDE</code> 来编写代码，这个软件虽然有些年头了，也很长时间没有更新了，但作为一个编程集成环境还是及格的，具体的操作还是比较简单，很多事情都能一键完成。<br />
 对于参加蓝桥杯的同学， <code>Dev-C++</code> 也是官方指定的编程环境。<br />
@@ -113,9 +132,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org7462a53" class="outline-4">
-<h4 id="org7462a53">编译</h4>
-<div class="outline-text-4" id="text-org7462a53">
+<div id="outline-container-org534da43" class="outline-4">
+<h4 id="org534da43">编译</h4>
+<div class="outline-text-4" id="text-org534da43">
 <p>
 对于 <code>IDE</code> 来说只需要按下按钮就能自动的编译了，没有什么需要动脑的地方。<br />
 </p>
@@ -129,9 +148,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgaaaa654" class="outline-4">
-<h4 id="orgaaaa654">运行过程</h4>
-<div class="outline-text-4" id="text-orgaaaa654">
+<div id="outline-container-org1c43777" class="outline-4">
+<h4 id="org1c43777">运行过程</h4>
+<div class="outline-text-4" id="text-org1c43777">
 <div class="org-src-container">
 <pre class="src src-c">#include &lt;stdio.h&gt;
 
@@ -152,9 +171,9 @@ int main() {
 </div>
 </div>
 </div>
-<div id="outline-container-orgd7b31d5" class="outline-3">
-<h3 id="orgd7b31d5">语法简介</h3>
-<div class="outline-text-3" id="text-orgd7b31d5">
+<div id="outline-container-org511d1cd" class="outline-3">
+<h3 id="org511d1cd">语法简介</h3>
+<div class="outline-text-3" id="text-org511d1cd">
 <p>
 我们从简单的语句开始，语句由表达式组成，一条语句必须有一个分号当作结尾，比如 <code>1+1;</code> 就是一条语句。这条语句中的 <code>+</code> 是 <code>C</code> 自带的一些操作符，数学上常用的运算符都有。这里需要强调一下 <code>=</code> 是赋值运算符，比如 <code>a=b;</code> 的意思就是把a的值设置成b的值，也即对等号右边的表达式进行求值，然后把返回值赋值给左边。变量可以简单理解为一个箱子，箱子可以放置或取出数据。<br />
 </p>
@@ -180,22 +199,22 @@ int main() {
 </p>
 </div>
 </div>
-<div id="outline-container-orgdef741f" class="outline-3">
-<h3 id="orgdef741f">变量</h3>
-<div class="outline-text-3" id="text-orgdef741f">
+<div id="outline-container-org118725d" class="outline-3">
+<h3 id="org118725d">变量</h3>
+<div class="outline-text-3" id="text-org118725d">
 </div>
-<div id="outline-container-orgec5171e" class="outline-4">
-<h4 id="orgec5171e">简介</h4>
-<div class="outline-text-4" id="text-orgec5171e">
+<div id="outline-container-org74935e7" class="outline-4">
+<h4 id="org74935e7">简介</h4>
+<div class="outline-text-4" id="text-org74935e7">
 <p>
 变量可以理解成一个箱子，我们可以把一些东西放到箱子，也可以从箱子内把东西取出来。<br />
 类型的作用只是为每个箱子打上了标签，规定了箱子内不能随便放东西，比如一个放水果的箱子就不能把水倒进去。<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org196d4a7" class="outline-4">
-<h4 id="org196d4a7">类型</h4>
-<div class="outline-text-4" id="text-org196d4a7">
+<div id="outline-container-org496c12d" class="outline-4">
+<h4 id="org496c12d">类型</h4>
+<div class="outline-text-4" id="text-org496c12d">
 <p>
 <code>C</code> 是一个强类型的语言，它的意思就是每个数据都有类型，不同类型的数据不能随便使用，比如一个整数类型的变量就不能放入一个小数数据。<br />
 </p>
@@ -218,9 +237,9 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-orgdcdaabb" class="outline-4">
-<h4 id="orgdcdaabb">创建</h4>
-<div class="outline-text-4" id="text-orgdcdaabb">
+<div id="outline-container-org90ece58" class="outline-4">
+<h4 id="org90ece58">创建</h4>
+<div class="outline-text-4" id="text-org90ece58">
 <p>
 创建一个变量需要使用变量声明语句，大概是这种形式 <code>&lt;变量类型&gt; &lt;变量名&gt;;</code> ，举个例子 <code>int a;</code> 这样就创建了一个 <code>int</code> 类型的变量 <code>a</code> 。<br />
 </p>
@@ -234,9 +253,9 @@ int main() {
 </p>
 </div>
 </div>
-<div id="outline-container-orge5d8557" class="outline-4">
-<h4 id="orge5d8557">使用</h4>
-<div class="outline-text-4" id="text-orge5d8557">
+<div id="outline-container-orgfd957a5" class="outline-4">
+<h4 id="orgfd957a5">使用</h4>
+<div class="outline-text-4" id="text-orgfd957a5">
 <p>
 在表达式内，我们可以把变量当作一个求值操作，这个操作的返回值为变量内的值，比如 <code>int a = 1;</code> 后 <code>a</code> 这个表示式的值就为 <code>1</code> ， <code>(a + 1) * a</code> -&gt; <code>(1 + 1) * a</code> -&gt; <code>2 * a</code> -&gt; <code>2 * 1</code> -&gt; <code>2</code> 。<br />
 </p>
@@ -274,39 +293,378 @@ int main() {
 <code>1 + (--a)</code> -&gt; <code>1 + 1</code> -&gt; <code>2</code><br />
 <code>a</code> -&gt; <code>1</code><br />
 </p>
+
+<p>
+变量不能放入不同类型的数据，但把小数放到整数的盒子里肯定是常见的操作，这种不同类型的数据之间的操作 <code>C</code> 是支持。 <code>C</code> 会对不同类型的数据自动进行类型转换，转换的规则是尽量减少信息的流失，比如 <code>short</code> 和 <code>int</code> 类型的数据运算，返回的结果是 <code>int</code> 类型的数据。小数转换成整数会直接把小数部分去掉，并不会四舍五入。<br />
+对于赋值运行也是相同的道理<br />
+</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org850df4f" class="outline-3">
-<h3 id="org850df4f">输入输出</h3>
+<div id="outline-container-org68f336d" class="outline-3">
+<h3 id="org68f336d">输入输出</h3>
+<div class="outline-text-3" id="text-org68f336d">
 </div>
-<div id="outline-container-orgd83c103" class="outline-3">
-<h3 id="orgd83c103">选择</h3>
-</div>
-<div id="outline-container-org5935283" class="outline-3">
-<h3 id="org5935283">循环</h3>
-</div>
-<div id="outline-container-org1af1e5a" class="outline-3">
-<h3 id="org1af1e5a">数组</h3>
-</div>
-<div id="outline-container-org46d1ce8" class="outline-3">
-<h3 id="org46d1ce8">指针</h3>
-</div>
-<div id="outline-container-org3bce362" class="outline-3">
-<h3 id="org3bce362">结构体</h3>
-</div>
-<div id="outline-container-orgd57dc96" class="outline-3">
-<h3 id="orgd57dc96">函数</h3>
-</div>
-<div id="outline-container-orga4bce64" class="outline-3">
-<h3 id="orga4bce64">递归</h3>
-</div>
-<div id="outline-container-org4bb4c71" class="outline-3">
-<h3 id="org4bb4c71">其它</h3>
+<div id="outline-container-orgb9d2a76" class="outline-4">
+<h4 id="orgb9d2a76">简介</h4>
+<div class="outline-text-4" id="text-orgb9d2a76">
+<p>
+我们写一个程序，一般都是面向用户的，作为人类我们肯定是需要获取和输入一些信息，一个无法干涉无法感知的东西我们是不能使用的。<br />
+</p>
+
+<p>
+下面我就介绍下 <code>C</code> 里的标准输入输出，标准输入输出可以理解成通用的接口，一般情况下我们都可以使用这个接口来输入输出信息。<br />
+一般情况输入输出都是文本的形式。<br />
+</p>
+
+<p>
+需要注意 <code>C</code> 默认不包含输入输出的功能，我们需要引入这些功能， <code>stdio.h</code> 这个头文件包含了我们需要的功能，使用 <code>#include &lt;stdio.h&gt;</code> 这个命令我们可以引入它。<br />
+可以简单的把这个命令理解成把 <code>stdio.h</code> 这个文件里的内容放到我们程序的最前面。<br />
+</p>
+
+<p>
+函数也可以理解成一个魔法盒子，它可以放入一些数据，然后扔出一些数据。<br />
+</p>
 </div>
 </div>
-<div id="outline-container-org0baa682" class="outline-2">
-<h2 id="org0baa682">C++</h2>
+
+<div id="outline-container-orge75e88b" class="outline-4">
+<h4 id="orge75e88b">输出</h4>
+<div class="outline-text-4" id="text-orge75e88b">
+</div>
+<ul class="org-ul">
+<li><a id="org62c2f2f"></a>putchar<br />
+<div class="outline-text-5" id="text-org62c2f2f">
+<p>
+这个函数很容易理解，传入一个字符，并把它输出， <code>c</code> 可以使用 <code>''</code> 包裹一个字符来表示一个字符常量，如果 <code>''</code> 内有多个字符就会报错。<br />
+</p>
+
+<p>
+<code>putchar('a')</code> 语句输出 <code>a</code> 到标准输出。<br />
+</p>
+</div>
+</li>
+<li><a id="org4669d57"></a>puts<br />
+<div class="outline-text-5" id="text-org4669d57">
+<p>
+同理这个函数也是传入一个字符串，并输出它，与字符的表示方式相似，我们使用 <code>""</code> 包裹多个字符来表示字符串变量。<br />
+</p>
+
+<p>
+比如 <code>puts("Hello")</code> 语句就会输出 <code>Hello</code> 到标准输出。<br />
+</p>
+</div>
+</li>
+<li><a id="orgee9b90d"></a>printf<br />
+<div class="outline-text-5" id="text-orgee9b90d">
+<p>
+格式化输出一串字符，它接收任意多个参数，第一个参数是一个字符串，并把它作为模板，里面可以放一些标识来表示需要把标识替换成我们想要的数据，后面的参数填入表达式，函数会按顺序把它们一个个填入模板字符串中。<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c">#include &lt;stdio.h&gt;
+
+int main() {
+  /* 语句后面的注释里放输出的内容 */
+  /* \n是转义字符，表示换行，因为有些字符不可输入 */
+  printf("%d is a number\n", 123); /* 123 is a number */
+  printf("%s is a string, and i like %c", "haha", 'a');/* haha is a string, and i like a */
+  return 0;
+}
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org8d81c8b" class="outline-4">
+<h4 id="org8d81c8b">输入</h4>
+<div class="outline-text-4" id="text-org8d81c8b">
+</div>
+<ul class="org-ul">
+<li><a id="org2a3bb62"></a>getchar<br />
+<div class="outline-text-5" id="text-org2a3bb62">
+<p>
+这个函数从标准输入读入一个字符然后返回，比如 <code>char c = getchar();</code> 这条语句就会从输入流获取一个字符，并赋值给变量 <code>c</code> 。<br />
+</p>
+
+<p>
+<code>getchar</code> 只从输入拿下一个字符，所有的字符都可以拿下来，包括空白字符（空格、回车等等）<br />
+</p>
+</div>
+</li>
+<li><a id="org43263bd"></a>gets<br />
+<div class="outline-text-5" id="text-org43263bd">
+<p>
+这个函数从标准输入读取一行字符，并把这一行填入一个字符数组。<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c">#include &lt;stdio.h&gt;
+
+int main() {
+  char s[100];  /* 字符串可以理解成多个字符，所以c里面使用数组来表示字符串 */
+  gets(s);      /* 与上面的getchar不同，它不会返回一个值 */
+  puts(s);      /* 输出一个字符串 */
+  return 0;
+}
+</pre>
+</div>
+
+<p>
+请注意一行末尾的回车不会被填入字符数组。<br />
+</p>
+</div>
+</li>
+<li><a id="orgce0cc4a"></a>scanf<br />
+<div class="outline-text-5" id="text-orgce0cc4a">
+<p>
+这个函数就可以支持多种形式格式的输入了，与上面的 <code>printf</code> 有相同的控制符。<br />
+需要注意一点， <code>scanf</code> 填写变量的位置需要提供一个指针，获取变量指针的方法是使用 <code>&amp;</code> 运算符。<br />
+使用 <code>%c</code> 时和 <code>getchar</code> 一样会读取空白字符<br />
+使用 <code>%s</code> 时只要遇到一个空白字符就会停止<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c">#include &lt;stdio.h&gt;
+
+int main() {
+  int n;
+  char s[100];
+  /* n是一个变量需要使用 &amp; 获取它的指针
+   * 而数组名就是一个指针 */
+  scanf("%d %s", &amp;n, s);
+  printf("%d %s\n", n, s);
+  return 0;
+}
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfb3e8d9" class="outline-3">
+<h3 id="orgfb3e8d9">选择</h3>
+<div class="outline-text-3" id="text-orgfb3e8d9">
+</div>
+<div id="outline-container-org99a0865" class="outline-4">
+<h4 id="org99a0865">简介</h4>
+<div class="outline-text-4" id="text-org99a0865">
+<p>
+选择结构的出现打破了我之前讲述的简洁明了的语法，我们需要重新学习一些额外的情况，所幸这种新结构并不复杂。<br />
+</p>
+
+<p>
+选择结构有三种表达方式， <code>if</code> 、 <code>switch</code> 、 <code>三元运算符</code><br />
+前面两种方式可以相互转换，而最后一种出现的目的是减少代码行数，同时也加重了我们理解程序的负担。<br />
+</p>
+
+<p>
+需要注意一点，在选择结构内如果执行了 <code>break</code> 会直接结束当前的选择结构。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgae121f9" class="outline-4">
+<h4 id="orgae121f9">if</h4>
+<div class="outline-text-4" id="text-orgae121f9">
+<p>
+它的语法大概是这样 <code>if (表达式) { 代码块 }</code><br />
+简单来说如果对表达式求值的结果为真，就执行使用 <code>{}</code> 包裹的代码块<br />
+<code>c</code> 里面使用 <code>0</code> 表示假，而其它的任何值都为真<br />
+所谓代码块就是任意行语句<br />
+</p>
+
+<p>
+如果需要执行的语句只有一行可以使用 <code>if (表达式-判断) 表达式-执行;</code> 的形式，表达式可以不写。<br />
+</p>
+
+<p>
+如果我们还要对表达式为假的情况做些操作，并不用再写一个 <code>if</code> ，可以使用下述方式<br />
+<code>if (表达式) {为真时执行} else {为假时执行}</code><br />
+同理，只有一条语句时可以省略 <code>{}</code><br />
+下面看一个例子<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c">#include &lt;stdio.h&gt;
+
+int main() {
+  int a = 10;
+  if (a &lt; 20)
+    puts("a &lt; 20\n");
+  
+  if (a &gt; 100)
+    puts("a &gt; 100");
+  else
+    puts("a &lt;= 100");
+
+  if (a &gt; 10)
+    puts("a &gt; 10\n");
+  else if (a &lt; 10)
+    puts("a &lt; 10\n");
+  else
+    puts("a == 10\n");
+  return 0;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org101714e" class="outline-4">
+<h4 id="org101714e">switch</h4>
+<div class="outline-text-4" id="text-org101714e">
+<p>
+<code>switch</code> 的语法比较复杂，简单来说它会把你给予的一个整数与 <code>case</code> 语句从上到下一一比对<br />
+如果跟 <code>case</code> 语句后面的值相等，就执行 <code>case</code> 对应的代码块<br />
+<code>default</code> 表示没有一个 <code>case</code> 语句匹配时的情况<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c">#include &lt;stdio.h&gt;
+
+int main() {
+  switch(10) {
+    case 10:
+      puts("10");
+    case 9:
+      puts("9");
+    default:
+      puts("not match");
+  }
+  return 0;
+}
+</pre>
+</div>
+
+<p>
+需要注意，有匹配项后它会忽略当前 <code>case</code> 后面的所有 <code>case</code> 条件，即它会执行匹配 <code>case</code> 后面的所有语句，直到 <code>switch</code> 结构结束。<br />
+所以我们一般对于每个 <code>case</code> 都会在它的结尾加上 <code>break</code><br />
+</p>
+</div>
+</div>
+<div id="outline-container-org542cbd3" class="outline-4">
+<h4 id="org542cbd3">三元运算符</h4>
+<div class="outline-text-4" id="text-org542cbd3">
+<p>
+它的语法比较简单 <code>条件?表达式1:表达式2</code><br />
+对这个三元运算表达式求值时，如果条件为真就执行并返回表达式1的值，否则执行并返回表达式2的值<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c">#include &lt;stdio.h&gt;
+
+int main() {
+  int a, b;
+  scanf("%d %d", &amp;a, &amp;b);
+  printf("the max number is:%d\n", a &gt; b ? a : b);
+  return 0;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfde3f27" class="outline-3">
+<h3 id="orgfde3f27">循环</h3>
+<div class="outline-text-3" id="text-orgfde3f27">
+</div>
+<div id="outline-container-org5c38a67" class="outline-4">
+<h4 id="org5c38a67">简介</h4>
+<div class="outline-text-4" id="text-org5c38a67">
+<p>
+我们继续来破坏 <code>c</code> 的简单性，这次介绍循环结构<br />
+有两种方式来描述一个循环结构 <code>while</code> 、 <code>for</code><br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgf88208f" class="outline-4">
+<h4 id="orgf88208f">while</h4>
+<div class="outline-text-4" id="text-orgf88208f">
+<p>
+语法为 <code>while(条件) {代码块}</code><br />
+与 <code>if</code> 的结构相似，与 <code>if</code> 不同的地方在于， <code>while</code> 会在代码块执行结束后重复检查条件，如果条件还是为真就继续执行代码块<br />
+简单来说就是执行代码块直到条件为假。<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c">#include &lt;stdio.h&gt;
+
+int main() {
+  int a = 10, sum = 0;
+  while (a &gt; 0) {
+    sum += a;
+    a--;
+  }
+  printf("%d\n", sum);
+  return 0;
+}
+</pre>
+</div>
+
+<p>
+<code>while</code> 还有一种变形 <code>do while</code> ，它的语法为<br />
+<code>do {代码块} while(条件);</code><br />
+与 <code>while</code> 的差别就是它一定会执行一次代码块<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orge6dee2f" class="outline-4">
+<h4 id="orge6dee2f">for</h4>
+<div class="outline-text-4" id="text-orge6dee2f">
+<p>
+语法为： <code>for (初始化;条件;副作用){代码块}</code><br />
+<code>for</code> 可以转换成 <code>while</code> 的形式<br />
+<code>初始化;while(条件){代码块;副作用;}</code><br />
+初始化部分会在代码块之前执行，并且只执行一次<br />
+每次条件为真时会执行代码块<br />
+而副作用部分会在每次代码块结束后执行<br />
+</p>
+
+<p>
+<code>for</code> 可以理解成 <code>while</code> 的严格模式，它让你把一些容易忘记写的部分先写好，尽量避免出错的可能性，比如写 <code>while</code> 语句时有人可能就忘记在末尾加上递增语句了。<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c">#include &lt;stdio.h&gt;
+
+int main() {
+  int a = 10, sum = 0;
+  for (a = 10; a &gt; 0; a--) {
+    sum += a;
+  }
+  printf("%d\n", sum);
+  return 0;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcf4b047" class="outline-3">
+<h3 id="orgcf4b047">数组</h3>
+</div>
+<div id="outline-container-org05ae098" class="outline-3">
+<h3 id="org05ae098">指针</h3>
+</div>
+<div id="outline-container-org404e768" class="outline-3">
+<h3 id="org404e768">结构体</h3>
+</div>
+<div id="outline-container-org599f445" class="outline-3">
+<h3 id="org599f445">函数</h3>
+</div>
+<div id="outline-container-org9fb50a2" class="outline-3">
+<h3 id="org9fb50a2">递归</h3>
+</div>
+<div id="outline-container-orgeaf5131" class="outline-3">
+<h3 id="orgeaf5131">其它</h3>
+</div>
+</div>
+<div id="outline-container-org8ec2b9f" class="outline-2">
+<h2 id="org8ec2b9f">C++</h2>
 </div>
 
 </div>
@@ -314,7 +672,7 @@ int main() {
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2020-11-17</span>
-        <span title="last modification date" class="post-info">2020-11-18</span>
+        <span title="last modification date" class="post-info">2020-12-02</span>
         <span title="tags" class="post-info"><a href="/tags/tutorial/">tutorial</a>, <a href="/tags/c-c++/">C/C++</a></span>
         <span title="author" class="post-info">lampze</span>
       </div>
