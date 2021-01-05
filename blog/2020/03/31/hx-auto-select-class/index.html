@@ -1,40 +1,54 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>华夏学院抢课分析 - org-page</title>
-    <meta charset="utf-8" />
-    <meta name="author" content="lampze" />
+  <title>华夏学院抢课分析 - org-page</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="lampze" />
     <meta name="description" content="记录在学校抢课的事情" />
     <meta name="keywords" content="前端" />
-    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
-  </head>
+  <link rel="stylesheet" media="screen" href="/media/css/font.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+</head>
+
   <body class="container">
     <div>
-      <header class="masthead">
-        <h1 class="masthead-title"><a href="/">org-page</a></h1>
-        <p>static site generator</p>
-        <ul>
+  <header class="masthead">
+    <h1 class="masthead-title"><a href="/">org-page</a></h1>
+    <p>static site generator</p>
+    <nav class="site-nav">
+      <div class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" fill="#ffff00"/>
+          <path d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" fill="#ffff00"/>
+          <path d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" fill="#ffff00"/>
+        </svg>
+      </div>
+      <ul class="trigger">
           <li><a href="/blog/">Blog</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/lampze/">GitHub</a></li>
-          <li><a href="/rss.xml">RSS</a></li>
-        </ul>
-        <form method="get" id="searchform" action="//www.google.com/search">
-          <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="as_sitesearch" value="lampze.github.io">
-        </form>
-      </header>
-    </div>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://github.com/lampze/">GitHub</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+    <form method="get" id="searchform" action="//www.google.com/search">
+      <input type="text" class="field" name="q" id="s" placeholder="Search">
+      <input type="hidden" name="as_sitesearch" value="lampze.github.io">
+    </form>
+  </header>
+</div>
 
-<div>
+    <div>
 <div class="post">
-<h1>华夏学院抢课分析</h1>
+<h1 class="title">华夏学院抢课分析</h1>
 
-<div id="outline-container-orgf57f63c" class="outline-2">
-<h2 id="orgf57f63c">前言</h2>
-<div class="outline-text-2" id="text-orgf57f63c">
+<div id="outline-container-orgc3664b8" class="outline-2">
+<h2 id="orgc3664b8">前言</h2>
+<div class="outline-text-2" id="text-orgc3664b8">
 <p>
 因为我上次抢课时认真的掐准时间时间进去抢，然后发现所有的课都秒没了，
 所以一怒之下就写了个脚本来帮我抢课。这次一试，果然选上了我想要的课。
@@ -53,9 +67,9 @@
 </div>
 </div>
 
-<div id="outline-container-org0e95113" class="outline-2">
-<h2 id="org0e95113">API</h2>
-<div class="outline-text-2" id="text-org0e95113">
+<div id="outline-container-orgd4e96a0" class="outline-2">
+<h2 id="orgd4e96a0">API</h2>
+<div class="outline-text-2" id="text-orgd4e96a0">
 <p>
 我使用的方法是直接获取页面上的 <code>DOM</code> 然后使用 <code>DOM</code> 的 <code>click</code> 函数，比直接用后
 端的接口肯定要慢许多，但我也不想把整个网页的代码看一遍，而且使用这种技术的人应该
@@ -81,9 +95,9 @@ loadCoursesByPaged();                      // 加载剩余的课程
 </div>
 </div>
 
-<div id="outline-container-org76c6e85" class="outline-2">
-<h2 id="org76c6e85">代码</h2>
-<div class="outline-text-2" id="text-org76c6e85">
+<div id="outline-container-orgd908959" class="outline-2">
+<h2 id="orgd908959">代码</h2>
+<div class="outline-text-2" id="text-orgd908959">
 <p>
 然后就可以开始写代码了，
 我只实现了基本的抢课功能，没有写定时，如果没开放系统可能会把网页卡住，想改的自己改。
@@ -152,7 +166,8 @@ async function getClass(want, sleepTime) {
 
 </div>
 </div>
-    <div>
+
+        <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2020-03-31</span>
         <span title="last modification date" class="post-info">2020-07-27</span>

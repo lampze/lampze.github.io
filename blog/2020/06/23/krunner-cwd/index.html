@@ -1,40 +1,54 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>krunner工作目录在根目录的问题 - org-page</title>
-    <meta charset="utf-8" />
-    <meta name="author" content="shirui" />
+  <title>krunner工作目录在根目录的问题 - org-page</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="shirui" />
     <meta name="description" content="找到了如何避免krunner运行在根目录下的方法" />
     <meta name="keywords" content="plasma, krunner, Linux" />
-    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
-  </head>
+  <link rel="stylesheet" media="screen" href="/media/css/font.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+</head>
+
   <body class="container">
     <div>
-      <header class="masthead">
-        <h1 class="masthead-title"><a href="/">org-page</a></h1>
-        <p>static site generator</p>
-        <ul>
+  <header class="masthead">
+    <h1 class="masthead-title"><a href="/">org-page</a></h1>
+    <p>static site generator</p>
+    <nav class="site-nav">
+      <div class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" fill="#ffff00"/>
+          <path d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" fill="#ffff00"/>
+          <path d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" fill="#ffff00"/>
+        </svg>
+      </div>
+      <ul class="trigger">
           <li><a href="/blog/">Blog</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/lampze/">GitHub</a></li>
-          <li><a href="/rss.xml">RSS</a></li>
-        </ul>
-        <form method="get" id="searchform" action="//www.google.com/search">
-          <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="as_sitesearch" value="lampze.github.io">
-        </form>
-      </header>
-    </div>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://github.com/lampze/">GitHub</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+    <form method="get" id="searchform" action="//www.google.com/search">
+      <input type="text" class="field" name="q" id="s" placeholder="Search">
+      <input type="hidden" name="as_sitesearch" value="lampze.github.io">
+    </form>
+  </header>
+</div>
 
-<div>
+    <div>
 <div class="post">
-<h1>krunner工作目录在根目录的问题</h1>
+<h1 class="title">krunner工作目录在根目录的问题</h1>
 
-<div id="outline-container-org73cf0de" class="outline-2">
-<h2 id="org73cf0de">前言</h2>
-<div class="outline-text-2" id="text-org73cf0de">
+<div id="outline-container-orgc3a5c58" class="outline-2">
+<h2 id="orgc3a5c58">前言</h2>
+<div class="outline-text-2" id="text-orgc3a5c58">
 <p>
 不知道有没有人在用 <code>plasma</code> 时发现和我一样的问题，有时 <code>Alt + Space</code> 打开 <code>konsole</code> 有时是 <code>root</code> 目录，有时是 <code>HOME</code> 目录。终端还好说直接 <code>cd</code> 就能跳转到 <code>HOME</code> 目录，但用 <code>emacs</code> 时就比较难受了。
 </p>
@@ -45,9 +59,9 @@
 </div>
 </div>
 
-<div id="outline-container-org8ba0483" class="outline-2">
-<h2 id="org8ba0483">问题与解决</h2>
-<div class="outline-text-2" id="text-org8ba0483">
+<div id="outline-container-org277478a" class="outline-2">
+<h2 id="org277478a">问题与解决</h2>
+<div class="outline-text-2" id="text-org277478a">
 <p>
 我发现在桌面直接输入命令打开应用时会出现导致之后所以命令都是在 <code>root</code> 目录打开的，但使用 <code>Alt + Space</code> 命令打开 <code>krunner</code> 就不会有这个问题。
 </p>
@@ -60,7 +74,8 @@
 
 </div>
 </div>
-    <div>
+
+        <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2020-06-23</span>
         <span title="last modification date" class="post-info">2020-07-27</span>

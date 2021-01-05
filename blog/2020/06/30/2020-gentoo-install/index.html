@@ -1,75 +1,89 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>2020年gentoo安装分析 - org-page</title>
-    <meta charset="utf-8" />
-    <meta name="author" content="shirui" />
+  <title>2020年gentoo安装分析 - org-page</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="shirui" />
     <meta name="description" content="2020年的gentoo安装分析" />
     <meta name="keywords" content="Linux, Gentoo, Guide" />
-    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
-  </head>
+  <link rel="stylesheet" media="screen" href="/media/css/font.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+</head>
+
   <body class="container">
     <div>
-      <header class="masthead">
-        <h1 class="masthead-title"><a href="/">org-page</a></h1>
-        <p>static site generator</p>
-        <ul>
+  <header class="masthead">
+    <h1 class="masthead-title"><a href="/">org-page</a></h1>
+    <p>static site generator</p>
+    <nav class="site-nav">
+      <div class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" fill="#ffff00"/>
+          <path d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" fill="#ffff00"/>
+          <path d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" fill="#ffff00"/>
+        </svg>
+      </div>
+      <ul class="trigger">
           <li><a href="/blog/">Blog</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/lampze/">GitHub</a></li>
-          <li><a href="/rss.xml">RSS</a></li>
-        </ul>
-        <form method="get" id="searchform" action="//www.google.com/search">
-          <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="as_sitesearch" value="lampze.github.io">
-        </form>
-      </header>
-    </div>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://github.com/lampze/">GitHub</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+    <form method="get" id="searchform" action="//www.google.com/search">
+      <input type="text" class="field" name="q" id="s" placeholder="Search">
+      <input type="hidden" name="as_sitesearch" value="lampze.github.io">
+    </form>
+  </header>
+</div>
 
-<div>
+    <div>
 <div class="post">
-<h1>2020年gentoo安装分析</h1>
+<h1 class="title">2020年gentoo安装分析</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org18756b6">前言</a></li>
-<li><a href="#org30f7a63">安装</a>
+<li><a href="#org494f238">前言</a></li>
+<li><a href="#orgba47fb2">安装</a>
 <ul>
-<li><a href="#orgdb26061">准备</a>
+<li><a href="#orgbc9e30c">准备</a>
 <ul>
-<li><a href="#org55f4fb6">配置选择</a></li>
-<li><a href="#orgab7e30f">安装环境</a></li>
-<li><a href="#org26014f2">安装准备</a></li>
+<li><a href="#orgb90cdb3">配置选择</a></li>
+<li><a href="#org8d2e2ad">安装环境</a></li>
+<li><a href="#org77d6473">安装准备</a></li>
 </ul>
 </li>
-<li><a href="#org55d23f1">安装</a>
+<li><a href="#org665fb47">安装</a>
 <ul>
-<li><a href="#org1effc22">初始系统</a></li>
-<li><a href="#orgf0c21aa">chroot</a></li>
-<li><a href="#orgd52d74b">配置包管理</a></li>
-<li><a href="#org0ddabcd">内核</a></li>
-<li><a href="#org34707d8">必备配置</a></li>
-<li><a href="#org3885814">引导</a></li>
+<li><a href="#org507f5b7">初始系统</a></li>
+<li><a href="#org818930f">chroot</a></li>
+<li><a href="#org04fa1c1">配置包管理</a></li>
+<li><a href="#org952564f">内核</a></li>
+<li><a href="#org9d5df68">必备配置</a></li>
+<li><a href="#org67b12cd">引导</a></li>
 </ul>
 </li>
-<li><a href="#org5d18ff0">配置</a>
+<li><a href="#orgd35967e">配置</a>
 <ul>
-<li><a href="#org269e161">地区配置</a></li>
+<li><a href="#org5d6a991">地区配置</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgc073784">后记</a></li>
+<li><a href="#org8552afb">后记</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org18756b6" class="outline-2">
-<h2 id="org18756b6">前言</h2>
-<div class="outline-text-2" id="text-org18756b6">
+<div id="outline-container-org494f238" class="outline-2">
+<h2 id="org494f238">前言</h2>
+<div class="outline-text-2" id="text-org494f238">
 <p>
 我使用Gentoo也有一段时间了，之前还尝试了一下Funtoo最后还是换到了Gentoo下，正好把安装的过程记录一下。相比原来，现在的Gentoo变化也挺大的，没了一些坑，但又新增了一些坑。
 </p>
@@ -89,17 +103,17 @@
 </div>
 </div>
 
-<div id="outline-container-org30f7a63" class="outline-2">
-<h2 id="org30f7a63">安装</h2>
-<div class="outline-text-2" id="text-org30f7a63">
+<div id="outline-container-orgba47fb2" class="outline-2">
+<h2 id="orgba47fb2">安装</h2>
+<div class="outline-text-2" id="text-orgba47fb2">
 </div>
-<div id="outline-container-orgdb26061" class="outline-3">
-<h3 id="orgdb26061">准备</h3>
-<div class="outline-text-3" id="text-orgdb26061">
+<div id="outline-container-orgbc9e30c" class="outline-3">
+<h3 id="orgbc9e30c">准备</h3>
+<div class="outline-text-3" id="text-orgbc9e30c">
 </div>
-<div id="outline-container-org55f4fb6" class="outline-4">
-<h4 id="org55f4fb6">配置选择</h4>
-<div class="outline-text-4" id="text-org55f4fb6">
+<div id="outline-container-orgb90cdb3" class="outline-4">
+<h4 id="orgb90cdb3">配置选择</h4>
+<div class="outline-text-4" id="text-orgb90cdb3">
 <p>
 Gentoo是把初始系统的所有文件打包起来，用户只需要把它解压到指定位置然后配置好内核和引导就可以正常使用了。
 </p>
@@ -122,9 +136,9 @@ cpu架构基本所有平台都有，我们一般人主要就选择x86的64或32�
 </div>
 </div>
 
-<div id="outline-container-orgab7e30f" class="outline-4">
-<h4 id="orgab7e30f">安装环境</h4>
-<div class="outline-text-4" id="text-orgab7e30f">
+<div id="outline-container-org8d2e2ad" class="outline-4">
+<h4 id="org8d2e2ad">安装环境</h4>
+<div class="outline-text-4" id="text-org8d2e2ad">
 <p>
 因为是命令行安装的，所以要想安装Gentoo需要一个现成的Linux环境，如果你已经安装了一个Linux就可以直接使用它安装Gentoo，如果没有就下个 <code>ISO</code> 境像刻录到u盘。Gentoo官方有专门的最小安装环境，最好找个和将要安装的Gentoo相同配置的环境。
 </p>
@@ -139,9 +153,9 @@ cpu架构基本所有平台都有，我们一般人主要就选择x86的64或32�
 </div>
 </div>
 
-<div id="outline-container-org26014f2" class="outline-4">
-<h4 id="org26014f2">安装准备</h4>
-<div class="outline-text-4" id="text-org26014f2">
+<div id="outline-container-org77d6473" class="outline-4">
+<h4 id="org77d6473">安装准备</h4>
+<div class="outline-text-4" id="text-org77d6473">
 <p>
 准备无非就是看看能不能联网，要安装的硬盘能不能找到。联网一般不用特别配置，如果没网就安装 <code>NetworkManager</code> ，还不行就看这个<a href="https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Networking">网络配置</a>。
 </p>
@@ -165,13 +179,13 @@ cpu架构基本所有平台都有，我们一般人主要就选择x86的64或32�
 </div>
 </div>
 
-<div id="outline-container-org55d23f1" class="outline-3">
-<h3 id="org55d23f1">安装</h3>
-<div class="outline-text-3" id="text-org55d23f1">
+<div id="outline-container-org665fb47" class="outline-3">
+<h3 id="org665fb47">安装</h3>
+<div class="outline-text-3" id="text-org665fb47">
 </div>
-<div id="outline-container-org1effc22" class="outline-4">
-<h4 id="org1effc22">初始系统</h4>
-<div class="outline-text-4" id="text-org1effc22">
+<div id="outline-container-org507f5b7" class="outline-4">
+<h4 id="org507f5b7">初始系统</h4>
+<div class="outline-text-4" id="text-org507f5b7">
 <p>
 首先进入 <code>root</code> 分区挂载的目录，如果跟着官方教程走的话就是 <code>/mnt/gentoo</code> ，然后把下载的 <code>stage</code> 压缩包复制到这个目录。如果关心安全的话可以验证一下，下载页面有密钥的。然后直接解压 <code>stage</code> 就行了。
 </p>
@@ -182,9 +196,9 @@ cpu架构基本所有平台都有，我们一般人主要就选择x86的64或32�
 </div>
 </div>
 
-<div id="outline-container-orgf0c21aa" class="outline-4">
-<h4 id="orgf0c21aa">chroot</h4>
-<div class="outline-text-4" id="text-orgf0c21aa">
+<div id="outline-container-org818930f" class="outline-4">
+<h4 id="org818930f">chroot</h4>
+<div class="outline-text-4" id="text-org818930f">
 <p>
 复制dns的配置文件，不然 <code>chroot</code> 后是没网的。
 </p>
@@ -218,9 +232,9 @@ export PS1="(chroot) ${PS1}"
 </div>
 </div>
 
-<div id="outline-container-orgd52d74b" class="outline-4">
-<h4 id="orgd52d74b">配置包管理</h4>
-<div class="outline-text-4" id="text-orgd52d74b">
+<div id="outline-container-org04fa1c1" class="outline-4">
+<h4 id="org04fa1c1">配置包管理</h4>
+<div class="outline-text-4" id="text-org04fa1c1">
 <p>
 因为Gentoo安装软件是在本机编译再安装的，所以可以自定义编译时的优化配置，比如可以专门针对你的cpu进行优化什么的，我们只需要更改几个选项就行了。
 </p>
@@ -266,9 +280,9 @@ eselect profile set X
 </div>
 </div>
 
-<div id="outline-container-org0ddabcd" class="outline-4">
-<h4 id="org0ddabcd">内核</h4>
-<div class="outline-text-4" id="text-org0ddabcd">
+<div id="outline-container-org952564f" class="outline-4">
+<h4 id="org952564f">内核</h4>
+<div class="outline-text-4" id="text-org952564f">
 <p>
 内核是安装Gentoo最难的地方了，不管怎么样首先要把内核的源码安装好。
 </p>
@@ -286,8 +300,8 @@ eselect profile set X
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="orgb273052"></a>手动配置<br />
-<div class="outline-text-5" id="text-orgb273052">
+<li><a id="org1296b03"></a>手动配置<br />
+<div class="outline-text-5" id="text-org1296b03">
 <p>
 进入内核源码的目录，然后参照<a href="http://www.jinbuguo.com/kernel/longterm-linux-kernel-options.html">Linux-4.4-x86_64 内核配置选项简介</a>一个一个选项进行配置。
 </p>
@@ -304,8 +318,8 @@ make intall
 </div>
 </div>
 </li>
-<li><a id="org7253e4f"></a>现有配置<br />
-<div class="outline-text-5" id="text-org7253e4f">
+<li><a id="org27004a0"></a>现有配置<br />
+<div class="outline-text-5" id="text-org27004a0">
 <p>
 一般的Linux都有个 <code>/proc/config.gz</code> 文件，保存着内核的配置，使用 <code>zcat</code> 命令可以读取。所以可以直接使用这个配置，当然你也可以网上下载不错的配置。
 </p>
@@ -323,8 +337,8 @@ make intall
 </div>
 </div>
 </li>
-<li><a id="orgf54715a"></a>genkernel<br />
-<div class="outline-text-5" id="text-orgf54715a">
+<li><a id="orgf34605f"></a>genkernel<br />
+<div class="outline-text-5" id="text-orgf34605f">
 <p>
 使用这个命令可以直接编译内核，会把所有的选项都编译一遍，记得先更新 <code>/etc/fstab</code> ，缺点就是编译时间太长了。
 </p>
@@ -338,20 +352,20 @@ genkernel all
 </ul>
 </div>
 
-<div id="outline-container-org34707d8" class="outline-4">
-<h4 id="org34707d8">必备配置</h4>
-<div class="outline-text-4" id="text-org34707d8">
+<div id="outline-container-org9d5df68" class="outline-4">
+<h4 id="org9d5df68">必备配置</h4>
+<div class="outline-text-4" id="text-org9d5df68">
 <p>
 开机必需的配置，比如自动挂载、网络、密码什么的
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org0364809"></a>fstab<br />
-<div class="outline-text-5" id="text-org0364809">
+<li><a id="orgfce220b"></a>fstab<br />
+<div class="outline-text-5" id="text-orgfce220b">
 <p>
 这个是启动系统前自动挂载的分区，文件是 <code>/etc/fstab</code> 。使用 <code>lsblk</code> 看分区的情况，根据官方的例子修改一下就行了。
 </p>
-<pre class="example" id="orgfb1c43b">
+<pre class="example" id="orgff9d32a">
 # 分区地址  挂载位置     类型    参数
 /dev/sda2   /boot        ext2    defaults,noatime     0 2
 /dev/sda3   none         swap    sw                   0 0
@@ -363,8 +377,8 @@ genkernel all
 </div>
 </li>
 
-<li><a id="org9229725"></a>网络<br />
-<div class="outline-text-5" id="text-org9229725">
+<li><a id="org74b5560"></a>网络<br />
+<div class="outline-text-5" id="text-org74b5560">
 <p>
 要我说直接 <code>emerge networkmanager</code> 就行了，官方其它的配置都是一些可有可无的东西。
 </p>
@@ -376,8 +390,8 @@ rc-update add NetworkManager default
 </div>
 </li>
 
-<li><a id="org62ba8d1"></a>设置密码<br />
-<div class="outline-text-5" id="text-org62ba8d1">
+<li><a id="org0302b82"></a>设置密码<br />
+<div class="outline-text-5" id="text-org0302b82">
 <p>
 使用 <code>passwd</code> 设置 <code>root</code> 用户密码。
 </p>
@@ -386,9 +400,9 @@ rc-update add NetworkManager default
 </ul>
 </div>
 
-<div id="outline-container-org3885814" class="outline-4">
-<h4 id="org3885814">引导</h4>
-<div class="outline-text-4" id="text-org3885814">
+<div id="outline-container-org67b12cd" class="outline-4">
+<h4 id="org67b12cd">引导</h4>
+<div class="outline-text-4" id="text-org67b12cd">
 <p>
 一般都用 <code>grub</code> 来引导的，现在主板有两种 <code>BIOS</code> 和 <code>UEFI</code> ，比较新的主板都是 <code>UEFI</code> 的形式了，特点是界面非常漂亮。 <br />
 自己根据情况在<a href="https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Bootloader">配置引导</a>里找相应的配置方法，我主要列出 <code>BIOS</code> 的配置过程。
@@ -411,13 +425,13 @@ grub-mkconfig -o /boot/grub/grub.cfg
 </div>
 </div>
 
-<div id="outline-container-org5d18ff0" class="outline-3">
-<h3 id="org5d18ff0">配置</h3>
-<div class="outline-text-3" id="text-org5d18ff0">
+<div id="outline-container-orgd35967e" class="outline-3">
+<h3 id="orgd35967e">配置</h3>
+<div class="outline-text-3" id="text-orgd35967e">
 </div>
-<div id="outline-container-org269e161" class="outline-4">
-<h4 id="org269e161">地区配置</h4>
-<div class="outline-text-4" id="text-org269e161">
+<div id="outline-container-org5d6a991" class="outline-4">
+<h4 id="org5d6a991">地区配置</h4>
+<div class="outline-text-4" id="text-org5d6a991">
 <p>
 设置时区
 </p>
@@ -431,7 +445,7 @@ emerge --config sys-libs/timezone-data
 <p>
 设置语言，编辑 <code>/etc/locale.gen</code>
 </p>
-<pre class="example" id="org17f6c7b">
+<pre class="example" id="org9c9a381">
 en_US.UTF-8 UTF-8
 zh_CN.UTF_8 UTF-8
 C.UTF8 UTF-8
@@ -449,9 +463,9 @@ eselect locale set x
 </div>
 </div>
 </div>
-<div id="outline-container-orgc073784" class="outline-2">
-<h2 id="orgc073784">后记</h2>
-<div class="outline-text-2" id="text-orgc073784">
+<div id="outline-container-org8552afb" class="outline-2">
+<h2 id="org8552afb">后记</h2>
+<div class="outline-text-2" id="text-org8552afb">
 <p>
 只列举了一些必要的配置，其它应用的配置在其它 <code>blog</code> 里展示。
 </p>
@@ -460,7 +474,8 @@ eselect locale set x
 
 </div>
 </div>
-    <div>
+
+        <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2020-06-30</span>
         <span title="last modification date" class="post-info">2020-07-27</span>

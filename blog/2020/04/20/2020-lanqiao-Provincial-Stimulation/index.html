@@ -1,64 +1,78 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>2020年蓝桥杯省模拟赛题解 - org-page</title>
-    <meta charset="utf-8" />
-    <meta name="author" content="lampze" />
+  <title>2020年蓝桥杯省模拟赛题解 - org-page</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="lampze" />
     <meta name="description" content="2020年蓝桥杯省模拟赛题目解析" />
     <meta name="keywords" content="蓝桥杯, 算法, 题解" />
-    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
-  </head>
+  <link rel="stylesheet" media="screen" href="/media/css/font.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+</head>
+
   <body class="container">
     <div>
-      <header class="masthead">
-        <h1 class="masthead-title"><a href="/">org-page</a></h1>
-        <p>static site generator</p>
-        <ul>
+  <header class="masthead">
+    <h1 class="masthead-title"><a href="/">org-page</a></h1>
+    <p>static site generator</p>
+    <nav class="site-nav">
+      <div class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" fill="#ffff00"/>
+          <path d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" fill="#ffff00"/>
+          <path d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" fill="#ffff00"/>
+        </svg>
+      </div>
+      <ul class="trigger">
           <li><a href="/blog/">Blog</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/lampze/">GitHub</a></li>
-          <li><a href="/rss.xml">RSS</a></li>
-        </ul>
-        <form method="get" id="searchform" action="//www.google.com/search">
-          <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="as_sitesearch" value="lampze.github.io">
-        </form>
-      </header>
-    </div>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://github.com/lampze/">GitHub</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+    <form method="get" id="searchform" action="//www.google.com/search">
+      <input type="text" class="field" name="q" id="s" placeholder="Search">
+      <input type="hidden" name="as_sitesearch" value="lampze.github.io">
+    </form>
+  </header>
+</div>
 
-<div>
+    <div>
 <div class="post">
-<h1>2020年蓝桥杯省模拟赛题解</h1>
+<h1 class="title">2020年蓝桥杯省模拟赛题解</h1>
 
-<div id="outline-container-org9a69e52" class="outline-2">
-<h2 id="org9a69e52">题解</h2>
-<div class="outline-text-2" id="text-org9a69e52">
+<div id="outline-container-orge4cd25d" class="outline-2">
+<h2 id="orge4cd25d">题解</h2>
+<div class="outline-text-2" id="text-orge4cd25d">
 </div>
-<div id="outline-container-orgb183aef" class="outline-3">
-<h3 id="orgb183aef">第一题</h3>
-<div class="outline-text-3" id="text-orgb183aef">
+<div id="outline-container-org094aedd" class="outline-3">
+<h3 id="org094aedd">第一题</h3>
+<div class="outline-text-3" id="text-org094aedd">
 </div>
-<div id="outline-container-org89b709b" class="outline-4">
-<h4 id="org89b709b">题目</h4>
-<div class="outline-text-4" id="text-org89b709b">
+<div id="outline-container-org576c1f5" class="outline-4">
+<h4 id="org576c1f5">题目</h4>
+<div class="outline-text-4" id="text-org576c1f5">
 <p>
 在计算机存储中，12.5MB 是多少字节？
 </p>
 </div>
 </div>
-<div id="outline-container-org41c8389" class="outline-4">
-<h4 id="org41c8389">解析</h4>
-<div class="outline-text-4" id="text-org41c8389">
+<div id="outline-container-orge7efe91" class="outline-4">
+<h4 id="orge7efe91">解析</h4>
+<div class="outline-text-4" id="text-orge7efe91">
 <p>
 1MB=1024KB，1KB=1024B
 </p>
 </div>
 </div>
-<div id="outline-container-org43fda69" class="outline-4">
-<h4 id="org43fda69">答案</h4>
-<div class="outline-text-4" id="text-org43fda69">
+<div id="outline-container-org35e9b57" class="outline-4">
+<h4 id="org35e9b57">答案</h4>
+<div class="outline-text-4" id="text-org35e9b57">
 <p>
 13107200
 </p>
@@ -66,13 +80,13 @@
 </div>
 </div>
 
-<div id="outline-container-org66b1003" class="outline-3">
-<h3 id="org66b1003">第二题</h3>
-<div class="outline-text-3" id="text-org66b1003">
+<div id="outline-container-org2c685fa" class="outline-3">
+<h3 id="org2c685fa">第二题</h3>
+<div class="outline-text-3" id="text-org2c685fa">
 </div>
-<div id="outline-container-org493bc9f" class="outline-4">
-<h4 id="org493bc9f">题目</h4>
-<div class="outline-text-4" id="text-org493bc9f">
+<div id="outline-container-org370dbe2" class="outline-4">
+<h4 id="org370dbe2">题目</h4>
+<div class="outline-text-4" id="text-org370dbe2">
 <p>
 由 1 对括号，可以组成一种合法括号序列：()。
 </p>
@@ -86,18 +100,18 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org35a0dc6" class="outline-4">
-<h4 id="org35a0dc6">解析</h4>
-<div class="outline-text-4" id="text-org35a0dc6">
+<div id="outline-container-org4722368" class="outline-4">
+<h4 id="org4722368">解析</h4>
+<div class="outline-text-4" id="text-org4722368">
 <ul class="org-ul">
 <li>直接查找卡特兰数</li>
 <li>用栈模拟，左括号相当于入栈，右括号相当于出栈，这样将题目转换成了统计出入栈序列总数了。</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org039dc4d" class="outline-4">
-<h4 id="org039dc4d">答案</h4>
-<div class="outline-text-4" id="text-org039dc4d">
+<div id="outline-container-org8bf6b77" class="outline-4">
+<h4 id="org8bf6b77">答案</h4>
+<div class="outline-text-4" id="text-org8bf6b77">
 <p>
 14
 </p>
@@ -105,30 +119,30 @@
 </div>
 </div>
 
-<div id="outline-container-org9d0d495" class="outline-3">
-<h3 id="org9d0d495">第三题</h3>
-<div class="outline-text-3" id="text-org9d0d495">
+<div id="outline-container-org6f3a2f5" class="outline-3">
+<h3 id="org6f3a2f5">第三题</h3>
+<div class="outline-text-3" id="text-org6f3a2f5">
 </div>
-<div id="outline-container-orgd2845cc" class="outline-4">
-<h4 id="orgd2845cc">题目</h4>
-<div class="outline-text-4" id="text-orgd2845cc">
+<div id="outline-container-org6f6572e" class="outline-4">
+<h4 id="org6f6572e">题目</h4>
+<div class="outline-text-4" id="text-org6f6572e">
 <p>
 将 LANQIAO 中的字母重新排列，可以得到不同的单词，LANQIAO、AAILNOQ 等，注意这 7 个字母都要被用上，单词不一定有具体的英文意义。请问，总共能排列如多少个不同的单词。
 </p>
 </div>
 </div>
-<div id="outline-container-orgedf3608" class="outline-4">
-<h4 id="orgedf3608">解析</h4>
-<div class="outline-text-4" id="text-orgedf3608">
+<div id="outline-container-orgb50ebfb" class="outline-4">
+<h4 id="orgb50ebfb">解析</h4>
+<div class="outline-text-4" id="text-orgb50ebfb">
 <ul class="org-ul">
 <li>有两个字母相同，其余都是不同字母，所以可以用组合数求出： \(\tbinom{7}{2}\tbinom{5}{1}\tbinom{4}{1}\tbinom{3}{1}\tbinom{2}{1}\tbinom{1}{1}\)</li>
 <li>头铁的可以写全排序，然后去掉重复的。</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org24fd6ca" class="outline-4">
-<h4 id="org24fd6ca">答案</h4>
-<div class="outline-text-4" id="text-org24fd6ca">
+<div id="outline-container-orgcc99327" class="outline-4">
+<h4 id="orgcc99327">答案</h4>
+<div class="outline-text-4" id="text-orgcc99327">
 <p>
 2520
 </p>
@@ -136,30 +150,30 @@
 </div>
 </div>
 
-<div id="outline-container-org9d09a35" class="outline-3">
-<h3 id="org9d09a35">第四题</h3>
-<div class="outline-text-3" id="text-org9d09a35">
+<div id="outline-container-org854e211" class="outline-3">
+<h3 id="org854e211">第四题</h3>
+<div class="outline-text-3" id="text-org854e211">
 </div>
-<div id="outline-container-org3432938" class="outline-4">
-<h4 id="org3432938">题目</h4>
-<div class="outline-text-4" id="text-org3432938">
+<div id="outline-container-org21b3539" class="outline-4">
+<h4 id="org21b3539">题目</h4>
+<div class="outline-text-4" id="text-org21b3539">
 <p>
 一个包含有 2019 个结点的无向连通图，最少包含多少条边？
 </p>
 </div>
 </div>
-<div id="outline-container-org83acb6b" class="outline-4">
-<h4 id="org83acb6b">解析</h4>
-<div class="outline-text-4" id="text-org83acb6b">
+<div id="outline-container-orgf9a91fb" class="outline-4">
+<h4 id="orgf9a91fb">解析</h4>
+<div class="outline-text-4" id="text-orgf9a91fb">
 <p>
 随便画一下两个三个结点的情况就明白了
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgd8bdc3b" class="outline-4">
-<h4 id="orgd8bdc3b">答案</h4>
-<div class="outline-text-4" id="text-orgd8bdc3b">
+<div id="outline-container-orgf9ec8e0" class="outline-4">
+<h4 id="orgf9ec8e0">答案</h4>
+<div class="outline-text-4" id="text-orgf9ec8e0">
 <p>
 2018
 </p>
@@ -167,14 +181,14 @@
 </div>
 </div>
 
-<div id="outline-container-org42f7783" class="outline-3">
-<h3 id="org42f7783">第五题</h3>
-<div class="outline-text-3" id="text-org42f7783">
+<div id="outline-container-orgd616dbb" class="outline-3">
+<h3 id="orgd616dbb">第五题</h3>
+<div class="outline-text-3" id="text-orgd616dbb">
 </div>
-<div id="outline-container-org5ca6004" class="outline-4">
-<h4 id="org5ca6004">题目</h4>
-<div class="outline-text-4" id="text-org5ca6004">
-<pre class="example" id="orgbf07824">
+<div id="outline-container-org30bad81" class="outline-4">
+<h4 id="org30bad81">题目</h4>
+<div class="outline-text-4" id="text-org30bad81">
+<pre class="example" id="orgab7db66">
 问题描述
 　　给定三个整数 a, b, c，如果一个整数既不是 a 的整数倍也不是 b 的整数倍还不是 c 的整数倍，则这个数称为反倍数。
 　　请问在 1 至 n 中有多少个反倍数。
@@ -197,17 +211,17 @@
 </pre>
 </div>
 </div>
-<div id="outline-container-org4c72bbe" class="outline-4">
-<h4 id="org4c72bbe">解析</h4>
-<div class="outline-text-4" id="text-org4c72bbe">
+<div id="outline-container-orgd865f6d" class="outline-4">
+<h4 id="orgd865f6d">解析</h4>
+<div class="outline-text-4" id="text-orgd865f6d">
 <p>
 直接枚举 1 至 n 所有数，然后统计就行了。
 </p>
 </div>
 </div>
-<div id="outline-container-org9aff865" class="outline-4">
-<h4 id="org9aff865">答案</h4>
-<div class="outline-text-4" id="text-org9aff865">
+<div id="outline-container-org348a97e" class="outline-4">
+<h4 id="org348a97e">答案</h4>
+<div class="outline-text-4" id="text-org348a97e">
 <div class="org-src-container">
 <pre class="src src-c++">#include &lt;iostream&gt;
 
@@ -232,14 +246,14 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-org8d67b0e" class="outline-3">
-<h3 id="org8d67b0e">第六题</h3>
-<div class="outline-text-3" id="text-org8d67b0e">
+<div id="outline-container-org216ce0b" class="outline-3">
+<h3 id="org216ce0b">第六题</h3>
+<div class="outline-text-3" id="text-org216ce0b">
 </div>
-<div id="outline-container-org02dfa3c" class="outline-4">
-<h4 id="org02dfa3c">题目</h4>
-<div class="outline-text-4" id="text-org02dfa3c">
-<pre class="example" id="orge12a133">
+<div id="outline-container-orgbfc0214" class="outline-4">
+<h4 id="orgbfc0214">题目</h4>
+<div class="outline-text-4" id="text-orgbfc0214">
+<pre class="example" id="org928ab79">
 问题描述
 　　给定一个单词，请使用凯撒密码将这个单词加密。
 　　凯撒密码是一种替换加密的技术，单词中的所有字母都在字母表上向后偏移3位后被替换成密文。即a变为d，b变为e，...，w变为z，x变为a，y变为b，z变为c。
@@ -257,17 +271,17 @@ odqtldr
 </pre>
 </div>
 </div>
-<div id="outline-container-orgbeb6b22" class="outline-4">
-<h4 id="orgbeb6b22">解析</h4>
-<div class="outline-text-4" id="text-orgbeb6b22">
+<div id="outline-container-orge6b2053" class="outline-4">
+<h4 id="orge6b2053">解析</h4>
+<div class="outline-text-4" id="text-orge6b2053">
 <p>
 记录字符相对于 a 的偏移，然后加 3 并对 26 取余，这样就不会超过字符 z
 </p>
 </div>
 </div>
-<div id="outline-container-orge029c8b" class="outline-4">
-<h4 id="orge029c8b">答案</h4>
-<div class="outline-text-4" id="text-orge029c8b">
+<div id="outline-container-org3164325" class="outline-4">
+<h4 id="org3164325">答案</h4>
+<div class="outline-text-4" id="text-org3164325">
 <div class="org-src-container">
 <pre class="src src-c++">#include &lt;iostream&gt;
 
@@ -293,14 +307,14 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-orgddd1a2e" class="outline-3">
-<h3 id="orgddd1a2e">第七题</h3>
-<div class="outline-text-3" id="text-orgddd1a2e">
+<div id="outline-container-orgad00649" class="outline-3">
+<h3 id="orgad00649">第七题</h3>
+<div class="outline-text-3" id="text-orgad00649">
 </div>
-<div id="outline-container-orgf328b24" class="outline-4">
-<h4 id="orgf328b24">题目</h4>
-<div class="outline-text-4" id="text-orgf328b24">
-<pre class="example" id="orgb519bd3">
+<div id="outline-container-org5683da0" class="outline-4">
+<h4 id="org5683da0">题目</h4>
+<div class="outline-text-4" id="text-org5683da0">
+<pre class="example" id="org76bdf78">
 问题描述
 　　如果一个序列的奇数项都比前一项大，偶数项都比前一项小，则称为一个摆动序列。即 a[2i]&lt;a[2i-1], a[2i+1]&gt;a[2i]。
 　　小明想知道，长度为 m，每个数都是 1 到 n 之间的正整数的摆动序列一共有多少个。
@@ -336,9 +350,9 @@ int main() {
 </pre>
 </div>
 </div>
-<div id="outline-container-org13fe40a" class="outline-4">
-<h4 id="org13fe40a">解析</h4>
-<div class="outline-text-4" id="text-org13fe40a">
+<div id="outline-container-org3ced9e3" class="outline-4">
+<h4 id="org3ced9e3">解析</h4>
+<div class="outline-text-4" id="text-org3ced9e3">
 <p>
 最朴素的做法就是用 <code>dfs</code> 搜索，但 n m 的范围太大了，会超时。
 </p>
@@ -372,9 +386,9 @@ int main() {
 </p>
 </div>
 </div>
-<div id="outline-container-org1b8690e" class="outline-4">
-<h4 id="org1b8690e">答案</h4>
-<div class="outline-text-4" id="text-org1b8690e">
+<div id="outline-container-org6c2cbb8" class="outline-4">
+<h4 id="org6c2cbb8">答案</h4>
+<div class="outline-text-4" id="text-org6c2cbb8">
 <div class="org-src-container">
 <pre class="src src-c++">#include &lt;iostream&gt;
 using namespace std;
@@ -403,14 +417,14 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-org40ded07" class="outline-3">
-<h3 id="org40ded07">第八题</h3>
-<div class="outline-text-3" id="text-org40ded07">
+<div id="outline-container-org94c518f" class="outline-3">
+<h3 id="org94c518f">第八题</h3>
+<div class="outline-text-3" id="text-org94c518f">
 </div>
-<div id="outline-container-org24577e8" class="outline-4">
-<h4 id="org24577e8">题目</h4>
-<div class="outline-text-4" id="text-org24577e8">
-<pre class="example" id="orge646722">
+<div id="outline-container-orgcb3f3bd" class="outline-4">
+<h4 id="orgcb3f3bd">题目</h4>
+<div class="outline-text-4" id="text-orgcb3f3bd">
+<pre class="example" id="org28e76b3">
 问题描述
 　　对于一个 n 行 m 列的表格，我们可以使用螺旋的方式给表格依次填上正整数，我们称填好的表格为一个螺旋矩阵。
 　　例如，一个 4 行 5 列的螺旋矩阵如下：
@@ -435,17 +449,17 @@ int main() {
 </pre>
 </div>
 </div>
-<div id="outline-container-org8ff93cb" class="outline-4">
-<h4 id="org8ff93cb">解析</h4>
-<div class="outline-text-4" id="text-org8ff93cb">
+<div id="outline-container-orgc79ce5f" class="outline-4">
+<h4 id="orgc79ce5f">解析</h4>
+<div class="outline-text-4" id="text-orgc79ce5f">
 <p>
 最简单的方法就是把整个螺旋矩阵画出来，然后输出特定位置的数。
 </p>
 </div>
 </div>
-<div id="outline-container-org2031ae1" class="outline-4">
-<h4 id="org2031ae1">答案</h4>
-<div class="outline-text-4" id="text-org2031ae1">
+<div id="outline-container-orgeecf671" class="outline-4">
+<h4 id="orgeecf671">答案</h4>
+<div class="outline-text-4" id="text-orgeecf671">
 <div class="org-src-container">
 <pre class="src src-c++">#include &lt;iostream&gt;
 
@@ -479,14 +493,14 @@ int main() {
 </div>
 </div>
 </div>
-<div id="outline-container-orga011a20" class="outline-3">
-<h3 id="orga011a20">第九题</h3>
-<div class="outline-text-3" id="text-orga011a20">
+<div id="outline-container-orgcfb9c8f" class="outline-3">
+<h3 id="orgcfb9c8f">第九题</h3>
+<div class="outline-text-3" id="text-orgcfb9c8f">
 </div>
-<div id="outline-container-org839baa3" class="outline-4">
-<h4 id="org839baa3">题目</h4>
-<div class="outline-text-4" id="text-org839baa3">
-<pre class="example" id="org75e537b">
+<div id="outline-container-org2b0a3eb" class="outline-4">
+<h4 id="org2b0a3eb">题目</h4>
+<div class="outline-text-4" id="text-org2b0a3eb">
+<pre class="example" id="orgb03f79c">
 问题描述
 　　2015年，全中国实现了户户通电。作为一名电力建设者，小明正在帮助一带一路上的国家通电。
 　　这一次，小明要帮助 n 个村庄通电，其中 1 号村庄正好可以建立一个发电站，所发的电足够所有村庄使用。
@@ -515,17 +529,17 @@ int main() {
 </pre>
 </div>
 </div>
-<div id="outline-container-org5f0f4fb" class="outline-4">
-<h4 id="org5f0f4fb">解析</h4>
-<div class="outline-text-4" id="text-org5f0f4fb">
+<div id="outline-container-orgbdf5a08" class="outline-4">
+<h4 id="orgbdf5a08">解析</h4>
+<div class="outline-text-4" id="text-orgbdf5a08">
 <p>
 可以抽象成有 n 个全相连结点的图，边是拉电线的费用，然后找最小生成树就好了。
 </p>
 </div>
 </div>
-<div id="outline-container-orgcdbfa31" class="outline-4">
-<h4 id="orgcdbfa31">答案</h4>
-<div class="outline-text-4" id="text-orgcdbfa31">
+<div id="outline-container-orgb83a222" class="outline-4">
+<h4 id="orgb83a222">答案</h4>
+<div class="outline-text-4" id="text-orgb83a222">
 <div class="org-src-container">
 <pre class="src src-c++">#include &lt;iostream&gt;
 #include &lt;queue&gt;
@@ -600,14 +614,14 @@ int main() {
 </div>
 </div>
 </div>
-<div id="outline-container-org4a80790" class="outline-3">
-<h3 id="org4a80790">第十题</h3>
-<div class="outline-text-3" id="text-org4a80790">
+<div id="outline-container-org86300a1" class="outline-3">
+<h3 id="org86300a1">第十题</h3>
+<div class="outline-text-3" id="text-org86300a1">
 </div>
-<div id="outline-container-org16398bf" class="outline-4">
-<h4 id="org16398bf">题目</h4>
-<div class="outline-text-4" id="text-org16398bf">
-<pre class="example" id="org38fa2a0">
+<div id="outline-container-org90ad842" class="outline-4">
+<h4 id="org90ad842">题目</h4>
+<div class="outline-text-4" id="text-org90ad842">
+<pre class="example" id="org7a442e4">
 问题描述
 　　小明和朋友们一起去郊外植树，他们带了一些在自己实验室精心研究出的小树苗。
 　　小明和朋友们一共有 n 个人，他们经过精心挑选，在一块空地上每个人挑选了一个适合植树的位置，总共 n 个。他们准备把自己带的树苗都植下去。
@@ -636,9 +650,9 @@ int main() {
 </pre>
 </div>
 </div>
-<div id="outline-container-org3ead7ca" class="outline-4">
-<h4 id="org3ead7ca">解析</h4>
-<div class="outline-text-4" id="text-org3ead7ca">
+<div id="outline-container-orgb87e724" class="outline-4">
+<h4 id="orgb87e724">解析</h4>
+<div class="outline-text-4" id="text-orgb87e724">
 <p>
 只想出了 <code>dfs</code> 搜索的方法，最高有 30 层，每层最多有两个分支，所以最高会有 <code>2^30</code> 次操作，但大部分都会被剪掉，不知道能不能过全部用例。
 </p>
@@ -648,9 +662,9 @@ int main() {
 </p>
 </div>
 </div>
-<div id="outline-container-org1d02fd0" class="outline-4">
-<h4 id="org1d02fd0">答案</h4>
-<div class="outline-text-4" id="text-org1d02fd0">
+<div id="outline-container-orgc8f2771" class="outline-4">
+<h4 id="orgc8f2771">答案</h4>
+<div class="outline-text-4" id="text-orgc8f2771">
 <div class="org-src-container">
 <pre class="src src-c++">#include &lt;iostream&gt;
 
@@ -705,7 +719,8 @@ int main() {
 
 </div>
 </div>
-    <div>
+
+        <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2020-04-20</span>
         <span title="last modification date" class="post-info">2020-07-27</span>

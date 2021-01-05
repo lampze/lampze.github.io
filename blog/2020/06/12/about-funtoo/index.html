@@ -1,40 +1,54 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>谈谈Funtoo - org-page</title>
-    <meta charset="utf-8" />
-    <meta name="author" content="shirui" />
+  <title>谈谈Funtoo - org-page</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="shirui" />
     <meta name="description" content="谈谈安装Funtoo后的感受" />
     <meta name="keywords" content="Linux, Funtoo" />
-    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
-  </head>
+  <link rel="stylesheet" media="screen" href="/media/css/font.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+</head>
+
   <body class="container">
     <div>
-      <header class="masthead">
-        <h1 class="masthead-title"><a href="/">org-page</a></h1>
-        <p>static site generator</p>
-        <ul>
+  <header class="masthead">
+    <h1 class="masthead-title"><a href="/">org-page</a></h1>
+    <p>static site generator</p>
+    <nav class="site-nav">
+      <div class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" fill="#ffff00"/>
+          <path d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" fill="#ffff00"/>
+          <path d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" fill="#ffff00"/>
+        </svg>
+      </div>
+      <ul class="trigger">
           <li><a href="/blog/">Blog</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/lampze/">GitHub</a></li>
-          <li><a href="/rss.xml">RSS</a></li>
-        </ul>
-        <form method="get" id="searchform" action="//www.google.com/search">
-          <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="as_sitesearch" value="lampze.github.io">
-        </form>
-      </header>
-    </div>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://github.com/lampze/">GitHub</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+    <form method="get" id="searchform" action="//www.google.com/search">
+      <input type="text" class="field" name="q" id="s" placeholder="Search">
+      <input type="hidden" name="as_sitesearch" value="lampze.github.io">
+    </form>
+  </header>
+</div>
 
-<div>
+    <div>
 <div class="post">
-<h1>谈谈Funtoo</h1>
+<h1 class="title">谈谈Funtoo</h1>
 
-<div id="outline-container-org63c9b54" class="outline-2">
-<h2 id="org63c9b54">前言</h2>
-<div class="outline-text-2" id="text-org63c9b54">
+<div id="outline-container-org3b742fc" class="outline-2">
+<h2 id="org3b742fc">前言</h2>
+<div class="outline-text-2" id="text-org3b742fc">
 <p>
 先来说说我用过的 Linux 发行版吧，在初学 Linux 时我跟着教程用的 Centos，当时还在用虚拟机，因为 centos 不适合日常使用，所以我又尝试了 Ubuntu。慢慢的又听说了 Arch 的好玩之处，觉得对自己学习 Linux 有用，就一步一步的跟着 Arch 的 wiki 用命令行安装到电脑上了。好像是尝试了三四遍才把 Arch 安装好，配置好 Arch 后我也算是正式入门 Linux 了。随后就是在摸爬滚打中慢慢的学一些操作了，平时也在论坛里学习一些额外的知识，众所周知论坛 Arch 的地方一定有人说 gentoo，这也为我再次换系统埋下了种子。
 </p>
@@ -53,9 +67,9 @@
 </div>
 </div>
 
-<div id="outline-container-org99486b6" class="outline-2">
-<h2 id="org99486b6">体验</h2>
-<div class="outline-text-2" id="text-org99486b6">
+<div id="outline-container-orgae4b5be" class="outline-2">
+<h2 id="orgae4b5be">体验</h2>
+<div class="outline-text-2" id="text-orgae4b5be">
 <p>
 首先 Funtoo 的系统基本都已经配置好了，用户只需要选择一些 flavor 和 mixin 就能个性化一些配置，比如桌面、显卡驱动之类的。Funtoo 的 portage 全部采用 git 来同步的，gentoo 则是使用 rsync，git 当然又快又稳定了。
 </p>
@@ -70,9 +84,9 @@ Funtoo 的 grub 配置也被重新设置了，使用 Funtoo 的配置文件，�
 </div>
 </div>
 
-<div id="outline-container-org3715201" class="outline-2">
-<h2 id="org3715201">后记</h2>
-<div class="outline-text-2" id="text-org3715201">
+<div id="outline-container-org2bf6b81" class="outline-2">
+<h2 id="org2bf6b81">后记</h2>
+<div class="outline-text-2" id="text-org2bf6b81">
 <p>
 在体验完 Funtoo 了之后我还是决定回到 gentoo 来，因为 Funtoo 的一些包比 gentoo 的落后，虽然可以加入一些 overlay，但有些地方是不兼容的。虽然 Funtoo 的一些地方比 gentoo 更好，但 Funtoo 的使用者太少了，后来我也发现了一些东西是可以在 gentoo 上实现的。最后我把 gentoo 又重新安装了一遍。
 </p>
@@ -85,7 +99,8 @@ Funtoo 的 grub 配置也被重新设置了，使用 Funtoo 的配置文件，�
 
 </div>
 </div>
-    <div>
+
+        <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2020-06-12</span>
         <span title="last modification date" class="post-info">2020-07-27</span>
