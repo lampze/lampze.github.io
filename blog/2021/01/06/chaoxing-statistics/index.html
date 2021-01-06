@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <title>超星是如何统计学习情况的 - org-page</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="shirui" />
+    <meta name="description" content="讲讲我对超星统计学习情况的理解" />
+    <meta name="keywords" content="超星" />
+  <link rel="stylesheet" media="screen" href="/media/css/font.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+</head>
+
+  <body class="container">
+    <div>
+  <header class="masthead">
+    <h1 class="masthead-title"><a href="/">org-page</a></h1>
+    <p>static site generator</p>
+    <nav class="site-nav">
+      <div class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" fill="#ffff00"/>
+          <path d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" fill="#ffff00"/>
+          <path d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" fill="#ffff00"/>
+        </svg>
+      </div>
+      <ul class="trigger">
+          <li><a href="/blog/">Blog</a></li>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://github.com/lampze/">GitHub</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+    <form method="get" id="searchform" action="//www.google.com/search">
+      <input type="text" class="field" name="q" id="s" placeholder="Search">
+      <input type="hidden" name="as_sitesearch" value="lampze.github.io">
+    </form>
+  </header>
+</div>
+
+    <div>
+<div class="post">
+<h1 class="title">超星是如何统计学习情况的</h1>
+
+<div id="outline-container-org5e797c1" class="outline-2">
+<h2 id="org5e797c1">前言</h2>
+<div class="outline-text-2" id="text-org5e797c1">
+<p>
+写这篇文章当然是因为最近我有一门网课需要刷平时分，这门课的视频个数又不多，还多个视频合在一个网页上，最后又要求我们有几百次的学习次数，然后还要求我们有2个小时的阅读时长，但读物加起来顶多只有一两百页，超星的阅读统计又有些问题。为了给后人避坑，我就把摸索出来的一些经验分享出来。<br />
+</p>
+
+<p>
+如果你的网课只需要看视频的话就不用往下看了，网上对于这种方法的解决方案有很多，简单的就是在手机上自己刷。<br />
+</p>
+
+<p>
+代码的使用方法不给出，请自行钻研，直接在控制台使用是不行的，需要在页面打开时就注入代码，实现这个功能的插件网上有很详细的教程。<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb60d60c" class="outline-2">
+<h2 id="orgb60d60c">章节学习次数</h2>
+<div class="outline-text-2" id="text-orgb60d60c">
+</div>
+<div id="outline-container-org333f32b" class="outline-3">
+<h3 id="org333f32b">统计方法</h3>
+<div class="outline-text-3" id="text-org333f32b">
+<p>
+每打开一个视频页面等上一小会，学习次数就会增加，尚不知不滚动会不会有不良影响<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orga434ac0" class="outline-3">
+<h3 id="orga434ac0">刷分方法</h3>
+<div class="outline-text-3" id="text-orga434ac0">
+<p>
+只需要对一个页面不停刷新即可<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org49c0c96" class="outline-3">
+<h3 id="org49c0c96">代码实现</h3>
+<div class="outline-text-3" id="text-org49c0c96">
+<div class="org-src-container">
+<pre class="src src-js">// 我对于大部分操作加入了随机数
+// 避免可能的后台检测
+// 一定时间后刷新本网页
+setTimeout(() =&gt; location.reload(), 1000 * Math.random() * 20);
+let now = 0;
+// 这是滚动当前页面，也是避免不良影响
+setInterval(() =&gt; window.scroll(0, (now = now + Math.random() * 10)), 50);
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org440ef09" class="outline-2">
+<h2 id="org440ef09">阅读</h2>
+<div class="outline-text-2" id="text-org440ef09">
+</div>
+<div id="outline-container-orgf9fcb05" class="outline-3">
+<h3 id="orgf9fcb05">统计方法</h3>
+<div class="outline-text-3" id="text-orgf9fcb05">
+<p>
+经过测试，在网页上滚动具体阅读资料的区域刷分效果不好，我测试时第二天只增加了几分钟的阅读时长，所以只能滚动全局的页面<br />
+在刷分时我还注意到一个问题，单个页面可能有分值上限，所以我又改进了刷分方式<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org2d93bd0" class="outline-3">
+<h3 id="org2d93bd0">刷分方法</h3>
+<div class="outline-text-3" id="text-org2d93bd0">
+<p>
+打开阅读界面，不停向下滚动到底，到底后随机打开一个阅读页面，继续上续操作<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org98f6e29" class="outline-3">
+<h3 id="org98f6e29">代码实现</h3>
+<div class="outline-text-3" id="text-org98f6e29">
+<div class="org-src-container">
+<pre class="src src-js">// 获取随机阅读页面
+function randu() {
+  let arr = [];
+  document
+    .querySelectorAll(".mt10 .mb15 a")
+    .forEach((dom) =&gt; arr.push(dom.href));
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+// 向下滚动直到底
+let now = 0;
+setInterval(() =&gt; {
+  window.scroll(0, (now += Math.random()));
+  if (now - 1 &gt; window.scrollY)
+    setTimeout(() =&gt; (location.href = randu()), 1000 * Math.random());
+}, 40);
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+        <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2021-01-06</span>
+        <span title="last modification date" class="post-info">2021-01-06</span>
+        <span title="tags" class="post-info"><a href="/tags/超星/">超星</a></span>
+        <span title="author" class="post-info">shirui</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 28.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:1229408499 &lt;at&gt; qq &lt;dot&gt; com">shirui</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
