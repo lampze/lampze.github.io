@@ -46,9 +46,9 @@
 <div class="post">
 <h1 class="title">snails 在 Doom 下的bug</h1>
 
-<div id="outline-container-orga1e95bc" class="outline-2">
-<h2 id="orga1e95bc">问题</h2>
-<div class="outline-text-2" id="text-orga1e95bc">
+<div id="outline-container-org0be24fd" class="outline-2">
+<h2 id="org0be24fd">问题</h2>
+<div class="outline-text-2" id="text-org0be24fd">
 <p>
 自从 snails 加入了 tips 后，在 Doom 里 snails 就打不开了，会报错 <code>split-window:
 Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
@@ -60,18 +60,18 @@ Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
 </div>
 </div>
 
-<div id="outline-container-org92df503" class="outline-2">
-<h2 id="org92df503">原因</h2>
-<div class="outline-text-2" id="text-org92df503">
+<div id="outline-container-org7f04410" class="outline-2">
+<h2 id="org7f04410">原因</h2>
+<div class="outline-text-2" id="text-org7f04410">
 <p>
 经过一番调试，发现是因为 <code>(line-pixel-height)</code> 返回的值太小了，导致不能分割窗口。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orga903163" class="outline-2">
-<h2 id="orga903163">解决</h2>
-<div class="outline-text-2" id="text-orga903163">
+<div id="outline-container-orgb3b4c65" class="outline-2">
+<h2 id="orgb3b4c65">解决</h2>
+<div class="outline-text-2" id="text-orgb3b4c65">
 <p>
 两种方法
 </p>
