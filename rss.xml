@@ -4,10 +4,17 @@
     <title>org-page</title>
     <link>https://lampze.github.io/</link>
     <description>static site generator</description>
-    <pubDate>五, 15 1月 2021 21:40:40 CST</pubDate>
-    <lastBuildDate>五, 15 1月 2021 21:40:40 CST</lastBuildDate>
+    <pubDate>五, 22 1月 2021 15:00:21 CST</pubDate>
+    <lastBuildDate>五, 22 1月 2021 15:00:21 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>2021年蓝桥杯模拟赛题解</title>
+      <link>https://lampze.github.io/blog/2021/01/22/2021-lanqiao-simula</link>
+      <description><![CDATA[2021年蓝桥杯模拟赛题解]]></description>
+      <pubDate>2021-01-22</pubDate>
+      <guid>https://lampze.github.io/blog/2021/01/22/2021-lanqiao-simula</guid>
+    </item>
     <item>
       <title>算法基础-模拟与搜索</title>
       <link>https://lampze.github.io/blog/2021/01/15/algorithm-basic-sim-search</link>
@@ -70,13 +77,6 @@
       <description><![CDATA[讲解R6900v2安装配置LEDE]]></description>
       <pubDate>2020-07-27</pubDate>
       <guid>https://lampze.github.io/blog/2020/07/27/2020-R6900v2-lede</guid>
-    </item>
-    <item>
-      <title>谈谈Funtoo</title>
-      <link>https://lampze.github.io/blog/2020/06/12/about-funtoo</link>
-      <description><![CDATA[谈谈安装Funtoo后的感受]]></description>
-      <pubDate>2020-07-27</pubDate>
-      <guid>https://lampze.github.io/blog/2020/06/12/about-funtoo</guid>
     </item>
   </channel>
 </rss>

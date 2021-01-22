@@ -10,8 +10,12 @@
     <meta name="description" content="模拟与搜索的算法讲解" />
     <meta name="keywords" content="algorithm" />
   <link rel="stylesheet" media="screen" href="/media/css/font.css" rel="stylesheet" type="text/css"/>
-  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-  <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/htmlize.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/normalize.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/org-default.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/my-style.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/org-page.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/prism.css" type="text/css">
 </head>
 
   <body class="container">
@@ -45,9 +49,9 @@
     <div>
 <div class="post">
 <h1 class="title">算法基础-模拟与搜索</h1>
-<div id="outline-container-orgcc56241" class="outline-2">
-<h2 id="orgcc56241">前言</h2>
-<div class="outline-text-2" id="text-orgcc56241">
+<div id="outline-container-org559ca20" class="outline-2">
+<h2 id="org559ca20">前言</h2>
+<div class="outline-text-2" id="text-org559ca20">
 <p>
 模拟既直接根据题意做题，搜索既在可能的解里寻找正确答案<br />
 </p>
@@ -57,24 +61,24 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orge6fc7c5" class="outline-2">
-<h2 id="orge6fc7c5">扫雷游戏</h2>
-<div class="outline-text-2" id="text-orge6fc7c5">
+<div id="outline-container-org8039a23" class="outline-2">
+<h2 id="org8039a23">扫雷游戏</h2>
+<div class="outline-text-2" id="text-org8039a23">
 <p>
 <a href="https://www.luogu.com.cn/problem/P2670">https://www.luogu.com.cn/problem/P2670</a><br />
 </p>
 </div>
-<div id="outline-container-orgdf25c77" class="outline-3">
-<h3 id="orgdf25c77">思路</h3>
-<div class="outline-text-3" id="text-orgdf25c77">
+<div id="outline-container-org66f5595" class="outline-3">
+<h3 id="org66f5595">思路</h3>
+<div class="outline-text-3" id="text-org66f5595">
 <p>
 题目要求输出每个格子周围的地雷数，那么根据模拟思维，直接统计每个格子周围的地雷数并输出即可<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org8b4f7d5" class="outline-3">
-<h3 id="org8b4f7d5">代码</h3>
-<div class="outline-text-3" id="text-org8b4f7d5">
+<div id="outline-container-org078df93" class="outline-3">
+<h3 id="org078df93">代码</h3>
+<div class="outline-text-3" id="text-org078df93">
 <div class="org-src-container">
 <pre class="src src-C++">#include &lt;iostream&gt;
 
@@ -120,24 +124,24 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-org77865b5" class="outline-2">
-<h2 id="org77865b5">字符串的展开</h2>
-<div class="outline-text-2" id="text-org77865b5">
+<div id="outline-container-org47a4a14" class="outline-2">
+<h2 id="org47a4a14">字符串的展开</h2>
+<div class="outline-text-2" id="text-org47a4a14">
 <p>
 <a href="https://www.luogu.com.cn/problem/P1098">https://www.luogu.com.cn/problem/P1098</a><br />
 </p>
 </div>
-<div id="outline-container-orgbc76e16" class="outline-3">
-<h3 id="orgbc76e16">思路</h3>
-<div class="outline-text-3" id="text-orgbc76e16">
+<div id="outline-container-org22871ed" class="outline-3">
+<h3 id="org22871ed">思路</h3>
+<div class="outline-text-3" id="text-org22871ed">
 <p>
 这是一道复杂的模拟题目，题目已经把我们要做的操作都描述出来了，我们要学会如何分解这些复杂的操作，因为这么复杂的逻辑很容易写错，而把逻辑分解成一个个模块后再调试显然是更加方便快捷的。<br />
 </p>
 </div>
 </div>
-<div id="outline-container-orgf796911" class="outline-3">
-<h3 id="orgf796911">代码</h3>
-<div class="outline-text-3" id="text-orgf796911">
+<div id="outline-container-orgaaabfd8" class="outline-3">
+<h3 id="orgaaabfd8">代码</h3>
+<div class="outline-text-3" id="text-orgaaabfd8">
 <div class="org-src-container">
 <pre class="src src-C++">#include &lt;algorithm&gt;
 #include &lt;iostream&gt;
@@ -216,16 +220,16 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-org509eb8b" class="outline-2">
-<h2 id="org509eb8b">选数</h2>
-<div class="outline-text-2" id="text-org509eb8b">
+<div id="outline-container-org7c7b300" class="outline-2">
+<h2 id="org7c7b300">选数</h2>
+<div class="outline-text-2" id="text-org7c7b300">
 <p>
 <a href="https://www.luogu.com.cn/problem/P1036">https://www.luogu.com.cn/problem/P1036</a><br />
 </p>
 </div>
-<div id="outline-container-org0266204" class="outline-3">
-<h3 id="org0266204">思路</h3>
-<div class="outline-text-3" id="text-org0266204">
+<div id="outline-container-orgfb448fe" class="outline-3">
+<h3 id="orgfb448fe">思路</h3>
+<div class="outline-text-3" id="text-orgfb448fe">
 <p>
 首先题目提到了素数，那么第一步就是先把素数都筛出来，方便后续操作<br />
 </p>
@@ -236,9 +240,9 @@ int main() {
 </p>
 </div>
 </div>
-<div id="outline-container-org1ab7b7e" class="outline-3">
-<h3 id="org1ab7b7e">代码</h3>
-<div class="outline-text-3" id="text-org1ab7b7e">
+<div id="outline-container-org4c8bd0f" class="outline-3">
+<h3 id="org4c8bd0f">代码</h3>
+<div class="outline-text-3" id="text-org4c8bd0f">
 <div class="org-src-container">
 <pre class="src src-C++">#include &lt;algorithm&gt;
 #include &lt;iostream&gt;
@@ -288,24 +292,24 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-orgfc6b0b4" class="outline-2">
-<h2 id="orgfc6b0b4">自然数的拆分问题</h2>
-<div class="outline-text-2" id="text-orgfc6b0b4">
+<div id="outline-container-orga4f6a53" class="outline-2">
+<h2 id="orga4f6a53">自然数的拆分问题</h2>
+<div class="outline-text-2" id="text-orga4f6a53">
 <p>
 <a href="https://www.luogu.com.cn/problem/P2404">https://www.luogu.com.cn/problem/P2404</a><br />
 </p>
 </div>
-<div id="outline-container-org760a05a" class="outline-3">
-<h3 id="org760a05a">思路</h3>
-<div class="outline-text-3" id="text-org760a05a">
+<div id="outline-container-org998d9dc" class="outline-3">
+<h3 id="org998d9dc">思路</h3>
+<div class="outline-text-3" id="text-org998d9dc">
 <p>
 这题就不使用全排列了，只能老老实实的自己写搜索了，因为必须要把所有情况过一遍，所以使用 <code>dfs</code> 比较方便，状态只需要保存已分拆分的数字个数与剩余数字就行了。<br />
 </p>
 </div>
 </div>
-<div id="outline-container-orgf3b81d6" class="outline-3">
-<h3 id="orgf3b81d6">代码</h3>
-<div class="outline-text-3" id="text-orgf3b81d6">
+<div id="outline-container-org9de1ff7" class="outline-3">
+<h3 id="org9de1ff7">代码</h3>
+<div class="outline-text-3" id="text-org9de1ff7">
 <div class="org-src-container">
 <pre class="src src-C++">#include &lt;iostream&gt;
 
@@ -351,25 +355,25 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-org918a204" class="outline-2">
-<h2 id="org918a204">马的遍历</h2>
-<div class="outline-text-2" id="text-org918a204">
+<div id="outline-container-org577e038" class="outline-2">
+<h2 id="org577e038">马的遍历</h2>
+<div class="outline-text-2" id="text-org577e038">
 <p>
 <a href="https://www.luogu.com.cn/problem/P1443">https://www.luogu.com.cn/problem/P1443</a><br />
 </p>
 </div>
-<div id="outline-container-org6a63578" class="outline-3">
-<h3 id="org6a63578">思路</h3>
-<div class="outline-text-3" id="text-org6a63578">
+<div id="outline-container-org5b7e00f" class="outline-3">
+<h3 id="org5b7e00f">思路</h3>
+<div class="outline-text-3" id="text-org5b7e00f">
 <p>
 题目叫我们计算到达一个点需要多少步，那我们就模拟一只马走路即可，但一只马一步可能走好多个地方，使用循环是不能做出来的，我们必须把马的状态保存起来，每走一次更新一下。<br />
 使用队列保存马每一步的坐标与步数，每次取出一个步数最小的状态，把下一步可能的状态计算出并加入到队列就行了。<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org5601ee5" class="outline-3">
-<h3 id="org5601ee5">代码</h3>
-<div class="outline-text-3" id="text-org5601ee5">
+<div id="outline-container-org7f55dfb" class="outline-3">
+<h3 id="org7f55dfb">代码</h3>
+<div class="outline-text-3" id="text-org7f55dfb">
 <div class="org-src-container">
 <pre class="src src-C++">#include &lt;cstdio&gt;
 #include &lt;iostream&gt;
@@ -440,16 +444,16 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-org55fb10f" class="outline-2">
-<h2 id="org55fb10f">奇怪的电梯</h2>
-<div class="outline-text-2" id="text-org55fb10f">
+<div id="outline-container-orga986553" class="outline-2">
+<h2 id="orga986553">奇怪的电梯</h2>
+<div class="outline-text-2" id="text-orga986553">
 <p>
 <a href="https://www.luogu.com.cn/problem/P1135">https://www.luogu.com.cn/problem/P1135</a><br />
 </p>
 </div>
-<div id="outline-container-org2be533f" class="outline-3">
-<h3 id="org2be533f">思路</h3>
-<div class="outline-text-3" id="text-org2be533f">
+<div id="outline-container-org23640e0" class="outline-3">
+<h3 id="org23640e0">思路</h3>
+<div class="outline-text-3" id="text-org23640e0">
 <p>
 根据题意，一个楼层最多只能跳转到另外两个楼层，一个节点表示一个楼层，画成图就是一个节点连接着两个节点，可以自己尝试的在纸上画一下。<br />
 </p>
@@ -459,9 +463,9 @@ int main() {
 </p>
 </div>
 </div>
-<div id="outline-container-org0acbfc7" class="outline-3">
-<h3 id="org0acbfc7">代码</h3>
-<div class="outline-text-3" id="text-org0acbfc7">
+<div id="outline-container-org67c1789" class="outline-3">
+<h3 id="org67c1789">代码</h3>
+<div class="outline-text-3" id="text-org67c1789">
 <div class="org-src-container">
 <pre class="src src-C++">#include &lt;iostream&gt;
 #include &lt;queue&gt;
@@ -538,13 +542,11 @@ int main() {
         <span title="tags" class="post-info"><a href="/tags/algorithm/">algorithm</a></span>
         <span title="author" class="post-info">shirui</span>
       </div>
-      <section>
-        <h1>Comments</h1>
-      </section>
       <script src="//code.jquery.com/jquery-latest.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-      <script src="/media/js/main.js"></script>
+      <script src="/media/js/org2prism.js"></script>
+      <script src="/media/js/fold-headings.js"></script>
+      <script src="/media/js/prism.js"></script>
       <div class="footer">
         <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 28.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
         <p>

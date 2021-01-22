@@ -10,8 +10,12 @@
     <meta name="description" content="讲讲我对超星统计学习情况的理解" />
     <meta name="keywords" content="超星" />
   <link rel="stylesheet" media="screen" href="/media/css/font.css" rel="stylesheet" type="text/css"/>
-  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-  <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/htmlize.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/normalize.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/org-default.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/my-style.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/org-page.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/prism.css" type="text/css">
 </head>
 
   <body class="container">
@@ -46,9 +50,9 @@
 <div class="post">
 <h1 class="title">超星是如何统计学习情况的</h1>
 
-<div id="outline-container-org18f831e" class="outline-2">
-<h2 id="org18f831e">前言</h2>
-<div class="outline-text-2" id="text-org18f831e">
+<div id="outline-container-org561f93a" class="outline-2">
+<h2 id="org561f93a">前言</h2>
+<div class="outline-text-2" id="text-org561f93a">
 <p>
 写这篇文章当然是因为最近我有一门网课需要刷平时分，这门课的视频个数又不多，还多个视频合在一个网页上，最后又要求我们有几百次的学习次数，然后还要求我们有2个小时的阅读时长，但读物加起来顶多只有一两百页，超星的阅读统计又有些问题。为了给后人避坑，我就把摸索出来的一些经验分享出来。<br />
 </p>
@@ -63,29 +67,29 @@
 </div>
 </div>
 
-<div id="outline-container-orgdc58e85" class="outline-2">
-<h2 id="orgdc58e85">章节学习次数</h2>
-<div class="outline-text-2" id="text-orgdc58e85">
+<div id="outline-container-orgbe726b3" class="outline-2">
+<h2 id="orgbe726b3">章节学习次数</h2>
+<div class="outline-text-2" id="text-orgbe726b3">
 </div>
-<div id="outline-container-org2f2dba0" class="outline-3">
-<h3 id="org2f2dba0">统计方法</h3>
-<div class="outline-text-3" id="text-org2f2dba0">
+<div id="outline-container-org642be6f" class="outline-3">
+<h3 id="org642be6f">统计方法</h3>
+<div class="outline-text-3" id="text-org642be6f">
 <p>
 每打开一个视频页面等上一小会，学习次数就会增加，尚不知不滚动会不会有不良影响<br />
 </p>
 </div>
 </div>
-<div id="outline-container-orgf8b245b" class="outline-3">
-<h3 id="orgf8b245b">刷分方法</h3>
-<div class="outline-text-3" id="text-orgf8b245b">
+<div id="outline-container-orgd39c682" class="outline-3">
+<h3 id="orgd39c682">刷分方法</h3>
+<div class="outline-text-3" id="text-orgd39c682">
 <p>
 只需要对一个页面不停刷新即可<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org8a88b61" class="outline-3">
-<h3 id="org8a88b61">代码实现</h3>
-<div class="outline-text-3" id="text-org8a88b61">
+<div id="outline-container-orgd54d897" class="outline-3">
+<h3 id="orgd54d897">代码实现</h3>
+<div class="outline-text-3" id="text-orgd54d897">
 <div class="org-src-container">
 <pre class="src src-js">// 我对于大部分操作加入了随机数
 // 避免可能的后台检测
@@ -99,30 +103,30 @@ setInterval(() =&gt; window.scroll(0, (now = now + Math.random() * 10)), 50);
 </div>
 </div>
 </div>
-<div id="outline-container-org4b5abc9" class="outline-2">
-<h2 id="org4b5abc9">阅读</h2>
-<div class="outline-text-2" id="text-org4b5abc9">
+<div id="outline-container-orge3bd30b" class="outline-2">
+<h2 id="orge3bd30b">阅读</h2>
+<div class="outline-text-2" id="text-orge3bd30b">
 </div>
-<div id="outline-container-orgcd6e805" class="outline-3">
-<h3 id="orgcd6e805">统计方法</h3>
-<div class="outline-text-3" id="text-orgcd6e805">
+<div id="outline-container-org2a5b473" class="outline-3">
+<h3 id="org2a5b473">统计方法</h3>
+<div class="outline-text-3" id="text-org2a5b473">
 <p>
 经过测试，在网页上滚动具体阅读资料的区域刷分效果不好，我测试时第二天只增加了几分钟的阅读时长，所以只能滚动全局的页面<br />
 在刷分时我还注意到一个问题，单个页面可能有分值上限，所以我又改进了刷分方式<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org92587d2" class="outline-3">
-<h3 id="org92587d2">刷分方法</h3>
-<div class="outline-text-3" id="text-org92587d2">
+<div id="outline-container-org9247116" class="outline-3">
+<h3 id="org9247116">刷分方法</h3>
+<div class="outline-text-3" id="text-org9247116">
 <p>
 打开阅读界面，不停向下滚动到底，到底后随机打开一个阅读页面，继续上续操作<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org9f30e64" class="outline-3">
-<h3 id="org9f30e64">代码实现</h3>
-<div class="outline-text-3" id="text-org9f30e64">
+<div id="outline-container-orgacfe04e" class="outline-3">
+<h3 id="orgacfe04e">代码实现</h3>
+<div class="outline-text-3" id="text-orgacfe04e">
 <div class="org-src-container">
 <pre class="src src-js">// 获取随机阅读页面
 function randu() {
@@ -155,13 +159,11 @@ setInterval(() =&gt; {
         <span title="tags" class="post-info"><a href="/tags/超星/">超星</a></span>
         <span title="author" class="post-info">shirui</span>
       </div>
-      <section>
-        <h1>Comments</h1>
-      </section>
       <script src="//code.jquery.com/jquery-latest.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-      <script src="/media/js/main.js"></script>
+      <script src="/media/js/org2prism.js"></script>
+      <script src="/media/js/fold-headings.js"></script>
+      <script src="/media/js/prism.js"></script>
       <div class="footer">
         <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 28.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
         <p>

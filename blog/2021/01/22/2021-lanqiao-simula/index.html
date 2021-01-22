@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <title>2021年蓝桥杯模拟赛题解 - org-page</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="shirui" />
+    <meta name="description" content="2021年蓝桥杯模拟赛题解" />
+    <meta name="keywords" content="蓝桥杯" />
+  <link rel="stylesheet" media="screen" href="/media/css/font.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="/media/css/htmlize.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/normalize.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/org-default.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/my-style.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/org-page.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/prism.css" type="text/css">
+</head>
+
+  <body class="container">
+    <div>
+  <header class="masthead">
+    <h1 class="masthead-title"><a href="/">org-page</a></h1>
+    <p>static site generator</p>
+    <nav class="site-nav">
+      <div class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" fill="#ffff00"/>
+          <path d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" fill="#ffff00"/>
+          <path d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" fill="#ffff00"/>
+        </svg>
+      </div>
+      <ul class="trigger">
+          <li><a href="/blog/">Blog</a></li>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://github.com/lampze/">GitHub</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+    <form method="get" id="searchform" action="//www.google.com/search">
+      <input type="text" class="field" name="q" id="s" placeholder="Search">
+      <input type="hidden" name="as_sitesearch" value="lampze.github.io">
+    </form>
+  </header>
+</div>
+
+    <div>
+<div class="post">
+<h1 class="title">2021年蓝桥杯模拟赛题解</h1>
+<div id="outline-container-orgb6adac8" class="outline-2">
+<h2 id="orgb6adac8">第一题</h2>
+<div class="outline-text-2" id="text-orgb6adac8">
+</div>
+<div id="outline-container-orge01cc61" class="outline-3">
+<h3 id="orge01cc61">题目</h3>
+<div class="outline-text-3" id="text-orge01cc61">
+<p>
+问题描述<br />
+    请问在 1 到 2020 中，有多少个数既是 4 的整数倍，又是 6 的整数倍。<br />
+答案提交<br />
+　　这是一道结果填空的题，你只需要算出结果后提交即可。本题的结果为一个整数，在提交答案时只填写这个整数，填写多余的内容将无法得分。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org0991413" class="outline-3">
+<h3 id="org0991413">解析</h3>
+<div class="outline-text-3" id="text-org0991413">
+<p>
+直接枚举数字然后判断计数即可<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orge8e8fd5" class="outline-3">
+<h3 id="orge8e8fd5">代码</h3>
+<div class="outline-text-3" id="text-orge8e8fd5">
+<div class="org-src-container">
+<pre class="src src-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+  int count = 0;
+  for (int i = 1; i &lt;= 2020; i++)
+    if (i % 4 == 0 &amp;&amp; i % 6 == 0)
+      count++;
+  cout &lt;&lt; count &lt;&lt; endl;
+  return 0;
+}
+</pre>
+</div>
+<p>
+答案: <code>168</code><br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org99a4207" class="outline-2">
+<h2 id="org99a4207">第二题</h2>
+<div class="outline-text-2" id="text-org99a4207">
+</div>
+<div id="outline-container-org2a66ddb" class="outline-3">
+<h3 id="org2a66ddb">题目</h3>
+<div class="outline-text-3" id="text-org2a66ddb">
+<p>
+问题描述<br />
+　　小明要用二进制来表示 1 到 10000 的所有整数，要求不同的整数用不同的二进制数表示，请问，为了表示 1 到 10000 的所有整数，至少需要多少个二进制位？<br />
+答案提交<br />
+　　这是一道结果填空的题，你只需要算出结果后提交即可。本题的结果为一个整数，在提交答案时只填写这个整数，填写多余的内容将无法得分。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgaf69da5" class="outline-3">
+<h3 id="orgaf69da5">解析</h3>
+<div class="outline-text-3" id="text-orgaf69da5">
+<p>
+可以看每种二进制位最高可以表示多大的数，然后选出最小的即可<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org0564b9c" class="outline-3">
+<h3 id="org0564b9c">代码</h3>
+<div class="outline-text-3" id="text-org0564b9c">
+<div class="org-src-container">
+<pre class="src src-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+  for (int i = 0, n = 1; n - 1 &lt; 10000; n = n &lt;&lt; 1, i++)
+    cout &lt;&lt; i &lt;&lt; ":" &lt;&lt; n-1 &lt;&lt; endl;
+  return 0;
+}
+</pre>
+</div>
+
+<p>
+答案： <code>14</code><br />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga4f52b6" class="outline-2">
+<h2 id="orga4f52b6">第三题</h2>
+<div class="outline-text-2" id="text-orga4f52b6">
+</div>
+<div id="outline-container-org2cdac5c" class="outline-3">
+<h3 id="org2cdac5c">题目</h3>
+<div class="outline-text-3" id="text-org2cdac5c">
+<p>
+问题描述<br />
+　　请问有多少个序列满足下面的条件：<br />
+</p>
+<ol class="org-ol">
+<li>序列的长度为 5。<br /></li>
+<li>序列中的每个数都是 1 到 10 之间的整数。<br /></li>
+<li>序列中后面的数大于等于前面的数。<br /></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org7ed38a2" class="outline-3">
+<h3 id="org7ed38a2">解析</h3>
+<div class="outline-text-3" id="text-org7ed38a2">
+<p>
+直接使用 <code>dfs</code> 搜索即可<br />
+</p>
+
+<p>
+或者写5个循环也行<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org5914373" class="outline-3">
+<h3 id="org5914373">代码</h3>
+<div class="outline-text-3" id="text-org5914373">
+<div class="org-src-container">
+<pre class="src src-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int all[5];
+long long count = 0;
+
+void dfs(int now) {
+  if (now == 5) {
+    count++;
+    // for (int i = 0; i &lt; 5; i++)
+    //   cout &lt;&lt; all[i] &lt;&lt; " ";
+    // cout &lt;&lt; endl;
+    return;
+  }
+  for (int i = 1; i &lt;= 10; i++)
+    if (now == 0 || i &gt;= all[now - 1]) {
+      all[now] = i;
+      dfs(now + 1);
+    }
+}
+
+int main() {
+  dfs(0);
+  cout &lt;&lt; count &lt;&lt; endl;
+  return 0;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+  int count = 0;
+  for (int a = 1; a &lt;= 10; a++)
+    for (int b = a; b &lt;= 10; b++)
+      for (int c = b; c &lt;= 10; c++)
+        for (int d = c; d &lt;= 10; d++)
+          for (int e = d; e &lt;= 10; e++)
+            count++;
+  cout &lt;&lt; count &lt;&lt; endl;
+  return 0;
+}
+</pre>
+</div>
+
+<p>
+答案： <code>2002</code><br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1ad9c39" class="outline-2">
+<h2 id="org1ad9c39">第四题</h2>
+<div class="outline-text-2" id="text-org1ad9c39">
+</div>
+<div id="outline-container-org0eb66ba" class="outline-3">
+<h3 id="org0eb66ba">题目</h3>
+<div class="outline-text-3" id="text-org0eb66ba">
+<p>
+问题描述<br />
+　　一个无向图包含 2020 条边，如果图中没有自环和重边，请问最少包含多少个结点？<br />
+　　这是一道结果填空的题，你只需要算出结果后提交即可。本题的结果为一个整数，在提交答案时只填写这个整数，填写多余的内容将无法得分。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org87d03f2" class="outline-3">
+<h3 id="org87d03f2">解析</h3>
+<div class="outline-text-3" id="text-org87d03f2">
+<p>
+假设有结点的个数为 \(n\) 的图，已知边的个数最多为 \(\frac{n \times (n-1)}{2}\) ，可以列出等式 \(\frac{n \times (n-1)}{2} = 2020\) 可得 \(n = 64.0629609128\) 然后取整加一即可<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orge8c66fc" class="outline-3">
+<h3 id="orge8c66fc">答案</h3>
+<div class="outline-text-3" id="text-orge8c66fc">
+<p>
+<code>65</code><br />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfcc87bb" class="outline-2">
+<h2 id="orgfcc87bb">第五题</h2>
+<div class="outline-text-2" id="text-orgfcc87bb">
+</div>
+<div id="outline-container-org2d5eb45" class="outline-3">
+<h3 id="org2d5eb45">题目</h3>
+<div class="outline-text-3" id="text-org2d5eb45">
+<p>
+问题描述<br />
+　　两个字母之间的距离定义为它们在字母表中位置的距离。例如 A 和 C 的距离为 2，L 和 Q 的距离为 5。<br />
+　　对于一个字符串，我们称字符串中两两字符之间的距离之和为字符串的内部距离。<br />
+　　例如：ZOO 的内部距离为 22，其中 Z 和 O 的距离为 11。<br />
+　　请问，LANQIAO 的内部距离是多少？<br />
+　　这是一道结果填空的题，你只需要算出结果后提交即可。本题的结果为一个整数，在提交答案时只填写这个整数，填写多余的内容将无法得分。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org4a580f9" class="outline-3">
+<h3 id="org4a580f9">解析</h3>
+<div class="outline-text-3" id="text-org4a580f9">
+<p>
+枚举 <code>LANQIAO</code> 字符串所有两个字符的组合，计算距离然后相加即可<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org65b10f3" class="outline-3">
+<h3 id="org65b10f3">代码</h3>
+<div class="outline-text-3" id="text-org65b10f3">
+<div class="org-src-container">
+<pre class="src src-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+long long f(char a, char b) {
+  if (b &gt; a)
+    return f(b, a);
+  return a - b;
+}
+
+int main() {
+  string s = "LANQIAO";
+  long long sum = 0;
+  for (int i = 0; i &lt; s.size(); i++)
+    for (int j = i; j &lt; s.size(); j++)
+      sum += f(s[i], s[j]);
+  cout &lt;&lt; sum &lt;&lt; endl;
+  return 0;
+}
+</pre>
+</div>
+
+<p>
+答案： <code>162</code><br />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaf74262" class="outline-2">
+<h2 id="orgaf74262">第六题</h2>
+<div class="outline-text-2" id="text-orgaf74262">
+</div>
+<div id="outline-container-org42c91ed" class="outline-3">
+<h3 id="org42c91ed">题目</h3>
+<div class="outline-text-3" id="text-org42c91ed">
+<p>
+问题描述<br />
+　　给定一个平行四边形的底边长度 l 和高度 h，求平行四边形的面积。<br />
+输入格式<br />
+　　输入的第一行包含一个整数 l，表示平行四边形的底边长度。<br />
+　　第二行包含一个整数 h，表示平行四边形的高。<br />
+输出格式<br />
+　　输出一个整数，表示平行四边形的面积。（提示：底边长度和高都是整数的平行四边形面积为整数）<br />
+样例输入<br />
+</p>
+<pre class="example" id="orgf6e8df4">
+2
+7
+</pre>
+
+<p>
+样例输出<br />
+</p>
+<pre class="example" id="org775928a">
+14
+</pre>
+
+<p>
+数据规模和约定：对于所有评测用例，1 &lt;= l, h &lt;= 100。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org7d4c2d5" class="outline-3">
+<h3 id="org7d4c2d5">解析</h3>
+<div class="outline-text-3" id="text-org7d4c2d5">
+<p>
+直接计算输出，没什么好说的<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orge57560b" class="outline-3">
+<h3 id="orge57560b">代码</h3>
+<div class="outline-text-3" id="text-orge57560b">
+<div class="org-src-container">
+<pre class="src src-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+  int l,h;
+  cin &gt;&gt; l &gt;&gt; h;
+  cout &lt;&lt; l * h &lt;&lt; endl;
+  return 0;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9275fdc" class="outline-2">
+<h2 id="org9275fdc">第七题</h2>
+<div class="outline-text-2" id="text-org9275fdc">
+</div>
+<div id="outline-container-org7c4e9a1" class="outline-3">
+<h3 id="org7c4e9a1">题目</h3>
+<div class="outline-text-3" id="text-org7c4e9a1">
+<p>
+问题描述<br />
+　　现在时间是 a 点 b 分，请问 t 分钟后，是几点几分？<br />
+输入格式<br />
+　　输入的第一行包含一个整数 a。<br />
+　　第二行包含一个整数 b。<br />
+　　第三行包含一个整数 t。<br />
+输出格式<br />
+　　输出第一行包含一个整数，表示结果是几点。<br />
+　　第二行包含一个整数，表示结果是几分。<br />
+样例输入<br />
+</p>
+
+<pre class="example" id="org45dc6f1">
+3
+20
+165
+</pre>
+
+<p>
+样例输出<br />
+</p>
+
+<pre class="example" id="orgc5464dc">
+6
+5
+</pre>
+
+<p>
+样例输入<br />
+</p>
+
+<pre class="example" id="org56182d7">
+3
+20
+175
+</pre>
+
+<p>
+样例输出<br />
+</p>
+
+<pre class="example" id="org648d9f2">
+6
+15
+</pre>
+
+<p>
+数据规模和约定：对于所有评测用例，0 &lt;= a &lt;= 23, 0 &lt;= b &lt;= 59, 0 &lt;= t, t 分钟后还是在当天。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org56db94e" class="outline-3">
+<h3 id="org56db94e">解析</h3>
+<div class="outline-text-3" id="text-org56db94e">
+<p>
+直接把 <code>t</code> 加入到 <code>b</code> 中，然后把超出的时间补到小时上，并把分钟修整到60分钟内即可。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgf56bd0a" class="outline-3">
+<h3 id="orgf56bd0a">代码</h3>
+<div class="outline-text-3" id="text-orgf56bd0a">
+<div class="org-src-container">
+<pre class="src src-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+  int a, b, t;
+  cin &gt;&gt; a &gt;&gt; b &gt;&gt; t;
+  b += t;
+  a += b / 60;
+  b %= 60;
+  cout &lt;&lt; a &lt;&lt; endl &lt;&lt; b &lt;&lt; endl;
+  return 0;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org1bd0453" class="outline-2">
+<h2 id="org1bd0453">第八题</h2>
+<div class="outline-text-2" id="text-org1bd0453">
+</div>
+<div id="outline-container-org893413c" class="outline-3">
+<h3 id="org893413c">题目</h3>
+<div class="outline-text-3" id="text-org893413c">
+<p>
+问题描述<br />
+　　小蓝负责花园的灌溉工作。<br />
+　　花园可以看成一个 n 行 m 列的方格图形。中间有一部分位置上安装有出水管。<br />
+　　小蓝可以控制一个按钮同时打开所有的出水管，打开时，有出水管的位置可以被认为已经灌溉好。<br />
+　　每经过一分钟，水就会向四面扩展一个方格，被扩展到的方格可以被认为已经灌溉好。即如果前一分钟某一个方格被灌溉好，则下一分钟它上下左右的四个方格也被灌溉好。<br />
+　　给定花园水管的位置，请问 k 分钟后，有多少个方格被灌溉好？<br />
+输入格式<br />
+　　输入的第一行包含两个整数 n, m。<br />
+　　第二行包含一个整数 t，表示出水管的数量。<br />
+　　接下来 t 行描述出水管的位置，其中第 i 行包含两个数 r, c 表示第 r 行第 c 列有一个排水管。<br />
+　　接下来一行包含一个整数 k。<br />
+输出格式<br />
+　　输出一个整数，表示答案。<br />
+样例输入<br />
+</p>
+
+<pre class="example" id="org22bd944">
+3 6
+2
+2 2
+3 4
+1
+</pre>
+
+<p>
+样例输出<br />
+</p>
+
+<pre class="example" id="orgb5a0a89">
+9
+</pre>
+
+<p>
+样例说明<br />
+　　用1表示灌溉到，0表示未灌溉到。<br />
+　　打开水管时：<br />
+　　000000<br />
+　　010000<br />
+　　000100<br />
+　　1分钟后：<br />
+　　010000<br />
+　　111100<br />
+　　011110<br />
+　　共有9个方格被灌溉好。<br />
+数据规模和约定<br />
+　　对于所有评测用例，1 &lt;= n, m &lt;= 100, 1 &lt;= t &lt;= 10, 1 &lt;= k &lt;= 100。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgbe2ae0f" class="outline-3">
+<h3 id="orgbe2ae0f">解析</h3>
+<div class="outline-text-3" id="text-orgbe2ae0f">
+<p>
+使用 <code>bfs</code> ，更新每个结点直到时间结束，每次把新灌溉的结点加入到队列即可。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org317c72e" class="outline-3">
+<h3 id="org317c72e">代码</h3>
+<div class="outline-text-3" id="text-org317c72e">
+<div class="org-src-container">
+<pre class="src src-cpp">#include &lt;iostream&gt;
+#include &lt;queue&gt;
+
+using namespace std;
+
+// 保存状态
+struct point {
+  int x, y, time;
+  point(int _x, int _y, int _time) {
+    x = _x;
+    y = _y;
+    time = _time;
+  }
+};
+// all是全部的花园
+bool all[105][105];
+// 下一步的数组
+int nex[4][2] = {-1, 0, 1, 0, 0, -1, 0, 1};
+
+int main() {
+  int n, m, t;
+  cin &gt;&gt; n &gt;&gt; m &gt;&gt; t;
+  queue&lt;point&gt; q;
+  // 处理水管，标记好花园，并加入到队列
+  for (int i = 0; i &lt; t; i++) {
+    int r, c;
+    cin &gt;&gt; r &gt;&gt; c;
+    q.push(point(r, c, 0));
+    all[r][c] = true;
+  }
+  int k, count;
+  cin &gt;&gt; k;
+  count = t;
+  while (!q.empty()) {
+    point a = q.front();
+    q.pop();
+    // 如果时间到了就不进行下一步了
+    if (a.time == k)
+      continue;
+    // 遍历四周
+    for (int i = 0; i &lt; 4; i++) {
+      int x = a.x + nex[i][0], y = a.y + nex[i][1];
+      // 如果这个格子没有水，就加入队列并标记
+      if (x &gt; 0 &amp;&amp; y &gt; 0 &amp;&amp; x &lt;= n &amp;&amp; y &lt;= m &amp;&amp; !all[x][y]) {
+        all[x][y] = true;
+        q.push(point(x, y, a.time + 1));
+        count++;
+      }
+    }
+  }
+  cout &lt;&lt; count &lt;&lt; endl;
+  return 0;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfe996ea" class="outline-2">
+<h2 id="orgfe996ea">第九题</h2>
+<div class="outline-text-2" id="text-orgfe996ea">
+</div>
+<div id="outline-container-org1b36658" class="outline-3">
+<h3 id="org1b36658">题目</h3>
+<div class="outline-text-3" id="text-org1b36658">
+<p>
+问题描述<br />
+　　小蓝有一张黑白图像，由 n * m 个像素组成，其中从上到下共 n 行，每行从左到右 m 列。每个像素由一个 0 到 255 之间的灰度值表示。<br />
+　　现在，小蓝准备对图像进行模糊操作，操作的方法为：<br />
+　　对于每个像素，将以它为中心 3 * 3 区域内的所有像素（可能是 9 个像素或少于 9 个像素）求和后除以这个范围内的像素个数（取下整），得到的值就是模糊后的结果。<br />
+　　请注意每个像素都要用原图中的灰度值计算求和。<br />
+输入格式<br />
+　　输入的第一行包含两个整数 n, m。<br />
+　　第 2 行到第 n + 1 行每行包含 m 个整数，表示每个像素的灰度值，相邻整数之间用一个空格分隔。<br />
+输出格式<br />
+　　输出 n 行，每行 m 个整数，相邻整数之间用空格分隔，表示模糊后的图像。<br />
+样例输入<br />
+</p>
+
+<pre class="example" id="org47be057">
+3 4
+0 0 0 255
+0 0 255 0
+0 30 255 255
+</pre>
+
+<p>
+样例输出<br />
+</p>
+
+<pre class="example" id="orgb67feb1">
+0 42 85 127
+5 60 116 170
+7 90 132 191
+</pre>
+
+<p>
+数据规模和约定<br />
+　　对于所有评测用例，1 &lt;= n, m &lt;= 100。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org7c8989d" class="outline-3">
+<h3 id="org7c8989d">解析</h3>
+<div class="outline-text-3" id="text-org7c8989d">
+<p>
+遍历统计计算并输出即可<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orga6e9eef" class="outline-3">
+<h3 id="orga6e9eef">代码</h3>
+<div class="outline-text-3" id="text-orga6e9eef">
+<div class="org-src-container">
+<pre class="src src-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+  int n, m;
+  cin &gt;&gt; n &gt;&gt; m;
+  int pic[n][m];
+  for (int i = 0; i &lt; n; i++)
+    for (int j = 0; j &lt; m; j++)
+      cin &gt;&gt; pic[i][j];
+  for (int i = 0; i &lt; n; i++) {
+    for (int j = 0; j &lt; m; j++) {
+      int c = 0, sum = 0;
+      // 遍历周边像素，计算和与个数
+      for (int a = -1; a &lt;= 1; a++)
+        for (int b = -1; b &lt;= 1; b++) {
+          int x = i + a, y = j + b;
+          if (x &gt;= 0 &amp;&amp; y &gt;= 0 &amp;&amp; x &lt; n &amp;&amp; y &lt; m)
+            c++, sum += pic[x][y];
+        }
+      // 计算并直接输出
+      cout &lt;&lt; sum / c &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+  }
+  return 0;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org6526097" class="outline-2">
+<h2 id="org6526097">第十题</h2>
+<div class="outline-text-2" id="text-org6526097">
+</div>
+<div id="outline-container-orgf12096b" class="outline-3">
+<h3 id="orgf12096b">题目</h3>
+<div class="outline-text-3" id="text-orgf12096b">
+<p>
+问题描述<br />
+　　小蓝在一个 n 行 m 列的方格图中玩一个游戏。<br />
+　　开始时，小蓝站在方格图的左上角，即第 1 行第 1 列。<br />
+　　小蓝可以在方格图上走动，走动时，如果当前在第 r 行第 c 列，他不能走到行号比 r 小的行，也不能走到列号比 c 小的列。同时，他一步走的直线距离不超过3。<br />
+　　例如，如果当前小蓝在第 3 行第 5 列，他下一步可以走到第 3 行第 6 列、第 3 行第 7 列、第 3 行第 8 列、第 4 行第 5 列、第 4 行第 6 列、第 4 行第 7 列、第 5 行第 5 列、第 5 行第 6 列、第 6 行第 5 列之一。<br />
+　　小蓝最终要走到第 n 行第 m 列。<br />
+　　在图中，有的位置有奖励，走上去即可获得，有的位置有惩罚，走上去就要接受惩罚。奖励和惩罚最终抽象成一个权值，奖励为正，惩罚为负。<br />
+　　小蓝希望，从第 1 行第 1 列走到第 n 行第 m 列后，总的权值和最大。请问最大是多少？<br />
+输入格式<br />
+　　输入的第一行包含两个整数 n, m，表示图的大小。<br />
+　　接下来 n 行，每行 m 个整数，表示方格图中每个点的权值。<br />
+输出格式<br />
+　　输出一个整数，表示最大权值和。<br />
+样例输入<br />
+</p>
+
+<pre class="example" id="org1c7e472">
+3 5
+-4 -5 -10 -3 1
+7 5 -9 3 -10
+10 -2 6 -10 -4
+</pre>
+
+<p>
+样例输出<br />
+</p>
+
+<pre class="example" id="org7290a3c">
+15
+</pre>
+
+<p>
+数据规模和约定<br />
+　　对于30%的评测用例，1 &lt;= n, m &lt;= 10；<br />
+　　对于50%的评测用例，1 &lt;= n, m &lt;= 20；<br />
+　　对于所有评测用例，1 &lt;= n &lt;= 100，-10000 &lt;= 权值 &lt;= 10000。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org3b49a95" class="outline-3">
+<h3 id="org3b49a95">解析</h3>
+<div class="outline-text-3" id="text-org3b49a95">
+<p>
+和只能向下或向右走的题目一样，我们使用逆向思维，每个点的最大权值就是当前点的权值加上能走过来的点的最大权值<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org98f1dc0" class="outline-3">
+<h3 id="org98f1dc0">代码</h3>
+<div class="outline-text-3" id="text-org98f1dc0">
+<div class="org-src-container">
+<pre class="src src-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+long long max(long long a, long long b) {
+  if (a == -20000)
+    return b;
+  return a &gt; b ? a : b;
+}
+
+int main() {
+  int n, m;
+  cin &gt;&gt; n &gt;&gt; m;
+  long long dp[n][m];
+  for (int i = 0; i &lt; n; i++)
+    for (int j = 0; j &lt; m; j++) {
+      // 输入当前权值
+      cin &gt;&gt; dp[i][j];
+      // 因为不会用到后面的权值
+      // 所以可以边输入边处理
+      long long mp = -20000;
+      // 找到能到当前格子的最大权值
+      for (int a = 0; a &lt;= 3; a++)
+        // 不能走超过三步
+        for (int b = 0; b &lt;= 3 - a; b++)
+          if (a + b != 0) {
+            int x = i - a, y = j - b;
+            if (x &gt;= 0 &amp;&amp; y &gt;= 0 &amp;&amp; x &lt; n &amp;&amp; y &lt; m)
+              mp = max(mp, dp[x][y]);
+          }
+      dp[i][j] += mp;
+    }
+  cout &lt;&lt; dp[n - 1][m - 1] &lt;&lt; endl;
+  return 0;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+        <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2021-01-22</span>
+        <span title="last modification date" class="post-info">2021-01-22</span>
+        <span title="tags" class="post-info"><a href="/tags/蓝桥杯/">蓝桥杯</a></span>
+        <span title="author" class="post-info">shirui</span>
+      </div>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/org2prism.js"></script>
+      <script src="/media/js/fold-headings.js"></script>
+      <script src="/media/js/prism.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 28.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:1229408499 &lt;at&gt; qq &lt;dot&gt; com">shirui</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
