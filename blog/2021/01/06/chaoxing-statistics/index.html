@@ -50,9 +50,9 @@
 <div class="post">
 <h1 class="title">超星是如何统计学习情况的</h1>
 
-<div id="outline-container-org561f93a" class="outline-2">
-<h2 id="org561f93a">前言</h2>
-<div class="outline-text-2" id="text-org561f93a">
+<div id="outline-container-orge8ce99d" class="outline-2">
+<h2 id="orge8ce99d">前言</h2>
+<div class="outline-text-2" id="text-orge8ce99d">
 <p>
 写这篇文章当然是因为最近我有一门网课需要刷平时分，这门课的视频个数又不多，还多个视频合在一个网页上，最后又要求我们有几百次的学习次数，然后还要求我们有2个小时的阅读时长，但读物加起来顶多只有一两百页，超星的阅读统计又有些问题。为了给后人避坑，我就把摸索出来的一些经验分享出来。<br />
 </p>
@@ -67,29 +67,29 @@
 </div>
 </div>
 
-<div id="outline-container-orgbe726b3" class="outline-2">
-<h2 id="orgbe726b3">章节学习次数</h2>
-<div class="outline-text-2" id="text-orgbe726b3">
+<div id="outline-container-orgbd1a65b" class="outline-2">
+<h2 id="orgbd1a65b">章节学习次数</h2>
+<div class="outline-text-2" id="text-orgbd1a65b">
 </div>
-<div id="outline-container-org642be6f" class="outline-3">
-<h3 id="org642be6f">统计方法</h3>
-<div class="outline-text-3" id="text-org642be6f">
+<div id="outline-container-orge1edd55" class="outline-3">
+<h3 id="orge1edd55">统计方法</h3>
+<div class="outline-text-3" id="text-orge1edd55">
 <p>
 每打开一个视频页面等上一小会，学习次数就会增加，尚不知不滚动会不会有不良影响<br />
 </p>
 </div>
 </div>
-<div id="outline-container-orgd39c682" class="outline-3">
-<h3 id="orgd39c682">刷分方法</h3>
-<div class="outline-text-3" id="text-orgd39c682">
+<div id="outline-container-org12d8139" class="outline-3">
+<h3 id="org12d8139">刷分方法</h3>
+<div class="outline-text-3" id="text-org12d8139">
 <p>
 只需要对一个页面不停刷新即可<br />
 </p>
 </div>
 </div>
-<div id="outline-container-orgd54d897" class="outline-3">
-<h3 id="orgd54d897">代码实现</h3>
-<div class="outline-text-3" id="text-orgd54d897">
+<div id="outline-container-org157e8b9" class="outline-3">
+<h3 id="org157e8b9">代码实现</h3>
+<div class="outline-text-3" id="text-org157e8b9">
 <div class="org-src-container">
 <pre class="src src-js">// 我对于大部分操作加入了随机数
 // 避免可能的后台检测
@@ -103,30 +103,30 @@ setInterval(() =&gt; window.scroll(0, (now = now + Math.random() * 10)), 50);
 </div>
 </div>
 </div>
-<div id="outline-container-orge3bd30b" class="outline-2">
-<h2 id="orge3bd30b">阅读</h2>
-<div class="outline-text-2" id="text-orge3bd30b">
+<div id="outline-container-orga3b421d" class="outline-2">
+<h2 id="orga3b421d">阅读</h2>
+<div class="outline-text-2" id="text-orga3b421d">
 </div>
-<div id="outline-container-org2a5b473" class="outline-3">
-<h3 id="org2a5b473">统计方法</h3>
-<div class="outline-text-3" id="text-org2a5b473">
+<div id="outline-container-org4c35082" class="outline-3">
+<h3 id="org4c35082">统计方法</h3>
+<div class="outline-text-3" id="text-org4c35082">
 <p>
 经过测试，在网页上滚动具体阅读资料的区域刷分效果不好，我测试时第二天只增加了几分钟的阅读时长，所以只能滚动全局的页面<br />
 在刷分时我还注意到一个问题，单个页面可能有分值上限，所以我又改进了刷分方式<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org9247116" class="outline-3">
-<h3 id="org9247116">刷分方法</h3>
-<div class="outline-text-3" id="text-org9247116">
+<div id="outline-container-orgb9c55f4" class="outline-3">
+<h3 id="orgb9c55f4">刷分方法</h3>
+<div class="outline-text-3" id="text-orgb9c55f4">
 <p>
 打开阅读界面，不停向下滚动到底，到底后随机打开一个阅读页面，继续上续操作<br />
 </p>
 </div>
 </div>
-<div id="outline-container-orgacfe04e" class="outline-3">
-<h3 id="orgacfe04e">代码实现</h3>
-<div class="outline-text-3" id="text-orgacfe04e">
+<div id="outline-container-orgddcda89" class="outline-3">
+<h3 id="orgddcda89">代码实现</h3>
+<div class="outline-text-3" id="text-orgddcda89">
 <div class="org-src-container">
 <pre class="src src-js">// 获取随机阅读页面
 function randu() {
