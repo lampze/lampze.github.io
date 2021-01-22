@@ -493,11 +493,7 @@ int main() {
 
 using namespace std;
 
-long long max(long long a, long long b) {
-  if (a == -20000)
-    return b;
-  return a > b ? a : b;
-}
+long long max(long long a, long long b) { return a > b ? a : b; }
 
 int main() {
   int n, m;
@@ -509,7 +505,8 @@ int main() {
       cin >> dp[i][j];
       // 因为不会用到后面的权值
       // 所以可以边输入边处理
-      long long mp = -20000;
+      long long mp = 0;
+      bool flag = true;
       // 找到能到当前格子的最大权值
       for (int a = 0; a <= 3; a++)
         // 不能走超过三步
@@ -517,7 +514,11 @@ int main() {
           if (a + b != 0) {
             int x = i - a, y = j - b;
             if (x >= 0 && y >= 0 && x < n && y < m)
-              mp = max(mp, dp[x][y]);
+              if (flag) {
+                flag = false;
+                mp = dp[x][y];
+              } else
+                mp = max(mp, dp[x][y]);
           }
       dp[i][j] += mp;
     }
