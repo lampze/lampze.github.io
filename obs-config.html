@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://lampze.github.io/rss.xml"
+      title="RSS feed for https://lampze.github.io/">
+<title>obs直播配置</title>
+<meta  name="author" content="lampze" />
+      <link href= "static/style.css" rel="stylesheet" type="text/css" />
+      <link href= "static/org.css" rel="stylesheet" type="text/css" />
+      <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+      <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+<body>
+<div id="preamble" class="status"><div class="header">
+        <a href="https://lampze.github.io">lampze's Blog</a>
+      </div></div>
+<div id="content">
+<div class="post-date">05 3月 2020</div><h1 class="post-title"><a href="https://lampze.github.io/obs-config.html">obs直播配置</a></h1>
+<div id="outline-container-orgf542f09" class="outline-2">
+<h2 id="orgf542f09">obs 配置</h2>
+<div class="outline-text-2" id="text-orgf542f09">
+<p>
+没什么好说的，把推流地址写好，串流的输出主要调比特率，根据自己家的上行网速来填，
+最好比最大上行低一点，不然直播的延迟很大。配置好 n 卡的尽量用硬件编码。
+</p>
+</div>
+</div>
+<div id="outline-container-orgfa0049a" class="outline-2">
+<h2 id="orgfa0049a">音频输入配置</h2>
+<div class="outline-text-2" id="text-orgfa0049a">
+<p>
+主要是配置麦的滤镜，下面是我配置的滤镜，基本都是默认设置，不要随意更改顺序
+</p>
+<ol class="org-ol">
+<li>压缩器
+<ul class="org-ul">
+<li>避免来源：桌面音频</li>
+</ul></li>
+<li>噪声抑制
+<ul class="org-ul">
+<li>抑制程序：-30 dB</li>
+</ul></li>
+<li>扩展效果</li>
+<li>噪声抑制
+<ul class="org-ul">
+<li>抑制程度：-30 dB</li>
+</ul></li>
+<li>限幅</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org317fac8" class="outline-2">
+<h2 id="org317fac8">弹幕配置</h2>
+<div class="outline-text-2" id="text-org317fac8">
+<p>
+一般是用 obs 的浏览器场景的，但 Linux 下没有这个，非要用的话倒是有插件，但只适用
+于比较低版本的 obs，所以我打算利用系统通知结合网页的爬虫直接显示弹幕。
+</p>
+
+<p>
+爬虫已经有人写过了，我就直接拿来用了。
+</p>
+
+<p>
+<b>以下代码可能已经不可用，后续会另开一篇文章</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-go"><span style="font-weight: bold;">package</span> main
+
+<span style="font-weight: bold;">import</span> (
+  <span style="color: #8a3b3c;">"fmt"</span>
+  <span style="color: #8a3b3c;">"github.com/lyyyuna/gobilibili"</span>  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#29228;&#34411;&#30340;&#24211;&#65292;&#20027;&#39029;&#26377;&#29992;&#27861;</span>
+  <span style="color: #8a3b3c;">"github.com/martinlindhe/notify"</span> <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#20135;&#29983;&#31995;&#32479;&#36890;&#30693;&#30340;&#24211;</span>
+  <span style="color: #8a3b3c;">"log"</span>
+  <span style="color: #8a3b3c;">"time"</span>
+)
+
+<span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#38543;&#20415;&#20889;&#20102;&#20010;&#26041;&#20415;&#35843;&#29992;&#31995;&#32479;&#36890;&#30693;&#30340;&#20989;&#25968;</span>
+<span style="font-weight: bold;">func</span> <span style="font-weight: bold;">prt</span>(<span style="color: #383a42;">u</span> <span style="font-weight: bold;">string</span>, <span style="color: #383a42;">s</span> <span style="font-weight: bold;">string</span>) {
+  notify.<span style="font-weight: bold;">Notify</span>(<span style="color: #8a3b3c;">"gobilibili"</span>, u, s, <span style="color: #8a3b3c;">"./"</span>)
+}
+
+<span style="font-weight: bold;">func</span> <span style="font-weight: bold;">main</span>() {
+  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#20855;&#20307;&#30340;&#29992;&#27861;&#35831;&#30475;&#29228;&#34411;&#30340;github</span>
+  <span style="color: #383a42;">bili</span> := gobilibili.<span style="font-weight: bold;">NewBiliBiliClient</span>()
+  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">bili.RegHandleFunc(gobilibili.CmdAll, gobilibili.DefaultHandler)</span>
+  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">bili.RegHandleFunc(gobilibili.CmdAll, gobilibili.DebugHandler)</span>
+  bili.<span style="font-weight: bold;">RegHandleFunc</span>(gobilibili.CmdDanmuMsg, <span style="font-weight: bold;">func</span>(<span style="color: #383a42;">c</span> *<span style="font-weight: bold;">gobilibili.Context</span>) <span style="font-weight: bold;">bool</span> {
+    <span style="color: #383a42;">dinfo</span> := c.<span style="font-weight: bold;">GetDanmuInfo</span>()
+    <span style="font-weight: bold;">if</span> dinfo.Uname != <span style="color: #8a3b3c;">""</span> {
+      <span style="font-weight: bold;">prt</span>(dinfo.Uname+<span style="color: #8a3b3c;">"&#35828;&#65306;"</span>, dinfo.Text)
+      log.<span style="font-weight: bold;">Printf</span>(<span style="color: #8a3b3c;">"[%d]%s(%d) &#35828;: %s\r\n"</span>, c.RoomID, dinfo.Uname, dinfo.UID, dinfo.Text)
+    } <span style="font-weight: bold;">else</span> {
+      <span style="font-weight: bold;">prt</span>(fmt.<span style="font-weight: bold;">Sprintf</span>(<span style="color: #8a3b3c;">"[%d]&#35828;&#65306;"</span>, dinfo.UID), dinfo.Text)
+      log.<span style="font-weight: bold;">Printf</span>(<span style="color: #8a3b3c;">"[%d]%d &#35828;: %s\r\n"</span>, c.RoomID, dinfo.UID, dinfo.Text)
+    }
+    <span style="font-weight: bold;">return</span> <span style="color: #383a42;">false</span>
+  })
+  bili.<span style="font-weight: bold;">RegHandleFunc</span>(gobilibili.CmdWelcome, <span style="font-weight: bold;">func</span>(<span style="color: #383a42;">c</span> *<span style="font-weight: bold;">gobilibili.Context</span>) <span style="font-weight: bold;">bool</span> {
+    <span style="color: #383a42;">winfo</span> := c.<span style="font-weight: bold;">GetWelcomeInfo</span>()
+    <span style="font-weight: bold;">if</span> winfo.Uname != <span style="color: #8a3b3c;">""</span> {
+      log.<span style="font-weight: bold;">Printf</span>(<span style="color: #8a3b3c;">"[%d]%s(%d) &#36827;&#20837;&#20102;&#25151;&#38388;\r\n"</span>, c.RoomID, winfo.Uname, winfo.UID)
+    } <span style="font-weight: bold;">else</span> {
+      log.<span style="font-weight: bold;">Printf</span>(<span style="color: #8a3b3c;">"[%d]%d &#36827;&#20837;&#20102;&#25151;&#38388;\r\n"</span>, c.RoomID, winfo.UID)
+    }
+    <span style="font-weight: bold;">return</span> <span style="color: #383a42;">false</span>
+  })
+
+  bili.<span style="font-weight: bold;">RegHandleFunc</span>(gobilibili.CmdSendGift, <span style="font-weight: bold;">func</span>(<span style="color: #383a42;">c</span> *<span style="font-weight: bold;">gobilibili.Context</span>) <span style="font-weight: bold;">bool</span> {
+    <span style="color: #383a42;">gInfo</span> := c.<span style="font-weight: bold;">GetGiftInfo</span>()
+    <span style="font-weight: bold;">prt</span>(<span style="color: #8a3b3c;">"&#31036;&#29289;"</span>, fmt.<span style="font-weight: bold;">Sprintf</span>(<span style="color: #8a3b3c;">"[%d]%s(%d) %s &#20102; %s x %d (&#20215;&#20540;%.3f)\r\n"</span>, c.RoomID, gInfo.Uname, gInfo.UID, gInfo.Action, gInfo.GiftName, gInfo.Num, <span style="font-weight: bold;">float32</span>(gInfo.Price*gInfo.Num)/<span style="color: #8a3b3c; font-weight: bold;">1000</span>))
+    log.<span style="font-weight: bold;">Printf</span>(<span style="color: #8a3b3c;">"[%d]%s(%d) %s &#20102; %s x %d (&#20215;&#20540;%.3f)\r\n"</span>, c.RoomID, gInfo.Uname, gInfo.UID, gInfo.Action, gInfo.GiftName, gInfo.Num, <span style="font-weight: bold;">float32</span>(gInfo.Price*gInfo.Num)/<span style="color: #8a3b3c; font-weight: bold;">1000</span>)
+    <span style="font-weight: bold;">return</span> <span style="color: #383a42;">false</span>
+  })
+
+  bili.<span style="font-weight: bold;">RegHandleFunc</span>(gobilibili.CmdOnlineChange, <span style="font-weight: bold;">func</span>(<span style="color: #383a42;">c</span> *<span style="font-weight: bold;">gobilibili.Context</span>) <span style="font-weight: bold;">bool</span> {
+    <span style="color: #383a42;">online</span> := c.<span style="font-weight: bold;">GetOnlineNumber</span>()
+    log.<span style="font-weight: bold;">Printf</span>(<span style="color: #8a3b3c;">"[%d]&#25151;&#38388;&#37324;&#24403;&#21069;&#22312;&#32447;&#65306;%d\r\n"</span>, c.RoomID, online)
+    <span style="font-weight: bold;">return</span> <span style="color: #383a42;">false</span>
+  })
+
+  bili.<span style="font-weight: bold;">RegHandleFunc</span>(gobilibili.CmdNoticeMsg, <span style="font-weight: bold;">func</span>(<span style="color: #383a42;">c</span> *<span style="font-weight: bold;">gobilibili.Context</span>) <span style="font-weight: bold;">bool</span> {
+    <span style="color: #383a42;">nMsg</span> := c.<span style="font-weight: bold;">GetNoticeMsg</span>()
+    log.<span style="font-weight: bold;">Printf</span>(<span style="color: #8a3b3c;">"[%d]&#31995;&#32479;&#28040;&#24687;&#36890;&#30693;: %s\r\n"</span>, c.RoomID, nMsg.MsgCommon)
+    <span style="font-weight: bold;">return</span> <span style="color: #383a42;">false</span>
+  })
+
+  <span style="font-weight: bold;">for</span> {
+    <span style="color: #383a42;">err</span> := bili.<span style="font-weight: bold;">ConnectServer</span>(<span style="color: #8a3b3c; font-weight: bold;">1594896</span>) <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#36825;&#37324;&#20889;&#25151;&#38388;&#21495;</span>
+    log.<span style="font-weight: bold;">Println</span>(<span style="color: #8a3b3c;">"&#19982;&#24377;&#24149;&#26381;&#21153;&#22120;&#36830;&#25509;&#20013;&#26029;,3&#31186;&#21518;&#37325;&#36830;&#12290;&#21407;&#22240;:"</span>, err.<span style="font-weight: bold;">Error</span>())
+    time.<span style="font-weight: bold;">Sleep</span>(time.Second * <span style="color: #8a3b3c; font-weight: bold;">3</span>)
+  }
+}
+</pre>
+</div>
+
+<p>
+不要忘了把那两个库安装好，代码最好用 <code>go build</code> 编译成可执行文件。
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-obs.html">obs</a> <a href="https://lampze.github.io/tag-bilibili.html">bilibili</a> <a href="https://lampze.github.io/tag-linux.html">Linux</a> </div></div>
+<div id="postamble" class="status"><center>
+         <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"></a><br />
+         <span xmlns:dct="https://purl.org/dc/terms/"
+               href="https://purl.org/dc/dcmitype/Text"
+               property="dct:title"
+               rel="dct:type">
+           https://lampze.github.io
+         </span>
+         by
+         <a xmlns:cc="https://creativecommons.org/ns#"
+              href="https://lampze.github.io"
+              property="cc:attributionName"
+              rel="cc:attributionURL">
+           lampze
+         </a>
+         is licensed under a
+         <a rel="license"
+            href="https://creativecommons.org/licenses/by-sa/3.0/">
+           Creative Commons Attribution-ShareAlike 3.0 Unported License
+         </a>.
+       </center>
+       <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.slim.js"></script>
+       <script type="text/javascript" src="static/main.js"></script></div>
+</body>
+</html>

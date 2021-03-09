@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://lampze.github.io/rss.xml"
+      title="RSS feed for https://lampze.github.io/">
+<title>snails 在 Doom 下的bug</title>
+<meta  name="author" content="lampze" />
+      <link href= "static/style.css" rel="stylesheet" type="text/css" />
+      <link href= "static/org.css" rel="stylesheet" type="text/css" />
+      <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+      <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+<body>
+<div id="preamble" class="status"><div class="header">
+        <a href="https://lampze.github.io">lampze's Blog</a>
+      </div></div>
+<div id="content">
+<div class="post-date">04 3月 2020</div><h1 class="post-title"><a href="https://lampze.github.io/snails-to-small.html">snails 在 Doom 下的bug</a></h1>
+
+<div id="outline-container-org265e376" class="outline-2">
+<h2 id="org265e376">问题</h2>
+<div class="outline-text-2" id="text-org265e376">
+<p>
+自从 snails 加入了 tips 后，在 Doom 里 snails 就打不开了，会报错 <code>split-window:
+Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
+</p>
+
+<p>
+但在 <code>emacs -q</code> 下就完全没有问题
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb116c3d" class="outline-2">
+<h2 id="orgb116c3d">原因</h2>
+<div class="outline-text-2" id="text-orgb116c3d">
+<p>
+经过一番调试，发现是因为 <code>(line-pixel-height)</code> 返回的值太小了，导致不能分割窗口。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org582e0e6" class="outline-2">
+<h2 id="org582e0e6">解决</h2>
+<div class="outline-text-2" id="text-org582e0e6">
+<p>
+两种方法
+</p>
+<ol class="org-ol">
+<li>修改源码把 <code>(line-pixel-height)</code> 改成可以分割的值，比如在原基础上乘二，但以后
+更新就比较难维护</li>
+
+<li>把字体调大，snails 调字体需要配置 face。</li>
+</ol>
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #014980;">(</span>def-package! snails
+  <span style="color: #556b2f;">;; </span><span style="color: #556b2f;">&#35201;&#22312;&#36733;&#20837;&#23436;&#20043;&#21518;&#20462;&#25913;face</span>
+  <span style="font-weight: bold;">:config</span>
+  <span style="color: #a626a4;">(</span><span style="font-weight: bold;">set-face-attribute</span> <span style="color: #383a42;">'</span><span style="color: #383a42;">snails-content-buffer-face</span> nil <span style="font-weight: bold;">:height</span> <span style="color: #8a3b3c; font-weight: bold;">240</span><span style="color: #a626a4;">)</span><span style="color: #014980;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-snails.html">snails</a> <a href="https://lampze.github.io/tag-emacs.html">Emacs</a> <a href="https://lampze.github.io/tag-doom.html">Doom</a> </div></div>
+<div id="postamble" class="status"><center>
+         <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"></a><br />
+         <span xmlns:dct="https://purl.org/dc/terms/"
+               href="https://purl.org/dc/dcmitype/Text"
+               property="dct:title"
+               rel="dct:type">
+           https://lampze.github.io
+         </span>
+         by
+         <a xmlns:cc="https://creativecommons.org/ns#"
+              href="https://lampze.github.io"
+              property="cc:attributionName"
+              rel="cc:attributionURL">
+           lampze
+         </a>
+         is licensed under a
+         <a rel="license"
+            href="https://creativecommons.org/licenses/by-sa/3.0/">
+           Creative Commons Attribution-ShareAlike 3.0 Unported License
+         </a>.
+       </center>
+       <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.slim.js"></script>
+       <script type="text/javascript" src="static/main.js"></script></div>
+</body>
+</html>

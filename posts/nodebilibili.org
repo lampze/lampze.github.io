@@ -1,0 +1,88 @@
+#+TITLE:       论如何在Linux下直播显示弹幕
+#+DATE:        <2020-08-19 00:00>
+#+FILETAGS:    nodejs
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 用node写了个弹幕显示程序
+
+* 前言
+因为最近有b站直播的需求，但直播过程中查看弹幕非常麻烦，之前我只能用手机打开我的直播间查看。
+
+但网上针对 =Linux= 的程序要么失效了要么非常麻烦，可以直接在 =obs= 上显示弹幕，但由于在 =Linux= 上的 =obs= 默认不能抓取 =web= 的内容，还需要自己打补丁，并且还只能支持比较低的版本。
+
+所以我打算用b站的 =API= 自己写个程序出来，后来在网上发现别人已经把 =API= 封装好了，就是这个库[[https://github.com/simon300000/bilibili-live-ws][bilibili-live-ws]]，剩下的就是显示问题了，我打算利用 =Linux= 的 =notifier= 功能，一般桌面都会响应这个请求的，如果没有有些终端也会响应的。平常桌面跳出的一些系统通知就是使用这个功能。同样在网上找到了封装好的库[[https://github.com/mikaelbr/node-notifier][node-notifier]]。
+
+* 组装
+首先创建一个 =node= 工作目录，初始化好，然后安装上面的两个库。
+
+#+BEGIN_SRC shell
+# 我喜欢yarn，当然现在的npm好像也不错
+mkdir nodebilibili
+cd nodebilibili
+yarn init
+yarn add node-notifier bilibili-live-ws
+#+END_SRC
+
+因为也不复杂就新建一个 =index.js= 文件就好了， =API= 可以在这里查询[[https://github.com/lovelyyoshino/Bilibili-Live-API][Bilibili-Live-API]]，最后把输出的部分改成使用 =node-notifier= 输出就行了，说实话我也不敢相信这么简单就完成了。
+
+#+BEGIN_SRC js
+#!/usr/bin/env node
+
+const {
+  LiveWS,
+  LiveTCP,
+  KeepLiveWS,
+  KeepLiveTCP,
+} = require("bilibili-live-ws");
+
+const notifier = require("node-notifier");
+
+let roomid = Number(process.argv[2]);
+
+const live = new LiveWS(roomid);
+
+live.on("open", () => console.log("已经连接上直播间" + roomid));
+
+live.on("live", () => {
+  live.on("heartbeat", (online) => {
+    console.log("当前人气值为：" + online);
+  });
+
+  live.on("msg", (data) => {
+    switch (data.cmd) {
+      case "DANMU_MSG":
+        userName = data.info[2][1];
+        danmu = data.info[1];
+        console.log(`${userName}: ${danmu}`);
+        notifier.notify({
+          "app-name": "nodebilibili",
+          title: "弹幕",
+          message: `${userName}: ${danmu}`,
+        });
+        break;
+      case "SEND_GIFT":
+        giftName = data.data.giftName;
+        userName = data.data.uname;
+        giftNum = data.data.num;
+        userAction = data.data.action;
+        let prtStr = `${userName} ${userAction} ${giftNum} 个 ${giftName}`;
+        console.log(prtStr);
+        notifier.notify({
+          "app-name": "nodebilibili",
+          title: "礼物",
+          message: prtStr,
+        });
+        break;
+      case "WELCOME":
+        console.log(`欢迎 ${data.data.uname}`);
+        break;
+      default:
+      //console.log(data);
+    }
+  });
+});
+#+END_SRC
+
+这个程序可以直接使用运行，不用加 =node= 前缀，输入一个参数，内容是显示的直播间号，直播间编号一般是直播间地址后面的数字，如果不正确的话按 =F12= 在控制台查看 =BilibiliLive= 变量，这个对象里的 =ROOMID= 就是真实房间号。
+
+* 后记
+我只写了自己需要的部分，如果有需要的地方就自己加嘛。

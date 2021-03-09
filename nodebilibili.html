@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://lampze.github.io/rss.xml"
+      title="RSS feed for https://lampze.github.io/">
+<title>论如何在Linux下直播显示弹幕</title>
+<meta  name="author" content="lampze" />
+      <link href= "static/style.css" rel="stylesheet" type="text/css" />
+      <link href= "static/org.css" rel="stylesheet" type="text/css" />
+      <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+      <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+<body>
+<div id="preamble" class="status"><div class="header">
+        <a href="https://lampze.github.io">lampze's Blog</a>
+      </div></div>
+<div id="content">
+<div class="post-date">19 8月 2020</div><h1 class="post-title"><a href="https://lampze.github.io/nodebilibili.html">论如何在Linux下直播显示弹幕</a></h1>
+
+<div id="outline-container-orgbeb3857" class="outline-2">
+<h2 id="orgbeb3857">前言</h2>
+<div class="outline-text-2" id="text-orgbeb3857">
+<p>
+因为最近有b站直播的需求，但直播过程中查看弹幕非常麻烦，之前我只能用手机打开我的直播间查看。
+</p>
+
+<p>
+但网上针对 <code>Linux</code> 的程序要么失效了要么非常麻烦，可以直接在 <code>obs</code> 上显示弹幕，但由于在 <code>Linux</code> 上的 <code>obs</code> 默认不能抓取 <code>web</code> 的内容，还需要自己打补丁，并且还只能支持比较低的版本。
+</p>
+
+<p>
+所以我打算用b站的 <code>API</code> 自己写个程序出来，后来在网上发现别人已经把 <code>API</code> 封装好了，就是这个库<a href="https://github.com/simon300000/bilibili-live-ws">bilibili-live-ws</a>，剩下的就是显示问题了，我打算利用 <code>Linux</code> 的 <code>notifier</code> 功能，一般桌面都会响应这个请求的，如果没有有些终端也会响应的。平常桌面跳出的一些系统通知就是使用这个功能。同样在网上找到了封装好的库<a href="https://github.com/mikaelbr/node-notifier">node-notifier</a>。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfc87d87" class="outline-2">
+<h2 id="orgfc87d87">组装</h2>
+<div class="outline-text-2" id="text-orgfc87d87">
+<p>
+首先创建一个 <code>node</code> 工作目录，初始化好，然后安装上面的两个库。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #556b2f;"># </span><span style="color: #556b2f;">&#25105;&#21916;&#27426;yarn&#65292;&#24403;&#28982;&#29616;&#22312;&#30340;npm&#22909;&#20687;&#20063;&#19981;&#38169;</span>
+<span style="font-weight: bold;">mkdir</span> nodebilibili
+<span style="font-weight: bold;">cd</span> nodebilibili
+yarn init
+yarn add node-notifier bilibili-live-ws
+</pre>
+</div>
+
+<p>
+因为也不复杂就新建一个 <code>index.js</code> 文件就好了， <code>API</code> 可以在这里查询<a href="https://github.com/lovelyyoshino/Bilibili-Live-API">Bilibili-Live-API</a>，最后把输出的部分改成使用 <code>node-notifier</code> 输出就行了，说实话我也不敢相信这么简单就完成了。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #556b2f;">#!/usr/bin/env node</span>
+
+<span style="font-weight: bold;">const</span> {
+  LiveWS,
+  LiveTCP,
+  KeepLiveWS,
+  KeepLiveTCP,
+} = require(<span style="color: #8a3b3c;">"bilibili-live-ws"</span>);
+
+<span style="font-weight: bold;">const</span> <span style="color: #383a42;">notifier</span> = require(<span style="color: #8a3b3c;">"node-notifier"</span>);
+
+<span style="font-weight: bold;">let</span> <span style="color: #383a42;">roomid</span> = Number(process.argv[<span style="color: #8a3b3c; font-weight: bold;">2</span>]);
+
+<span style="font-weight: bold;">const</span> <span style="color: #383a42;">live</span> = <span style="font-weight: bold;">new</span> <span style="font-weight: bold;">LiveWS</span>(roomid);
+
+live.on(<span style="color: #8a3b3c;">"open"</span>, () =&gt; console.log(<span style="color: #8a3b3c;">"&#24050;&#32463;&#36830;&#25509;&#19978;&#30452;&#25773;&#38388;"</span> + roomid));
+
+live.on(<span style="color: #8a3b3c;">"live"</span>, () =&gt; {
+  live.on(<span style="color: #8a3b3c;">"heartbeat"</span>, (online) =&gt; {
+    console.log(<span style="color: #8a3b3c;">"&#24403;&#21069;&#20154;&#27668;&#20540;&#20026;&#65306;"</span> + online);
+  });
+
+  live.on(<span style="color: #8a3b3c;">"msg"</span>, (data) =&gt; {
+    <span style="font-weight: bold;">switch</span> (data.cmd) {
+      <span style="font-weight: bold;">case</span> <span style="color: #8a3b3c;">"DANMU_MSG"</span>:
+        userName = data.info[<span style="color: #8a3b3c; font-weight: bold;">2</span>][<span style="color: #8a3b3c; font-weight: bold;">1</span>];
+        danmu = data.info[<span style="color: #8a3b3c; font-weight: bold;">1</span>];
+        console.log(<span style="color: #8a3b3c;">`${userName}: ${danmu}`</span>);
+        notifier.notify({
+          <span style="color: #8a3b3c;">"app-name"</span>: <span style="color: #8a3b3c;">"nodebilibili"</span>,
+          title: <span style="color: #8a3b3c;">"&#24377;&#24149;"</span>,
+          message: <span style="color: #8a3b3c;">`${userName}: ${danmu}`</span>,
+        });
+        <span style="font-weight: bold;">break</span>;
+      <span style="font-weight: bold;">case</span> <span style="color: #8a3b3c;">"SEND_GIFT"</span>:
+        giftName = data.data.giftName;
+        userName = data.data.uname;
+        giftNum = data.data.num;
+        userAction = data.data.action;
+        <span style="font-weight: bold;">let</span> <span style="color: #383a42;">prtStr</span> = <span style="color: #8a3b3c;">`${userName} ${userAction} ${giftNum} &#20010; ${giftName}`</span>;
+        console.log(prtStr);
+        notifier.notify({
+          <span style="color: #8a3b3c;">"app-name"</span>: <span style="color: #8a3b3c;">"nodebilibili"</span>,
+          title: <span style="color: #8a3b3c;">"&#31036;&#29289;"</span>,
+          message: prtStr,
+        });
+        <span style="font-weight: bold;">break</span>;
+      <span style="font-weight: bold;">case</span> <span style="color: #8a3b3c;">"WELCOME"</span>:
+        console.log(<span style="color: #8a3b3c;">`&#27426;&#36814; ${data.data.uname}`</span>);
+        <span style="font-weight: bold;">break</span>;
+      <span style="font-weight: bold;">default</span>:
+      <span style="color: #556b2f;">//</span><span style="color: #556b2f;">console.log(data);</span>
+    }
+  });
+});
+</pre>
+</div>
+
+<p>
+这个程序可以直接使用运行，不用加 <code>node</code> 前缀，输入一个参数，内容是显示的直播间号，直播间编号一般是直播间地址后面的数字，如果不正确的话按 <code>F12</code> 在控制台查看 <code>BilibiliLive</code> 变量，这个对象里的 <code>ROOMID</code> 就是真实房间号。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6d57cfe" class="outline-2">
+<h2 id="org6d57cfe">后记</h2>
+<div class="outline-text-2" id="text-org6d57cfe">
+<p>
+我只写了自己需要的部分，如果有需要的地方就自己加嘛。
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-nodejs.html">nodejs</a> </div></div>
+<div id="postamble" class="status"><center>
+         <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"></a><br />
+         <span xmlns:dct="https://purl.org/dc/terms/"
+               href="https://purl.org/dc/dcmitype/Text"
+               property="dct:title"
+               rel="dct:type">
+           https://lampze.github.io
+         </span>
+         by
+         <a xmlns:cc="https://creativecommons.org/ns#"
+              href="https://lampze.github.io"
+              property="cc:attributionName"
+              rel="cc:attributionURL">
+           lampze
+         </a>
+         is licensed under a
+         <a rel="license"
+            href="https://creativecommons.org/licenses/by-sa/3.0/">
+           Creative Commons Attribution-ShareAlike 3.0 Unported License
+         </a>.
+       </center>
+       <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.slim.js"></script>
+       <script type="text/javascript" src="static/main.js"></script></div>
+</body>
+</html>

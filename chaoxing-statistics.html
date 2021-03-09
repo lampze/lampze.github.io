@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://lampze.github.io/rss.xml"
+      title="RSS feed for https://lampze.github.io/">
+<title>超星是如何统计学习情况的</title>
+<meta  name="author" content="lampze" />
+      <link href= "static/style.css" rel="stylesheet" type="text/css" />
+      <link href= "static/org.css" rel="stylesheet" type="text/css" />
+      <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+      <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+<body>
+<div id="preamble" class="status"><div class="header">
+        <a href="https://lampze.github.io">lampze's Blog</a>
+      </div></div>
+<div id="content">
+<div class="post-date">06 1月 2021</div><h1 class="post-title"><a href="https://lampze.github.io/chaoxing-statistics.html">超星是如何统计学习情况的</a></h1>
+
+<div id="outline-container-org855f189" class="outline-2">
+<h2 id="org855f189">前言</h2>
+<div class="outline-text-2" id="text-org855f189">
+<p>
+写这篇文章当然是因为最近我有一门网课需要刷平时分，这门课的视频个数又不多，还多个视频合在一个网页上，最后又要求我们有几百次的学习次数，然后还要求我们有2个小时的阅读时长，但读物加起来顶多只有一两百页，超星的阅读统计又有些问题。为了给后人避坑，我就把摸索出来的一些经验分享出来。<br>
+</p>
+
+<p>
+如果你的网课只需要看视频的话就不用往下看了，网上对于这种方法的解决方案有很多，简单的就是在手机上自己刷。<br>
+</p>
+
+<p>
+代码的使用方法不给出，请自行钻研，直接在控制台使用是不行的，需要在页面打开时就注入代码，实现这个功能的插件网上有很详细的教程。<br>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge98b6ef" class="outline-2">
+<h2 id="orge98b6ef">章节学习次数</h2>
+<div class="outline-text-2" id="text-orge98b6ef">
+</div>
+<div id="outline-container-org67be26a" class="outline-3">
+<h3 id="org67be26a">统计方法</h3>
+<div class="outline-text-3" id="text-org67be26a">
+<p>
+每打开一个视频页面等上一小会，学习次数就会增加，尚不知不滚动会不会有不良影响<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org37d9e11" class="outline-3">
+<h3 id="org37d9e11">刷分方法</h3>
+<div class="outline-text-3" id="text-org37d9e11">
+<p>
+只需要对一个页面不停刷新即可<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org03bf871" class="outline-3">
+<h3 id="org03bf871">代码实现</h3>
+<div class="outline-text-3" id="text-org03bf871">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#25105;&#23545;&#20110;&#22823;&#37096;&#20998;&#25805;&#20316;&#21152;&#20837;&#20102;&#38543;&#26426;&#25968;</span>
+<span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#36991;&#20813;&#21487;&#33021;&#30340;&#21518;&#21488;&#26816;&#27979;</span>
+<span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#19968;&#23450;&#26102;&#38388;&#21518;&#21047;&#26032;&#26412;&#32593;&#39029;</span>
+setTimeout(() =&gt; location.reload(), <span style="color: #8a3b3c; font-weight: bold;">1000</span> * Math.random() * <span style="color: #8a3b3c; font-weight: bold;">20</span>);
+<span style="font-weight: bold;">let</span> <span style="color: #383a42;">now</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>;
+<span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#36825;&#26159;&#28378;&#21160;&#24403;&#21069;&#39029;&#38754;&#65292;&#20063;&#26159;&#36991;&#20813;&#19981;&#33391;&#24433;&#21709;</span>
+setInterval(() =&gt; window.scroll(<span style="color: #8a3b3c; font-weight: bold;">0</span>, (now = now + Math.random() * <span style="color: #8a3b3c; font-weight: bold;">10</span>)), <span style="color: #8a3b3c; font-weight: bold;">50</span>);
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org474609a" class="outline-2">
+<h2 id="org474609a">阅读</h2>
+<div class="outline-text-2" id="text-org474609a">
+</div>
+<div id="outline-container-org5543036" class="outline-3">
+<h3 id="org5543036">统计方法</h3>
+<div class="outline-text-3" id="text-org5543036">
+<p>
+经过测试，在网页上滚动具体阅读资料的区域刷分效果不好，我测试时第二天只增加了几分钟的阅读时长，所以只能滚动全局的页面<br>
+在刷分时我还注意到一个问题，单个页面可能有分值上限，所以我又改进了刷分方式<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgb629dc7" class="outline-3">
+<h3 id="orgb629dc7">刷分方法</h3>
+<div class="outline-text-3" id="text-orgb629dc7">
+<p>
+打开阅读界面，不停向下滚动到底，到底后随机打开一个阅读页面，继续上续操作<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org8a0c5d9" class="outline-3">
+<h3 id="org8a0c5d9">代码实现</h3>
+<div class="outline-text-3" id="text-org8a0c5d9">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#33719;&#21462;&#38543;&#26426;&#38405;&#35835;&#39029;&#38754;</span>
+<span style="font-weight: bold;">function</span> <span style="font-weight: bold;">randu</span>() {
+  <span style="font-weight: bold;">let</span> <span style="color: #383a42;">arr</span> = [];
+  document
+    .querySelectorAll(<span style="color: #8a3b3c;">".mt10 .mb15 a"</span>)
+    .forEach((dom) =&gt; arr.push(dom.href));
+  <span style="font-weight: bold;">return</span> arr[Math.floor(Math.random() * arr.length)];
+}
+<span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#21521;&#19979;&#28378;&#21160;&#30452;&#21040;&#24213;</span>
+<span style="font-weight: bold;">let</span> <span style="color: #383a42;">now</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>;
+setInterval(() =&gt; {
+  window.scroll(<span style="color: #8a3b3c; font-weight: bold;">0</span>, (now += Math.random()));
+  <span style="font-weight: bold;">if</span> (now - <span style="color: #8a3b3c; font-weight: bold;">1</span> &gt; window.scrollY)
+    setTimeout(() =&gt; (location.href = randu()), <span style="color: #8a3b3c; font-weight: bold;">1000</span> * Math.random());
+}, <span style="color: #8a3b3c; font-weight: bold;">40</span>);
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-超星.html">超星</a> </div></div>
+<div id="postamble" class="status"><center>
+         <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"></a><br />
+         <span xmlns:dct="https://purl.org/dc/terms/"
+               href="https://purl.org/dc/dcmitype/Text"
+               property="dct:title"
+               rel="dct:type">
+           https://lampze.github.io
+         </span>
+         by
+         <a xmlns:cc="https://creativecommons.org/ns#"
+              href="https://lampze.github.io"
+              property="cc:attributionName"
+              rel="cc:attributionURL">
+           lampze
+         </a>
+         is licensed under a
+         <a rel="license"
+            href="https://creativecommons.org/licenses/by-sa/3.0/">
+           Creative Commons Attribution-ShareAlike 3.0 Unported License
+         </a>.
+       </center>
+       <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.slim.js"></script>
+       <script type="text/javascript" src="static/main.js"></script></div>
+</body>
+</html>

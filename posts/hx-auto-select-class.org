@@ -1,0 +1,95 @@
+#+TITLE:       华夏学院抢课分析
+#+DATE:        <2020-03-31 00:00>
+#+FILETAGS:    前端
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 记录在学校抢课的事情
+
+* 前言
+因为我上次抢课时认真的掐准时间时间进去抢，然后发现所有的课都秒没了，
+所以一怒之下就写了个脚本来帮我抢课。这次一试，果然选上了我想要的课。
+
+其实以前选课时都是无所谓的，只要修满 10 学分就行，但最近学校要求我们三种类型的课程必须
+每个都要修满 2 学分，所以有一种类型的课就变得特别难抢。
+这次抢课正常抢的同学都说没有选上那种类型的，
+看来早就有人写了这种脚本了。
+
+本教程只讨论原理，不教如何使用，请自行钻研，下面我就来分析一下这个脚本怎么写的。
+
+* API
+我使用的方法是直接获取页面上的 =DOM= 然后使用 =DOM= 的 =click= 函数，比直接用后
+端的接口肯定要慢许多，但我也不想把整个网页的代码看一遍，而且使用这种技术的人应该
+也不多，我认为只要在 1 秒内完成就差不多了。
+
+接下来我就趁着选课系统还未关闭开始记录下那些 =DOM= 的获取方法。
+
+以后学校更新系统的话下面的东西可能要改，当然我是不会更新的。
+
+#+BEGIN_SRC js
+$(".search-filter button")[0].click();     // 列出所有课程
+$("#contentBox .panel-title");             // 所有课程的标题
+$("#contentBox .panel-title")[0].click();  // 显示课程
+$("#contentBox .panel td.an button");      // 课程的确认按钮
+loadCoursesByPaged();                      // 加载剩余的课程
+#+END_SRC
+
+* 代码
+然后就可以开始写代码了，
+我只实现了基本的抢课功能，没有写定时，如果没开放系统可能会把网页卡住，想改的自己改。
+学校的系统是用 =Bootstrap= 和 =jQuery= 写的，不用自己导入了。
+
+#+BEGIN_SRC js
+// 真实获取dom，因为可能网页没有渲染完，dom没正常生成
+function getDom(name) {
+  // 我没有加节流，想弄的话自己写
+  time = 10000;
+  while (!$(name).length && time--);
+  return $(name);
+}
+
+// the world
+// 为了方便写了个睡眠函数，只能在同步函数里用，计量单位是毫秒
+// 不延时的话，测试时总有些BUG，看你自己了
+function sleep(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
+
+// 调用这个函数就直接抢课了比如: getClass('批判', 10)
+// want是一个数组，内容是要想要抢的课的关键字
+// sleepTime是每次延时的时间，主要是担心没dom没生成的问题
+async function getClass(want, sleepTime) {
+  await sleep(sleepTime);
+  getDom(".search-filter button")[0].click(); // 列出所有课程
+  // 直接加载10次，应该没有那么多课让你选的
+  for (var i = 0; i < 10; i++) {
+    await sleep(sleepTime);
+    loadCoursesByPaged();
+  }
+  var panelTitle = getDom("#contentBox .panel-title"); // 获取所有课程标题的Dom
+
+  // 遍历课程
+  for (var i = 0; i < panelTitle.length; i++) {
+    var thisTitle = panelTitle[i].innerText;
+
+    // 遍历关键字，选择要选的课
+    for (var j = 0; j < want.length; j++)
+      // 查找是否在标题内
+      if (~thisTitle.indexOf(want[j])) {
+        // 找到了
+        console.log(thisTitle);
+
+        await sleep(sleepTime);
+        panelTitle[i].click(); // 显示课程，可能可以不用展开，但我为了保险
+
+        await sleep(sleepTime);
+        var selectDom = getDom("#contentBox .panel td.an button")[i];
+        // 避免退选
+        if (selectDom.innerText == "选课") {
+          selectDom.click(); // 选择课程
+
+          await sleep(sleepTime);
+          getDom("#btn_confirm").click(); // 确认选择
+        }
+      }
+  }
+}
+#+END_SRC

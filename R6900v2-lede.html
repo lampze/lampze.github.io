@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://lampze.github.io/rss.xml"
+      title="RSS feed for https://lampze.github.io/">
+<title>R6900v2安装LEDE.org</title>
+<meta  name="author" content="lampze" />
+      <link href= "static/style.css" rel="stylesheet" type="text/css" />
+      <link href= "static/org.css" rel="stylesheet" type="text/css" />
+      <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+      <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+<body>
+<div id="preamble" class="status"><div class="header">
+        <a href="https://lampze.github.io">lampze's Blog</a>
+      </div></div>
+<div id="content">
+<div class="post-date">27 7月 2020</div><h1 class="post-title"><a href="https://lampze.github.io/R6900v2-lede.html">R6900v2安装LEDE.org</a></h1>
+
+<div id="outline-container-orgd7a5cd1" class="outline-2">
+<h2 id="orgd7a5cd1">前言</h2>
+<div class="outline-text-2" id="text-orgd7a5cd1">
+<p>
+首先我先劝退一波想买这个路由器的同学，以下是理由。
+</p>
+
+<ol class="org-ol">
+<li>支持的固件少并且不更新，不接受的同学只能自己编译固件</li>
+<li>编译时有许多的坑，一个不小心路由器就变砖了</li>
+<li>网件原厂的固件虽然稳定，但界面不好看还慢，功能也少</li>
+</ol>
+
+<p>
+如果你能接受或者已经买了就继续往下看吧。
+</p>
+
+<p>
+编译的固件选择了 <code>LEDE</code> ，因为作者是国人，在国内很多需求是相同的。
+</p>
+
+<p>
+有些自己编译过的同学可能会发现，配置的时候找不到这个路由器，根据这个<a href="https://github.com/openwrt/openwrt/pull/2614#issuecomment-569452109">PR</a>里说的情况， <code>R6700v2</code> 、 <code>R6800</code> 、 <code>R6900v2</code> 、 <code>R7450</code> 这几个路由器的核心硬件是相同的，甚至它们的官方固件都有相同的 <code>md5</code> ，理论上来说在配置时选择这个几个路由器都行，我测试过确实是可行的，目前我选择了 <code>R6700v2</code> 。
+</p>
+
+<p>
+最后编译时要注意刷机包的大小，大于30的话，刷完机路由器是开不了的。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org72bf1f0" class="outline-2">
+<h2 id="org72bf1f0">准备</h2>
+<div class="outline-text-2" id="text-org72bf1f0">
+<p>
+请自行准备好以下的东西再进行刷机
+</p>
+
+<ol class="org-ol">
+<li>可用的 <code>Linux</code> 系统</li>
+<li>根据<a href="https://github.com/coolsnowwolf/lede">官方文档</a>准备好环境，没有科学上网很慢的</li>
+<li><code>nmrpflash</code> 工具，用来救砖</li>
+</ol>
+
+<p>
+请完全准备好后再进行刷机的尝试，如果路由器变砖了就很麻烦了。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga99f237" class="outline-2">
+<h2 id="orga99f237">制作固件</h2>
+<div class="outline-text-2" id="text-orga99f237">
+</div>
+<div id="outline-container-org1450fdf" class="outline-3">
+<h3 id="org1450fdf">准备</h3>
+<div class="outline-text-3" id="text-org1450fdf">
+<p>
+进入 <code>LEDE</code> 目录，编辑 <code>feeds.conf.default</code> 文件，取消 <code>helloworld</code> 所在行的注释，这样就能选择 <code>ssr</code> 了，以下是示例。
+</p>
+
+<pre class="example" id="orgbd277a7">
+src-git packages https://github.com/coolsnowwolf/packages
+src-git luci https://github.com/coolsnowwolf/luci
+src-git routing https://git.openwrt.org/feed/routing.git
+src-git telephony https://git.openwrt.org/feed/telephony.git
+src-git freifunk https://github.com/freifunk/openwrt-packages.git
+#src-git video https://github.com/openwrt/video.git
+#src-git targets https://github.com/openwrt/targets.git
+#src-git management https://github.com/openwrt-management/packages.git
+#src-git oldpackages http://git.openwrt.org/packages.git
+#src-link custom /usr/src/openwrt/custom-feed
+src-git helloworld https://github.com/fw876/helloworld
+</pre>
+
+<p>
+然后更新安装 <code>feed</code> ， <code>feed</code> 存放着各种软件源码。
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">./scripts/feeds update -a
+./scripts/feeds install -a
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgca19482" class="outline-3">
+<h3 id="orgca19482">make menuconfig</h3>
+<div class="outline-text-3" id="text-orgca19482">
+<p>
+然后就是配置 <code>LEDE</code> 了， 运行命令 <code>make menuconfig</code> 。我来展示一些必要选项。
+</p>
+
+<pre class="example" id="orgfaf81cd">
+Target System (MediaTek Ralink MIPS)  ---&gt;
+Subtarget (MT7621 based boards)  ---&gt;
+Target Profile (NETGEAR R7200 v1 (NETGEAR R6700 v2))  ---&gt;
+</pre>
+
+<p>
+使用方向键移动在这三项上面，按回车进入选择菜单，选择括号中间的选项，选择这三项一定要从上往下。其中第三项还可以选择 <code>R6800</code> ，原因我就不多说了。
+</p>
+
+<p>
+选择了上面的内容就可进行下一步了，下面展示一些我的配置。
+</p>
+
+<pre class="example" id="org570b6eb">
+Extra packages  ---&gt;
+  &lt;*&gt; ipv6helper................... IPv6 Helper and Dynamic Update he.net of ip
+LuCI  ---&gt;
+  3. Applications  ---&gt;
+    &lt;*&gt; luci-app-qos..................... Quality of Service configuration module
+    &lt;*&gt; luci-app-flowoffload....................... LuCI support for Flow Offload
+    &lt;*&gt; luci-app-ssr-plus.......... SS/SSR/V2Ray/Trojan/Socks5/Tun LuCI interface
+    [ ] Include Shadowsocks V2ray Plugin
+    [*] Include V2ray
+    [ ] Include Trojan
+    [ ] Include Redsocks2
+    [ ] Include Kcptun
+    [ ] Include ShadowsocksR Server
+    &lt;*&gt; luci-app-wifischedule...... Turns WiFi on and off according to a schedule
+  4. Themes  ---&gt;
+    &lt;*&gt; luci-theme-argon............................................. Argon Theme
+Utilities  ---&gt;
+  Editors  ---&gt;
+    &lt;*&gt; vim-fuller........................ Vi IMproved - enhanced vi editor (Big)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org93a24b7" class="outline-3">
+<h3 id="org93a24b7">编译</h3>
+<div class="outline-text-3" id="text-org93a24b7">
+<p>
+<code>make download V=s</code> 先下载要编译的源码
+</p>
+
+<p>
+<code>make -j1</code> 编译，参数j后面是你的 <code>cpu</code> 的线程加一
+</p>
+
+<p>
+如果没有正确结束，使用这个命令查错 <code>make -j1 V=99</code>
+</p>
+
+<p>
+生成的固件在 <code>./bin/targets/ramips/mt7621</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0df8791" class="outline-3">
+<h3 id="org0df8791">刷机</h3>
+<div class="outline-text-3" id="text-org0df8791">
+</div>
+<div id="outline-container-orgf83c4cb" class="outline-4">
+<h4 id="orgf83c4cb">原生刷LEDE</h4>
+<div class="outline-text-4" id="text-orgf83c4cb">
+<p>
+直接在原生的管理界面点击升级固件，上传带有字段 <code>factory</code> 的固件即可。
+</p>
+</div>
+</div>
+<div id="outline-container-orgc8451db" class="outline-4">
+<h4 id="orgc8451db">LEDE升级</h4>
+<div class="outline-text-4" id="text-orgc8451db">
+<p>
+在固件升级页面使用带有字段 <code>sysupgrade</code> 的固件。
+</p>
+</div>
+</div>
+<div id="outline-container-orgaf10b66" class="outline-4">
+<h4 id="orgaf10b66">救砖或LEDE刷回原生</h4>
+<div class="outline-text-4" id="text-orgaf10b66">
+<p>
+使用 <code>nmrpflash -L</code> 列出所有网卡，找到正确的网卡，如果不知道就一个个试。
+</p>
+
+<p>
+然后使用 <code>nmrpflash -i &lt;网卡名&gt; -f &lt;固件名&gt;</code> 命令，执行命令的瞬间重启路由器，然后就可以看到固件正在上传，等待命令执行完毕后重启路由器就刷机完毕了。
+</p>
+
+<p>
+建议在 <code>windows</code> 下使用这个工具，这个命令需要管理员权限。
+</p>
+
+<p>
+注意！！！这个命令只能对网件的路由器使用。
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-openwrt.html">OpenWrt</a> <a href="https://lampze.github.io/tag-lede.html">LEDE</a> <a href="https://lampze.github.io/tag-router.html">router</a> </div></div>
+<div id="postamble" class="status"><center>
+         <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"></a><br />
+         <span xmlns:dct="https://purl.org/dc/terms/"
+               href="https://purl.org/dc/dcmitype/Text"
+               property="dct:title"
+               rel="dct:type">
+           https://lampze.github.io
+         </span>
+         by
+         <a xmlns:cc="https://creativecommons.org/ns#"
+              href="https://lampze.github.io"
+              property="cc:attributionName"
+              rel="cc:attributionURL">
+           lampze
+         </a>
+         is licensed under a
+         <a rel="license"
+            href="https://creativecommons.org/licenses/by-sa/3.0/">
+           Creative Commons Attribution-ShareAlike 3.0 Unported License
+         </a>.
+       </center>
+       <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.slim.js"></script>
+       <script type="text/javascript" src="static/main.js"></script></div>
+</body>
+</html>

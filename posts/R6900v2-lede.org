@@ -1,0 +1,111 @@
+#+TITLE:       R6900v2安装LEDE.org
+#+DATE:        <2020-07-27 00:00>
+#+FILETAGS:    OpenWrt LEDE router
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 讲解R6900v2安装配置LEDE
+
+* 前言
+首先我先劝退一波想买这个路由器的同学，以下是理由。
+
+1. 支持的固件少并且不更新，不接受的同学只能自己编译固件
+2. 编译时有许多的坑，一个不小心路由器就变砖了
+4. 网件原厂的固件虽然稳定，但界面不好看还慢，功能也少
+
+如果你能接受或者已经买了就继续往下看吧。
+
+编译的固件选择了 =LEDE= ，因为作者是国人，在国内很多需求是相同的。
+
+有些自己编译过的同学可能会发现，配置的时候找不到这个路由器，根据这个[[https://github.com/openwrt/openwrt/pull/2614#issuecomment-569452109][PR]]里说的情况， =R6700v2= 、 =R6800= 、 =R6900v2= 、 =R7450= 这几个路由器的核心硬件是相同的，甚至它们的官方固件都有相同的 =md5= ，理论上来说在配置时选择这个几个路由器都行，我测试过确实是可行的，目前我选择了 =R6700v2= 。
+
+最后编译时要注意刷机包的大小，大于30的话，刷完机路由器是开不了的。
+
+* 准备
+请自行准备好以下的东西再进行刷机
+
+1. 可用的 =Linux= 系统
+2. 根据[[https://github.com/coolsnowwolf/lede][官方文档]]准备好环境，没有科学上网很慢的
+3. =nmrpflash= 工具，用来救砖
+
+请完全准备好后再进行刷机的尝试，如果路由器变砖了就很麻烦了。
+   
+* 制作固件
+** 准备
+进入 =LEDE= 目录，编辑 =feeds.conf.default= 文件，取消 =helloworld= 所在行的注释，这样就能选择 =ssr= 了，以下是示例。
+
+#+BEGIN_EXAMPLE
+src-git packages https://github.com/coolsnowwolf/packages
+src-git luci https://github.com/coolsnowwolf/luci
+src-git routing https://git.openwrt.org/feed/routing.git
+src-git telephony https://git.openwrt.org/feed/telephony.git
+src-git freifunk https://github.com/freifunk/openwrt-packages.git
+#src-git video https://github.com/openwrt/video.git
+#src-git targets https://github.com/openwrt/targets.git
+#src-git management https://github.com/openwrt-management/packages.git
+#src-git oldpackages http://git.openwrt.org/packages.git
+#src-link custom /usr/src/openwrt/custom-feed
+src-git helloworld https://github.com/fw876/helloworld
+#+END_EXAMPLE
+
+然后更新安装 =feed= ， =feed= 存放着各种软件源码。
+#+BEGIN_SRC shell
+./scripts/feeds update -a
+./scripts/feeds install -a
+#+END_SRC
+
+** make menuconfig
+然后就是配置 =LEDE= 了， 运行命令 =make menuconfig= 。我来展示一些必要选项。
+
+#+BEGIN_EXAMPLE
+Target System (MediaTek Ralink MIPS)  --->
+Subtarget (MT7621 based boards)  --->
+Target Profile (NETGEAR R7200 v1 (NETGEAR R6700 v2))  --->
+#+END_EXAMPLE
+
+使用方向键移动在这三项上面，按回车进入选择菜单，选择括号中间的选项，选择这三项一定要从上往下。其中第三项还可以选择 =R6800= ，原因我就不多说了。
+
+选择了上面的内容就可进行下一步了，下面展示一些我的配置。
+
+#+BEGIN_EXAMPLE
+Extra packages  --->
+  <*> ipv6helper................... IPv6 Helper and Dynamic Update he.net of ip
+LuCI  --->
+  3. Applications  --->
+    <*> luci-app-qos..................... Quality of Service configuration module
+    <*> luci-app-flowoffload....................... LuCI support for Flow Offload
+    <*> luci-app-ssr-plus.......... SS/SSR/V2Ray/Trojan/Socks5/Tun LuCI interface
+    [ ] Include Shadowsocks V2ray Plugin
+    [*] Include V2ray
+    [ ] Include Trojan
+    [ ] Include Redsocks2
+    [ ] Include Kcptun
+    [ ] Include ShadowsocksR Server
+    <*> luci-app-wifischedule...... Turns WiFi on and off according to a schedule
+  4. Themes  --->
+    <*> luci-theme-argon............................................. Argon Theme
+Utilities  --->
+  Editors  --->
+    <*> vim-fuller........................ Vi IMproved - enhanced vi editor (Big)
+#+END_EXAMPLE
+
+** 编译
+=make download V=s= 先下载要编译的源码
+
+=make -j1= 编译，参数j后面是你的 =cpu= 的线程加一
+
+如果没有正确结束，使用这个命令查错 =make -j1 V=99=
+
+生成的固件在 =./bin/targets/ramips/mt7621=
+
+** 刷机
+*** 原生刷LEDE
+直接在原生的管理界面点击升级固件，上传带有字段 =factory= 的固件即可。
+*** LEDE升级
+在固件升级页面使用带有字段 =sysupgrade= 的固件。
+*** 救砖或LEDE刷回原生
+使用 =nmrpflash -L= 列出所有网卡，找到正确的网卡，如果不知道就一个个试。
+
+然后使用 =nmrpflash -i <网卡名> -f <固件名>= 命令，执行命令的瞬间重启路由器，然后就可以看到固件正在上传，等待命令执行完毕后重启路由器就刷机完毕了。
+
+建议在 =windows= 下使用这个工具，这个命令需要管理员权限。
+
+注意！！！这个命令只能对网件的路由器使用。
