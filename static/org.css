@@ -19,16 +19,16 @@ h4:before {
   left: -0.25em;
 }
 h1:before {
-  content: "✪";
+  content: "✺";
 }
 h2:before {
-  content: "✸";
+  content: "✹";
 }
 h3:before {
-  content: "●";
+  content: "✷";
 }
 h4:before {
-  content: "○";
+  content: "✶";
 }
 
 /* table of content */
