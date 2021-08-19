@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="description" content="C/C++的简单教程">
 <link rel="alternate"
       type="application/rss+xml"
       href="https://lampze.github.io/rss.xml"
@@ -10,6 +11,9 @@
 <meta  name="author" content="lampze" />
       <link href= "static/style.css" rel="stylesheet" type="text/css" />
       <link href= "static/org.css" rel="stylesheet" type="text/css" />
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+      <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
       <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
 <body>
@@ -18,166 +22,166 @@
       </div></div>
 <div id="content">
 <div class="post-date">17 11月 2020</div><h1 class="post-title"><a href="https://lampze.github.io/c-cpp-tutorial.html">C/C++简明教程</a></h1>
-<nav id="table-of-contents">
+<nav id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org00307a7">前言</a></li>
-<li><a href="#org4c33fcf">C语言</a>
+<li><a href="#orgfb1a1a7">前言</a></li>
+<li><a href="#org14375f0">C语言</a>
 <ul>
-<li><a href="#orgc9ffc6e">编程与运行流程</a>
+<li><a href="#org9075fe0">编程与运行流程</a>
 <ul>
-<li><a href="#org7cf3bd1">写代码</a></li>
-<li><a href="#org45e6858">编译</a></li>
-<li><a href="#org1d54306">运行过程</a></li>
+<li><a href="#org267c1ca">写代码</a></li>
+<li><a href="#orgdc6b4bc">编译</a></li>
+<li><a href="#org6990728">运行过程</a></li>
 </ul>
 </li>
-<li><a href="#org48f1f20">语法简介</a></li>
-<li><a href="#org0fc9574">变量</a>
+<li><a href="#org8a4a416">语法简介</a></li>
+<li><a href="#org161c3f7">变量</a>
 <ul>
-<li><a href="#org0de660e">简介</a></li>
-<li><a href="#org1c6795d">类型</a></li>
-<li><a href="#org0beead7">创建</a></li>
-<li><a href="#org6ded15c">使用</a></li>
+<li><a href="#orgb011527">简介</a></li>
+<li><a href="#orgf3b8b72">类型</a></li>
+<li><a href="#orge52c2d3">创建</a></li>
+<li><a href="#org68da447">使用</a></li>
 </ul>
 </li>
-<li><a href="#orgb0908b4">输入输出</a>
+<li><a href="#orgfbb045d">输入输出</a>
 <ul>
-<li><a href="#org959ad4b">简介</a></li>
-<li><a href="#org8b8c9d7">输出</a></li>
-<li><a href="#orgfa78520">输入</a></li>
+<li><a href="#org2fd28c1">简介</a></li>
+<li><a href="#org513045e">输出</a></li>
+<li><a href="#orgdc4ab6e">输入</a></li>
 </ul>
 </li>
-<li><a href="#orgd3f30cf">选择</a>
+<li><a href="#orgb2d6074">选择</a>
 <ul>
-<li><a href="#orgec113a6">简介</a></li>
-<li><a href="#orge063f4e">if</a></li>
-<li><a href="#orgb86c868">switch</a></li>
-<li><a href="#org494dca4">三元运算符</a></li>
+<li><a href="#org8ab92d2">简介</a></li>
+<li><a href="#org8cdc352">if</a></li>
+<li><a href="#org50eb4b5">switch</a></li>
+<li><a href="#orgdd84814">三元运算符</a></li>
 </ul>
 </li>
-<li><a href="#orgb80f130">循环</a>
+<li><a href="#orgef15c3d">循环</a>
 <ul>
-<li><a href="#org21779e9">简介</a></li>
-<li><a href="#org8b16d22">while</a></li>
-<li><a href="#org975b9da">for</a></li>
+<li><a href="#org298fb73">简介</a></li>
+<li><a href="#org0c3bb70">while</a></li>
+<li><a href="#orgbfdd42d">for</a></li>
 </ul>
 </li>
-<li><a href="#org4074a89">数组</a>
+<li><a href="#orgb545135">数组</a>
 <ul>
-<li><a href="#orgcfd2636">简介</a></li>
-<li><a href="#orgedfe400">语法</a></li>
-<li><a href="#org0d7b131">插入排序</a></li>
+<li><a href="#orgd71fe3d">简介</a></li>
+<li><a href="#orgde4413f">语法</a></li>
+<li><a href="#org5e7612c">插入排序</a></li>
 </ul>
 </li>
-<li><a href="#orgac86dc1">指针</a>
+<li><a href="#org6b9dda0">指针</a>
 <ul>
-<li><a href="#org794f329">简介</a></li>
-<li><a href="#orgb552b66">语法</a></li>
-<li><a href="#orga98d6db">用法</a></li>
-<li><a href="#org11c57d8">数组</a></li>
+<li><a href="#org80f8e54">简介</a></li>
+<li><a href="#orgae67bbd">语法</a></li>
+<li><a href="#orgfd08ee3">用法</a></li>
+<li><a href="#org9a78b48">数组</a></li>
 </ul>
 </li>
-<li><a href="#org376078d">函数</a>
+<li><a href="#org2c1fafd">函数</a>
 <ul>
-<li><a href="#orgd214572">简介</a></li>
-<li><a href="#org3e523ad">语法</a></li>
-<li><a href="#org3550930">例子</a></li>
+<li><a href="#org421720c">简介</a></li>
+<li><a href="#org2525e24">语法</a></li>
+<li><a href="#org33b8541">例子</a></li>
 </ul>
 </li>
-<li><a href="#orga97c5b4">递归</a>
+<li><a href="#orgf63ef79">递归</a>
 <ul>
-<li><a href="#org8ace069">简介</a></li>
-<li><a href="#org1038ecf">fib</a></li>
+<li><a href="#org48997ef">简介</a></li>
+<li><a href="#org246ccdf">fib</a></li>
 </ul>
 </li>
-<li><a href="#org6ee2ce7">结构体</a>
+<li><a href="#org86ed9f6">结构体</a>
 <ul>
-<li><a href="#org431f810">简介</a></li>
-<li><a href="#orga3f45f3">语法</a></li>
-<li><a href="#orge811611">结构体指针</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org0a65801">C++</a>
-<ul>
-<li><a href="#org65e129d">stl</a></li>
-<li><a href="#org030f854">输入输出</a>
-<ul>
-<li><a href="#org5f2a86a">头文件</a></li>
-<li><a href="#orgba9fc07">cin</a></li>
-<li><a href="#org310361f">cout</a></li>
-<li><a href="#orgc4efb2b">总结</a></li>
-</ul>
-</li>
-<li><a href="#org5ae8562">vector</a>
-<ul>
-<li><a href="#org3236987">头文件</a></li>
-<li><a href="#org315bb00">简介</a></li>
-<li><a href="#org6e0c184">创建</a></li>
-<li><a href="#orgce15851">使用</a></li>
-</ul>
-</li>
-<li><a href="#org7ffc4de">string</a>
-<ul>
-<li><a href="#orga9ce1e2">头文件</a></li>
-<li><a href="#orge70c94e">简介</a></li>
-<li><a href="#org9735071">使用</a></li>
-</ul>
-</li>
-<li><a href="#org653a8d5">queue</a>
-<ul>
-<li><a href="#orge213e9e">头文件</a></li>
-<li><a href="#orgd85b5a9">简介</a></li>
-<li><a href="#org6ef240d">使用</a></li>
-</ul>
-</li>
-<li><a href="#orgb066a0c">stack</a>
-<ul>
-<li><a href="#orge4f3fd1">头文件</a></li>
-<li><a href="#org809c290">简介</a></li>
-<li><a href="#org580352f">使用</a></li>
-</ul>
-</li>
-<li><a href="#org1dda62e">set</a>
-<ul>
-<li><a href="#org8228e8b">头文件</a></li>
-<li><a href="#org63f8a79">简介</a></li>
-<li><a href="#orgc4edaca">使用</a></li>
-</ul>
-</li>
-<li><a href="#org1885aba">map</a>
-<ul>
-<li><a href="#orgf61f937">头文件</a></li>
-<li><a href="#orga913712">简介</a></li>
-<li><a href="#orgfd9683b">使用</a></li>
-</ul>
-</li>
-<li><a href="#orgb8d8480">sort</a>
-<ul>
-<li><a href="#org26fd9f2">头文件</a></li>
-<li><a href="#org1491759">简介</a></li>
-<li><a href="#orgbe54812">用法</a></li>
-</ul>
-</li>
-<li><a href="#org4940007">next_permutation</a>
-<ul>
-<li><a href="#org438e87c">头文件</a></li>
-<li><a href="#org8c56738">简介</a></li>
-<li><a href="#orgc212c42">使用方法</a></li>
+<li><a href="#org3195a05">简介</a></li>
+<li><a href="#orgdce47d1">语法</a></li>
+<li><a href="#org28f00cf">结构体指针</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orga56a471">结语</a></li>
+<li><a href="#org5c3a805">C++</a>
+<ul>
+<li><a href="#org1b059fa">stl</a></li>
+<li><a href="#org6a9bc49">输入输出</a>
+<ul>
+<li><a href="#org7d355b1">头文件</a></li>
+<li><a href="#org026350b">cin</a></li>
+<li><a href="#org414664a">cout</a></li>
+<li><a href="#orgbc9eeaf">总结</a></li>
+</ul>
+</li>
+<li><a href="#org9b37666">vector</a>
+<ul>
+<li><a href="#orgae5539a">头文件</a></li>
+<li><a href="#org45b517f">简介</a></li>
+<li><a href="#orgdf8e642">创建</a></li>
+<li><a href="#org51d8c63">使用</a></li>
+</ul>
+</li>
+<li><a href="#org61c815b">string</a>
+<ul>
+<li><a href="#org9d71e3e">头文件</a></li>
+<li><a href="#org111d5ce">简介</a></li>
+<li><a href="#org0a0206e">使用</a></li>
+</ul>
+</li>
+<li><a href="#org1f65eb5">queue</a>
+<ul>
+<li><a href="#orgd511719">头文件</a></li>
+<li><a href="#org5689e22">简介</a></li>
+<li><a href="#orga1c1de0">使用</a></li>
+</ul>
+</li>
+<li><a href="#org99191e9">stack</a>
+<ul>
+<li><a href="#org934b91f">头文件</a></li>
+<li><a href="#org0102b52">简介</a></li>
+<li><a href="#orgd223c63">使用</a></li>
+</ul>
+</li>
+<li><a href="#org7107a76">set</a>
+<ul>
+<li><a href="#orgc88d47f">头文件</a></li>
+<li><a href="#orga283fd4">简介</a></li>
+<li><a href="#orgd3a16b8">使用</a></li>
+</ul>
+</li>
+<li><a href="#orgf829e17">map</a>
+<ul>
+<li><a href="#orgf80413b">头文件</a></li>
+<li><a href="#org9170687">简介</a></li>
+<li><a href="#orgb3fbe04">使用</a></li>
+</ul>
+</li>
+<li><a href="#org9c7e2f0">sort</a>
+<ul>
+<li><a href="#orgf8c3d30">头文件</a></li>
+<li><a href="#org7043764">简介</a></li>
+<li><a href="#orgf10dbe6">用法</a></li>
+</ul>
+</li>
+<li><a href="#org309a9cb">next_permutation</a>
+<ul>
+<li><a href="#org7ac2089">头文件</a></li>
+<li><a href="#org0b06de3">简介</a></li>
+<li><a href="#orgdee1c15">使用方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org143bc01">结语</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org00307a7" class="outline-2">
-<h2 id="org00307a7">前言</h2>
-<div class="outline-text-2" id="text-org00307a7">
+<div id="outline-container-orgfb1a1a7" class="outline-2">
+<h2 id="orgfb1a1a7">前言</h2>
+<div class="outline-text-2" id="text-orgfb1a1a7">
 <p>
 编程语言是让我们使用一个大部分人能理解的方式控制计算机，所以写代码时最重要的是可读性，对自己要求高的同学可以思考怎么保持代码的整洁与优雅。<br>
 </p>
@@ -200,17 +204,17 @@
 </div>
 </div>
 
-<div id="outline-container-org4c33fcf" class="outline-2">
-<h2 id="org4c33fcf">C语言</h2>
-<div class="outline-text-2" id="text-org4c33fcf">
+<div id="outline-container-org14375f0" class="outline-2">
+<h2 id="org14375f0">C语言</h2>
+<div class="outline-text-2" id="text-org14375f0">
 </div>
-<div id="outline-container-orgc9ffc6e" class="outline-3">
-<h3 id="orgc9ffc6e">编程与运行流程</h3>
-<div class="outline-text-3" id="text-orgc9ffc6e">
+<div id="outline-container-org9075fe0" class="outline-3">
+<h3 id="org9075fe0">编程与运行流程</h3>
+<div class="outline-text-3" id="text-org9075fe0">
 </div>
-<div id="outline-container-org7cf3bd1" class="outline-4">
-<h4 id="org7cf3bd1">写代码</h4>
-<div class="outline-text-4" id="text-org7cf3bd1">
+<div id="outline-container-org267c1ca" class="outline-4">
+<h4 id="org267c1ca">写代码</h4>
+<div class="outline-text-4" id="text-org267c1ca">
 <p>
 对于 <code>windows</code> 来说，我推荐新手使用 <code>Dev-C++</code> 这个 <code>IDE</code> 来编写代码，这个软件虽然有些年头了，也很长时间没有更新了，但作为一个编程集成环境还是及格的，具体的操作还是比较简单，很多事情都能一键完成。<br>
 对于参加蓝桥杯的同学， <code>Dev-C++</code> 也是官方指定的编程环境。<br>
@@ -222,9 +226,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org45e6858" class="outline-4">
-<h4 id="org45e6858">编译</h4>
-<div class="outline-text-4" id="text-org45e6858">
+<div id="outline-container-orgdc6b4bc" class="outline-4">
+<h4 id="orgdc6b4bc">编译</h4>
+<div class="outline-text-4" id="text-orgdc6b4bc">
 <p>
 对于 <code>IDE</code> 来说只需要按下按钮就能自动的编译了，没有什么需要动脑的地方。<br>
 </p>
@@ -238,9 +242,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org1d54306" class="outline-4">
-<h4 id="org1d54306">运行过程</h4>
-<div class="outline-text-4" id="text-org1d54306">
+<div id="outline-container-org6990728" class="outline-4">
+<h4 id="org6990728">运行过程</h4>
+<div class="outline-text-4" id="text-org6990728">
 <div class="org-src-container">
 <pre class="src src-c"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">stdio.h</span><span style="color: #014980;">&gt;</span>
 
@@ -261,9 +265,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org48f1f20" class="outline-3">
-<h3 id="org48f1f20">语法简介</h3>
-<div class="outline-text-3" id="text-org48f1f20">
+<div id="outline-container-org8a4a416" class="outline-3">
+<h3 id="org8a4a416">语法简介</h3>
+<div class="outline-text-3" id="text-org8a4a416">
 <p>
 我们从简单的语句开始，语句由表达式组成，一条语句必须有一个分号当作结尾，比如 <code>1+1;</code> 就是一条语句。这条语句中的 <code>+</code> 是 <code>C</code> 自带的一些操作符，数学上常用的运算符都有。这里需要强调一下 <code>=</code> 是赋值运算符，比如 <code>a=b;</code> 的意思就是把a的值设置成b的值，也即对等号右边的表达式进行求值，然后把返回值赋值给左边。变量可以简单理解为一个箱子，箱子可以放置或取出数据。<br>
 </p>
@@ -289,22 +293,22 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org0fc9574" class="outline-3">
-<h3 id="org0fc9574">变量</h3>
-<div class="outline-text-3" id="text-org0fc9574">
+<div id="outline-container-org161c3f7" class="outline-3">
+<h3 id="org161c3f7">变量</h3>
+<div class="outline-text-3" id="text-org161c3f7">
 </div>
-<div id="outline-container-org0de660e" class="outline-4">
-<h4 id="org0de660e">简介</h4>
-<div class="outline-text-4" id="text-org0de660e">
+<div id="outline-container-orgb011527" class="outline-4">
+<h4 id="orgb011527">简介</h4>
+<div class="outline-text-4" id="text-orgb011527">
 <p>
 变量可以理解成一个箱子，我们可以把一些东西放到箱子，也可以从箱子内把东西取出来。<br>
 类型的作用只是为每个箱子打上了标签，规定了箱子内不能随便放东西，比如一个放水果的箱子就不能把水倒进去。<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org1c6795d" class="outline-4">
-<h4 id="org1c6795d">类型</h4>
-<div class="outline-text-4" id="text-org1c6795d">
+<div id="outline-container-orgf3b8b72" class="outline-4">
+<h4 id="orgf3b8b72">类型</h4>
+<div class="outline-text-4" id="text-orgf3b8b72">
 <p>
 <code>C</code> 是一个强类型的语言，它的意思就是每个数据都有类型，不同类型的数据不能随便使用，比如一个整数类型的变量就不能放入一个小数数据。<br>
 </p>
@@ -327,9 +331,9 @@
 </div>
 </div>
 
-<div id="outline-container-org0beead7" class="outline-4">
-<h4 id="org0beead7">创建</h4>
-<div class="outline-text-4" id="text-org0beead7">
+<div id="outline-container-orge52c2d3" class="outline-4">
+<h4 id="orge52c2d3">创建</h4>
+<div class="outline-text-4" id="text-orge52c2d3">
 <p>
 创建一个变量需要使用变量声明语句，大概是这种形式 <code>&lt;变量类型&gt; &lt;变量名&gt;;</code> ，举个例子 <code>int a;</code> 这样就创建了一个 <code>int</code> 类型的变量 <code>a</code> 。<br>
 </p>
@@ -343,9 +347,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org6ded15c" class="outline-4">
-<h4 id="org6ded15c">使用</h4>
-<div class="outline-text-4" id="text-org6ded15c">
+<div id="outline-container-org68da447" class="outline-4">
+<h4 id="org68da447">使用</h4>
+<div class="outline-text-4" id="text-org68da447">
 <p>
 在表达式内，我们可以把变量当作一个求值操作，这个操作的返回值为变量内的值，比如 <code>int a = 1;</code> 后 <code>a</code> 这个表示式的值就为 <code>1</code> ， <code>(a + 1) * a</code> -&gt; <code>(1 + 1) * a</code> -&gt; <code>2 * a</code> -&gt; <code>2 * 1</code> -&gt; <code>2</code> 。<br>
 </p>
@@ -391,13 +395,13 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgb0908b4" class="outline-3">
-<h3 id="orgb0908b4">输入输出</h3>
-<div class="outline-text-3" id="text-orgb0908b4">
+<div id="outline-container-orgfbb045d" class="outline-3">
+<h3 id="orgfbb045d">输入输出</h3>
+<div class="outline-text-3" id="text-orgfbb045d">
 </div>
-<div id="outline-container-org959ad4b" class="outline-4">
-<h4 id="org959ad4b">简介</h4>
-<div class="outline-text-4" id="text-org959ad4b">
+<div id="outline-container-org2fd28c1" class="outline-4">
+<h4 id="org2fd28c1">简介</h4>
+<div class="outline-text-4" id="text-org2fd28c1">
 <p>
 我们写一个程序，一般都是面向用户的，作为人类我们肯定是需要获取和输入一些信息，一个无法干涉无法感知的东西我们是不能使用的。<br>
 </p>
@@ -418,13 +422,13 @@
 </div>
 </div>
 
-<div id="outline-container-org8b8c9d7" class="outline-4">
-<h4 id="org8b8c9d7">输出</h4>
-<div class="outline-text-4" id="text-org8b8c9d7">
+<div id="outline-container-org513045e" class="outline-4">
+<h4 id="org513045e">输出</h4>
+<div class="outline-text-4" id="text-org513045e">
 </div>
 <ul class="org-ul">
-<li><a id="org4288812"></a>putchar<br>
-<div class="outline-text-5" id="text-org4288812">
+<li><a id="org5a2c30c"></a>putchar<br>
+<div class="outline-text-5" id="text-org5a2c30c">
 <p>
 这个函数很容易理解，传入一个字符，并把它输出， <code>c</code> 可以使用 <code>''</code> 包裹一个字符来表示一个字符常量，如果 <code>''</code> 内有多个字符就会报错。<br>
 </p>
@@ -434,8 +438,8 @@
 </p>
 </div>
 </li>
-<li><a id="org490d3a4"></a>puts<br>
-<div class="outline-text-5" id="text-org490d3a4">
+<li><a id="orgd1ed1c1"></a>puts<br>
+<div class="outline-text-5" id="text-orgd1ed1c1">
 <p>
 同理这个函数也是传入一个字符串，并输出它，与字符的表示方式相似，我们使用 <code>""</code> 包裹多个字符来表示字符串变量。<br>
 </p>
@@ -445,8 +449,8 @@
 </p>
 </div>
 </li>
-<li><a id="org8346e7d"></a>printf<br>
-<div class="outline-text-5" id="text-org8346e7d">
+<li><a id="org8195850"></a>printf<br>
+<div class="outline-text-5" id="text-org8195850">
 <p>
 格式化输出一串字符，它接收任意多个参数，第一个参数是一个字符串，并把它作为模板，里面可以放一些标识来表示需要把标识替换成我们想要的数据，后面的参数填入表达式，函数会按顺序把它们一个个填入模板字符串中。<br>
 </p>
@@ -468,13 +472,13 @@
 </ul>
 </div>
 
-<div id="outline-container-orgfa78520" class="outline-4">
-<h4 id="orgfa78520">输入</h4>
-<div class="outline-text-4" id="text-orgfa78520">
+<div id="outline-container-orgdc4ab6e" class="outline-4">
+<h4 id="orgdc4ab6e">输入</h4>
+<div class="outline-text-4" id="text-orgdc4ab6e">
 </div>
 <ul class="org-ul">
-<li><a id="orgc4e6163"></a>getchar<br>
-<div class="outline-text-5" id="text-orgc4e6163">
+<li><a id="org2e68ab0"></a>getchar<br>
+<div class="outline-text-5" id="text-org2e68ab0">
 <p>
 这个函数从标准输入读入一个字符然后返回，比如 <code>char c = getchar();</code> 这条语句就会从输入流获取一个字符，并赋值给变量 <code>c</code> 。<br>
 </p>
@@ -484,8 +488,8 @@
 </p>
 </div>
 </li>
-<li><a id="orgeb3ca41"></a>gets<br>
-<div class="outline-text-5" id="text-orgeb3ca41">
+<li><a id="org0655f39"></a>gets<br>
+<div class="outline-text-5" id="text-org0655f39">
 <p>
 这个函数从标准输入读取一行字符，并把这一行填入一个字符数组。<br>
 </p>
@@ -507,8 +511,8 @@
 </p>
 </div>
 </li>
-<li><a id="org9e8acc2"></a>scanf<br>
-<div class="outline-text-5" id="text-org9e8acc2">
+<li><a id="orga5772df"></a>scanf<br>
+<div class="outline-text-5" id="text-orga5772df">
 <p>
 这个函数就可以支持多种形式格式的输入了，与上面的 <code>printf</code> 有相同的控制符。<br>
 需要注意一点， <code>scanf</code> 填写变量的位置需要提供一个指针，获取变量指针的方法是使用 <code>&amp;</code> 运算符。<br>
@@ -536,13 +540,13 @@
 </div>
 </div>
 
-<div id="outline-container-orgd3f30cf" class="outline-3">
-<h3 id="orgd3f30cf">选择</h3>
-<div class="outline-text-3" id="text-orgd3f30cf">
+<div id="outline-container-orgb2d6074" class="outline-3">
+<h3 id="orgb2d6074">选择</h3>
+<div class="outline-text-3" id="text-orgb2d6074">
 </div>
-<div id="outline-container-orgec113a6" class="outline-4">
-<h4 id="orgec113a6">简介</h4>
-<div class="outline-text-4" id="text-orgec113a6">
+<div id="outline-container-org8ab92d2" class="outline-4">
+<h4 id="org8ab92d2">简介</h4>
+<div class="outline-text-4" id="text-org8ab92d2">
 <p>
 选择结构的出现打破了我之前讲述的简洁明了的语法，我们需要重新学习一些额外的情况，所幸这种新结构并不复杂。<br>
 </p>
@@ -557,9 +561,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orge063f4e" class="outline-4">
-<h4 id="orge063f4e">if</h4>
-<div class="outline-text-4" id="text-orge063f4e">
+<div id="outline-container-org8cdc352" class="outline-4">
+<h4 id="org8cdc352">if</h4>
+<div class="outline-text-4" id="text-org8cdc352">
 <p>
 它的语法大概是这样 <code>if (表达式) { 代码块 }</code><br>
 简单来说如果对表达式求值的结果为真，就执行使用 <code>{}</code> 包裹的代码块<br>
@@ -585,7 +589,7 @@
   <span style="font-weight: bold;">int</span> <span style="color: #383a42;">a</span> = <span style="color: #8a3b3c; font-weight: bold;">10</span>;
   <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span>a &lt; <span style="color: #8a3b3c; font-weight: bold;">20</span><span style="color: #a626a4;">)</span>
     puts<span style="color: #a626a4;">(</span><span style="color: #8a3b3c;">"a &lt; 20\n"</span><span style="color: #a626a4;">)</span>;
-  
+
   <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span>a &gt; <span style="color: #8a3b3c; font-weight: bold;">100</span><span style="color: #a626a4;">)</span>
     puts<span style="color: #a626a4;">(</span><span style="color: #8a3b3c;">"a &gt; 100"</span><span style="color: #a626a4;">)</span>;
   <span style="font-weight: bold;">else</span>
@@ -603,9 +607,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgb86c868" class="outline-4">
-<h4 id="orgb86c868">switch</h4>
-<div class="outline-text-4" id="text-orgb86c868">
+<div id="outline-container-org50eb4b5" class="outline-4">
+<h4 id="org50eb4b5">switch</h4>
+<div class="outline-text-4" id="text-org50eb4b5">
 <p>
 <code>switch</code> 的语法比较复杂，简单来说它会把你给予的一个整数与 <code>case</code> 语句从上到下一一比对<br>
 如果跟 <code>case</code> 语句后面的值相等，就执行 <code>case</code> 对应的代码块<br>
@@ -635,9 +639,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org494dca4" class="outline-4">
-<h4 id="org494dca4">三元运算符</h4>
-<div class="outline-text-4" id="text-org494dca4">
+<div id="outline-container-orgdd84814" class="outline-4">
+<h4 id="orgdd84814">三元运算符</h4>
+<div class="outline-text-4" id="text-orgdd84814">
 <p>
 它的语法比较简单 <code>条件?表达式1:表达式2</code><br>
 对这个三元运算表达式求值时，如果条件为真就执行并返回表达式1的值，否则执行并返回表达式2的值<br>
@@ -657,22 +661,22 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgb80f130" class="outline-3">
-<h3 id="orgb80f130">循环</h3>
-<div class="outline-text-3" id="text-orgb80f130">
+<div id="outline-container-orgef15c3d" class="outline-3">
+<h3 id="orgef15c3d">循环</h3>
+<div class="outline-text-3" id="text-orgef15c3d">
 </div>
-<div id="outline-container-org21779e9" class="outline-4">
-<h4 id="org21779e9">简介</h4>
-<div class="outline-text-4" id="text-org21779e9">
+<div id="outline-container-org298fb73" class="outline-4">
+<h4 id="org298fb73">简介</h4>
+<div class="outline-text-4" id="text-org298fb73">
 <p>
 我们继续来破坏 <code>c</code> 的简单性，这次介绍循环结构<br>
 有两种方式来描述一个循环结构 <code>while</code> 、 <code>for</code><br>
 </p>
 </div>
 </div>
-<div id="outline-container-org8b16d22" class="outline-4">
-<h4 id="org8b16d22">while</h4>
-<div class="outline-text-4" id="text-org8b16d22">
+<div id="outline-container-org0c3bb70" class="outline-4">
+<h4 id="org0c3bb70">while</h4>
+<div class="outline-text-4" id="text-org0c3bb70">
 <p>
 语法为 <code>while(条件) {代码块}</code><br>
 与 <code>if</code> 的结构相似，与 <code>if</code> 不同的地方在于， <code>while</code> 会在代码块执行结束后重复检查条件，如果条件还是为真就继续执行代码块<br>
@@ -701,9 +705,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org975b9da" class="outline-4">
-<h4 id="org975b9da">for</h4>
-<div class="outline-text-4" id="text-org975b9da">
+<div id="outline-container-orgbfdd42d" class="outline-4">
+<h4 id="orgbfdd42d">for</h4>
+<div class="outline-text-4" id="text-orgbfdd42d">
 <p>
 语法为： <code>for (初始化;条件;副作用){代码块}</code><br>
 <code>for</code> 可以转换成 <code>while</code> 的形式<br>
@@ -734,21 +738,21 @@
 </div>
 </div>
 
-<div id="outline-container-org4074a89" class="outline-3">
-<h3 id="org4074a89">数组</h3>
-<div class="outline-text-3" id="text-org4074a89">
+<div id="outline-container-orgb545135" class="outline-3">
+<h3 id="orgb545135">数组</h3>
+<div class="outline-text-3" id="text-orgb545135">
 </div>
-<div id="outline-container-orgcfd2636" class="outline-4">
-<h4 id="orgcfd2636">简介</h4>
-<div class="outline-text-4" id="text-orgcfd2636">
+<div id="outline-container-orgd71fe3d" class="outline-4">
+<h4 id="orgd71fe3d">简介</h4>
+<div class="outline-text-4" id="text-orgd71fe3d">
 <p>
 数组提供了简单声明多个变量的方法，假设你需要对100个数进行排序，如果采用以往声明变量的方式，你需要写100个变量名，而使用数组就能一行语句生成多个变量。<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgedfe400" class="outline-4">
-<h4 id="orgedfe400">语法</h4>
-<div class="outline-text-4" id="text-orgedfe400">
+<div id="outline-container-orgde4413f" class="outline-4">
+<h4 id="orgde4413f">语法</h4>
+<div class="outline-text-4" id="text-orgde4413f">
 <p>
 数组的语法非常简单 <code>类型名 数组名[数组大小]</code><br>
 类型名和数组名与变量的声明相同，数组与变量的区别只在于后面的那个括号，括号定义了数组里包含多少个元素，使用 <code>数组名[下标]</code> 可以找到任意一个元素，而它的使用方式与普通变量并无区别<br>
@@ -769,9 +773,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org0d7b131" class="outline-4">
-<h4 id="org0d7b131">插入排序</h4>
-<div class="outline-text-4" id="text-org0d7b131">
+<div id="outline-container-org5e7612c" class="outline-4">
+<h4 id="org5e7612c">插入排序</h4>
+<div class="outline-text-4" id="text-org5e7612c">
 <div class="org-src-container">
 <pre class="src src-c"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">stdio.h</span><span style="color: #014980;">&gt;</span>
 
@@ -804,13 +808,13 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgac86dc1" class="outline-3">
-<h3 id="orgac86dc1">指针</h3>
-<div class="outline-text-3" id="text-orgac86dc1">
+<div id="outline-container-org6b9dda0" class="outline-3">
+<h3 id="org6b9dda0">指针</h3>
+<div class="outline-text-3" id="text-org6b9dda0">
 </div>
-<div id="outline-container-org794f329" class="outline-4">
-<h4 id="org794f329">简介</h4>
-<div class="outline-text-4" id="text-org794f329">
+<div id="outline-container-org80f8e54" class="outline-4">
+<h4 id="org80f8e54">简介</h4>
+<div class="outline-text-4" id="text-org80f8e54">
 <p>
 前面我们介绍了变量，变量我把它形容成一个盒子，盒子可以往里面放或拿东西<br>
 现在想像一下，我们把所有的盒子都放到地上，按顺序一个一个编号<br>
@@ -820,9 +824,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgb552b66" class="outline-4">
-<h4 id="orgb552b66">语法</h4>
-<div class="outline-text-4" id="text-orgb552b66">
+<div id="outline-container-orgae67bbd" class="outline-4">
+<h4 id="orgae67bbd">语法</h4>
+<div class="outline-text-4" id="text-orgae67bbd">
 <p>
 <code>类型 *指针名</code> 就可以声明一个指针了<br>
 需要注意一下 <code>int* a, b</code> 并不会声明指针 <code>a</code> <code>b</code> ，而是声明一个指针 <code>a</code> 与一个变量 <code>b</code><br>
@@ -830,9 +834,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orga98d6db" class="outline-4">
-<h4 id="orga98d6db">用法</h4>
-<div class="outline-text-4" id="text-orga98d6db">
+<div id="outline-container-orgfd08ee3" class="outline-4">
+<h4 id="orgfd08ee3">用法</h4>
+<div class="outline-text-4" id="text-orgfd08ee3">
 <p>
 指针可以放地址，但是我们怎么获得一个地址呢？<br>
 有些同学可能已经想到了，我们之前用 <code>scanf</code> 的时候使用一个操作符 <code>&amp;</code><br>
@@ -844,9 +848,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org11c57d8" class="outline-4">
-<h4 id="org11c57d8">数组</h4>
-<div class="outline-text-4" id="text-org11c57d8">
+<div id="outline-container-org9a78b48" class="outline-4">
+<h4 id="org9a78b48">数组</h4>
+<div class="outline-text-4" id="text-org9a78b48">
 <p>
 对于数组来说，数组名其实是一个指针，它保存的是数组的起始地址<br>
 我们先定义一个数组 <code>int arr[10]</code><br>
@@ -895,13 +899,13 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org376078d" class="outline-3">
-<h3 id="org376078d">函数</h3>
-<div class="outline-text-3" id="text-org376078d">
+<div id="outline-container-org2c1fafd" class="outline-3">
+<h3 id="org2c1fafd">函数</h3>
+<div class="outline-text-3" id="text-org2c1fafd">
 </div>
-<div id="outline-container-orgd214572" class="outline-4">
-<h4 id="orgd214572">简介</h4>
-<div class="outline-text-4" id="text-orgd214572">
+<div id="outline-container-org421720c" class="outline-4">
+<h4 id="org421720c">简介</h4>
+<div class="outline-text-4" id="text-org421720c">
 <p>
 函数让我们可以把一堆操作封装起来，下次可以直接使用，数学一点的像pi、cos、sin等都可以用函数封装起来，再比如打印一行星号、对数组进行排序、计算fib数列之类的。<br>
 </p>
@@ -912,9 +916,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org3e523ad" class="outline-4">
-<h4 id="org3e523ad">语法</h4>
-<div class="outline-text-4" id="text-org3e523ad">
+<div id="outline-container-org2525e24" class="outline-4">
+<h4 id="org2525e24">语法</h4>
+<div class="outline-text-4" id="text-org2525e24">
 <p>
 <code>返回类型 函数名(类型1 参数1，类型2 参数2){函数体}</code> 就可以创建一个函数<br>
 每个函数都要定义好返回类型，函数可以有多个参数，每个参数都必须定义类型，因为 <code>c</code> 是强类型的语言<br>
@@ -924,9 +928,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org3550930" class="outline-4">
-<h4 id="org3550930">例子</h4>
-<div class="outline-text-4" id="text-org3550930">
+<div id="outline-container-org33b8541" class="outline-4">
+<h4 id="org33b8541">例子</h4>
+<div class="outline-text-4" id="text-org33b8541">
 <p>
 我们来简单的举一个例子，交换变量里的值<br>
 我们先看看错误的例子<br>
@@ -984,13 +988,13 @@
 </div>
 </div>
 
-<div id="outline-container-orga97c5b4" class="outline-3">
-<h3 id="orga97c5b4">递归</h3>
-<div class="outline-text-3" id="text-orga97c5b4">
+<div id="outline-container-orgf63ef79" class="outline-3">
+<h3 id="orgf63ef79">递归</h3>
+<div class="outline-text-3" id="text-orgf63ef79">
 </div>
-<div id="outline-container-org8ace069" class="outline-4">
-<h4 id="org8ace069">简介</h4>
-<div class="outline-text-4" id="text-org8ace069">
+<div id="outline-container-org48997ef" class="outline-4">
+<h4 id="org48997ef">简介</h4>
+<div class="outline-text-4" id="text-org48997ef">
 <p>
 首先，我们可以确定一点，函数内是可以使用函数的，这点一开始就可以从在 <code>main</code> 函数内使用 <code>printf</code> 看出。<br>
 那么你有没有想过，如果我在函数内使用自己会怎么样呢？<br>
@@ -999,9 +1003,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org1038ecf" class="outline-4">
-<h4 id="org1038ecf">fib</h4>
-<div class="outline-text-4" id="text-org1038ecf">
+<div id="outline-container-org246ccdf" class="outline-4">
+<h4 id="org246ccdf">fib</h4>
+<div class="outline-text-4" id="text-org246ccdf">
 <p>
 对于fib数列，它在数学是这样定义的<br>
 </p>
@@ -1052,13 +1056,13 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 
-<div id="outline-container-org6ee2ce7" class="outline-3">
-<h3 id="org6ee2ce7">结构体</h3>
-<div class="outline-text-3" id="text-org6ee2ce7">
+<div id="outline-container-org86ed9f6" class="outline-3">
+<h3 id="org86ed9f6">结构体</h3>
+<div class="outline-text-3" id="text-org86ed9f6">
 </div>
-<div id="outline-container-org431f810" class="outline-4">
-<h4 id="org431f810">简介</h4>
-<div class="outline-text-4" id="text-org431f810">
+<div id="outline-container-org3195a05" class="outline-4">
+<h4 id="org3195a05">简介</h4>
+<div class="outline-text-4" id="text-org3195a05">
 <p>
 结构体提供了一个把多种类型，多个变量集合到一起的功能<br>
 比如我想保存一个学生的数据，对于学生他有年龄、名字、学号、性别...<br>
@@ -1067,9 +1071,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-orga3f45f3" class="outline-4">
-<h4 id="orga3f45f3">语法</h4>
-<div class="outline-text-4" id="text-orga3f45f3">
+<div id="outline-container-orgdce47d1" class="outline-4">
+<h4 id="orgdce47d1">语法</h4>
+<div class="outline-text-4" id="text-orgdce47d1">
 <p>
 结构体其实是声明了一个类型，很奇怪吧，我们之前声明过很多东西，但没想到类型也可以自定义吧<br>
 类型就意味着，使用结构体时，我们是使用一个结构体类型的变量<br>
@@ -1103,9 +1107,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 </div>
-<div id="outline-container-orge811611" class="outline-4">
-<h4 id="orge811611">结构体指针</h4>
-<div class="outline-text-4" id="text-orge811611">
+<div id="outline-container-org28f00cf" class="outline-4">
+<h4 id="org28f00cf">结构体指针</h4>
+<div class="outline-text-4" id="text-org28f00cf">
 <p>
 我们来看一个很魔鬼的东西，结构体指针<br>
 顾名思义，结构体指针就是存放着结构体变量地址的变量<br>
@@ -1120,13 +1124,13 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 </div>
-<div id="outline-container-org0a65801" class="outline-2">
-<h2 id="org0a65801">C++</h2>
-<div class="outline-text-2" id="text-org0a65801">
+<div id="outline-container-org5c3a805" class="outline-2">
+<h2 id="org5c3a805">C++</h2>
+<div class="outline-text-2" id="text-org5c3a805">
 </div>
-<div id="outline-container-org65e129d" class="outline-3">
-<h3 id="org65e129d">stl</h3>
-<div class="outline-text-3" id="text-org65e129d">
+<div id="outline-container-org1b059fa" class="outline-3">
+<h3 id="org1b059fa">stl</h3>
+<div class="outline-text-3" id="text-org1b059fa">
 <p>
 <code>c++</code> 是 <code>c</code> 的超集，也就是说 <code>c++</code> 支持所有 <code>c</code> 的语法，并在此基础上 <code>c++</code> 又新增了一些语法与工具。更重要的区别在于 <code>c</code> 是面向过程的，而 <code>c++</code> 是面向对象的。<br>
 </p>
@@ -1144,13 +1148,13 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-org030f854" class="outline-3">
-<h3 id="org030f854">输入输出</h3>
-<div class="outline-text-3" id="text-org030f854">
+<div id="outline-container-org6a9bc49" class="outline-3">
+<h3 id="org6a9bc49">输入输出</h3>
+<div class="outline-text-3" id="text-org6a9bc49">
 </div>
-<div id="outline-container-org5f2a86a" class="outline-4">
-<h4 id="org5f2a86a">头文件</h4>
-<div class="outline-text-4" id="text-org5f2a86a">
+<div id="outline-container-org7d355b1" class="outline-4">
+<h4 id="org7d355b1">头文件</h4>
+<div class="outline-text-4" id="text-org7d355b1">
 <p>
 <code>c++</code> 的输入输出头文件叫 <code>iostream</code> ，引用使用 <code>#include &lt;iostream&gt;</code> 语句<br>
 </p>
@@ -1160,9 +1164,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-orgba9fc07" class="outline-4">
-<h4 id="orgba9fc07">cin</h4>
-<div class="outline-text-4" id="text-orgba9fc07">
+<div id="outline-container-org026350b" class="outline-4">
+<h4 id="org026350b">cin</h4>
+<div class="outline-text-4" id="text-org026350b">
 <p>
 使用 <code>cin &gt;&gt; 变量名</code> 可以从标准输入把数据输入变量内，需要注意的是输入时不需要加标识符来表示变量的类型， <code>c++</code> 可以自己确定变量的类型，并根据类型自己确定会输入的数据。<br>
 </p>
@@ -1172,47 +1176,47 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-org310361f" class="outline-4">
-<h4 id="org310361f">cout</h4>
-<div class="outline-text-4" id="text-org310361f">
+<div id="outline-container-org414664a" class="outline-4">
+<h4 id="org414664a">cout</h4>
+<div class="outline-text-4" id="text-org414664a">
 <p>
 同理 <code>cout &lt;&lt; 表达式</code> 就可以向标准输出输出内容了， <code>cout</code> 也会自动判断表达式返回值的类型，但相比 <code>printf</code> 它就不能做到精准的格式输出了，比如固定4位宽度的数字使用 <code>cout</code> 就比较难以做到了。<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgc4efb2b" class="outline-4">
-<h4 id="orgc4efb2b">总结</h4>
-<div class="outline-text-4" id="text-orgc4efb2b">
+<div id="outline-container-orgbc9eeaf" class="outline-4">
+<h4 id="orgbc9eeaf">总结</h4>
+<div class="outline-text-4" id="text-orgbc9eeaf">
 <p>
 对于输入没有规定必须使用哪个，挑选最合适的就行了。<br>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org5ae8562" class="outline-3">
-<h3 id="org5ae8562">vector</h3>
-<div class="outline-text-3" id="text-org5ae8562">
+<div id="outline-container-org9b37666" class="outline-3">
+<h3 id="org9b37666">vector</h3>
+<div class="outline-text-3" id="text-org9b37666">
 </div>
-<div id="outline-container-org3236987" class="outline-4">
-<h4 id="org3236987">头文件</h4>
-<div class="outline-text-4" id="text-org3236987">
+<div id="outline-container-orgae5539a" class="outline-4">
+<h4 id="orgae5539a">头文件</h4>
+<div class="outline-text-4" id="text-orgae5539a">
 <p>
 <code>#include &lt;vector&gt;</code><br>
 </p>
 </div>
 </div>
-<div id="outline-container-org315bb00" class="outline-4">
-<h4 id="org315bb00">简介</h4>
-<div class="outline-text-4" id="text-org315bb00">
+<div id="outline-container-org45b517f" class="outline-4">
+<h4 id="org45b517f">简介</h4>
+<div class="outline-text-4" id="text-org45b517f">
 <p>
 <code>vector</code> 翻译成中文叫向量<br>
 它可以理解成一个动态数组，它的长度可以自由调整<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org6e0c184" class="outline-4">
-<h4 id="org6e0c184">创建</h4>
-<div class="outline-text-4" id="text-org6e0c184">
+<div id="outline-container-orgdf8e642" class="outline-4">
+<h4 id="orgdf8e642">创建</h4>
+<div class="outline-text-4" id="text-orgdf8e642">
 <p>
 <code>vector&lt;类型名&gt; 数组名</code> 就可以创建一个 <code>vector</code> 了<br>
 不止如此， <code>vector</code> 支持初始化时自定义长度与初始内容<br>
@@ -1222,9 +1226,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-orgce15851" class="outline-4">
-<h4 id="orgce15851">使用</h4>
-<div class="outline-text-4" id="text-orgce15851">
+<div id="outline-container-org51d8c63" class="outline-4">
+<h4 id="org51d8c63">使用</h4>
+<div class="outline-text-4" id="text-org51d8c63">
 <p>
 可以直接使用 <code>[]</code> 像数组一样访问 <code>vector</code><br>
 <code>vector</code> 因为是一个对象，它内置了一系列函数，其中有一个名为 <code>at()</code> 的函数也可以访问对应下标的元素，但如果下标越界了它会直接抛出异常<br>
@@ -1251,29 +1255,29 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 
-<div id="outline-container-org7ffc4de" class="outline-3">
-<h3 id="org7ffc4de">string</h3>
-<div class="outline-text-3" id="text-org7ffc4de">
+<div id="outline-container-org61c815b" class="outline-3">
+<h3 id="org61c815b">string</h3>
+<div class="outline-text-3" id="text-org61c815b">
 </div>
-<div id="outline-container-orga9ce1e2" class="outline-4">
-<h4 id="orga9ce1e2">头文件</h4>
-<div class="outline-text-4" id="text-orga9ce1e2">
+<div id="outline-container-org9d71e3e" class="outline-4">
+<h4 id="org9d71e3e">头文件</h4>
+<div class="outline-text-4" id="text-org9d71e3e">
 <p>
 <code>#include &lt;string&gt;</code><br>
 </p>
 </div>
 </div>
-<div id="outline-container-orge70c94e" class="outline-4">
-<h4 id="orge70c94e">简介</h4>
-<div class="outline-text-4" id="text-orge70c94e">
+<div id="outline-container-org111d5ce" class="outline-4">
+<h4 id="org111d5ce">简介</h4>
+<div class="outline-text-4" id="text-org111d5ce">
 <p>
 <code>string</code> 是一个字符串，它的底层实现是 <code>vector</code> 它可以使用 <code>vector</code> 的所有函数，它也新加了许多方便的方法<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org9735071" class="outline-4">
-<h4 id="org9735071">使用</h4>
-<div class="outline-text-4" id="text-org9735071">
+<div id="outline-container-org0a0206e" class="outline-4">
+<h4 id="org0a0206e">使用</h4>
+<div class="outline-text-4" id="text-org0a0206e">
 <p>
 它的创建方法与 <code>vector</code> 一样，这些可以直接看上面的 <code>vector</code> 介绍<br>
 </p>
@@ -1286,21 +1290,21 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 </div>
-<div id="outline-container-org653a8d5" class="outline-3">
-<h3 id="org653a8d5">queue</h3>
-<div class="outline-text-3" id="text-org653a8d5">
+<div id="outline-container-org1f65eb5" class="outline-3">
+<h3 id="org1f65eb5">queue</h3>
+<div class="outline-text-3" id="text-org1f65eb5">
 </div>
-<div id="outline-container-orge213e9e" class="outline-4">
-<h4 id="orge213e9e">头文件</h4>
-<div class="outline-text-4" id="text-orge213e9e">
+<div id="outline-container-orgd511719" class="outline-4">
+<h4 id="orgd511719">头文件</h4>
+<div class="outline-text-4" id="text-orgd511719">
 <p>
 <code>#include &lt;queue&gt;</code><br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgd85b5a9" class="outline-4">
-<h4 id="orgd85b5a9">简介</h4>
-<div class="outline-text-4" id="text-orgd85b5a9">
+<div id="outline-container-org5689e22" class="outline-4">
+<h4 id="org5689e22">简介</h4>
+<div class="outline-text-4" id="text-org5689e22">
 <p>
 <code>queue</code> 叫做队列，它是一种数据结构，先进入队列的数据会先出来，可以想像一个管子，从后面往里面塞球，取球时只能从前面取<br>
 </p>
@@ -1316,9 +1320,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-org6ef240d" class="outline-4">
-<h4 id="org6ef240d">使用</h4>
-<div class="outline-text-4" id="text-org6ef240d">
+<div id="outline-container-orga1c1de0" class="outline-4">
+<h4 id="orga1c1de0">使用</h4>
+<div class="outline-text-4" id="text-orga1c1de0">
 <p>
 <code>queue&lt;类型名&gt; 队列名</code> 就可以创建一个队列了，初始化的方法与之前的方法一致<br>
 </p>
@@ -1343,21 +1347,21 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 
-<div id="outline-container-orgb066a0c" class="outline-3">
-<h3 id="orgb066a0c">stack</h3>
-<div class="outline-text-3" id="text-orgb066a0c">
+<div id="outline-container-org99191e9" class="outline-3">
+<h3 id="org99191e9">stack</h3>
+<div class="outline-text-3" id="text-org99191e9">
 </div>
-<div id="outline-container-orge4f3fd1" class="outline-4">
-<h4 id="orge4f3fd1">头文件</h4>
-<div class="outline-text-4" id="text-orge4f3fd1">
+<div id="outline-container-org934b91f" class="outline-4">
+<h4 id="org934b91f">头文件</h4>
+<div class="outline-text-4" id="text-org934b91f">
 <p>
 <code>#include &lt;stack&gt;</code><br>
 </p>
 </div>
 </div>
-<div id="outline-container-org809c290" class="outline-4">
-<h4 id="org809c290">简介</h4>
-<div class="outline-text-4" id="text-org809c290">
+<div id="outline-container-org0102b52" class="outline-4">
+<h4 id="org0102b52">简介</h4>
+<div class="outline-text-4" id="text-org0102b52">
 <p>
 <code>stack</code> 是栈，与队列相反，栈只能在一端插入或删除，就像一个筒装薯片一样，你可以在开口处拿薯片或放入薯片，可以发现栈的元素是后进先出的。<br>
 </p>
@@ -1367,9 +1371,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-org580352f" class="outline-4">
-<h4 id="org580352f">使用</h4>
-<div class="outline-text-4" id="text-org580352f">
+<div id="outline-container-orgd223c63" class="outline-4">
+<h4 id="orgd223c63">使用</h4>
+<div class="outline-text-4" id="text-orgd223c63">
 <p>
 <code>stack&lt;类型名&gt; 栈名</code> 与之前初始化一样的方法<br>
 </p>
@@ -1387,21 +1391,21 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 </div>
-<div id="outline-container-org1dda62e" class="outline-3">
-<h3 id="org1dda62e">set</h3>
-<div class="outline-text-3" id="text-org1dda62e">
+<div id="outline-container-org7107a76" class="outline-3">
+<h3 id="org7107a76">set</h3>
+<div class="outline-text-3" id="text-org7107a76">
 </div>
-<div id="outline-container-org8228e8b" class="outline-4">
-<h4 id="org8228e8b">头文件</h4>
-<div class="outline-text-4" id="text-org8228e8b">
+<div id="outline-container-orgc88d47f" class="outline-4">
+<h4 id="orgc88d47f">头文件</h4>
+<div class="outline-text-4" id="text-orgc88d47f">
 <p>
 <code>#include &lt;set&gt;</code><br>
 </p>
 </div>
 </div>
-<div id="outline-container-org63f8a79" class="outline-4">
-<h4 id="org63f8a79">简介</h4>
-<div class="outline-text-4" id="text-org63f8a79">
+<div id="outline-container-orga283fd4" class="outline-4">
+<h4 id="orga283fd4">简介</h4>
+<div class="outline-text-4" id="text-orga283fd4">
 <p>
 <code>set</code> 是集合，和数学上的集合一样，每个元素只能出现一次，这对于统计有多少个不同的元素是很方便的。<br>
 </p>
@@ -1411,9 +1415,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-orgc4edaca" class="outline-4">
-<h4 id="orgc4edaca">使用</h4>
-<div class="outline-text-4" id="text-orgc4edaca">
+<div id="outline-container-orgd3a16b8" class="outline-4">
+<h4 id="orgd3a16b8">使用</h4>
+<div class="outline-text-4" id="text-orgd3a16b8">
 <p>
 <code>set&lt;类型名&gt; 集合名</code> 创建一个 <code>set</code><br>
 </p>
@@ -1431,21 +1435,21 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 </div>
-<div id="outline-container-org1885aba" class="outline-3">
-<h3 id="org1885aba">map</h3>
-<div class="outline-text-3" id="text-org1885aba">
+<div id="outline-container-orgf829e17" class="outline-3">
+<h3 id="orgf829e17">map</h3>
+<div class="outline-text-3" id="text-orgf829e17">
 </div>
-<div id="outline-container-orgf61f937" class="outline-4">
-<h4 id="orgf61f937">头文件</h4>
-<div class="outline-text-4" id="text-orgf61f937">
+<div id="outline-container-orgf80413b" class="outline-4">
+<h4 id="orgf80413b">头文件</h4>
+<div class="outline-text-4" id="text-orgf80413b">
 <p>
 <code>#include &lt;map&gt;</code><br>
 </p>
 </div>
 </div>
-<div id="outline-container-orga913712" class="outline-4">
-<h4 id="orga913712">简介</h4>
-<div class="outline-text-4" id="text-orga913712">
+<div id="outline-container-org9170687" class="outline-4">
+<h4 id="org9170687">简介</h4>
+<div class="outline-text-4" id="text-org9170687">
 <p>
 <code>map</code> 的意思其实是映射，它可以保存 <code>key</code> 到 <code>value</code> 的映射，也就是键值对<br>
 说人话，就像数组可以通过下标访问元素， <code>map</code> 也是通过 <code>key</code> 访问元素，不同于数组 <code>map</code> 的 <code>key</code> 可以是数字、字符、字符串等等<br>
@@ -1457,9 +1461,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-orgfd9683b" class="outline-4">
-<h4 id="orgfd9683b">使用</h4>
-<div class="outline-text-4" id="text-orgfd9683b">
+<div id="outline-container-orgb3fbe04" class="outline-4">
+<h4 id="orgb3fbe04">使用</h4>
+<div class="outline-text-4" id="text-orgb3fbe04">
 <p>
 <code>map&lt;键类型, 值类型&gt; 映射名</code> 可以创建一个 <code>map</code> 需要标注好键和值的类型<br>
 </p>
@@ -1484,13 +1488,13 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 </div>
-<div id="outline-container-orgb8d8480" class="outline-3">
-<h3 id="orgb8d8480">sort</h3>
-<div class="outline-text-3" id="text-orgb8d8480">
+<div id="outline-container-org9c7e2f0" class="outline-3">
+<h3 id="org9c7e2f0">sort</h3>
+<div class="outline-text-3" id="text-org9c7e2f0">
 </div>
-<div id="outline-container-org26fd9f2" class="outline-4">
-<h4 id="org26fd9f2">头文件</h4>
-<div class="outline-text-4" id="text-org26fd9f2">
+<div id="outline-container-orgf8c3d30" class="outline-4">
+<h4 id="orgf8c3d30">头文件</h4>
+<div class="outline-text-4" id="text-orgf8c3d30">
 <p>
 <code>#include &lt;algorithm&gt;</code><br>
 </p>
@@ -1500,9 +1504,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-org1491759" class="outline-4">
-<h4 id="org1491759">简介</h4>
-<div class="outline-text-4" id="text-org1491759">
+<div id="outline-container-org7043764" class="outline-4">
+<h4 id="org7043764">简介</h4>
+<div class="outline-text-4" id="text-org7043764">
 <p>
 <code>sort</code> 是排列的意思，它可以对给定范围内的数据进行排序，传入一个比较函数就可以控制是从小到大还是从大到小排序了。<br>
 </p>
@@ -1512,9 +1516,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-orgbe54812" class="outline-4">
-<h4 id="orgbe54812">用法</h4>
-<div class="outline-text-4" id="text-orgbe54812">
+<div id="outline-container-orgf10dbe6" class="outline-4">
+<h4 id="orgf10dbe6">用法</h4>
+<div class="outline-text-4" id="text-orgf10dbe6">
 <p>
 <code>sort(起始引用,未尾引用)</code> 就可以对这个范围内的数据排序了，需要注意未尾引用是最后一个元素的引用加1<br>
 </p>
@@ -1562,21 +1566,21 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 </div>
-<div id="outline-container-org4940007" class="outline-3">
-<h3 id="org4940007">next_permutation</h3>
-<div class="outline-text-3" id="text-org4940007">
+<div id="outline-container-org309a9cb" class="outline-3">
+<h3 id="org309a9cb">next_permutation</h3>
+<div class="outline-text-3" id="text-org309a9cb">
 </div>
-<div id="outline-container-org438e87c" class="outline-4">
-<h4 id="org438e87c">头文件</h4>
-<div class="outline-text-4" id="text-org438e87c">
+<div id="outline-container-org7ac2089" class="outline-4">
+<h4 id="org7ac2089">头文件</h4>
+<div class="outline-text-4" id="text-org7ac2089">
 <p>
 <code>#include &lt;algorithm&gt;</code><br>
 </p>
 </div>
 </div>
-<div id="outline-container-org8c56738" class="outline-4">
-<h4 id="org8c56738">简介</h4>
-<div class="outline-text-4" id="text-org8c56738">
+<div id="outline-container-org0b06de3" class="outline-4">
+<h4 id="org0b06de3">简介</h4>
+<div class="outline-text-4" id="text-org0b06de3">
 <p>
 <code>next_permutation</code> 可以生成一个范围内数据的下一个排列<br>
 比如 <code>1 2 3</code> 的下一个排列就是 <code>1 3 2</code><br>
@@ -1588,9 +1592,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-orgc212c42" class="outline-4">
-<h4 id="orgc212c42">使用方法</h4>
-<div class="outline-text-4" id="text-orgc212c42">
+<div id="outline-container-orgdee1c15" class="outline-4">
+<h4 id="orgdee1c15">使用方法</h4>
+<div class="outline-text-4" id="text-orgdee1c15">
 <p>
 <code>next_permutation(起始引用,未尾引用)</code> 会生成范围内的下一个排列，如果不能生成了就返回 <code>false</code><br>
 </p>
@@ -1616,9 +1620,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 </div>
-<div id="outline-container-orga56a471" class="outline-2">
-<h2 id="orga56a471">结语</h2>
-<div class="outline-text-2" id="text-orga56a471">
+<div id="outline-container-org143bc01" class="outline-2">
+<h2 id="org143bc01">结语</h2>
+<div class="outline-text-2" id="text-org143bc01">
 <p>
 这篇文章只讲解了 <code>C/C++</code> 的一下部分内容，如果你对其它的部分也感兴趣的话，我推荐一本书 《C++ Prime Plus》<br>
 </p>
@@ -1646,7 +1650,6 @@ fib(n-1)+fib(n-2) & {n>2}
            Creative Commons Attribution-ShareAlike 3.0 Unported License
          </a>.
        </center>
-       <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.slim.js"></script>
        <script type="text/javascript" src="static/main.js"></script></div>
 </body>
 </html>

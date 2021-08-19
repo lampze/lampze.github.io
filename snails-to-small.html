@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="description" content="snails报错(split-window: Window #<window 9 on  *snails tips*> too small for splitting)的解决办法">
 <link rel="alternate"
       type="application/rss+xml"
       href="https://lampze.github.io/rss.xml"
@@ -10,6 +11,9 @@
 <meta  name="author" content="lampze" />
       <link href= "static/style.css" rel="stylesheet" type="text/css" />
       <link href= "static/org.css" rel="stylesheet" type="text/css" />
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+      <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
       <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
 <body>
@@ -19,9 +23,9 @@
 <div id="content">
 <div class="post-date">04 3月 2020</div><h1 class="post-title"><a href="https://lampze.github.io/snails-to-small.html">snails 在 Doom 下的bug</a></h1>
 
-<div id="outline-container-org265e376" class="outline-2">
-<h2 id="org265e376">问题</h2>
-<div class="outline-text-2" id="text-org265e376">
+<div id="outline-container-orgdc2dddc" class="outline-2">
+<h2 id="orgdc2dddc">问题</h2>
+<div class="outline-text-2" id="text-orgdc2dddc">
 <p>
 自从 snails 加入了 tips 后，在 Doom 里 snails 就打不开了，会报错 <code>split-window:
 Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
@@ -33,18 +37,18 @@ Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
 </div>
 </div>
 
-<div id="outline-container-orgb116c3d" class="outline-2">
-<h2 id="orgb116c3d">原因</h2>
-<div class="outline-text-2" id="text-orgb116c3d">
+<div id="outline-container-orgdb733e8" class="outline-2">
+<h2 id="orgdb733e8">原因</h2>
+<div class="outline-text-2" id="text-orgdb733e8">
 <p>
 经过一番调试，发现是因为 <code>(line-pixel-height)</code> 返回的值太小了，导致不能分割窗口。
 </p>
 </div>
 </div>
 
-<div id="outline-container-org582e0e6" class="outline-2">
-<h2 id="org582e0e6">解决</h2>
-<div class="outline-text-2" id="text-org582e0e6">
+<div id="outline-container-orgb3ffd87" class="outline-2">
+<h2 id="orgb3ffd87">解决</h2>
+<div class="outline-text-2" id="text-orgb3ffd87">
 <p>
 两种方法
 </p>
@@ -85,7 +89,6 @@ Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
            Creative Commons Attribution-ShareAlike 3.0 Unported License
          </a>.
        </center>
-       <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.slim.js"></script>
        <script type="text/javascript" src="static/main.js"></script></div>
 </body>
 </html>

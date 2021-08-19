@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="description" content="记录在学校抢课的事情">
 <link rel="alternate"
       type="application/rss+xml"
       href="https://lampze.github.io/rss.xml"
@@ -10,6 +11,9 @@
 <meta  name="author" content="lampze" />
       <link href= "static/style.css" rel="stylesheet" type="text/css" />
       <link href= "static/org.css" rel="stylesheet" type="text/css" />
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+      <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
       <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
 <body>
@@ -19,9 +23,9 @@
 <div id="content">
 <div class="post-date">31 3月 2020</div><h1 class="post-title"><a href="https://lampze.github.io/hx-auto-select-class.html">华夏学院抢课分析</a></h1>
 
-<div id="outline-container-org610f357" class="outline-2">
-<h2 id="org610f357">前言</h2>
-<div class="outline-text-2" id="text-org610f357">
+<div id="outline-container-org13cdbe2" class="outline-2">
+<h2 id="org13cdbe2">前言</h2>
+<div class="outline-text-2" id="text-org13cdbe2">
 <p>
 因为我上次抢课时认真的掐准时间时间进去抢，然后发现所有的课都秒没了，
 所以一怒之下就写了个脚本来帮我抢课。这次一试，果然选上了我想要的课。
@@ -40,9 +44,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgbc3b5c2" class="outline-2">
-<h2 id="orgbc3b5c2">API</h2>
-<div class="outline-text-2" id="text-orgbc3b5c2">
+<div id="outline-container-org0fccb2a" class="outline-2">
+<h2 id="org0fccb2a">API</h2>
+<div class="outline-text-2" id="text-org0fccb2a">
 <p>
 我使用的方法是直接获取页面上的 <code>DOM</code> 然后使用 <code>DOM</code> 的 <code>click</code> 函数，比直接用后
 端的接口肯定要慢许多，但我也不想把整个网页的代码看一遍，而且使用这种技术的人应该
@@ -68,9 +72,9 @@ loadCoursesByPaged();                      <span style="color: #556b2f;">// </sp
 </div>
 </div>
 
-<div id="outline-container-org9bb8339" class="outline-2">
-<h2 id="org9bb8339">代码</h2>
-<div class="outline-text-2" id="text-org9bb8339">
+<div id="outline-container-org353b234" class="outline-2">
+<h2 id="org353b234">代码</h2>
+<div class="outline-text-2" id="text-org353b234">
 <p>
 然后就可以开始写代码了，
 我只实现了基本的抢课功能，没有写定时，如果没开放系统可能会把网页卡住，想改的自己改。
@@ -158,7 +162,6 @@ loadCoursesByPaged();                      <span style="color: #556b2f;">// </sp
            Creative Commons Attribution-ShareAlike 3.0 Unported License
          </a>.
        </center>
-       <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.slim.js"></script>
        <script type="text/javascript" src="static/main.js"></script></div>
 </body>
 </html>

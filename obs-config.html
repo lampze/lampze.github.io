@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="description" content="linux下的obs开播配置">
 <link rel="alternate"
       type="application/rss+xml"
       href="https://lampze.github.io/rss.xml"
@@ -10,6 +11,9 @@
 <meta  name="author" content="lampze" />
       <link href= "static/style.css" rel="stylesheet" type="text/css" />
       <link href= "static/org.css" rel="stylesheet" type="text/css" />
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+      <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
       <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
 <body>
@@ -18,18 +22,18 @@
       </div></div>
 <div id="content">
 <div class="post-date">05 3月 2020</div><h1 class="post-title"><a href="https://lampze.github.io/obs-config.html">obs直播配置</a></h1>
-<div id="outline-container-orgf542f09" class="outline-2">
-<h2 id="orgf542f09">obs 配置</h2>
-<div class="outline-text-2" id="text-orgf542f09">
+<div id="outline-container-orga06b11c" class="outline-2">
+<h2 id="orga06b11c">obs 配置</h2>
+<div class="outline-text-2" id="text-orga06b11c">
 <p>
 没什么好说的，把推流地址写好，串流的输出主要调比特率，根据自己家的上行网速来填，
 最好比最大上行低一点，不然直播的延迟很大。配置好 n 卡的尽量用硬件编码。
 </p>
 </div>
 </div>
-<div id="outline-container-orgfa0049a" class="outline-2">
-<h2 id="orgfa0049a">音频输入配置</h2>
-<div class="outline-text-2" id="text-orgfa0049a">
+<div id="outline-container-org434a07e" class="outline-2">
+<h2 id="org434a07e">音频输入配置</h2>
+<div class="outline-text-2" id="text-org434a07e">
 <p>
 主要是配置麦的滤镜，下面是我配置的滤镜，基本都是默认设置，不要随意更改顺序
 </p>
@@ -51,9 +55,9 @@
 </ol>
 </div>
 </div>
-<div id="outline-container-org317fac8" class="outline-2">
-<h2 id="org317fac8">弹幕配置</h2>
-<div class="outline-text-2" id="text-org317fac8">
+<div id="outline-container-org8da1f26" class="outline-2">
+<h2 id="org8da1f26">弹幕配置</h2>
+<div class="outline-text-2" id="text-org8da1f26">
 <p>
 一般是用 obs 的浏览器场景的，但 Linux 下没有这个，非要用的话倒是有插件，但只适用
 于比较低版本的 obs，所以我打算利用系统通知结合网页的爬虫直接显示弹幕。
@@ -163,7 +167,6 @@
            Creative Commons Attribution-ShareAlike 3.0 Unported License
          </a>.
        </center>
-       <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.slim.js"></script>
        <script type="text/javascript" src="static/main.js"></script></div>
 </body>
 </html>

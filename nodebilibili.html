@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="description" content="用node写了个弹幕显示程序">
 <link rel="alternate"
       type="application/rss+xml"
       href="https://lampze.github.io/rss.xml"
@@ -10,6 +11,9 @@
 <meta  name="author" content="lampze" />
       <link href= "static/style.css" rel="stylesheet" type="text/css" />
       <link href= "static/org.css" rel="stylesheet" type="text/css" />
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+      <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
       <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
 <body>
@@ -19,9 +23,9 @@
 <div id="content">
 <div class="post-date">19 8月 2020</div><h1 class="post-title"><a href="https://lampze.github.io/nodebilibili.html">论如何在Linux下直播显示弹幕</a></h1>
 
-<div id="outline-container-orgbeb3857" class="outline-2">
-<h2 id="orgbeb3857">前言</h2>
-<div class="outline-text-2" id="text-orgbeb3857">
+<div id="outline-container-org86cd3e1" class="outline-2">
+<h2 id="org86cd3e1">前言</h2>
+<div class="outline-text-2" id="text-org86cd3e1">
 <p>
 因为最近有b站直播的需求，但直播过程中查看弹幕非常麻烦，之前我只能用手机打开我的直播间查看。
 </p>
@@ -36,9 +40,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgfc87d87" class="outline-2">
-<h2 id="orgfc87d87">组装</h2>
-<div class="outline-text-2" id="text-orgfc87d87">
+<div id="outline-container-org6ad9bdd" class="outline-2">
+<h2 id="org6ad9bdd">组装</h2>
+<div class="outline-text-2" id="text-org6ad9bdd">
 <p>
 首先创建一个 <code>node</code> 工作目录，初始化好，然后安装上面的两个库。
 </p>
@@ -121,9 +125,9 @@ live.on(<span style="color: #8a3b3c;">"live"</span>, () =&gt; {
 </div>
 </div>
 
-<div id="outline-container-org6d57cfe" class="outline-2">
-<h2 id="org6d57cfe">后记</h2>
-<div class="outline-text-2" id="text-org6d57cfe">
+<div id="outline-container-org51b39d1" class="outline-2">
+<h2 id="org51b39d1">后记</h2>
+<div class="outline-text-2" id="text-org51b39d1">
 <p>
 我只写了自己需要的部分，如果有需要的地方就自己加嘛。
 </p>
@@ -151,7 +155,6 @@ live.on(<span style="color: #8a3b3c;">"live"</span>, () =&gt; {
            Creative Commons Attribution-ShareAlike 3.0 Unported License
          </a>.
        </center>
-       <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.slim.js"></script>
        <script type="text/javascript" src="static/main.js"></script></div>
 </body>
 </html>
