@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="讲解R6900v2安装配置LEDE">
@@ -21,11 +21,11 @@
         <a href="https://lampze.github.io">lampze's Blog</a>
       </div></div>
 <div id="content">
-<div class="post-date">27 7月 2020</div><h1 class="post-title"><a href="https://lampze.github.io/R6900v2-lede.html">R6900v2安装LEDE.org</a></h1>
+<div class="post-date">2020-07-27</div><h1 class="post-title"><a href="https://lampze.github.io/R6900v2-lede.html">R6900v2安装LEDE.org</a></h1>
 
-<div id="outline-container-org93211c2" class="outline-2">
-<h2 id="org93211c2">前言</h2>
-<div class="outline-text-2" id="text-org93211c2">
+<div id="outline-container-orge8fade0" class="outline-2">
+<h2 id="orge8fade0">前言</h2>
+<div class="outline-text-2" id="text-orge8fade0">
 <p>
 首先我先劝退一波想买这个路由器的同学，以下是理由。
 </p>
@@ -54,9 +54,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgfcef9a7" class="outline-2">
-<h2 id="orgfcef9a7">准备</h2>
-<div class="outline-text-2" id="text-orgfcef9a7">
+<div id="outline-container-orgbe45b98" class="outline-2">
+<h2 id="orgbe45b98">准备</h2>
+<div class="outline-text-2" id="text-orgbe45b98">
 <p>
 请自行准备好以下的东西再进行刷机
 </p>
@@ -73,18 +73,18 @@
 </div>
 </div>
 
-<div id="outline-container-org20c67bc" class="outline-2">
-<h2 id="org20c67bc">制作固件</h2>
-<div class="outline-text-2" id="text-org20c67bc">
+<div id="outline-container-org7902440" class="outline-2">
+<h2 id="org7902440">制作固件</h2>
+<div class="outline-text-2" id="text-org7902440">
 </div>
-<div id="outline-container-orgf70a391" class="outline-3">
-<h3 id="orgf70a391">准备</h3>
-<div class="outline-text-3" id="text-orgf70a391">
+<div id="outline-container-org75029e0" class="outline-3">
+<h3 id="org75029e0">准备</h3>
+<div class="outline-text-3" id="text-org75029e0">
 <p>
 进入 <code>LEDE</code> 目录，编辑 <code>feeds.conf.default</code> 文件，取消 <code>helloworld</code> 所在行的注释，这样就能选择 <code>ssr</code> 了，以下是示例。
 </p>
 
-<pre class="example" id="org94596b9">
+<pre class="example" id="orgf0d9383">
 src-git packages https://github.com/coolsnowwolf/packages
 src-git luci https://github.com/coolsnowwolf/luci
 src-git routing https://git.openwrt.org/feed/routing.git
@@ -109,14 +109,14 @@ src-git helloworld https://github.com/fw876/helloworld
 </div>
 </div>
 
-<div id="outline-container-orgb5c32b1" class="outline-3">
-<h3 id="orgb5c32b1">make menuconfig</h3>
-<div class="outline-text-3" id="text-orgb5c32b1">
+<div id="outline-container-orge76c08f" class="outline-3">
+<h3 id="orge76c08f">make menuconfig</h3>
+<div class="outline-text-3" id="text-orge76c08f">
 <p>
 然后就是配置 <code>LEDE</code> 了， 运行命令 <code>make menuconfig</code> 。我来展示一些必要选项。
 </p>
 
-<pre class="example" id="orgd2a972b">
+<pre class="example" id="org12b4e99">
 Target System (MediaTek Ralink MIPS)  ---&gt;
 Subtarget (MT7621 based boards)  ---&gt;
 Target Profile (NETGEAR R7200 v1 (NETGEAR R6700 v2))  ---&gt;
@@ -130,7 +130,7 @@ Target Profile (NETGEAR R7200 v1 (NETGEAR R6700 v2))  ---&gt;
 选择了上面的内容就可进行下一步了，下面展示一些我的配置。
 </p>
 
-<pre class="example" id="orge4971c7">
+<pre class="example" id="orgd05bb83">
 Extra packages  ---&gt;
   &lt;*&gt; ipv6helper................... IPv6 Helper and Dynamic Update he.net of ip
 LuCI  ---&gt;
@@ -154,9 +154,9 @@ Utilities  ---&gt;
 </div>
 </div>
 
-<div id="outline-container-org24e08fc" class="outline-3">
-<h3 id="org24e08fc">编译</h3>
-<div class="outline-text-3" id="text-org24e08fc">
+<div id="outline-container-orgbf07d24" class="outline-3">
+<h3 id="orgbf07d24">编译</h3>
+<div class="outline-text-3" id="text-orgbf07d24">
 <p>
 <code>make download V=s</code> 先下载要编译的源码
 </p>
@@ -175,29 +175,29 @@ Utilities  ---&gt;
 </div>
 </div>
 
-<div id="outline-container-orga51bc33" class="outline-3">
-<h3 id="orga51bc33">刷机</h3>
-<div class="outline-text-3" id="text-orga51bc33">
+<div id="outline-container-org6ec9eaa" class="outline-3">
+<h3 id="org6ec9eaa">刷机</h3>
+<div class="outline-text-3" id="text-org6ec9eaa">
 </div>
-<div id="outline-container-org32f1cc8" class="outline-4">
-<h4 id="org32f1cc8">原生刷LEDE</h4>
-<div class="outline-text-4" id="text-org32f1cc8">
+<div id="outline-container-org686e22a" class="outline-4">
+<h4 id="org686e22a">原生刷LEDE</h4>
+<div class="outline-text-4" id="text-org686e22a">
 <p>
 直接在原生的管理界面点击升级固件，上传带有字段 <code>factory</code> 的固件即可。
 </p>
 </div>
 </div>
-<div id="outline-container-org0b8cc01" class="outline-4">
-<h4 id="org0b8cc01">LEDE升级</h4>
-<div class="outline-text-4" id="text-org0b8cc01">
+<div id="outline-container-org2409286" class="outline-4">
+<h4 id="org2409286">LEDE升级</h4>
+<div class="outline-text-4" id="text-org2409286">
 <p>
 在固件升级页面使用带有字段 <code>sysupgrade</code> 的固件。
 </p>
 </div>
 </div>
-<div id="outline-container-org04783ed" class="outline-4">
-<h4 id="org04783ed">救砖或LEDE刷回原生</h4>
-<div class="outline-text-4" id="text-org04783ed">
+<div id="outline-container-org0460ba6" class="outline-4">
+<h4 id="org0460ba6">救砖或LEDE刷回原生</h4>
+<div class="outline-text-4" id="text-org0460ba6">
 <p>
 使用 <code>nmrpflash -L</code> 列出所有网卡，找到正确的网卡，如果不知道就一个个试。
 </p>
@@ -217,7 +217,7 @@ Utilities  ---&gt;
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-openwrt.html">OpenWrt</a> <a href="https://lampze.github.io/tag-lede.html">LEDE</a> <a href="https://lampze.github.io/tag-router.html">router</a> </div></div>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-openwrt.html">OpenWrt</a> <a href="https://lampze.github.io/tag-lede.html">LEDE</a> <a href="https://lampze.github.io/tag-router.html">router</a> </div></div>
 <div id="postamble" class="status"><center>
          <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"></a><br />
          <span xmlns:dct="https://purl.org/dc/terms/"

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="讲讲我对超星统计学习情况的理解">
@@ -21,11 +21,11 @@
         <a href="https://lampze.github.io">lampze's Blog</a>
       </div></div>
 <div id="content">
-<div class="post-date">06 1月 2021</div><h1 class="post-title"><a href="https://lampze.github.io/chaoxing-statistics.html">超星是如何统计学习情况的</a></h1>
+<div class="post-date">2021-01-06</div><h1 class="post-title"><a href="https://lampze.github.io/chaoxing-statistics.html">超星是如何统计学习情况的</a></h1>
 
-<div id="outline-container-org1f18d57" class="outline-2">
-<h2 id="org1f18d57">前言</h2>
-<div class="outline-text-2" id="text-org1f18d57">
+<div id="outline-container-org80c391a" class="outline-2">
+<h2 id="org80c391a">前言</h2>
+<div class="outline-text-2" id="text-org80c391a">
 <p>
 写这篇文章当然是因为最近我有一门网课需要刷平时分，这门课的视频个数又不多，还多个视频合在一个网页上，最后又要求我们有几百次的学习次数，然后还要求我们有2个小时的阅读时长，但读物加起来顶多只有一两百页，超星的阅读统计又有些问题。为了给后人避坑，我就把摸索出来的一些经验分享出来。<br>
 </p>
@@ -40,29 +40,29 @@
 </div>
 </div>
 
-<div id="outline-container-org27e018e" class="outline-2">
-<h2 id="org27e018e">章节学习次数</h2>
-<div class="outline-text-2" id="text-org27e018e">
+<div id="outline-container-org7dd6251" class="outline-2">
+<h2 id="org7dd6251">章节学习次数</h2>
+<div class="outline-text-2" id="text-org7dd6251">
 </div>
-<div id="outline-container-org321c699" class="outline-3">
-<h3 id="org321c699">统计方法</h3>
-<div class="outline-text-3" id="text-org321c699">
+<div id="outline-container-orgcb5552f" class="outline-3">
+<h3 id="orgcb5552f">统计方法</h3>
+<div class="outline-text-3" id="text-orgcb5552f">
 <p>
 每打开一个视频页面等上一小会，学习次数就会增加，尚不知不滚动会不会有不良影响<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org94c7dfc" class="outline-3">
-<h3 id="org94c7dfc">刷分方法</h3>
-<div class="outline-text-3" id="text-org94c7dfc">
+<div id="outline-container-orgb0f5640" class="outline-3">
+<h3 id="orgb0f5640">刷分方法</h3>
+<div class="outline-text-3" id="text-orgb0f5640">
 <p>
 只需要对一个页面不停刷新即可<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgf23209c" class="outline-3">
-<h3 id="orgf23209c">代码实现</h3>
-<div class="outline-text-3" id="text-orgf23209c">
+<div id="outline-container-orgf5072ba" class="outline-3">
+<h3 id="orgf5072ba">代码实现</h3>
+<div class="outline-text-3" id="text-orgf5072ba">
 <div class="org-src-container">
 <pre class="src src-js"><span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#25105;&#23545;&#20110;&#22823;&#37096;&#20998;&#25805;&#20316;&#21152;&#20837;&#20102;&#38543;&#26426;&#25968;</span>
 <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#36991;&#20813;&#21487;&#33021;&#30340;&#21518;&#21488;&#26816;&#27979;</span>
@@ -76,30 +76,30 @@ setInterval(() =&gt; window.scroll(<span style="color: #8a3b3c; font-weight: bol
 </div>
 </div>
 </div>
-<div id="outline-container-orgd0727ee" class="outline-2">
-<h2 id="orgd0727ee">阅读</h2>
-<div class="outline-text-2" id="text-orgd0727ee">
+<div id="outline-container-org6451b89" class="outline-2">
+<h2 id="org6451b89">阅读</h2>
+<div class="outline-text-2" id="text-org6451b89">
 </div>
-<div id="outline-container-org7bba8f2" class="outline-3">
-<h3 id="org7bba8f2">统计方法</h3>
-<div class="outline-text-3" id="text-org7bba8f2">
+<div id="outline-container-org9d83556" class="outline-3">
+<h3 id="org9d83556">统计方法</h3>
+<div class="outline-text-3" id="text-org9d83556">
 <p>
 经过测试，在网页上滚动具体阅读资料的区域刷分效果不好，我测试时第二天只增加了几分钟的阅读时长，所以只能滚动全局的页面<br>
 在刷分时我还注意到一个问题，单个页面可能有分值上限，所以我又改进了刷分方式<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org593b98d" class="outline-3">
-<h3 id="org593b98d">刷分方法</h3>
-<div class="outline-text-3" id="text-org593b98d">
+<div id="outline-container-org7ea2f46" class="outline-3">
+<h3 id="org7ea2f46">刷分方法</h3>
+<div class="outline-text-3" id="text-org7ea2f46">
 <p>
 打开阅读界面，不停向下滚动到底，到底后随机打开一个阅读页面，继续上续操作<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orge0e1aea" class="outline-3">
-<h3 id="orge0e1aea">代码实现</h3>
-<div class="outline-text-3" id="text-orge0e1aea">
+<div id="outline-container-org0ce2bff" class="outline-3">
+<h3 id="org0ce2bff">代码实现</h3>
+<div class="outline-text-3" id="text-org0ce2bff">
 <div class="org-src-container">
 <pre class="src src-js"><span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#33719;&#21462;&#38543;&#26426;&#38405;&#35835;&#39029;&#38754;</span>
 <span style="font-weight: bold;">function</span> <span style="font-weight: bold;">randu</span>() {
@@ -121,7 +121,7 @@ setInterval(() =&gt; {
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-超星.html">超星</a> </div></div>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-超星.html">超星</a> </div></div>
 <div id="postamble" class="status"><center>
          <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"></a><br />
          <span xmlns:dct="https://purl.org/dc/terms/"

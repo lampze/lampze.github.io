@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="snails报错(split-window: Window #<window 9 on  *snails tips*> too small for splitting)的解决办法">
@@ -21,11 +21,11 @@
         <a href="https://lampze.github.io">lampze's Blog</a>
       </div></div>
 <div id="content">
-<div class="post-date">04 3月 2020</div><h1 class="post-title"><a href="https://lampze.github.io/snails-to-small.html">snails 在 Doom 下的bug</a></h1>
+<div class="post-date">2020-03-04</div><h1 class="post-title"><a href="https://lampze.github.io/snails-to-small.html">snails 在 Doom 下的bug</a></h1>
 
-<div id="outline-container-orgdc2dddc" class="outline-2">
-<h2 id="orgdc2dddc">问题</h2>
-<div class="outline-text-2" id="text-orgdc2dddc">
+<div id="outline-container-orgeabbb90" class="outline-2">
+<h2 id="orgeabbb90">问题</h2>
+<div class="outline-text-2" id="text-orgeabbb90">
 <p>
 自从 snails 加入了 tips 后，在 Doom 里 snails 就打不开了，会报错 <code>split-window:
 Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
@@ -37,18 +37,18 @@ Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
 </div>
 </div>
 
-<div id="outline-container-orgdb733e8" class="outline-2">
-<h2 id="orgdb733e8">原因</h2>
-<div class="outline-text-2" id="text-orgdb733e8">
+<div id="outline-container-orgac65fa5" class="outline-2">
+<h2 id="orgac65fa5">原因</h2>
+<div class="outline-text-2" id="text-orgac65fa5">
 <p>
 经过一番调试，发现是因为 <code>(line-pixel-height)</code> 返回的值太小了，导致不能分割窗口。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgb3ffd87" class="outline-2">
-<h2 id="orgb3ffd87">解决</h2>
-<div class="outline-text-2" id="text-orgb3ffd87">
+<div id="outline-container-org224c589" class="outline-2">
+<h2 id="org224c589">解决</h2>
+<div class="outline-text-2" id="text-org224c589">
 <p>
 两种方法
 </p>
@@ -67,7 +67,7 @@ Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-snails.html">snails</a> <a href="https://lampze.github.io/tag-emacs.html">Emacs</a> <a href="https://lampze.github.io/tag-doom.html">Doom</a> </div></div>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-snails.html">snails</a> <a href="https://lampze.github.io/tag-emacs.html">Emacs</a> <a href="https://lampze.github.io/tag-doom.html">Doom</a> </div></div>
 <div id="postamble" class="status"><center>
          <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"></a><br />
          <span xmlns:dct="https://purl.org/dc/terms/"

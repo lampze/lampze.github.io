@@ -4,17 +4,17 @@
 <title><![CDATA[lampze's Blog]]></title>
 <description><![CDATA[lampze's Blog]]></description>
 <link>https://lampze.github.io/</link>
-<lastBuildDate>Thu, 19 Aug 2021 10:01:17 +0800</lastBuildDate>
+<lastBuildDate>Thu, 19 Aug 2021 14:05:15 +0800</lastBuildDate>
 <item>
   <title><![CDATA[2021年蓝桥杯模拟赛题解]]></title>
   <description><![CDATA[
-<div id="outline-container-org62ec356" class="outline-2">
-<h2 id="org62ec356">第一题</h2>
-<div class="outline-text-2" id="text-org62ec356">
+<div id="outline-container-org7605086" class="outline-2">
+<h2 id="org7605086">第一题</h2>
+<div class="outline-text-2" id="text-org7605086">
 </div>
-<div id="outline-container-org7a40817" class="outline-3">
-<h3 id="org7a40817">题目</h3>
-<div class="outline-text-3" id="text-org7a40817">
+<div id="outline-container-org4fee903" class="outline-3">
+<h3 id="org4fee903">题目</h3>
+<div class="outline-text-3" id="text-org4fee903">
 <p>
 问题描述<br>
     请问在 1 到 2020 中，有多少个数既是 4 的整数倍，又是 6 的整数倍。<br>
@@ -23,17 +23,17 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgd761494" class="outline-3">
-<h3 id="orgd761494">解析</h3>
-<div class="outline-text-3" id="text-orgd761494">
+<div id="outline-container-org15fede1" class="outline-3">
+<h3 id="org15fede1">解析</h3>
+<div class="outline-text-3" id="text-org15fede1">
 <p>
 直接枚举数字然后判断计数即可<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgc3ad10b" class="outline-3">
-<h3 id="orgc3ad10b">代码</h3>
-<div class="outline-text-3" id="text-orgc3ad10b">
+<div id="outline-container-org0e7b951" class="outline-3">
+<h3 id="org0e7b951">代码</h3>
+<div class="outline-text-3" id="text-org0e7b951">
 <div class="org-src-container">
 <pre class="src src-cpp"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 
@@ -56,13 +56,13 @@
 </div>
 </div>
 
-<div id="outline-container-org177e0bf" class="outline-2">
-<h2 id="org177e0bf">第二题</h2>
-<div class="outline-text-2" id="text-org177e0bf">
+<div id="outline-container-orgf3ac536" class="outline-2">
+<h2 id="orgf3ac536">第二题</h2>
+<div class="outline-text-2" id="text-orgf3ac536">
 </div>
-<div id="outline-container-org7014cd7" class="outline-3">
-<h3 id="org7014cd7">题目</h3>
-<div class="outline-text-3" id="text-org7014cd7">
+<div id="outline-container-org5419810" class="outline-3">
+<h3 id="org5419810">题目</h3>
+<div class="outline-text-3" id="text-org5419810">
 <p>
 问题描述<br>
 　　小明要用二进制来表示 1 到 10000 的所有整数，要求不同的整数用不同的二进制数表示，请问，为了表示 1 到 10000 的所有整数，至少需要多少个二进制位？<br>
@@ -71,17 +71,17 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org058a513" class="outline-3">
-<h3 id="org058a513">解析</h3>
-<div class="outline-text-3" id="text-org058a513">
+<div id="outline-container-org44343b8" class="outline-3">
+<h3 id="org44343b8">解析</h3>
+<div class="outline-text-3" id="text-org44343b8">
 <p>
 可以看每种二进制位最高可以表示多大的数，然后选出最小的即可<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org1d6e6f6" class="outline-3">
-<h3 id="org1d6e6f6">代码</h3>
-<div class="outline-text-3" id="text-org1d6e6f6">
+<div id="outline-container-orgfa3c59d" class="outline-3">
+<h3 id="orgfa3c59d">代码</h3>
+<div class="outline-text-3" id="text-orgfa3c59d">
 <div class="org-src-container">
 <pre class="src src-cpp"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 
@@ -101,13 +101,13 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org1369fe5" class="outline-2">
-<h2 id="org1369fe5">第三题</h2>
-<div class="outline-text-2" id="text-org1369fe5">
+<div id="outline-container-org65d7d0d" class="outline-2">
+<h2 id="org65d7d0d">第三题</h2>
+<div class="outline-text-2" id="text-org65d7d0d">
 </div>
-<div id="outline-container-org1a9b993" class="outline-3">
-<h3 id="org1a9b993">题目</h3>
-<div class="outline-text-3" id="text-org1a9b993">
+<div id="outline-container-org720a207" class="outline-3">
+<h3 id="org720a207">题目</h3>
+<div class="outline-text-3" id="text-org720a207">
 <p>
 问题描述<br>
 　　请问有多少个序列满足下面的条件：<br>
@@ -119,9 +119,9 @@
 </ol>
 </div>
 </div>
-<div id="outline-container-orga1d2502" class="outline-3">
-<h3 id="orga1d2502">解析</h3>
-<div class="outline-text-3" id="text-orga1d2502">
+<div id="outline-container-org227a449" class="outline-3">
+<h3 id="org227a449">解析</h3>
+<div class="outline-text-3" id="text-org227a449">
 <p>
 直接使用 <code>dfs</code> 搜索即可<br>
 </p>
@@ -131,9 +131,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org5e81444" class="outline-3">
-<h3 id="org5e81444">代码</h3>
-<div class="outline-text-3" id="text-org5e81444">
+<div id="outline-container-orgaebb425" class="outline-3">
+<h3 id="orgaebb425">代码</h3>
+<div class="outline-text-3" id="text-orgaebb425">
 <div class="org-src-container">
 <pre class="src src-cpp"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 
@@ -191,13 +191,13 @@
 </div>
 </div>
 
-<div id="outline-container-org1cb3328" class="outline-2">
-<h2 id="org1cb3328">第四题</h2>
-<div class="outline-text-2" id="text-org1cb3328">
+<div id="outline-container-org83217c8" class="outline-2">
+<h2 id="org83217c8">第四题</h2>
+<div class="outline-text-2" id="text-org83217c8">
 </div>
-<div id="outline-container-org38bc0f6" class="outline-3">
-<h3 id="org38bc0f6">题目</h3>
-<div class="outline-text-3" id="text-org38bc0f6">
+<div id="outline-container-org7a79a0d" class="outline-3">
+<h3 id="org7a79a0d">题目</h3>
+<div class="outline-text-3" id="text-org7a79a0d">
 <p>
 问题描述<br>
 　　一个无向图包含 2020 条边，如果图中没有自环和重边，请问最少包含多少个结点？<br>
@@ -205,30 +205,30 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org53ef125" class="outline-3">
-<h3 id="org53ef125">解析</h3>
-<div class="outline-text-3" id="text-org53ef125">
+<div id="outline-container-org56d4672" class="outline-3">
+<h3 id="org56d4672">解析</h3>
+<div class="outline-text-3" id="text-org56d4672">
 <p>
 假设有结点的个数为 \(n\) 的图，已知边的个数最多为 \(\frac{n \times (n-1)}{2}\) ，可以列出等式 \(\frac{n \times (n-1)}{2} = 2020\) 可得 \(n = 64.0629609128\) 然后取整加一即可<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org59269b5" class="outline-3">
-<h3 id="org59269b5">答案</h3>
-<div class="outline-text-3" id="text-org59269b5">
+<div id="outline-container-org828902e" class="outline-3">
+<h3 id="org828902e">答案</h3>
+<div class="outline-text-3" id="text-org828902e">
 <p>
 <code>65</code><br>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc4f89a2" class="outline-2">
-<h2 id="orgc4f89a2">第五题</h2>
-<div class="outline-text-2" id="text-orgc4f89a2">
+<div id="outline-container-orgcb78929" class="outline-2">
+<h2 id="orgcb78929">第五题</h2>
+<div class="outline-text-2" id="text-orgcb78929">
 </div>
-<div id="outline-container-org7cb7fd9" class="outline-3">
-<h3 id="org7cb7fd9">题目</h3>
-<div class="outline-text-3" id="text-org7cb7fd9">
+<div id="outline-container-org45fc8e8" class="outline-3">
+<h3 id="org45fc8e8">题目</h3>
+<div class="outline-text-3" id="text-org45fc8e8">
 <p>
 问题描述<br>
 　　两个字母之间的距离定义为它们在字母表中位置的距离。例如 A 和 C 的距离为 2，L 和 Q 的距离为 5。<br>
@@ -239,17 +239,17 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org350cccd" class="outline-3">
-<h3 id="org350cccd">解析</h3>
-<div class="outline-text-3" id="text-org350cccd">
+<div id="outline-container-orga6fb367" class="outline-3">
+<h3 id="orga6fb367">解析</h3>
+<div class="outline-text-3" id="text-orga6fb367">
 <p>
 枚举 <code>LANQIAO</code> 字符串所有两个字符的组合，计算距离然后相加即可<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org497e338" class="outline-3">
-<h3 id="org497e338">代码</h3>
-<div class="outline-text-3" id="text-org497e338">
+<div id="outline-container-orgf9a8e81" class="outline-3">
+<h3 id="orgf9a8e81">代码</h3>
+<div class="outline-text-3" id="text-orgf9a8e81">
 <div class="org-src-container">
 <pre class="src src-cpp"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 
@@ -279,13 +279,13 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org07f7d73" class="outline-2">
-<h2 id="org07f7d73">第六题</h2>
-<div class="outline-text-2" id="text-org07f7d73">
+<div id="outline-container-org85f5c53" class="outline-2">
+<h2 id="org85f5c53">第六题</h2>
+<div class="outline-text-2" id="text-org85f5c53">
 </div>
-<div id="outline-container-org747212c" class="outline-3">
-<h3 id="org747212c">题目</h3>
-<div class="outline-text-3" id="text-org747212c">
+<div id="outline-container-orgec5dd22" class="outline-3">
+<h3 id="orgec5dd22">题目</h3>
+<div class="outline-text-3" id="text-orgec5dd22">
 <p>
 问题描述<br>
 　　给定一个平行四边形的底边长度 l 和高度 h，求平行四边形的面积。<br>
@@ -296,7 +296,7 @@
 　　输出一个整数，表示平行四边形的面积。（提示：底边长度和高都是整数的平行四边形面积为整数）<br>
 样例输入<br>
 </p>
-<pre class="example" id="org86f336f">
+<pre class="example" id="org392c378">
 2
 7
 </pre>
@@ -304,7 +304,7 @@
 <p>
 样例输出<br>
 </p>
-<pre class="example" id="org1815996">
+<pre class="example" id="org8e04ebc">
 14
 </pre>
 
@@ -313,17 +313,17 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgcbdd5aa" class="outline-3">
-<h3 id="orgcbdd5aa">解析</h3>
-<div class="outline-text-3" id="text-orgcbdd5aa">
+<div id="outline-container-orgbab3519" class="outline-3">
+<h3 id="orgbab3519">解析</h3>
+<div class="outline-text-3" id="text-orgbab3519">
 <p>
 直接计算输出，没什么好说的<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org4d76316" class="outline-3">
-<h3 id="org4d76316">代码</h3>
-<div class="outline-text-3" id="text-org4d76316">
+<div id="outline-container-orgca0b268" class="outline-3">
+<h3 id="orgca0b268">代码</h3>
+<div class="outline-text-3" id="text-orgca0b268">
 <div class="org-src-container">
 <pre class="src src-cpp"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 
@@ -341,13 +341,13 @@
 </div>
 </div>
 
-<div id="outline-container-org338e316" class="outline-2">
-<h2 id="org338e316">第七题</h2>
-<div class="outline-text-2" id="text-org338e316">
+<div id="outline-container-orgf3e16ab" class="outline-2">
+<h2 id="orgf3e16ab">第七题</h2>
+<div class="outline-text-2" id="text-orgf3e16ab">
 </div>
-<div id="outline-container-org8a9bd96" class="outline-3">
-<h3 id="org8a9bd96">题目</h3>
-<div class="outline-text-3" id="text-org8a9bd96">
+<div id="outline-container-org2fd74e2" class="outline-3">
+<h3 id="org2fd74e2">题目</h3>
+<div class="outline-text-3" id="text-org2fd74e2">
 <p>
 问题描述<br>
 　　现在时间是 a 点 b 分，请问 t 分钟后，是几点几分？<br>
@@ -361,7 +361,7 @@
 样例输入<br>
 </p>
 
-<pre class="example" id="org64f60e5">
+<pre class="example" id="orgcee3d15">
 3
 20
 165
@@ -371,7 +371,7 @@
 样例输出<br>
 </p>
 
-<pre class="example" id="orga743d8e">
+<pre class="example" id="org818c927">
 6
 5
 </pre>
@@ -380,7 +380,7 @@
 样例输入<br>
 </p>
 
-<pre class="example" id="orgbd2590a">
+<pre class="example" id="orgc9da871">
 3
 20
 175
@@ -390,7 +390,7 @@
 样例输出<br>
 </p>
 
-<pre class="example" id="org18e378e">
+<pre class="example" id="org83b35b2">
 6
 15
 </pre>
@@ -400,17 +400,17 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orga27716b" class="outline-3">
-<h3 id="orga27716b">解析</h3>
-<div class="outline-text-3" id="text-orga27716b">
+<div id="outline-container-org5619ebd" class="outline-3">
+<h3 id="org5619ebd">解析</h3>
+<div class="outline-text-3" id="text-org5619ebd">
 <p>
 直接把 <code>t</code> 加入到 <code>b</code> 中，然后把超出的时间补到小时上，并把分钟修整到60分钟内即可。<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org0438f61" class="outline-3">
-<h3 id="org0438f61">代码</h3>
-<div class="outline-text-3" id="text-org0438f61">
+<div id="outline-container-orgd3d5e3a" class="outline-3">
+<h3 id="orgd3d5e3a">代码</h3>
+<div class="outline-text-3" id="text-orgd3d5e3a">
 <div class="org-src-container">
 <pre class="src src-cpp"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 
@@ -430,13 +430,13 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgde63b47" class="outline-2">
-<h2 id="orgde63b47">第八题</h2>
-<div class="outline-text-2" id="text-orgde63b47">
+<div id="outline-container-orge7c9101" class="outline-2">
+<h2 id="orge7c9101">第八题</h2>
+<div class="outline-text-2" id="text-orge7c9101">
 </div>
-<div id="outline-container-org667d480" class="outline-3">
-<h3 id="org667d480">题目</h3>
-<div class="outline-text-3" id="text-org667d480">
+<div id="outline-container-org4e5d781" class="outline-3">
+<h3 id="org4e5d781">题目</h3>
+<div class="outline-text-3" id="text-org4e5d781">
 <p>
 问题描述<br>
 　　小蓝负责花园的灌溉工作。<br>
@@ -454,7 +454,7 @@
 样例输入<br>
 </p>
 
-<pre class="example" id="orgc56e6ef">
+<pre class="example" id="orgd5f96f9">
 3 6
 2
 2 2
@@ -466,7 +466,7 @@
 样例输出<br>
 </p>
 
-<pre class="example" id="orgdbb4dc4">
+<pre class="example" id="org238eb0b">
 9
 </pre>
 
@@ -487,17 +487,17 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org3f17ff8" class="outline-3">
-<h3 id="org3f17ff8">解析</h3>
-<div class="outline-text-3" id="text-org3f17ff8">
+<div id="outline-container-org1d90f09" class="outline-3">
+<h3 id="org1d90f09">解析</h3>
+<div class="outline-text-3" id="text-org1d90f09">
 <p>
 使用 <code>bfs</code> ，更新每个结点直到时间结束，每次把新灌溉的结点加入到队列即可。<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgf0edd5a" class="outline-3">
-<h3 id="orgf0edd5a">代码</h3>
-<div class="outline-text-3" id="text-orgf0edd5a">
+<div id="outline-container-org355243b" class="outline-3">
+<h3 id="org355243b">代码</h3>
+<div class="outline-text-3" id="text-org355243b">
 <div class="org-src-container">
 <pre class="src src-cpp"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 <span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">queue</span><span style="color: #014980;">&gt;</span>
@@ -557,13 +557,13 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orga1ec763" class="outline-2">
-<h2 id="orga1ec763">第九题</h2>
-<div class="outline-text-2" id="text-orga1ec763">
+<div id="outline-container-org3c6ece0" class="outline-2">
+<h2 id="org3c6ece0">第九题</h2>
+<div class="outline-text-2" id="text-org3c6ece0">
 </div>
-<div id="outline-container-org4ed6558" class="outline-3">
-<h3 id="org4ed6558">题目</h3>
-<div class="outline-text-3" id="text-org4ed6558">
+<div id="outline-container-org181e76f" class="outline-3">
+<h3 id="org181e76f">题目</h3>
+<div class="outline-text-3" id="text-org181e76f">
 <p>
 问题描述<br>
 　　小蓝有一张黑白图像，由 n * m 个像素组成，其中从上到下共 n 行，每行从左到右 m 列。每个像素由一个 0 到 255 之间的灰度值表示。<br>
@@ -578,7 +578,7 @@
 样例输入<br>
 </p>
 
-<pre class="example" id="org919814f">
+<pre class="example" id="orgbe681cc">
 3 4
 0 0 0 255
 0 0 255 0
@@ -589,7 +589,7 @@
 样例输出<br>
 </p>
 
-<pre class="example" id="org7c66193">
+<pre class="example" id="org8213522">
 0 42 85 127
 5 60 116 170
 7 90 132 191
@@ -601,17 +601,17 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgb218618" class="outline-3">
-<h3 id="orgb218618">解析</h3>
-<div class="outline-text-3" id="text-orgb218618">
+<div id="outline-container-orge76056f" class="outline-3">
+<h3 id="orge76056f">解析</h3>
+<div class="outline-text-3" id="text-orge76056f">
 <p>
 遍历统计计算并输出即可<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org16e340d" class="outline-3">
-<h3 id="org16e340d">代码</h3>
-<div class="outline-text-3" id="text-org16e340d">
+<div id="outline-container-orgd04abc6" class="outline-3">
+<h3 id="orgd04abc6">代码</h3>
+<div class="outline-text-3" id="text-orgd04abc6">
 <div class="org-src-container">
 <pre class="src src-cpp"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 
@@ -646,13 +646,13 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org06e0690" class="outline-2">
-<h2 id="org06e0690">第十题</h2>
-<div class="outline-text-2" id="text-org06e0690">
+<div id="outline-container-org022de43" class="outline-2">
+<h2 id="org022de43">第十题</h2>
+<div class="outline-text-2" id="text-org022de43">
 </div>
-<div id="outline-container-org447552c" class="outline-3">
-<h3 id="org447552c">题目</h3>
-<div class="outline-text-3" id="text-org447552c">
+<div id="outline-container-orge74518d" class="outline-3">
+<h3 id="orge74518d">题目</h3>
+<div class="outline-text-3" id="text-orge74518d">
 <p>
 问题描述<br>
 　　小蓝在一个 n 行 m 列的方格图中玩一个游戏。<br>
@@ -670,7 +670,7 @@
 样例输入<br>
 </p>
 
-<pre class="example" id="orgeb92014">
+<pre class="example" id="org9010d78">
 3 5
 -4 -5 -10 -3 1
 7 5 -9 3 -10
@@ -681,7 +681,7 @@
 样例输出<br>
 </p>
 
-<pre class="example" id="orgd980c5f">
+<pre class="example" id="org1b2d599">
 15
 </pre>
 
@@ -693,17 +693,17 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org5a34c9a" class="outline-3">
-<h3 id="org5a34c9a">解析</h3>
-<div class="outline-text-3" id="text-org5a34c9a">
+<div id="outline-container-org68fb889" class="outline-3">
+<h3 id="org68fb889">解析</h3>
+<div class="outline-text-3" id="text-org68fb889">
 <p>
 和只能向下或向右走的题目一样，我们使用逆向思维，每个点的最大权值就是当前点的权值加上能走过来的点的最大权值<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgb0555bb" class="outline-3">
-<h3 id="orgb0555bb">代码</h3>
-<div class="outline-text-3" id="text-orgb0555bb">
+<div id="outline-container-orgbefbfc4" class="outline-3">
+<h3 id="orgbefbfc4">代码</h3>
+<div class="outline-text-3" id="text-orgbefbfc4">
 <div class="org-src-container">
 <pre class="src src-cpp"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 
@@ -746,7 +746,7 @@
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-蓝桥杯.html">蓝桥杯</a> </div>]]></description>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-蓝桥杯.html">蓝桥杯</a> </div>]]></description>
   <category><![CDATA[蓝桥杯]]></category>
   <link>https://lampze.github.io/2021-lanqiao-simula.html</link>
   <pubDate>Fri, 22 Jan 2021 00:00:00 +0800</pubDate>
@@ -754,9 +754,9 @@
 <item>
   <title><![CDATA[算法基础-模拟与搜索]]></title>
   <description><![CDATA[
-<div id="outline-container-orgfda7be1" class="outline-2">
-<h2 id="orgfda7be1">前言</h2>
-<div class="outline-text-2" id="text-orgfda7be1">
+<div id="outline-container-org9730ef4" class="outline-2">
+<h2 id="org9730ef4">前言</h2>
+<div class="outline-text-2" id="text-org9730ef4">
 <p>
 模拟既直接根据题意做题，搜索既在可能的解里寻找正确答案<br>
 </p>
@@ -766,24 +766,24 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org2252a1c" class="outline-2">
-<h2 id="org2252a1c">扫雷游戏</h2>
-<div class="outline-text-2" id="text-org2252a1c">
+<div id="outline-container-org4a6c947" class="outline-2">
+<h2 id="org4a6c947">扫雷游戏</h2>
+<div class="outline-text-2" id="text-org4a6c947">
 <p>
 <a href="https://www.luogu.com.cn/problem/P2670">https://www.luogu.com.cn/problem/P2670</a><br>
 </p>
 </div>
-<div id="outline-container-org5373fb2" class="outline-3">
-<h3 id="org5373fb2">思路</h3>
-<div class="outline-text-3" id="text-org5373fb2">
+<div id="outline-container-org41582a1" class="outline-3">
+<h3 id="org41582a1">思路</h3>
+<div class="outline-text-3" id="text-org41582a1">
 <p>
 题目要求输出每个格子周围的地雷数，那么根据模拟思维，直接统计每个格子周围的地雷数并输出即可<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgeabc8b2" class="outline-3">
-<h3 id="orgeabc8b2">代码</h3>
-<div class="outline-text-3" id="text-orgeabc8b2">
+<div id="outline-container-org04ea18c" class="outline-3">
+<h3 id="org04ea18c">代码</h3>
+<div class="outline-text-3" id="text-org04ea18c">
 <div class="org-src-container">
 <pre class="src src-C++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 
@@ -829,24 +829,24 @@
 </div>
 </div>
 
-<div id="outline-container-orgef5c31b" class="outline-2">
-<h2 id="orgef5c31b">字符串的展开</h2>
-<div class="outline-text-2" id="text-orgef5c31b">
+<div id="outline-container-orga25590a" class="outline-2">
+<h2 id="orga25590a">字符串的展开</h2>
+<div class="outline-text-2" id="text-orga25590a">
 <p>
 <a href="https://www.luogu.com.cn/problem/P1098">https://www.luogu.com.cn/problem/P1098</a><br>
 </p>
 </div>
-<div id="outline-container-orga3813f7" class="outline-3">
-<h3 id="orga3813f7">思路</h3>
-<div class="outline-text-3" id="text-orga3813f7">
+<div id="outline-container-orgf880a82" class="outline-3">
+<h3 id="orgf880a82">思路</h3>
+<div class="outline-text-3" id="text-orgf880a82">
 <p>
 这是一道复杂的模拟题目，题目已经把我们要做的操作都描述出来了，我们要学会如何分解这些复杂的操作，因为这么复杂的逻辑很容易写错，而把逻辑分解成一个个模块后再调试显然是更加方便快捷的。<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org66d35e8" class="outline-3">
-<h3 id="org66d35e8">代码</h3>
-<div class="outline-text-3" id="text-org66d35e8">
+<div id="outline-container-orgf11fd0d" class="outline-3">
+<h3 id="orgf11fd0d">代码</h3>
+<div class="outline-text-3" id="text-orgf11fd0d">
 <div class="org-src-container">
 <pre class="src src-C++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">algorithm</span><span style="color: #014980;">&gt;</span>
 <span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
@@ -925,16 +925,16 @@
 </div>
 </div>
 
-<div id="outline-container-org15c50f8" class="outline-2">
-<h2 id="org15c50f8">选数</h2>
-<div class="outline-text-2" id="text-org15c50f8">
+<div id="outline-container-org89bd1b5" class="outline-2">
+<h2 id="org89bd1b5">选数</h2>
+<div class="outline-text-2" id="text-org89bd1b5">
 <p>
 <a href="https://www.luogu.com.cn/problem/P1036">https://www.luogu.com.cn/problem/P1036</a><br>
 </p>
 </div>
-<div id="outline-container-org1f19edf" class="outline-3">
-<h3 id="org1f19edf">思路</h3>
-<div class="outline-text-3" id="text-org1f19edf">
+<div id="outline-container-org8fd7807" class="outline-3">
+<h3 id="org8fd7807">思路</h3>
+<div class="outline-text-3" id="text-org8fd7807">
 <p>
 首先题目提到了素数，那么第一步就是先把素数都筛出来，方便后续操作<br>
 </p>
@@ -945,9 +945,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgafca526" class="outline-3">
-<h3 id="orgafca526">代码</h3>
-<div class="outline-text-3" id="text-orgafca526">
+<div id="outline-container-orgaf37e24" class="outline-3">
+<h3 id="orgaf37e24">代码</h3>
+<div class="outline-text-3" id="text-orgaf37e24">
 <div class="org-src-container">
 <pre class="src src-C++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">algorithm</span><span style="color: #014980;">&gt;</span>
 <span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
@@ -997,24 +997,24 @@
 </div>
 </div>
 
-<div id="outline-container-org0d566c0" class="outline-2">
-<h2 id="org0d566c0">自然数的拆分问题</h2>
-<div class="outline-text-2" id="text-org0d566c0">
+<div id="outline-container-orge5ee173" class="outline-2">
+<h2 id="orge5ee173">自然数的拆分问题</h2>
+<div class="outline-text-2" id="text-orge5ee173">
 <p>
 <a href="https://www.luogu.com.cn/problem/P2404">https://www.luogu.com.cn/problem/P2404</a><br>
 </p>
 </div>
-<div id="outline-container-orgf212658" class="outline-3">
-<h3 id="orgf212658">思路</h3>
-<div class="outline-text-3" id="text-orgf212658">
+<div id="outline-container-org1a5cb60" class="outline-3">
+<h3 id="org1a5cb60">思路</h3>
+<div class="outline-text-3" id="text-org1a5cb60">
 <p>
 这题就不使用全排列了，只能老老实实的自己写搜索了，因为必须要把所有情况过一遍，所以使用 <code>dfs</code> 比较方便，状态只需要保存已分拆分的数字个数与剩余数字就行了。<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org181c9af" class="outline-3">
-<h3 id="org181c9af">代码</h3>
-<div class="outline-text-3" id="text-org181c9af">
+<div id="outline-container-org4cc0fbd" class="outline-3">
+<h3 id="org4cc0fbd">代码</h3>
+<div class="outline-text-3" id="text-org4cc0fbd">
 <div class="org-src-container">
 <pre class="src src-C++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 
@@ -1060,25 +1060,25 @@
 </div>
 </div>
 
-<div id="outline-container-orgec5dd0b" class="outline-2">
-<h2 id="orgec5dd0b">马的遍历</h2>
-<div class="outline-text-2" id="text-orgec5dd0b">
+<div id="outline-container-orgc3189c5" class="outline-2">
+<h2 id="orgc3189c5">马的遍历</h2>
+<div class="outline-text-2" id="text-orgc3189c5">
 <p>
 <a href="https://www.luogu.com.cn/problem/P1443">https://www.luogu.com.cn/problem/P1443</a><br>
 </p>
 </div>
-<div id="outline-container-org47cde0f" class="outline-3">
-<h3 id="org47cde0f">思路</h3>
-<div class="outline-text-3" id="text-org47cde0f">
+<div id="outline-container-org31fd966" class="outline-3">
+<h3 id="org31fd966">思路</h3>
+<div class="outline-text-3" id="text-org31fd966">
 <p>
 题目叫我们计算到达一个点需要多少步，那我们就模拟一只马走路即可，但一只马一步可能走好多个地方，使用循环是不能做出来的，我们必须把马的状态保存起来，每走一次更新一下。<br>
 使用队列保存马每一步的坐标与步数，每次取出一个步数最小的状态，把下一步可能的状态计算出并加入到队列就行了。<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org91651dd" class="outline-3">
-<h3 id="org91651dd">代码</h3>
-<div class="outline-text-3" id="text-org91651dd">
+<div id="outline-container-org878df86" class="outline-3">
+<h3 id="org878df86">代码</h3>
+<div class="outline-text-3" id="text-org878df86">
 <div class="org-src-container">
 <pre class="src src-C++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">cstdio</span><span style="color: #014980;">&gt;</span>
 <span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
@@ -1149,16 +1149,16 @@
 </div>
 </div>
 
-<div id="outline-container-org80b4f17" class="outline-2">
-<h2 id="org80b4f17">奇怪的电梯</h2>
-<div class="outline-text-2" id="text-org80b4f17">
+<div id="outline-container-org8c0d365" class="outline-2">
+<h2 id="org8c0d365">奇怪的电梯</h2>
+<div class="outline-text-2" id="text-org8c0d365">
 <p>
 <a href="https://www.luogu.com.cn/problem/P1135">https://www.luogu.com.cn/problem/P1135</a><br>
 </p>
 </div>
-<div id="outline-container-orgd862fd1" class="outline-3">
-<h3 id="orgd862fd1">思路</h3>
-<div class="outline-text-3" id="text-orgd862fd1">
+<div id="outline-container-orgbcfea2d" class="outline-3">
+<h3 id="orgbcfea2d">思路</h3>
+<div class="outline-text-3" id="text-orgbcfea2d">
 <p>
 根据题意，一个楼层最多只能跳转到另外两个楼层，一个节点表示一个楼层，画成图就是一个节点连接着两个节点，可以自己尝试的在纸上画一下。<br>
 </p>
@@ -1168,9 +1168,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org7d56e42" class="outline-3">
-<h3 id="org7d56e42">代码</h3>
-<div class="outline-text-3" id="text-org7d56e42">
+<div id="outline-container-org65a781f" class="outline-3">
+<h3 id="org65a781f">代码</h3>
+<div class="outline-text-3" id="text-org65a781f">
 <div class="org-src-container">
 <pre class="src src-C++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 <span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">queue</span><span style="color: #014980;">&gt;</span>
@@ -1236,7 +1236,7 @@
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-algorithm.html">algorithm</a> </div>]]></description>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-algorithm.html">algorithm</a> </div>]]></description>
   <category><![CDATA[algorithm]]></category>
   <link>https://lampze.github.io/algorithm-basic-sim-search.html</link>
   <pubDate>Fri, 15 Jan 2021 00:00:00 +0800</pubDate>
@@ -1248,55 +1248,55 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf9b8b00">前言</a></li>
-<li><a href="#org909ace3">算法思想</a>
+<li><a href="#org8d71cf1">前言</a></li>
+<li><a href="#org6914536">算法思想</a>
 <ul>
-<li><a href="#org5346d57">模拟</a></li>
-<li><a href="#org1b87740">搜索</a></li>
-<li><a href="#orgba4e192">递归</a></li>
-<li><a href="#org72e7e53">递推</a></li>
+<li><a href="#org7c0800f">模拟</a></li>
+<li><a href="#org9b321d2">搜索</a></li>
+<li><a href="#org72d667f">递归</a></li>
+<li><a href="#orgf55b418">递推</a></li>
 </ul>
 </li>
-<li><a href="#org8924c25">算法种类</a>
+<li><a href="#orga51f261">算法种类</a>
 <ul>
-<li><a href="#orgc38582f">搜索</a>
+<li><a href="#org2f02396">搜索</a>
 <ul>
-<li><a href="#org5902de6">枚举</a></li>
-<li><a href="#orga7fba1d">排列</a></li>
-<li><a href="#org480f46d">子集</a></li>
-<li><a href="#org96c98a3">DFS</a></li>
-<li><a href="#orgda048b0">BFS</a></li>
-<li><a href="#orgc856c34">二分查找</a></li>
+<li><a href="#orge2edf18">枚举</a></li>
+<li><a href="#org04a4334">排列</a></li>
+<li><a href="#orgb083d6c">子集</a></li>
+<li><a href="#org9eee757">DFS</a></li>
+<li><a href="#orga9ae623">BFS</a></li>
+<li><a href="#org3bd47bd">二分查找</a></li>
 </ul>
 </li>
-<li><a href="#org9efa875">动态规划</a>
+<li><a href="#org3ebe615">动态规划</a>
 <ul>
-<li><a href="#org1b5c3fd">递推</a></li>
-<li><a href="#org8e6f67c">记忆化搜索</a></li>
-<li><a href="#org63c1b7f">贪心</a></li>
+<li><a href="#org6302225">递推</a></li>
+<li><a href="#org5bf91de">记忆化搜索</a></li>
+<li><a href="#orgd6bf637">贪心</a></li>
 </ul>
 </li>
-<li><a href="#org8f99572">数学</a>
+<li><a href="#org4842bfe">数学</a>
 <ul>
-<li><a href="#org8a4b95a">高精度</a></li>
-<li><a href="#orgea27ec5">快速幂</a></li>
-<li><a href="#org8b4f153">数论</a></li>
+<li><a href="#orga42f37e">高精度</a></li>
+<li><a href="#orgc1978a0">快速幂</a></li>
+<li><a href="#org117bb41">数论</a></li>
 </ul>
 </li>
-<li><a href="#org9c23815">数据结构</a>
+<li><a href="#orgaf7a75c">数据结构</a>
 <ul>
-<li><a href="#org05eaef0">栈</a></li>
-<li><a href="#orgc376254">队列</a></li>
-<li><a href="#org389281e">并查集</a></li>
-<li><a href="#org2361f53">树状数组</a></li>
-<li><a href="#orgdd92261">线段树</a></li>
+<li><a href="#org12b3168">栈</a></li>
+<li><a href="#org44dbbd5">队列</a></li>
+<li><a href="#orgd3fd8ed">并查集</a></li>
+<li><a href="#orgb1a8ed1">树状数组</a></li>
+<li><a href="#org4d89c59">线段树</a></li>
 </ul>
 </li>
-<li><a href="#org85acf3a">图论</a>
+<li><a href="#orgab05511">图论</a>
 <ul>
-<li><a href="#org653ef23">最短路</a></li>
-<li><a href="#org9c19fab">最小生成树</a></li>
-<li><a href="#org7fa436f">拓扑排序</a></li>
+<li><a href="#org7f04492">最短路</a></li>
+<li><a href="#org1efb23c">最小生成树</a></li>
+<li><a href="#orgaaa2b6d">拓扑排序</a></li>
 </ul>
 </li>
 </ul>
@@ -1304,9 +1304,9 @@
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgf9b8b00" class="outline-2">
-<h2 id="orgf9b8b00">前言</h2>
-<div class="outline-text-2" id="text-orgf9b8b00">
+<div id="outline-container-org8d71cf1" class="outline-2">
+<h2 id="org8d71cf1">前言</h2>
+<div class="outline-text-2" id="text-org8d71cf1">
 <p>
 本文将会简单介绍些竞赛会使用的各种算法<br>
 </p>
@@ -1316,13 +1316,13 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org909ace3" class="outline-2">
-<h2 id="org909ace3">算法思想</h2>
-<div class="outline-text-2" id="text-org909ace3">
+<div id="outline-container-org6914536" class="outline-2">
+<h2 id="org6914536">算法思想</h2>
+<div class="outline-text-2" id="text-org6914536">
 </div>
-<div id="outline-container-org5346d57" class="outline-3">
-<h3 id="org5346d57">模拟</h3>
-<div class="outline-text-3" id="text-org5346d57">
+<div id="outline-container-org7c0800f" class="outline-3">
+<h3 id="org7c0800f">模拟</h3>
+<div class="outline-text-3" id="text-org7c0800f">
 <p>
 模拟的含义就是题目说什么我们就做什么，比如赛跑、算时间、猜拳等等只需要根据题意把代码实现出来即可<br>
 模拟是我们拿到一个题目时第一个思考的破解算法，但对于大多数题目单纯的模拟是不能在规定时间内解开的。也有的题目只能使用模拟，但模拟的事物非常复杂，这时就非常考验编程功底了。<br>
@@ -1333,9 +1333,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org1b87740" class="outline-3">
-<h3 id="org1b87740">搜索</h3>
-<div class="outline-text-3" id="text-org1b87740">
+<div id="outline-container-org9b321d2" class="outline-3">
+<h3 id="org9b321d2">搜索</h3>
+<div class="outline-text-3" id="text-org9b321d2">
 <p>
 搜索即是找到答案的过程，通过题目上已知的可能解，我们一个一个的去试就能找到正确的解了。<br>
 </p>
@@ -1353,9 +1353,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgba4e192" class="outline-3">
-<h3 id="orgba4e192">递归</h3>
-<div class="outline-text-3" id="text-orgba4e192">
+<div id="outline-container-org72d667f" class="outline-3">
+<h3 id="org72d667f">递归</h3>
+<div class="outline-text-3" id="text-org72d667f">
 <p>
 递归既调用自身<br>
 </p>
@@ -1378,9 +1378,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org72e7e53" class="outline-3">
-<h3 id="org72e7e53">递推</h3>
-<div class="outline-text-3" id="text-org72e7e53">
+<div id="outline-container-orgf55b418" class="outline-3">
+<h3 id="orgf55b418">递推</h3>
+<div class="outline-text-3" id="text-orgf55b418">
 <p>
 递推与递归相反，递推也是使用相同的数学公式，但它从下界开始算起，比如算 <code>fib(n)</code> 使用递推的思想就是从 <code>fib(1)</code> 开始一步一步往上推。<br>
 </p>
@@ -1407,28 +1407,28 @@
 </div>
 </div>
 
-<div id="outline-container-org8924c25" class="outline-2">
-<h2 id="org8924c25">算法种类</h2>
-<div class="outline-text-2" id="text-org8924c25">
+<div id="outline-container-orga51f261" class="outline-2">
+<h2 id="orga51f261">算法种类</h2>
+<div class="outline-text-2" id="text-orga51f261">
 </div>
-<div id="outline-container-orgc38582f" class="outline-3">
-<h3 id="orgc38582f">搜索</h3>
-<div class="outline-text-3" id="text-orgc38582f">
+<div id="outline-container-org2f02396" class="outline-3">
+<h3 id="org2f02396">搜索</h3>
+<div class="outline-text-3" id="text-org2f02396">
 <p>
 搜索的思想已经讲过，下面我介绍一些常用的搜索方法<br>
 </p>
 </div>
-<div id="outline-container-org5902de6" class="outline-4">
-<h4 id="org5902de6">枚举</h4>
-<div class="outline-text-4" id="text-org5902de6">
+<div id="outline-container-orge2edf18" class="outline-4">
+<h4 id="orge2edf18">枚举</h4>
+<div class="outline-text-4" id="text-orge2edf18">
 <p>
 简单的把每种可能性都测试一遍，循环即可<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orga7fba1d" class="outline-4">
-<h4 id="orga7fba1d">排列</h4>
-<div class="outline-text-4" id="text-orga7fba1d">
+<div id="outline-container-org04a4334" class="outline-4">
+<h4 id="org04a4334">排列</h4>
+<div class="outline-text-4" id="text-org04a4334">
 <p>
 对于安排时间的问题：给出很多段时间，要求找到不重合的时间段，使得总时长最大<br>
 </p>
@@ -1457,9 +1457,9 @@
 </div>
 </div>
 
-<div id="outline-container-org480f46d" class="outline-4">
-<h4 id="org480f46d">子集</h4>
-<div class="outline-text-4" id="text-org480f46d">
+<div id="outline-container-orgb083d6c" class="outline-4">
+<h4 id="orgb083d6c">子集</h4>
+<div class="outline-text-4" id="text-orgb083d6c">
 <p>
 给定一些数，问你一共有多少种方法让数的和为0。<br>
 </p>
@@ -1476,7 +1476,7 @@
 <p>
 一个数字在集合里只有两种状态：存在或者不存在。我们用1和0表示，像下面这样<br>
 </p>
-<pre class="example" id="org46203d8">
+<pre class="example" id="org375cd6d">
 1 2 3
 0 0 1
 </pre>
@@ -1509,9 +1509,9 @@
 </div>
 </div>
 
-<div id="outline-container-org96c98a3" class="outline-4">
-<h4 id="org96c98a3">DFS</h4>
-<div class="outline-text-4" id="text-org96c98a3">
+<div id="outline-container-org9eee757" class="outline-4">
+<h4 id="org9eee757">DFS</h4>
+<div class="outline-text-4" id="text-org9eee757">
 <p>
 DFS(Depth First Search)既深度优先搜索<br>
 </p>
@@ -1549,9 +1549,9 @@ DFS(Depth First Search)既深度优先搜索<br>
 </div>
 </div>
 
-<div id="outline-container-orgda048b0" class="outline-4">
-<h4 id="orgda048b0">BFS</h4>
-<div class="outline-text-4" id="text-orgda048b0">
+<div id="outline-container-orga9ae623" class="outline-4">
+<h4 id="orga9ae623">BFS</h4>
+<div class="outline-text-4" id="text-orga9ae623">
 <p>
 BFS(Breadth First Search)既广度优先搜索<br>
 </p>
@@ -1561,25 +1561,25 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgc856c34" class="outline-4">
-<h4 id="orgc856c34">二分查找</h4>
-<div class="outline-text-4" id="text-orgc856c34">
+<div id="outline-container-org3bd47bd" class="outline-4">
+<h4 id="org3bd47bd">二分查找</h4>
+<div class="outline-text-4" id="text-org3bd47bd">
 <p>
 二分查找只能应用在有单调性的数据上，对于一个单调递增的数列，我想查找一个数字是否存在于这个数列上，就可以查找数列中间的数字，如果相等返回真，如果查找的数字比中间数字大就去右边查找，反之则去左边查找。<br>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org9efa875" class="outline-3">
-<h3 id="org9efa875">动态规划</h3>
-<div class="outline-text-3" id="text-org9efa875">
+<div id="outline-container-org3ebe615" class="outline-3">
+<h3 id="org3ebe615">动态规划</h3>
+<div class="outline-text-3" id="text-org3ebe615">
 <p>
 动态规划是算法学习上的一道分水岭，动态规划的核心是找出题目背后的那个数学公式，而找到公式是非常困难的，所幸有许多类型的题目都有现成的公式，而找到公式后就可以非常简单轻松的完成了。<br>
 </p>
 </div>
-<div id="outline-container-org1b5c3fd" class="outline-4">
-<h4 id="org1b5c3fd">递推</h4>
-<div class="outline-text-4" id="text-org1b5c3fd">
+<div id="outline-container-org6302225" class="outline-4">
+<h4 id="org6302225">递推</h4>
+<div class="outline-text-4" id="text-org6302225">
 <p>
 递推与之前讲的内容一样，利用公式从小的情况开始出发，处理好边界情况，慢慢的向上递推到目标<br>
 </p>
@@ -1589,30 +1589,30 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org8e6f67c" class="outline-4">
-<h4 id="org8e6f67c">记忆化搜索</h4>
-<div class="outline-text-4" id="text-org8e6f67c">
+<div id="outline-container-org5bf91de" class="outline-4">
+<h4 id="org5bf91de">记忆化搜索</h4>
+<div class="outline-text-4" id="text-org5bf91de">
 <p>
 因为对于复杂的公式，递推有时非常的难以确定边界，而公式一般都是递归的，我们可以直接使用递归完成题目，但时间复杂度会爆炸，因为有许多子问题是重复的，使用递归会重复计算这些内容，所以我们可以利用空间换取时间，既记录已经算过的结果，保存下来以便以后使用，这样就能在相同的时间复杂度下完成了。<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org63c1b7f" class="outline-4">
-<h4 id="org63c1b7f">贪心</h4>
-<div class="outline-text-4" id="text-org63c1b7f">
+<div id="outline-container-orgd6bf637" class="outline-4">
+<h4 id="orgd6bf637">贪心</h4>
+<div class="outline-text-4" id="text-orgd6bf637">
 <p>
 有些最优子结构的题目可以不使用动态规划的方法解决，单纯的最大或最小就能解决，这里只需要排序即可，但分辩这些题目是最大的难点。<br>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org8f99572" class="outline-3">
-<h3 id="org8f99572">数学</h3>
-<div class="outline-text-3" id="text-org8f99572">
+<div id="outline-container-org4842bfe" class="outline-3">
+<h3 id="org4842bfe">数学</h3>
+<div class="outline-text-3" id="text-org4842bfe">
 </div>
-<div id="outline-container-org8a4b95a" class="outline-4">
-<h4 id="org8a4b95a">高精度</h4>
-<div class="outline-text-4" id="text-org8a4b95a">
+<div id="outline-container-orga42f37e" class="outline-4">
+<h4 id="orga42f37e">高精度</h4>
+<div class="outline-text-4" id="text-orga42f37e">
 <p>
 <code>C++</code> 的数字是有范围的，超过一定大小就会损失精度，这时可以自己模拟数字的计算来实现高精度的数字计算。<br>
 可以使用数组保存每一位的数字，然后利用平常计算加减乘除的方法就能解决了，当然这样模拟的程序是非常复杂的。<br>
@@ -1623,9 +1623,9 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgea27ec5" class="outline-4">
-<h4 id="orgea27ec5">快速幂</h4>
-<div class="outline-text-4" id="text-orgea27ec5">
+<div id="outline-container-orgc1978a0" class="outline-4">
+<h4 id="orgc1978a0">快速幂</h4>
+<div class="outline-text-4" id="text-orgc1978a0">
 <p>
 如何快速计算 \(a^b\) ，普通的做就是使用循环一个一个相乘，这样的时间复杂度为 \(O(b)\) ，可以把 \(a^b=\) 分成三个部分 \(a^{b/2}*a^{b/2}*a\) 如果 <code>b</code> 是偶数则没有最后一个 <code>a</code> ，可以发现有两个相同的数，所以我们可以重复利用 \(a^{b/2}\) ，这样最后的复杂度只有 \(O(log(b))\)<br>
 </p>
@@ -1643,9 +1643,9 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </div>
 </div>
 </div>
-<div id="outline-container-org8b4f153" class="outline-4">
-<h4 id="org8b4f153">数论</h4>
-<div class="outline-text-4" id="text-org8b4f153">
+<div id="outline-container-org117bb41" class="outline-4">
+<h4 id="org117bb41">数论</h4>
+<div class="outline-text-4" id="text-org117bb41">
 <p>
 想把数论学好，需要非常好的数学功底，但基础的题目还是非常简单的，只需要记下公式与用法即可。<br>
 </p>
@@ -1656,16 +1656,16 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </div>
 </div>
 </div>
-<div id="outline-container-org9c23815" class="outline-3">
-<h3 id="org9c23815">数据结构</h3>
-<div class="outline-text-3" id="text-org9c23815">
+<div id="outline-container-orgaf7a75c" class="outline-3">
+<h3 id="orgaf7a75c">数据结构</h3>
+<div class="outline-text-3" id="text-orgaf7a75c">
 <p>
 数据结构是为了更好更快的实现特定的算法<br>
 </p>
 </div>
-<div id="outline-container-org05eaef0" class="outline-4">
-<h4 id="org05eaef0">栈</h4>
-<div class="outline-text-4" id="text-org05eaef0">
+<div id="outline-container-org12b3168" class="outline-4">
+<h4 id="org12b3168">栈</h4>
+<div class="outline-text-4" id="text-org12b3168">
 <p>
 栈是个存储容器，它的数据出入顺序是先入后出，可以自己使用数组模拟，但 <code>stl</code> 有集成。<br>
 </p>
@@ -1675,9 +1675,9 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgc376254" class="outline-4">
-<h4 id="orgc376254">队列</h4>
-<div class="outline-text-4" id="text-orgc376254">
+<div id="outline-container-org44dbbd5" class="outline-4">
+<h4 id="org44dbbd5">队列</h4>
+<div class="outline-text-4" id="text-org44dbbd5">
 <p>
 队列也是一个存储窗口，它的出入顺序先入选出，就像是一根管子或者排队打饭。<br>
 </p>
@@ -1687,17 +1687,17 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org389281e" class="outline-4">
-<h4 id="org389281e">并查集</h4>
-<div class="outline-text-4" id="text-org389281e">
+<div id="outline-container-orgd3fd8ed" class="outline-4">
+<h4 id="orgd3fd8ed">并查集</h4>
+<div class="outline-text-4" id="text-orgd3fd8ed">
 <p>
 并查集可以查找一个元素是否在一个集合内，并且可以非常快速的合并两个集合<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org2361f53" class="outline-4">
-<h4 id="org2361f53">树状数组</h4>
-<div class="outline-text-4" id="text-org2361f53">
+<div id="outline-container-orgb1a8ed1" class="outline-4">
+<h4 id="orgb1a8ed1">树状数组</h4>
+<div class="outline-text-4" id="text-orgb1a8ed1">
 <p>
 树状数组是对于前缀和问题的时间和空间上的一个平衡，单纯的前缀和需要 \(O(1)\) 的时间和 \(O(n)\) 的空间，使用树状数组保存前缀和可以做到 \(O(log(n))\) 的时空复杂度。<br>
 </p>
@@ -1707,9 +1707,9 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgdd92261" class="outline-4">
-<h4 id="orgdd92261">线段树</h4>
-<div class="outline-text-4" id="text-orgdd92261">
+<div id="outline-container-org4d89c59" class="outline-4">
+<h4 id="org4d89c59">线段树</h4>
+<div class="outline-text-4" id="text-org4d89c59">
 <p>
 线段树是树状数组的升级，线段树不止支持区间和，还支持单点修改、区间修改、区间查询（区间求和，求区间最大值，求区间最小值）等操作，并且时间复杂度都是 \(O(log(N))\) 。<br>
 </p>
@@ -1720,13 +1720,13 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </div>
 </div>
 </div>
-<div id="outline-container-org85acf3a" class="outline-3">
-<h3 id="org85acf3a">图论</h3>
-<div class="outline-text-3" id="text-org85acf3a">
+<div id="outline-container-orgab05511" class="outline-3">
+<h3 id="orgab05511">图论</h3>
+<div class="outline-text-3" id="text-orgab05511">
 </div>
-<div id="outline-container-org653ef23" class="outline-4">
-<h4 id="org653ef23">最短路</h4>
-<div class="outline-text-4" id="text-org653ef23">
+<div id="outline-container-org7f04492" class="outline-4">
+<h4 id="org7f04492">最短路</h4>
+<div class="outline-text-4" id="text-org7f04492">
 <p>
 最短路就是给定一个图，计算两个结点之间的最短路径。<br>
 </p>
@@ -1740,9 +1740,9 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org9c19fab" class="outline-4">
-<h4 id="org9c19fab">最小生成树</h4>
-<div class="outline-text-4" id="text-org9c19fab">
+<div id="outline-container-org1efb23c" class="outline-4">
+<h4 id="org1efb23c">最小生成树</h4>
+<div class="outline-text-4" id="text-org1efb23c">
 <p>
 最小生成树是在图上找到一棵子树连接全部节点并且使得边权和最小。<br>
 </p>
@@ -1756,9 +1756,9 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org7fa436f" class="outline-4">
-<h4 id="org7fa436f">拓扑排序</h4>
-<div class="outline-text-4" id="text-org7fa436f">
+<div id="outline-container-orgaaa2b6d" class="outline-4">
+<h4 id="orgaaa2b6d">拓扑排序</h4>
+<div class="outline-text-4" id="text-orgaaa2b6d">
 <p>
 拓扑排序的目标是将所有节点排序，使得排在前面的节点不能依赖于排在后面的节点。<br>
 </p>
@@ -1770,7 +1770,7 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-algorithm.html">algorithm</a> </div>]]></description>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-algorithm.html">algorithm</a> </div>]]></description>
   <category><![CDATA[algorithm]]></category>
   <link>https://lampze.github.io/intro-basic-algorithm.html</link>
   <pubDate>Fri, 08 Jan 2021 00:00:00 +0800</pubDate>
@@ -1779,9 +1779,9 @@ BFS(Breadth First Search)既广度优先搜索<br>
   <title><![CDATA[超星是如何统计学习情况的]]></title>
   <description><![CDATA[
 
-<div id="outline-container-org1f18d57" class="outline-2">
-<h2 id="org1f18d57">前言</h2>
-<div class="outline-text-2" id="text-org1f18d57">
+<div id="outline-container-org80c391a" class="outline-2">
+<h2 id="org80c391a">前言</h2>
+<div class="outline-text-2" id="text-org80c391a">
 <p>
 写这篇文章当然是因为最近我有一门网课需要刷平时分，这门课的视频个数又不多，还多个视频合在一个网页上，最后又要求我们有几百次的学习次数，然后还要求我们有2个小时的阅读时长，但读物加起来顶多只有一两百页，超星的阅读统计又有些问题。为了给后人避坑，我就把摸索出来的一些经验分享出来。<br>
 </p>
@@ -1796,29 +1796,29 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </div>
 </div>
 
-<div id="outline-container-org27e018e" class="outline-2">
-<h2 id="org27e018e">章节学习次数</h2>
-<div class="outline-text-2" id="text-org27e018e">
+<div id="outline-container-org7dd6251" class="outline-2">
+<h2 id="org7dd6251">章节学习次数</h2>
+<div class="outline-text-2" id="text-org7dd6251">
 </div>
-<div id="outline-container-org321c699" class="outline-3">
-<h3 id="org321c699">统计方法</h3>
-<div class="outline-text-3" id="text-org321c699">
+<div id="outline-container-orgcb5552f" class="outline-3">
+<h3 id="orgcb5552f">统计方法</h3>
+<div class="outline-text-3" id="text-orgcb5552f">
 <p>
 每打开一个视频页面等上一小会，学习次数就会增加，尚不知不滚动会不会有不良影响<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org94c7dfc" class="outline-3">
-<h3 id="org94c7dfc">刷分方法</h3>
-<div class="outline-text-3" id="text-org94c7dfc">
+<div id="outline-container-orgb0f5640" class="outline-3">
+<h3 id="orgb0f5640">刷分方法</h3>
+<div class="outline-text-3" id="text-orgb0f5640">
 <p>
 只需要对一个页面不停刷新即可<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgf23209c" class="outline-3">
-<h3 id="orgf23209c">代码实现</h3>
-<div class="outline-text-3" id="text-orgf23209c">
+<div id="outline-container-orgf5072ba" class="outline-3">
+<h3 id="orgf5072ba">代码实现</h3>
+<div class="outline-text-3" id="text-orgf5072ba">
 <div class="org-src-container">
 <pre class="src src-js"><span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#25105;&#23545;&#20110;&#22823;&#37096;&#20998;&#25805;&#20316;&#21152;&#20837;&#20102;&#38543;&#26426;&#25968;</span>
 <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#36991;&#20813;&#21487;&#33021;&#30340;&#21518;&#21488;&#26816;&#27979;</span>
@@ -1832,30 +1832,30 @@ setInterval(() =&gt; window.scroll(<span style="color: #8a3b3c; font-weight: bol
 </div>
 </div>
 </div>
-<div id="outline-container-orgd0727ee" class="outline-2">
-<h2 id="orgd0727ee">阅读</h2>
-<div class="outline-text-2" id="text-orgd0727ee">
+<div id="outline-container-org6451b89" class="outline-2">
+<h2 id="org6451b89">阅读</h2>
+<div class="outline-text-2" id="text-org6451b89">
 </div>
-<div id="outline-container-org7bba8f2" class="outline-3">
-<h3 id="org7bba8f2">统计方法</h3>
-<div class="outline-text-3" id="text-org7bba8f2">
+<div id="outline-container-org9d83556" class="outline-3">
+<h3 id="org9d83556">统计方法</h3>
+<div class="outline-text-3" id="text-org9d83556">
 <p>
 经过测试，在网页上滚动具体阅读资料的区域刷分效果不好，我测试时第二天只增加了几分钟的阅读时长，所以只能滚动全局的页面<br>
 在刷分时我还注意到一个问题，单个页面可能有分值上限，所以我又改进了刷分方式<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org593b98d" class="outline-3">
-<h3 id="org593b98d">刷分方法</h3>
-<div class="outline-text-3" id="text-org593b98d">
+<div id="outline-container-org7ea2f46" class="outline-3">
+<h3 id="org7ea2f46">刷分方法</h3>
+<div class="outline-text-3" id="text-org7ea2f46">
 <p>
 打开阅读界面，不停向下滚动到底，到底后随机打开一个阅读页面，继续上续操作<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orge0e1aea" class="outline-3">
-<h3 id="orge0e1aea">代码实现</h3>
-<div class="outline-text-3" id="text-orge0e1aea">
+<div id="outline-container-org0ce2bff" class="outline-3">
+<h3 id="org0ce2bff">代码实现</h3>
+<div class="outline-text-3" id="text-org0ce2bff">
 <div class="org-src-container">
 <pre class="src src-js"><span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#33719;&#21462;&#38543;&#26426;&#38405;&#35835;&#39029;&#38754;</span>
 <span style="font-weight: bold;">function</span> <span style="font-weight: bold;">randu</span>() {
@@ -1877,7 +1877,7 @@ setInterval(() =&gt; {
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-超星.html">超星</a> </div>]]></description>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-超星.html">超星</a> </div>]]></description>
   <category><![CDATA[超星]]></category>
   <link>https://lampze.github.io/chaoxing-statistics.html</link>
   <pubDate>Wed, 06 Jan 2021 00:00:00 +0800</pubDate>
@@ -1889,162 +1889,162 @@ setInterval(() =&gt; {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfb1a1a7">前言</a></li>
-<li><a href="#org14375f0">C语言</a>
+<li><a href="#org0ca2331">前言</a></li>
+<li><a href="#orga4496a8">C语言</a>
 <ul>
-<li><a href="#org9075fe0">编程与运行流程</a>
+<li><a href="#org7b0f7ff">编程与运行流程</a>
 <ul>
-<li><a href="#org267c1ca">写代码</a></li>
-<li><a href="#orgdc6b4bc">编译</a></li>
-<li><a href="#org6990728">运行过程</a></li>
+<li><a href="#orgdcdf803">写代码</a></li>
+<li><a href="#org177359a">编译</a></li>
+<li><a href="#org9031dfa">运行过程</a></li>
 </ul>
 </li>
-<li><a href="#org8a4a416">语法简介</a></li>
-<li><a href="#org161c3f7">变量</a>
+<li><a href="#org1878336">语法简介</a></li>
+<li><a href="#org973b2c2">变量</a>
 <ul>
-<li><a href="#orgb011527">简介</a></li>
-<li><a href="#orgf3b8b72">类型</a></li>
-<li><a href="#orge52c2d3">创建</a></li>
-<li><a href="#org68da447">使用</a></li>
+<li><a href="#org59301ae">简介</a></li>
+<li><a href="#org779020d">类型</a></li>
+<li><a href="#org6254d82">创建</a></li>
+<li><a href="#orgd300059">使用</a></li>
 </ul>
 </li>
-<li><a href="#orgfbb045d">输入输出</a>
+<li><a href="#orgd285085">输入输出</a>
 <ul>
-<li><a href="#org2fd28c1">简介</a></li>
-<li><a href="#org513045e">输出</a></li>
-<li><a href="#orgdc4ab6e">输入</a></li>
+<li><a href="#orgcb62477">简介</a></li>
+<li><a href="#org08d47cf">输出</a></li>
+<li><a href="#orgbd592fc">输入</a></li>
 </ul>
 </li>
-<li><a href="#orgb2d6074">选择</a>
+<li><a href="#org859e6e8">选择</a>
 <ul>
-<li><a href="#org8ab92d2">简介</a></li>
-<li><a href="#org8cdc352">if</a></li>
-<li><a href="#org50eb4b5">switch</a></li>
-<li><a href="#orgdd84814">三元运算符</a></li>
+<li><a href="#org17ffed6">简介</a></li>
+<li><a href="#org9804d46">if</a></li>
+<li><a href="#org792206c">switch</a></li>
+<li><a href="#orgcbb9dc9">三元运算符</a></li>
 </ul>
 </li>
-<li><a href="#orgef15c3d">循环</a>
+<li><a href="#org43e0d51">循环</a>
 <ul>
-<li><a href="#org298fb73">简介</a></li>
-<li><a href="#org0c3bb70">while</a></li>
-<li><a href="#orgbfdd42d">for</a></li>
+<li><a href="#orgee7c9b8">简介</a></li>
+<li><a href="#orgd8143cf">while</a></li>
+<li><a href="#orgda48312">for</a></li>
 </ul>
 </li>
-<li><a href="#orgb545135">数组</a>
+<li><a href="#orge09719b">数组</a>
 <ul>
-<li><a href="#orgd71fe3d">简介</a></li>
-<li><a href="#orgde4413f">语法</a></li>
-<li><a href="#org5e7612c">插入排序</a></li>
+<li><a href="#orgfa90727">简介</a></li>
+<li><a href="#org1453b10">语法</a></li>
+<li><a href="#orgffe350c">插入排序</a></li>
 </ul>
 </li>
-<li><a href="#org6b9dda0">指针</a>
+<li><a href="#org55c32eb">指针</a>
 <ul>
-<li><a href="#org80f8e54">简介</a></li>
-<li><a href="#orgae67bbd">语法</a></li>
-<li><a href="#orgfd08ee3">用法</a></li>
-<li><a href="#org9a78b48">数组</a></li>
+<li><a href="#orgea68118">简介</a></li>
+<li><a href="#org3092690">语法</a></li>
+<li><a href="#org3d97e9d">用法</a></li>
+<li><a href="#org51fb2f9">数组</a></li>
 </ul>
 </li>
-<li><a href="#org2c1fafd">函数</a>
+<li><a href="#orgc1b637f">函数</a>
 <ul>
-<li><a href="#org421720c">简介</a></li>
-<li><a href="#org2525e24">语法</a></li>
-<li><a href="#org33b8541">例子</a></li>
+<li><a href="#orga2122d6">简介</a></li>
+<li><a href="#org4faa907">语法</a></li>
+<li><a href="#org3016efa">例子</a></li>
 </ul>
 </li>
-<li><a href="#orgf63ef79">递归</a>
+<li><a href="#org0a1f7b0">递归</a>
 <ul>
-<li><a href="#org48997ef">简介</a></li>
-<li><a href="#org246ccdf">fib</a></li>
+<li><a href="#orga6b3c41">简介</a></li>
+<li><a href="#org6098eaa">fib</a></li>
 </ul>
 </li>
-<li><a href="#org86ed9f6">结构体</a>
+<li><a href="#org4e610c7">结构体</a>
 <ul>
-<li><a href="#org3195a05">简介</a></li>
-<li><a href="#orgdce47d1">语法</a></li>
-<li><a href="#org28f00cf">结构体指针</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org5c3a805">C++</a>
-<ul>
-<li><a href="#org1b059fa">stl</a></li>
-<li><a href="#org6a9bc49">输入输出</a>
-<ul>
-<li><a href="#org7d355b1">头文件</a></li>
-<li><a href="#org026350b">cin</a></li>
-<li><a href="#org414664a">cout</a></li>
-<li><a href="#orgbc9eeaf">总结</a></li>
-</ul>
-</li>
-<li><a href="#org9b37666">vector</a>
-<ul>
-<li><a href="#orgae5539a">头文件</a></li>
-<li><a href="#org45b517f">简介</a></li>
-<li><a href="#orgdf8e642">创建</a></li>
-<li><a href="#org51d8c63">使用</a></li>
-</ul>
-</li>
-<li><a href="#org61c815b">string</a>
-<ul>
-<li><a href="#org9d71e3e">头文件</a></li>
-<li><a href="#org111d5ce">简介</a></li>
-<li><a href="#org0a0206e">使用</a></li>
-</ul>
-</li>
-<li><a href="#org1f65eb5">queue</a>
-<ul>
-<li><a href="#orgd511719">头文件</a></li>
-<li><a href="#org5689e22">简介</a></li>
-<li><a href="#orga1c1de0">使用</a></li>
-</ul>
-</li>
-<li><a href="#org99191e9">stack</a>
-<ul>
-<li><a href="#org934b91f">头文件</a></li>
-<li><a href="#org0102b52">简介</a></li>
-<li><a href="#orgd223c63">使用</a></li>
-</ul>
-</li>
-<li><a href="#org7107a76">set</a>
-<ul>
-<li><a href="#orgc88d47f">头文件</a></li>
-<li><a href="#orga283fd4">简介</a></li>
-<li><a href="#orgd3a16b8">使用</a></li>
-</ul>
-</li>
-<li><a href="#orgf829e17">map</a>
-<ul>
-<li><a href="#orgf80413b">头文件</a></li>
-<li><a href="#org9170687">简介</a></li>
-<li><a href="#orgb3fbe04">使用</a></li>
-</ul>
-</li>
-<li><a href="#org9c7e2f0">sort</a>
-<ul>
-<li><a href="#orgf8c3d30">头文件</a></li>
-<li><a href="#org7043764">简介</a></li>
-<li><a href="#orgf10dbe6">用法</a></li>
-</ul>
-</li>
-<li><a href="#org309a9cb">next_permutation</a>
-<ul>
-<li><a href="#org7ac2089">头文件</a></li>
-<li><a href="#org0b06de3">简介</a></li>
-<li><a href="#orgdee1c15">使用方法</a></li>
+<li><a href="#org716630f">简介</a></li>
+<li><a href="#org625279b">语法</a></li>
+<li><a href="#org053c7f2">结构体指针</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org143bc01">结语</a></li>
+<li><a href="#orgee68899">C++</a>
+<ul>
+<li><a href="#orgfb50646">stl</a></li>
+<li><a href="#org5008358">输入输出</a>
+<ul>
+<li><a href="#org5333db7">头文件</a></li>
+<li><a href="#org96bcf5c">cin</a></li>
+<li><a href="#orgdf3d3fe">cout</a></li>
+<li><a href="#org018b0c1">总结</a></li>
+</ul>
+</li>
+<li><a href="#org11673ce">vector</a>
+<ul>
+<li><a href="#org0f91b02">头文件</a></li>
+<li><a href="#org8956a3f">简介</a></li>
+<li><a href="#orgf24e818">创建</a></li>
+<li><a href="#org1e521f6">使用</a></li>
+</ul>
+</li>
+<li><a href="#orgd4b456a">string</a>
+<ul>
+<li><a href="#org108c659">头文件</a></li>
+<li><a href="#org4aaf2ae">简介</a></li>
+<li><a href="#org91a5395">使用</a></li>
+</ul>
+</li>
+<li><a href="#org8e7f06f">queue</a>
+<ul>
+<li><a href="#org59a98ee">头文件</a></li>
+<li><a href="#org0f85b0f">简介</a></li>
+<li><a href="#org1822aa4">使用</a></li>
+</ul>
+</li>
+<li><a href="#org2850884">stack</a>
+<ul>
+<li><a href="#orgdd0efa6">头文件</a></li>
+<li><a href="#org3c37bbf">简介</a></li>
+<li><a href="#orga91ccc8">使用</a></li>
+</ul>
+</li>
+<li><a href="#orgd0fb5e7">set</a>
+<ul>
+<li><a href="#orgd04a227">头文件</a></li>
+<li><a href="#org7f40d0f">简介</a></li>
+<li><a href="#org339d3e1">使用</a></li>
+</ul>
+</li>
+<li><a href="#org184e887">map</a>
+<ul>
+<li><a href="#org394cd0a">头文件</a></li>
+<li><a href="#orgdafb0c5">简介</a></li>
+<li><a href="#org22fea5b">使用</a></li>
+</ul>
+</li>
+<li><a href="#orge4c2b97">sort</a>
+<ul>
+<li><a href="#orgb313176">头文件</a></li>
+<li><a href="#org6509035">简介</a></li>
+<li><a href="#org0d6876e">用法</a></li>
+</ul>
+</li>
+<li><a href="#org7438c15">next_permutation</a>
+<ul>
+<li><a href="#org082e0b4">头文件</a></li>
+<li><a href="#org5e036ef">简介</a></li>
+<li><a href="#org8fa7509">使用方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org239f4a1">结语</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-orgfb1a1a7" class="outline-2">
-<h2 id="orgfb1a1a7">前言</h2>
-<div class="outline-text-2" id="text-orgfb1a1a7">
+<div id="outline-container-org0ca2331" class="outline-2">
+<h2 id="org0ca2331">前言</h2>
+<div class="outline-text-2" id="text-org0ca2331">
 <p>
 编程语言是让我们使用一个大部分人能理解的方式控制计算机，所以写代码时最重要的是可读性，对自己要求高的同学可以思考怎么保持代码的整洁与优雅。<br>
 </p>
@@ -2067,17 +2067,17 @@ setInterval(() =&gt; {
 </div>
 </div>
 
-<div id="outline-container-org14375f0" class="outline-2">
-<h2 id="org14375f0">C语言</h2>
-<div class="outline-text-2" id="text-org14375f0">
+<div id="outline-container-orga4496a8" class="outline-2">
+<h2 id="orga4496a8">C语言</h2>
+<div class="outline-text-2" id="text-orga4496a8">
 </div>
-<div id="outline-container-org9075fe0" class="outline-3">
-<h3 id="org9075fe0">编程与运行流程</h3>
-<div class="outline-text-3" id="text-org9075fe0">
+<div id="outline-container-org7b0f7ff" class="outline-3">
+<h3 id="org7b0f7ff">编程与运行流程</h3>
+<div class="outline-text-3" id="text-org7b0f7ff">
 </div>
-<div id="outline-container-org267c1ca" class="outline-4">
-<h4 id="org267c1ca">写代码</h4>
-<div class="outline-text-4" id="text-org267c1ca">
+<div id="outline-container-orgdcdf803" class="outline-4">
+<h4 id="orgdcdf803">写代码</h4>
+<div class="outline-text-4" id="text-orgdcdf803">
 <p>
 对于 <code>windows</code> 来说，我推荐新手使用 <code>Dev-C++</code> 这个 <code>IDE</code> 来编写代码，这个软件虽然有些年头了，也很长时间没有更新了，但作为一个编程集成环境还是及格的，具体的操作还是比较简单，很多事情都能一键完成。<br>
 对于参加蓝桥杯的同学， <code>Dev-C++</code> 也是官方指定的编程环境。<br>
@@ -2089,9 +2089,9 @@ setInterval(() =&gt; {
 </p>
 </div>
 </div>
-<div id="outline-container-orgdc6b4bc" class="outline-4">
-<h4 id="orgdc6b4bc">编译</h4>
-<div class="outline-text-4" id="text-orgdc6b4bc">
+<div id="outline-container-org177359a" class="outline-4">
+<h4 id="org177359a">编译</h4>
+<div class="outline-text-4" id="text-org177359a">
 <p>
 对于 <code>IDE</code> 来说只需要按下按钮就能自动的编译了，没有什么需要动脑的地方。<br>
 </p>
@@ -2105,9 +2105,9 @@ setInterval(() =&gt; {
 </p>
 </div>
 </div>
-<div id="outline-container-org6990728" class="outline-4">
-<h4 id="org6990728">运行过程</h4>
-<div class="outline-text-4" id="text-org6990728">
+<div id="outline-container-org9031dfa" class="outline-4">
+<h4 id="org9031dfa">运行过程</h4>
+<div class="outline-text-4" id="text-org9031dfa">
 <div class="org-src-container">
 <pre class="src src-c"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">stdio.h</span><span style="color: #014980;">&gt;</span>
 
@@ -2128,9 +2128,9 @@ setInterval(() =&gt; {
 </div>
 </div>
 </div>
-<div id="outline-container-org8a4a416" class="outline-3">
-<h3 id="org8a4a416">语法简介</h3>
-<div class="outline-text-3" id="text-org8a4a416">
+<div id="outline-container-org1878336" class="outline-3">
+<h3 id="org1878336">语法简介</h3>
+<div class="outline-text-3" id="text-org1878336">
 <p>
 我们从简单的语句开始，语句由表达式组成，一条语句必须有一个分号当作结尾，比如 <code>1+1;</code> 就是一条语句。这条语句中的 <code>+</code> 是 <code>C</code> 自带的一些操作符，数学上常用的运算符都有。这里需要强调一下 <code>=</code> 是赋值运算符，比如 <code>a=b;</code> 的意思就是把a的值设置成b的值，也即对等号右边的表达式进行求值，然后把返回值赋值给左边。变量可以简单理解为一个箱子，箱子可以放置或取出数据。<br>
 </p>
@@ -2156,22 +2156,22 @@ setInterval(() =&gt; {
 </p>
 </div>
 </div>
-<div id="outline-container-org161c3f7" class="outline-3">
-<h3 id="org161c3f7">变量</h3>
-<div class="outline-text-3" id="text-org161c3f7">
+<div id="outline-container-org973b2c2" class="outline-3">
+<h3 id="org973b2c2">变量</h3>
+<div class="outline-text-3" id="text-org973b2c2">
 </div>
-<div id="outline-container-orgb011527" class="outline-4">
-<h4 id="orgb011527">简介</h4>
-<div class="outline-text-4" id="text-orgb011527">
+<div id="outline-container-org59301ae" class="outline-4">
+<h4 id="org59301ae">简介</h4>
+<div class="outline-text-4" id="text-org59301ae">
 <p>
 变量可以理解成一个箱子，我们可以把一些东西放到箱子，也可以从箱子内把东西取出来。<br>
 类型的作用只是为每个箱子打上了标签，规定了箱子内不能随便放东西，比如一个放水果的箱子就不能把水倒进去。<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgf3b8b72" class="outline-4">
-<h4 id="orgf3b8b72">类型</h4>
-<div class="outline-text-4" id="text-orgf3b8b72">
+<div id="outline-container-org779020d" class="outline-4">
+<h4 id="org779020d">类型</h4>
+<div class="outline-text-4" id="text-org779020d">
 <p>
 <code>C</code> 是一个强类型的语言，它的意思就是每个数据都有类型，不同类型的数据不能随便使用，比如一个整数类型的变量就不能放入一个小数数据。<br>
 </p>
@@ -2194,9 +2194,9 @@ setInterval(() =&gt; {
 </div>
 </div>
 
-<div id="outline-container-orge52c2d3" class="outline-4">
-<h4 id="orge52c2d3">创建</h4>
-<div class="outline-text-4" id="text-orge52c2d3">
+<div id="outline-container-org6254d82" class="outline-4">
+<h4 id="org6254d82">创建</h4>
+<div class="outline-text-4" id="text-org6254d82">
 <p>
 创建一个变量需要使用变量声明语句，大概是这种形式 <code>&lt;变量类型&gt; &lt;变量名&gt;;</code> ，举个例子 <code>int a;</code> 这样就创建了一个 <code>int</code> 类型的变量 <code>a</code> 。<br>
 </p>
@@ -2210,9 +2210,9 @@ setInterval(() =&gt; {
 </p>
 </div>
 </div>
-<div id="outline-container-org68da447" class="outline-4">
-<h4 id="org68da447">使用</h4>
-<div class="outline-text-4" id="text-org68da447">
+<div id="outline-container-orgd300059" class="outline-4">
+<h4 id="orgd300059">使用</h4>
+<div class="outline-text-4" id="text-orgd300059">
 <p>
 在表达式内，我们可以把变量当作一个求值操作，这个操作的返回值为变量内的值，比如 <code>int a = 1;</code> 后 <code>a</code> 这个表示式的值就为 <code>1</code> ， <code>(a + 1) * a</code> -&gt; <code>(1 + 1) * a</code> -&gt; <code>2 * a</code> -&gt; <code>2 * 1</code> -&gt; <code>2</code> 。<br>
 </p>
@@ -2258,13 +2258,13 @@ setInterval(() =&gt; {
 </div>
 </div>
 </div>
-<div id="outline-container-orgfbb045d" class="outline-3">
-<h3 id="orgfbb045d">输入输出</h3>
-<div class="outline-text-3" id="text-orgfbb045d">
+<div id="outline-container-orgd285085" class="outline-3">
+<h3 id="orgd285085">输入输出</h3>
+<div class="outline-text-3" id="text-orgd285085">
 </div>
-<div id="outline-container-org2fd28c1" class="outline-4">
-<h4 id="org2fd28c1">简介</h4>
-<div class="outline-text-4" id="text-org2fd28c1">
+<div id="outline-container-orgcb62477" class="outline-4">
+<h4 id="orgcb62477">简介</h4>
+<div class="outline-text-4" id="text-orgcb62477">
 <p>
 我们写一个程序，一般都是面向用户的，作为人类我们肯定是需要获取和输入一些信息，一个无法干涉无法感知的东西我们是不能使用的。<br>
 </p>
@@ -2285,13 +2285,13 @@ setInterval(() =&gt; {
 </div>
 </div>
 
-<div id="outline-container-org513045e" class="outline-4">
-<h4 id="org513045e">输出</h4>
-<div class="outline-text-4" id="text-org513045e">
+<div id="outline-container-org08d47cf" class="outline-4">
+<h4 id="org08d47cf">输出</h4>
+<div class="outline-text-4" id="text-org08d47cf">
 </div>
 <ul class="org-ul">
-<li><a id="org5a2c30c"></a>putchar<br>
-<div class="outline-text-5" id="text-org5a2c30c">
+<li><a id="org76a959b"></a>putchar<br>
+<div class="outline-text-5" id="text-org76a959b">
 <p>
 这个函数很容易理解，传入一个字符，并把它输出， <code>c</code> 可以使用 <code>''</code> 包裹一个字符来表示一个字符常量，如果 <code>''</code> 内有多个字符就会报错。<br>
 </p>
@@ -2301,8 +2301,8 @@ setInterval(() =&gt; {
 </p>
 </div>
 </li>
-<li><a id="orgd1ed1c1"></a>puts<br>
-<div class="outline-text-5" id="text-orgd1ed1c1">
+<li><a id="org362aeea"></a>puts<br>
+<div class="outline-text-5" id="text-org362aeea">
 <p>
 同理这个函数也是传入一个字符串，并输出它，与字符的表示方式相似，我们使用 <code>""</code> 包裹多个字符来表示字符串变量。<br>
 </p>
@@ -2312,8 +2312,8 @@ setInterval(() =&gt; {
 </p>
 </div>
 </li>
-<li><a id="org8195850"></a>printf<br>
-<div class="outline-text-5" id="text-org8195850">
+<li><a id="orgd40bd57"></a>printf<br>
+<div class="outline-text-5" id="text-orgd40bd57">
 <p>
 格式化输出一串字符，它接收任意多个参数，第一个参数是一个字符串，并把它作为模板，里面可以放一些标识来表示需要把标识替换成我们想要的数据，后面的参数填入表达式，函数会按顺序把它们一个个填入模板字符串中。<br>
 </p>
@@ -2335,13 +2335,13 @@ setInterval(() =&gt; {
 </ul>
 </div>
 
-<div id="outline-container-orgdc4ab6e" class="outline-4">
-<h4 id="orgdc4ab6e">输入</h4>
-<div class="outline-text-4" id="text-orgdc4ab6e">
+<div id="outline-container-orgbd592fc" class="outline-4">
+<h4 id="orgbd592fc">输入</h4>
+<div class="outline-text-4" id="text-orgbd592fc">
 </div>
 <ul class="org-ul">
-<li><a id="org2e68ab0"></a>getchar<br>
-<div class="outline-text-5" id="text-org2e68ab0">
+<li><a id="org1c078e0"></a>getchar<br>
+<div class="outline-text-5" id="text-org1c078e0">
 <p>
 这个函数从标准输入读入一个字符然后返回，比如 <code>char c = getchar();</code> 这条语句就会从输入流获取一个字符，并赋值给变量 <code>c</code> 。<br>
 </p>
@@ -2351,8 +2351,8 @@ setInterval(() =&gt; {
 </p>
 </div>
 </li>
-<li><a id="org0655f39"></a>gets<br>
-<div class="outline-text-5" id="text-org0655f39">
+<li><a id="org407b224"></a>gets<br>
+<div class="outline-text-5" id="text-org407b224">
 <p>
 这个函数从标准输入读取一行字符，并把这一行填入一个字符数组。<br>
 </p>
@@ -2374,8 +2374,8 @@ setInterval(() =&gt; {
 </p>
 </div>
 </li>
-<li><a id="orga5772df"></a>scanf<br>
-<div class="outline-text-5" id="text-orga5772df">
+<li><a id="orgf37d3ee"></a>scanf<br>
+<div class="outline-text-5" id="text-orgf37d3ee">
 <p>
 这个函数就可以支持多种形式格式的输入了，与上面的 <code>printf</code> 有相同的控制符。<br>
 需要注意一点， <code>scanf</code> 填写变量的位置需要提供一个指针，获取变量指针的方法是使用 <code>&amp;</code> 运算符。<br>
@@ -2403,13 +2403,13 @@ setInterval(() =&gt; {
 </div>
 </div>
 
-<div id="outline-container-orgb2d6074" class="outline-3">
-<h3 id="orgb2d6074">选择</h3>
-<div class="outline-text-3" id="text-orgb2d6074">
+<div id="outline-container-org859e6e8" class="outline-3">
+<h3 id="org859e6e8">选择</h3>
+<div class="outline-text-3" id="text-org859e6e8">
 </div>
-<div id="outline-container-org8ab92d2" class="outline-4">
-<h4 id="org8ab92d2">简介</h4>
-<div class="outline-text-4" id="text-org8ab92d2">
+<div id="outline-container-org17ffed6" class="outline-4">
+<h4 id="org17ffed6">简介</h4>
+<div class="outline-text-4" id="text-org17ffed6">
 <p>
 选择结构的出现打破了我之前讲述的简洁明了的语法，我们需要重新学习一些额外的情况，所幸这种新结构并不复杂。<br>
 </p>
@@ -2424,9 +2424,9 @@ setInterval(() =&gt; {
 </p>
 </div>
 </div>
-<div id="outline-container-org8cdc352" class="outline-4">
-<h4 id="org8cdc352">if</h4>
-<div class="outline-text-4" id="text-org8cdc352">
+<div id="outline-container-org9804d46" class="outline-4">
+<h4 id="org9804d46">if</h4>
+<div class="outline-text-4" id="text-org9804d46">
 <p>
 它的语法大概是这样 <code>if (表达式) { 代码块 }</code><br>
 简单来说如果对表达式求值的结果为真，就执行使用 <code>{}</code> 包裹的代码块<br>
@@ -2470,9 +2470,9 @@ setInterval(() =&gt; {
 </div>
 </div>
 </div>
-<div id="outline-container-org50eb4b5" class="outline-4">
-<h4 id="org50eb4b5">switch</h4>
-<div class="outline-text-4" id="text-org50eb4b5">
+<div id="outline-container-org792206c" class="outline-4">
+<h4 id="org792206c">switch</h4>
+<div class="outline-text-4" id="text-org792206c">
 <p>
 <code>switch</code> 的语法比较复杂，简单来说它会把你给予的一个整数与 <code>case</code> 语句从上到下一一比对<br>
 如果跟 <code>case</code> 语句后面的值相等，就执行 <code>case</code> 对应的代码块<br>
@@ -2502,9 +2502,9 @@ setInterval(() =&gt; {
 </p>
 </div>
 </div>
-<div id="outline-container-orgdd84814" class="outline-4">
-<h4 id="orgdd84814">三元运算符</h4>
-<div class="outline-text-4" id="text-orgdd84814">
+<div id="outline-container-orgcbb9dc9" class="outline-4">
+<h4 id="orgcbb9dc9">三元运算符</h4>
+<div class="outline-text-4" id="text-orgcbb9dc9">
 <p>
 它的语法比较简单 <code>条件?表达式1:表达式2</code><br>
 对这个三元运算表达式求值时，如果条件为真就执行并返回表达式1的值，否则执行并返回表达式2的值<br>
@@ -2524,22 +2524,22 @@ setInterval(() =&gt; {
 </div>
 </div>
 </div>
-<div id="outline-container-orgef15c3d" class="outline-3">
-<h3 id="orgef15c3d">循环</h3>
-<div class="outline-text-3" id="text-orgef15c3d">
+<div id="outline-container-org43e0d51" class="outline-3">
+<h3 id="org43e0d51">循环</h3>
+<div class="outline-text-3" id="text-org43e0d51">
 </div>
-<div id="outline-container-org298fb73" class="outline-4">
-<h4 id="org298fb73">简介</h4>
-<div class="outline-text-4" id="text-org298fb73">
+<div id="outline-container-orgee7c9b8" class="outline-4">
+<h4 id="orgee7c9b8">简介</h4>
+<div class="outline-text-4" id="text-orgee7c9b8">
 <p>
 我们继续来破坏 <code>c</code> 的简单性，这次介绍循环结构<br>
 有两种方式来描述一个循环结构 <code>while</code> 、 <code>for</code><br>
 </p>
 </div>
 </div>
-<div id="outline-container-org0c3bb70" class="outline-4">
-<h4 id="org0c3bb70">while</h4>
-<div class="outline-text-4" id="text-org0c3bb70">
+<div id="outline-container-orgd8143cf" class="outline-4">
+<h4 id="orgd8143cf">while</h4>
+<div class="outline-text-4" id="text-orgd8143cf">
 <p>
 语法为 <code>while(条件) {代码块}</code><br>
 与 <code>if</code> 的结构相似，与 <code>if</code> 不同的地方在于， <code>while</code> 会在代码块执行结束后重复检查条件，如果条件还是为真就继续执行代码块<br>
@@ -2568,9 +2568,9 @@ setInterval(() =&gt; {
 </p>
 </div>
 </div>
-<div id="outline-container-orgbfdd42d" class="outline-4">
-<h4 id="orgbfdd42d">for</h4>
-<div class="outline-text-4" id="text-orgbfdd42d">
+<div id="outline-container-orgda48312" class="outline-4">
+<h4 id="orgda48312">for</h4>
+<div class="outline-text-4" id="text-orgda48312">
 <p>
 语法为： <code>for (初始化;条件;副作用){代码块}</code><br>
 <code>for</code> 可以转换成 <code>while</code> 的形式<br>
@@ -2601,21 +2601,21 @@ setInterval(() =&gt; {
 </div>
 </div>
 
-<div id="outline-container-orgb545135" class="outline-3">
-<h3 id="orgb545135">数组</h3>
-<div class="outline-text-3" id="text-orgb545135">
+<div id="outline-container-orge09719b" class="outline-3">
+<h3 id="orge09719b">数组</h3>
+<div class="outline-text-3" id="text-orge09719b">
 </div>
-<div id="outline-container-orgd71fe3d" class="outline-4">
-<h4 id="orgd71fe3d">简介</h4>
-<div class="outline-text-4" id="text-orgd71fe3d">
+<div id="outline-container-orgfa90727" class="outline-4">
+<h4 id="orgfa90727">简介</h4>
+<div class="outline-text-4" id="text-orgfa90727">
 <p>
 数组提供了简单声明多个变量的方法，假设你需要对100个数进行排序，如果采用以往声明变量的方式，你需要写100个变量名，而使用数组就能一行语句生成多个变量。<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgde4413f" class="outline-4">
-<h4 id="orgde4413f">语法</h4>
-<div class="outline-text-4" id="text-orgde4413f">
+<div id="outline-container-org1453b10" class="outline-4">
+<h4 id="org1453b10">语法</h4>
+<div class="outline-text-4" id="text-org1453b10">
 <p>
 数组的语法非常简单 <code>类型名 数组名[数组大小]</code><br>
 类型名和数组名与变量的声明相同，数组与变量的区别只在于后面的那个括号，括号定义了数组里包含多少个元素，使用 <code>数组名[下标]</code> 可以找到任意一个元素，而它的使用方式与普通变量并无区别<br>
@@ -2636,9 +2636,9 @@ setInterval(() =&gt; {
 </p>
 </div>
 </div>
-<div id="outline-container-org5e7612c" class="outline-4">
-<h4 id="org5e7612c">插入排序</h4>
-<div class="outline-text-4" id="text-org5e7612c">
+<div id="outline-container-orgffe350c" class="outline-4">
+<h4 id="orgffe350c">插入排序</h4>
+<div class="outline-text-4" id="text-orgffe350c">
 <div class="org-src-container">
 <pre class="src src-c"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">stdio.h</span><span style="color: #014980;">&gt;</span>
 
@@ -2671,13 +2671,13 @@ setInterval(() =&gt; {
 </div>
 </div>
 </div>
-<div id="outline-container-org6b9dda0" class="outline-3">
-<h3 id="org6b9dda0">指针</h3>
-<div class="outline-text-3" id="text-org6b9dda0">
+<div id="outline-container-org55c32eb" class="outline-3">
+<h3 id="org55c32eb">指针</h3>
+<div class="outline-text-3" id="text-org55c32eb">
 </div>
-<div id="outline-container-org80f8e54" class="outline-4">
-<h4 id="org80f8e54">简介</h4>
-<div class="outline-text-4" id="text-org80f8e54">
+<div id="outline-container-orgea68118" class="outline-4">
+<h4 id="orgea68118">简介</h4>
+<div class="outline-text-4" id="text-orgea68118">
 <p>
 前面我们介绍了变量，变量我把它形容成一个盒子，盒子可以往里面放或拿东西<br>
 现在想像一下，我们把所有的盒子都放到地上，按顺序一个一个编号<br>
@@ -2687,9 +2687,9 @@ setInterval(() =&gt; {
 </p>
 </div>
 </div>
-<div id="outline-container-orgae67bbd" class="outline-4">
-<h4 id="orgae67bbd">语法</h4>
-<div class="outline-text-4" id="text-orgae67bbd">
+<div id="outline-container-org3092690" class="outline-4">
+<h4 id="org3092690">语法</h4>
+<div class="outline-text-4" id="text-org3092690">
 <p>
 <code>类型 *指针名</code> 就可以声明一个指针了<br>
 需要注意一下 <code>int* a, b</code> 并不会声明指针 <code>a</code> <code>b</code> ，而是声明一个指针 <code>a</code> 与一个变量 <code>b</code><br>
@@ -2697,9 +2697,9 @@ setInterval(() =&gt; {
 </p>
 </div>
 </div>
-<div id="outline-container-orgfd08ee3" class="outline-4">
-<h4 id="orgfd08ee3">用法</h4>
-<div class="outline-text-4" id="text-orgfd08ee3">
+<div id="outline-container-org3d97e9d" class="outline-4">
+<h4 id="org3d97e9d">用法</h4>
+<div class="outline-text-4" id="text-org3d97e9d">
 <p>
 指针可以放地址，但是我们怎么获得一个地址呢？<br>
 有些同学可能已经想到了，我们之前用 <code>scanf</code> 的时候使用一个操作符 <code>&amp;</code><br>
@@ -2711,9 +2711,9 @@ setInterval(() =&gt; {
 </p>
 </div>
 </div>
-<div id="outline-container-org9a78b48" class="outline-4">
-<h4 id="org9a78b48">数组</h4>
-<div class="outline-text-4" id="text-org9a78b48">
+<div id="outline-container-org51fb2f9" class="outline-4">
+<h4 id="org51fb2f9">数组</h4>
+<div class="outline-text-4" id="text-org51fb2f9">
 <p>
 对于数组来说，数组名其实是一个指针，它保存的是数组的起始地址<br>
 我们先定义一个数组 <code>int arr[10]</code><br>
@@ -2762,13 +2762,13 @@ setInterval(() =&gt; {
 </div>
 </div>
 </div>
-<div id="outline-container-org2c1fafd" class="outline-3">
-<h3 id="org2c1fafd">函数</h3>
-<div class="outline-text-3" id="text-org2c1fafd">
+<div id="outline-container-orgc1b637f" class="outline-3">
+<h3 id="orgc1b637f">函数</h3>
+<div class="outline-text-3" id="text-orgc1b637f">
 </div>
-<div id="outline-container-org421720c" class="outline-4">
-<h4 id="org421720c">简介</h4>
-<div class="outline-text-4" id="text-org421720c">
+<div id="outline-container-orga2122d6" class="outline-4">
+<h4 id="orga2122d6">简介</h4>
+<div class="outline-text-4" id="text-orga2122d6">
 <p>
 函数让我们可以把一堆操作封装起来，下次可以直接使用，数学一点的像pi、cos、sin等都可以用函数封装起来，再比如打印一行星号、对数组进行排序、计算fib数列之类的。<br>
 </p>
@@ -2779,9 +2779,9 @@ setInterval(() =&gt; {
 </p>
 </div>
 </div>
-<div id="outline-container-org2525e24" class="outline-4">
-<h4 id="org2525e24">语法</h4>
-<div class="outline-text-4" id="text-org2525e24">
+<div id="outline-container-org4faa907" class="outline-4">
+<h4 id="org4faa907">语法</h4>
+<div class="outline-text-4" id="text-org4faa907">
 <p>
 <code>返回类型 函数名(类型1 参数1，类型2 参数2){函数体}</code> 就可以创建一个函数<br>
 每个函数都要定义好返回类型，函数可以有多个参数，每个参数都必须定义类型，因为 <code>c</code> 是强类型的语言<br>
@@ -2791,9 +2791,9 @@ setInterval(() =&gt; {
 </p>
 </div>
 </div>
-<div id="outline-container-org33b8541" class="outline-4">
-<h4 id="org33b8541">例子</h4>
-<div class="outline-text-4" id="text-org33b8541">
+<div id="outline-container-org3016efa" class="outline-4">
+<h4 id="org3016efa">例子</h4>
+<div class="outline-text-4" id="text-org3016efa">
 <p>
 我们来简单的举一个例子，交换变量里的值<br>
 我们先看看错误的例子<br>
@@ -2851,13 +2851,13 @@ setInterval(() =&gt; {
 </div>
 </div>
 
-<div id="outline-container-orgf63ef79" class="outline-3">
-<h3 id="orgf63ef79">递归</h3>
-<div class="outline-text-3" id="text-orgf63ef79">
+<div id="outline-container-org0a1f7b0" class="outline-3">
+<h3 id="org0a1f7b0">递归</h3>
+<div class="outline-text-3" id="text-org0a1f7b0">
 </div>
-<div id="outline-container-org48997ef" class="outline-4">
-<h4 id="org48997ef">简介</h4>
-<div class="outline-text-4" id="text-org48997ef">
+<div id="outline-container-orga6b3c41" class="outline-4">
+<h4 id="orga6b3c41">简介</h4>
+<div class="outline-text-4" id="text-orga6b3c41">
 <p>
 首先，我们可以确定一点，函数内是可以使用函数的，这点一开始就可以从在 <code>main</code> 函数内使用 <code>printf</code> 看出。<br>
 那么你有没有想过，如果我在函数内使用自己会怎么样呢？<br>
@@ -2866,9 +2866,9 @@ setInterval(() =&gt; {
 </p>
 </div>
 </div>
-<div id="outline-container-org246ccdf" class="outline-4">
-<h4 id="org246ccdf">fib</h4>
-<div class="outline-text-4" id="text-org246ccdf">
+<div id="outline-container-org6098eaa" class="outline-4">
+<h4 id="org6098eaa">fib</h4>
+<div class="outline-text-4" id="text-org6098eaa">
 <p>
 对于fib数列，它在数学是这样定义的<br>
 </p>
@@ -2919,13 +2919,13 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 
-<div id="outline-container-org86ed9f6" class="outline-3">
-<h3 id="org86ed9f6">结构体</h3>
-<div class="outline-text-3" id="text-org86ed9f6">
+<div id="outline-container-org4e610c7" class="outline-3">
+<h3 id="org4e610c7">结构体</h3>
+<div class="outline-text-3" id="text-org4e610c7">
 </div>
-<div id="outline-container-org3195a05" class="outline-4">
-<h4 id="org3195a05">简介</h4>
-<div class="outline-text-4" id="text-org3195a05">
+<div id="outline-container-org716630f" class="outline-4">
+<h4 id="org716630f">简介</h4>
+<div class="outline-text-4" id="text-org716630f">
 <p>
 结构体提供了一个把多种类型，多个变量集合到一起的功能<br>
 比如我想保存一个学生的数据，对于学生他有年龄、名字、学号、性别...<br>
@@ -2934,9 +2934,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-orgdce47d1" class="outline-4">
-<h4 id="orgdce47d1">语法</h4>
-<div class="outline-text-4" id="text-orgdce47d1">
+<div id="outline-container-org625279b" class="outline-4">
+<h4 id="org625279b">语法</h4>
+<div class="outline-text-4" id="text-org625279b">
 <p>
 结构体其实是声明了一个类型，很奇怪吧，我们之前声明过很多东西，但没想到类型也可以自定义吧<br>
 类型就意味着，使用结构体时，我们是使用一个结构体类型的变量<br>
@@ -2970,9 +2970,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 </div>
-<div id="outline-container-org28f00cf" class="outline-4">
-<h4 id="org28f00cf">结构体指针</h4>
-<div class="outline-text-4" id="text-org28f00cf">
+<div id="outline-container-org053c7f2" class="outline-4">
+<h4 id="org053c7f2">结构体指针</h4>
+<div class="outline-text-4" id="text-org053c7f2">
 <p>
 我们来看一个很魔鬼的东西，结构体指针<br>
 顾名思义，结构体指针就是存放着结构体变量地址的变量<br>
@@ -2987,13 +2987,13 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 </div>
-<div id="outline-container-org5c3a805" class="outline-2">
-<h2 id="org5c3a805">C++</h2>
-<div class="outline-text-2" id="text-org5c3a805">
+<div id="outline-container-orgee68899" class="outline-2">
+<h2 id="orgee68899">C++</h2>
+<div class="outline-text-2" id="text-orgee68899">
 </div>
-<div id="outline-container-org1b059fa" class="outline-3">
-<h3 id="org1b059fa">stl</h3>
-<div class="outline-text-3" id="text-org1b059fa">
+<div id="outline-container-orgfb50646" class="outline-3">
+<h3 id="orgfb50646">stl</h3>
+<div class="outline-text-3" id="text-orgfb50646">
 <p>
 <code>c++</code> 是 <code>c</code> 的超集，也就是说 <code>c++</code> 支持所有 <code>c</code> 的语法，并在此基础上 <code>c++</code> 又新增了一些语法与工具。更重要的区别在于 <code>c</code> 是面向过程的，而 <code>c++</code> 是面向对象的。<br>
 </p>
@@ -3011,13 +3011,13 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-org6a9bc49" class="outline-3">
-<h3 id="org6a9bc49">输入输出</h3>
-<div class="outline-text-3" id="text-org6a9bc49">
+<div id="outline-container-org5008358" class="outline-3">
+<h3 id="org5008358">输入输出</h3>
+<div class="outline-text-3" id="text-org5008358">
 </div>
-<div id="outline-container-org7d355b1" class="outline-4">
-<h4 id="org7d355b1">头文件</h4>
-<div class="outline-text-4" id="text-org7d355b1">
+<div id="outline-container-org5333db7" class="outline-4">
+<h4 id="org5333db7">头文件</h4>
+<div class="outline-text-4" id="text-org5333db7">
 <p>
 <code>c++</code> 的输入输出头文件叫 <code>iostream</code> ，引用使用 <code>#include &lt;iostream&gt;</code> 语句<br>
 </p>
@@ -3027,9 +3027,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-org026350b" class="outline-4">
-<h4 id="org026350b">cin</h4>
-<div class="outline-text-4" id="text-org026350b">
+<div id="outline-container-org96bcf5c" class="outline-4">
+<h4 id="org96bcf5c">cin</h4>
+<div class="outline-text-4" id="text-org96bcf5c">
 <p>
 使用 <code>cin &gt;&gt; 变量名</code> 可以从标准输入把数据输入变量内，需要注意的是输入时不需要加标识符来表示变量的类型， <code>c++</code> 可以自己确定变量的类型，并根据类型自己确定会输入的数据。<br>
 </p>
@@ -3039,47 +3039,47 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-org414664a" class="outline-4">
-<h4 id="org414664a">cout</h4>
-<div class="outline-text-4" id="text-org414664a">
+<div id="outline-container-orgdf3d3fe" class="outline-4">
+<h4 id="orgdf3d3fe">cout</h4>
+<div class="outline-text-4" id="text-orgdf3d3fe">
 <p>
 同理 <code>cout &lt;&lt; 表达式</code> 就可以向标准输出输出内容了， <code>cout</code> 也会自动判断表达式返回值的类型，但相比 <code>printf</code> 它就不能做到精准的格式输出了，比如固定4位宽度的数字使用 <code>cout</code> 就比较难以做到了。<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgbc9eeaf" class="outline-4">
-<h4 id="orgbc9eeaf">总结</h4>
-<div class="outline-text-4" id="text-orgbc9eeaf">
+<div id="outline-container-org018b0c1" class="outline-4">
+<h4 id="org018b0c1">总结</h4>
+<div class="outline-text-4" id="text-org018b0c1">
 <p>
 对于输入没有规定必须使用哪个，挑选最合适的就行了。<br>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org9b37666" class="outline-3">
-<h3 id="org9b37666">vector</h3>
-<div class="outline-text-3" id="text-org9b37666">
+<div id="outline-container-org11673ce" class="outline-3">
+<h3 id="org11673ce">vector</h3>
+<div class="outline-text-3" id="text-org11673ce">
 </div>
-<div id="outline-container-orgae5539a" class="outline-4">
-<h4 id="orgae5539a">头文件</h4>
-<div class="outline-text-4" id="text-orgae5539a">
+<div id="outline-container-org0f91b02" class="outline-4">
+<h4 id="org0f91b02">头文件</h4>
+<div class="outline-text-4" id="text-org0f91b02">
 <p>
 <code>#include &lt;vector&gt;</code><br>
 </p>
 </div>
 </div>
-<div id="outline-container-org45b517f" class="outline-4">
-<h4 id="org45b517f">简介</h4>
-<div class="outline-text-4" id="text-org45b517f">
+<div id="outline-container-org8956a3f" class="outline-4">
+<h4 id="org8956a3f">简介</h4>
+<div class="outline-text-4" id="text-org8956a3f">
 <p>
 <code>vector</code> 翻译成中文叫向量<br>
 它可以理解成一个动态数组，它的长度可以自由调整<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgdf8e642" class="outline-4">
-<h4 id="orgdf8e642">创建</h4>
-<div class="outline-text-4" id="text-orgdf8e642">
+<div id="outline-container-orgf24e818" class="outline-4">
+<h4 id="orgf24e818">创建</h4>
+<div class="outline-text-4" id="text-orgf24e818">
 <p>
 <code>vector&lt;类型名&gt; 数组名</code> 就可以创建一个 <code>vector</code> 了<br>
 不止如此， <code>vector</code> 支持初始化时自定义长度与初始内容<br>
@@ -3089,9 +3089,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-org51d8c63" class="outline-4">
-<h4 id="org51d8c63">使用</h4>
-<div class="outline-text-4" id="text-org51d8c63">
+<div id="outline-container-org1e521f6" class="outline-4">
+<h4 id="org1e521f6">使用</h4>
+<div class="outline-text-4" id="text-org1e521f6">
 <p>
 可以直接使用 <code>[]</code> 像数组一样访问 <code>vector</code><br>
 <code>vector</code> 因为是一个对象，它内置了一系列函数，其中有一个名为 <code>at()</code> 的函数也可以访问对应下标的元素，但如果下标越界了它会直接抛出异常<br>
@@ -3118,29 +3118,29 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 
-<div id="outline-container-org61c815b" class="outline-3">
-<h3 id="org61c815b">string</h3>
-<div class="outline-text-3" id="text-org61c815b">
+<div id="outline-container-orgd4b456a" class="outline-3">
+<h3 id="orgd4b456a">string</h3>
+<div class="outline-text-3" id="text-orgd4b456a">
 </div>
-<div id="outline-container-org9d71e3e" class="outline-4">
-<h4 id="org9d71e3e">头文件</h4>
-<div class="outline-text-4" id="text-org9d71e3e">
+<div id="outline-container-org108c659" class="outline-4">
+<h4 id="org108c659">头文件</h4>
+<div class="outline-text-4" id="text-org108c659">
 <p>
 <code>#include &lt;string&gt;</code><br>
 </p>
 </div>
 </div>
-<div id="outline-container-org111d5ce" class="outline-4">
-<h4 id="org111d5ce">简介</h4>
-<div class="outline-text-4" id="text-org111d5ce">
+<div id="outline-container-org4aaf2ae" class="outline-4">
+<h4 id="org4aaf2ae">简介</h4>
+<div class="outline-text-4" id="text-org4aaf2ae">
 <p>
 <code>string</code> 是一个字符串，它的底层实现是 <code>vector</code> 它可以使用 <code>vector</code> 的所有函数，它也新加了许多方便的方法<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org0a0206e" class="outline-4">
-<h4 id="org0a0206e">使用</h4>
-<div class="outline-text-4" id="text-org0a0206e">
+<div id="outline-container-org91a5395" class="outline-4">
+<h4 id="org91a5395">使用</h4>
+<div class="outline-text-4" id="text-org91a5395">
 <p>
 它的创建方法与 <code>vector</code> 一样，这些可以直接看上面的 <code>vector</code> 介绍<br>
 </p>
@@ -3153,21 +3153,21 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 </div>
-<div id="outline-container-org1f65eb5" class="outline-3">
-<h3 id="org1f65eb5">queue</h3>
-<div class="outline-text-3" id="text-org1f65eb5">
+<div id="outline-container-org8e7f06f" class="outline-3">
+<h3 id="org8e7f06f">queue</h3>
+<div class="outline-text-3" id="text-org8e7f06f">
 </div>
-<div id="outline-container-orgd511719" class="outline-4">
-<h4 id="orgd511719">头文件</h4>
-<div class="outline-text-4" id="text-orgd511719">
+<div id="outline-container-org59a98ee" class="outline-4">
+<h4 id="org59a98ee">头文件</h4>
+<div class="outline-text-4" id="text-org59a98ee">
 <p>
 <code>#include &lt;queue&gt;</code><br>
 </p>
 </div>
 </div>
-<div id="outline-container-org5689e22" class="outline-4">
-<h4 id="org5689e22">简介</h4>
-<div class="outline-text-4" id="text-org5689e22">
+<div id="outline-container-org0f85b0f" class="outline-4">
+<h4 id="org0f85b0f">简介</h4>
+<div class="outline-text-4" id="text-org0f85b0f">
 <p>
 <code>queue</code> 叫做队列，它是一种数据结构，先进入队列的数据会先出来，可以想像一个管子，从后面往里面塞球，取球时只能从前面取<br>
 </p>
@@ -3183,9 +3183,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-orga1c1de0" class="outline-4">
-<h4 id="orga1c1de0">使用</h4>
-<div class="outline-text-4" id="text-orga1c1de0">
+<div id="outline-container-org1822aa4" class="outline-4">
+<h4 id="org1822aa4">使用</h4>
+<div class="outline-text-4" id="text-org1822aa4">
 <p>
 <code>queue&lt;类型名&gt; 队列名</code> 就可以创建一个队列了，初始化的方法与之前的方法一致<br>
 </p>
@@ -3210,21 +3210,21 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 
-<div id="outline-container-org99191e9" class="outline-3">
-<h3 id="org99191e9">stack</h3>
-<div class="outline-text-3" id="text-org99191e9">
+<div id="outline-container-org2850884" class="outline-3">
+<h3 id="org2850884">stack</h3>
+<div class="outline-text-3" id="text-org2850884">
 </div>
-<div id="outline-container-org934b91f" class="outline-4">
-<h4 id="org934b91f">头文件</h4>
-<div class="outline-text-4" id="text-org934b91f">
+<div id="outline-container-orgdd0efa6" class="outline-4">
+<h4 id="orgdd0efa6">头文件</h4>
+<div class="outline-text-4" id="text-orgdd0efa6">
 <p>
 <code>#include &lt;stack&gt;</code><br>
 </p>
 </div>
 </div>
-<div id="outline-container-org0102b52" class="outline-4">
-<h4 id="org0102b52">简介</h4>
-<div class="outline-text-4" id="text-org0102b52">
+<div id="outline-container-org3c37bbf" class="outline-4">
+<h4 id="org3c37bbf">简介</h4>
+<div class="outline-text-4" id="text-org3c37bbf">
 <p>
 <code>stack</code> 是栈，与队列相反，栈只能在一端插入或删除，就像一个筒装薯片一样，你可以在开口处拿薯片或放入薯片，可以发现栈的元素是后进先出的。<br>
 </p>
@@ -3234,9 +3234,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-orgd223c63" class="outline-4">
-<h4 id="orgd223c63">使用</h4>
-<div class="outline-text-4" id="text-orgd223c63">
+<div id="outline-container-orga91ccc8" class="outline-4">
+<h4 id="orga91ccc8">使用</h4>
+<div class="outline-text-4" id="text-orga91ccc8">
 <p>
 <code>stack&lt;类型名&gt; 栈名</code> 与之前初始化一样的方法<br>
 </p>
@@ -3254,21 +3254,21 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 </div>
-<div id="outline-container-org7107a76" class="outline-3">
-<h3 id="org7107a76">set</h3>
-<div class="outline-text-3" id="text-org7107a76">
+<div id="outline-container-orgd0fb5e7" class="outline-3">
+<h3 id="orgd0fb5e7">set</h3>
+<div class="outline-text-3" id="text-orgd0fb5e7">
 </div>
-<div id="outline-container-orgc88d47f" class="outline-4">
-<h4 id="orgc88d47f">头文件</h4>
-<div class="outline-text-4" id="text-orgc88d47f">
+<div id="outline-container-orgd04a227" class="outline-4">
+<h4 id="orgd04a227">头文件</h4>
+<div class="outline-text-4" id="text-orgd04a227">
 <p>
 <code>#include &lt;set&gt;</code><br>
 </p>
 </div>
 </div>
-<div id="outline-container-orga283fd4" class="outline-4">
-<h4 id="orga283fd4">简介</h4>
-<div class="outline-text-4" id="text-orga283fd4">
+<div id="outline-container-org7f40d0f" class="outline-4">
+<h4 id="org7f40d0f">简介</h4>
+<div class="outline-text-4" id="text-org7f40d0f">
 <p>
 <code>set</code> 是集合，和数学上的集合一样，每个元素只能出现一次，这对于统计有多少个不同的元素是很方便的。<br>
 </p>
@@ -3278,9 +3278,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-orgd3a16b8" class="outline-4">
-<h4 id="orgd3a16b8">使用</h4>
-<div class="outline-text-4" id="text-orgd3a16b8">
+<div id="outline-container-org339d3e1" class="outline-4">
+<h4 id="org339d3e1">使用</h4>
+<div class="outline-text-4" id="text-org339d3e1">
 <p>
 <code>set&lt;类型名&gt; 集合名</code> 创建一个 <code>set</code><br>
 </p>
@@ -3298,21 +3298,21 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 </div>
-<div id="outline-container-orgf829e17" class="outline-3">
-<h3 id="orgf829e17">map</h3>
-<div class="outline-text-3" id="text-orgf829e17">
+<div id="outline-container-org184e887" class="outline-3">
+<h3 id="org184e887">map</h3>
+<div class="outline-text-3" id="text-org184e887">
 </div>
-<div id="outline-container-orgf80413b" class="outline-4">
-<h4 id="orgf80413b">头文件</h4>
-<div class="outline-text-4" id="text-orgf80413b">
+<div id="outline-container-org394cd0a" class="outline-4">
+<h4 id="org394cd0a">头文件</h4>
+<div class="outline-text-4" id="text-org394cd0a">
 <p>
 <code>#include &lt;map&gt;</code><br>
 </p>
 </div>
 </div>
-<div id="outline-container-org9170687" class="outline-4">
-<h4 id="org9170687">简介</h4>
-<div class="outline-text-4" id="text-org9170687">
+<div id="outline-container-orgdafb0c5" class="outline-4">
+<h4 id="orgdafb0c5">简介</h4>
+<div class="outline-text-4" id="text-orgdafb0c5">
 <p>
 <code>map</code> 的意思其实是映射，它可以保存 <code>key</code> 到 <code>value</code> 的映射，也就是键值对<br>
 说人话，就像数组可以通过下标访问元素， <code>map</code> 也是通过 <code>key</code> 访问元素，不同于数组 <code>map</code> 的 <code>key</code> 可以是数字、字符、字符串等等<br>
@@ -3324,9 +3324,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-orgb3fbe04" class="outline-4">
-<h4 id="orgb3fbe04">使用</h4>
-<div class="outline-text-4" id="text-orgb3fbe04">
+<div id="outline-container-org22fea5b" class="outline-4">
+<h4 id="org22fea5b">使用</h4>
+<div class="outline-text-4" id="text-org22fea5b">
 <p>
 <code>map&lt;键类型, 值类型&gt; 映射名</code> 可以创建一个 <code>map</code> 需要标注好键和值的类型<br>
 </p>
@@ -3351,13 +3351,13 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 </div>
-<div id="outline-container-org9c7e2f0" class="outline-3">
-<h3 id="org9c7e2f0">sort</h3>
-<div class="outline-text-3" id="text-org9c7e2f0">
+<div id="outline-container-orge4c2b97" class="outline-3">
+<h3 id="orge4c2b97">sort</h3>
+<div class="outline-text-3" id="text-orge4c2b97">
 </div>
-<div id="outline-container-orgf8c3d30" class="outline-4">
-<h4 id="orgf8c3d30">头文件</h4>
-<div class="outline-text-4" id="text-orgf8c3d30">
+<div id="outline-container-orgb313176" class="outline-4">
+<h4 id="orgb313176">头文件</h4>
+<div class="outline-text-4" id="text-orgb313176">
 <p>
 <code>#include &lt;algorithm&gt;</code><br>
 </p>
@@ -3367,9 +3367,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-org7043764" class="outline-4">
-<h4 id="org7043764">简介</h4>
-<div class="outline-text-4" id="text-org7043764">
+<div id="outline-container-org6509035" class="outline-4">
+<h4 id="org6509035">简介</h4>
+<div class="outline-text-4" id="text-org6509035">
 <p>
 <code>sort</code> 是排列的意思，它可以对给定范围内的数据进行排序，传入一个比较函数就可以控制是从小到大还是从大到小排序了。<br>
 </p>
@@ -3379,9 +3379,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-orgf10dbe6" class="outline-4">
-<h4 id="orgf10dbe6">用法</h4>
-<div class="outline-text-4" id="text-orgf10dbe6">
+<div id="outline-container-org0d6876e" class="outline-4">
+<h4 id="org0d6876e">用法</h4>
+<div class="outline-text-4" id="text-org0d6876e">
 <p>
 <code>sort(起始引用,未尾引用)</code> 就可以对这个范围内的数据排序了，需要注意未尾引用是最后一个元素的引用加1<br>
 </p>
@@ -3429,21 +3429,21 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 </div>
-<div id="outline-container-org309a9cb" class="outline-3">
-<h3 id="org309a9cb">next_permutation</h3>
-<div class="outline-text-3" id="text-org309a9cb">
+<div id="outline-container-org7438c15" class="outline-3">
+<h3 id="org7438c15">next_permutation</h3>
+<div class="outline-text-3" id="text-org7438c15">
 </div>
-<div id="outline-container-org7ac2089" class="outline-4">
-<h4 id="org7ac2089">头文件</h4>
-<div class="outline-text-4" id="text-org7ac2089">
+<div id="outline-container-org082e0b4" class="outline-4">
+<h4 id="org082e0b4">头文件</h4>
+<div class="outline-text-4" id="text-org082e0b4">
 <p>
 <code>#include &lt;algorithm&gt;</code><br>
 </p>
 </div>
 </div>
-<div id="outline-container-org0b06de3" class="outline-4">
-<h4 id="org0b06de3">简介</h4>
-<div class="outline-text-4" id="text-org0b06de3">
+<div id="outline-container-org5e036ef" class="outline-4">
+<h4 id="org5e036ef">简介</h4>
+<div class="outline-text-4" id="text-org5e036ef">
 <p>
 <code>next_permutation</code> 可以生成一个范围内数据的下一个排列<br>
 比如 <code>1 2 3</code> 的下一个排列就是 <code>1 3 2</code><br>
@@ -3455,9 +3455,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </p>
 </div>
 </div>
-<div id="outline-container-orgdee1c15" class="outline-4">
-<h4 id="orgdee1c15">使用方法</h4>
-<div class="outline-text-4" id="text-orgdee1c15">
+<div id="outline-container-org8fa7509" class="outline-4">
+<h4 id="org8fa7509">使用方法</h4>
+<div class="outline-text-4" id="text-org8fa7509">
 <p>
 <code>next_permutation(起始引用,未尾引用)</code> 会生成范围内的下一个排列，如果不能生成了就返回 <code>false</code><br>
 </p>
@@ -3483,15 +3483,15 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 </div>
-<div id="outline-container-org143bc01" class="outline-2">
-<h2 id="org143bc01">结语</h2>
-<div class="outline-text-2" id="text-org143bc01">
+<div id="outline-container-org239f4a1" class="outline-2">
+<h2 id="org239f4a1">结语</h2>
+<div class="outline-text-2" id="text-org239f4a1">
 <p>
 这篇文章只讲解了 <code>C/C++</code> 的一下部分内容，如果你对其它的部分也感兴趣的话，我推荐一本书 《C++ Prime Plus》<br>
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-tutorial.html">tutorial</a> <a href="https://lampze.github.io/tag-c/c++.html">C/C++</a> </div>]]></description>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-tutorial.html">tutorial</a> <a href="https://lampze.github.io/tag-c/c++.html">C/C++</a> </div>]]></description>
   <category><![CDATA[tutorial]]></category>
   <category><![CDATA[C/C++]]></category>
   <link>https://lampze.github.io/c-cpp-tutorial.html</link>
@@ -3501,9 +3501,9 @@ fib(n-1)+fib(n-2) & {n>2}
   <title><![CDATA[论如何在Linux下直播显示弹幕]]></title>
   <description><![CDATA[
 
-<div id="outline-container-org86cd3e1" class="outline-2">
-<h2 id="org86cd3e1">前言</h2>
-<div class="outline-text-2" id="text-org86cd3e1">
+<div id="outline-container-org7843c67" class="outline-2">
+<h2 id="org7843c67">前言</h2>
+<div class="outline-text-2" id="text-org7843c67">
 <p>
 因为最近有b站直播的需求，但直播过程中查看弹幕非常麻烦，之前我只能用手机打开我的直播间查看。
 </p>
@@ -3518,9 +3518,9 @@ fib(n-1)+fib(n-2) & {n>2}
 </div>
 </div>
 
-<div id="outline-container-org6ad9bdd" class="outline-2">
-<h2 id="org6ad9bdd">组装</h2>
-<div class="outline-text-2" id="text-org6ad9bdd">
+<div id="outline-container-orgdf21f1a" class="outline-2">
+<h2 id="orgdf21f1a">组装</h2>
+<div class="outline-text-2" id="text-orgdf21f1a">
 <p>
 首先创建一个 <code>node</code> 工作目录，初始化好，然后安装上面的两个库。
 </p>
@@ -3603,15 +3603,15 @@ live.on(<span style="color: #8a3b3c;">"live"</span>, () =&gt; {
 </div>
 </div>
 
-<div id="outline-container-org51b39d1" class="outline-2">
-<h2 id="org51b39d1">后记</h2>
-<div class="outline-text-2" id="text-org51b39d1">
+<div id="outline-container-orgdce7cc8" class="outline-2">
+<h2 id="orgdce7cc8">后记</h2>
+<div class="outline-text-2" id="text-orgdce7cc8">
 <p>
 我只写了自己需要的部分，如果有需要的地方就自己加嘛。
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-nodejs.html">nodejs</a> </div>]]></description>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-nodejs.html">nodejs</a> </div>]]></description>
   <category><![CDATA[nodejs]]></category>
   <link>https://lampze.github.io/nodebilibili.html</link>
   <pubDate>Wed, 19 Aug 2020 00:00:00 +0800</pubDate>
@@ -3620,9 +3620,9 @@ live.on(<span style="color: #8a3b3c;">"live"</span>, () =&gt; {
   <title><![CDATA[R6900v2安装LEDE.org]]></title>
   <description><![CDATA[
 
-<div id="outline-container-org93211c2" class="outline-2">
-<h2 id="org93211c2">前言</h2>
-<div class="outline-text-2" id="text-org93211c2">
+<div id="outline-container-orge8fade0" class="outline-2">
+<h2 id="orge8fade0">前言</h2>
+<div class="outline-text-2" id="text-orge8fade0">
 <p>
 首先我先劝退一波想买这个路由器的同学，以下是理由。
 </p>
@@ -3651,9 +3651,9 @@ live.on(<span style="color: #8a3b3c;">"live"</span>, () =&gt; {
 </div>
 </div>
 
-<div id="outline-container-orgfcef9a7" class="outline-2">
-<h2 id="orgfcef9a7">准备</h2>
-<div class="outline-text-2" id="text-orgfcef9a7">
+<div id="outline-container-orgbe45b98" class="outline-2">
+<h2 id="orgbe45b98">准备</h2>
+<div class="outline-text-2" id="text-orgbe45b98">
 <p>
 请自行准备好以下的东西再进行刷机
 </p>
@@ -3670,18 +3670,18 @@ live.on(<span style="color: #8a3b3c;">"live"</span>, () =&gt; {
 </div>
 </div>
 
-<div id="outline-container-org20c67bc" class="outline-2">
-<h2 id="org20c67bc">制作固件</h2>
-<div class="outline-text-2" id="text-org20c67bc">
+<div id="outline-container-org7902440" class="outline-2">
+<h2 id="org7902440">制作固件</h2>
+<div class="outline-text-2" id="text-org7902440">
 </div>
-<div id="outline-container-orgf70a391" class="outline-3">
-<h3 id="orgf70a391">准备</h3>
-<div class="outline-text-3" id="text-orgf70a391">
+<div id="outline-container-org75029e0" class="outline-3">
+<h3 id="org75029e0">准备</h3>
+<div class="outline-text-3" id="text-org75029e0">
 <p>
 进入 <code>LEDE</code> 目录，编辑 <code>feeds.conf.default</code> 文件，取消 <code>helloworld</code> 所在行的注释，这样就能选择 <code>ssr</code> 了，以下是示例。
 </p>
 
-<pre class="example" id="org94596b9">
+<pre class="example" id="orgf0d9383">
 src-git packages https://github.com/coolsnowwolf/packages
 src-git luci https://github.com/coolsnowwolf/luci
 src-git routing https://git.openwrt.org/feed/routing.git
@@ -3706,14 +3706,14 @@ src-git helloworld https://github.com/fw876/helloworld
 </div>
 </div>
 
-<div id="outline-container-orgb5c32b1" class="outline-3">
-<h3 id="orgb5c32b1">make menuconfig</h3>
-<div class="outline-text-3" id="text-orgb5c32b1">
+<div id="outline-container-orge76c08f" class="outline-3">
+<h3 id="orge76c08f">make menuconfig</h3>
+<div class="outline-text-3" id="text-orge76c08f">
 <p>
 然后就是配置 <code>LEDE</code> 了， 运行命令 <code>make menuconfig</code> 。我来展示一些必要选项。
 </p>
 
-<pre class="example" id="orgd2a972b">
+<pre class="example" id="org12b4e99">
 Target System (MediaTek Ralink MIPS)  ---&gt;
 Subtarget (MT7621 based boards)  ---&gt;
 Target Profile (NETGEAR R7200 v1 (NETGEAR R6700 v2))  ---&gt;
@@ -3727,7 +3727,7 @@ Target Profile (NETGEAR R7200 v1 (NETGEAR R6700 v2))  ---&gt;
 选择了上面的内容就可进行下一步了，下面展示一些我的配置。
 </p>
 
-<pre class="example" id="orge4971c7">
+<pre class="example" id="orgd05bb83">
 Extra packages  ---&gt;
   &lt;*&gt; ipv6helper................... IPv6 Helper and Dynamic Update he.net of ip
 LuCI  ---&gt;
@@ -3751,9 +3751,9 @@ Utilities  ---&gt;
 </div>
 </div>
 
-<div id="outline-container-org24e08fc" class="outline-3">
-<h3 id="org24e08fc">编译</h3>
-<div class="outline-text-3" id="text-org24e08fc">
+<div id="outline-container-orgbf07d24" class="outline-3">
+<h3 id="orgbf07d24">编译</h3>
+<div class="outline-text-3" id="text-orgbf07d24">
 <p>
 <code>make download V=s</code> 先下载要编译的源码
 </p>
@@ -3772,29 +3772,29 @@ Utilities  ---&gt;
 </div>
 </div>
 
-<div id="outline-container-orga51bc33" class="outline-3">
-<h3 id="orga51bc33">刷机</h3>
-<div class="outline-text-3" id="text-orga51bc33">
+<div id="outline-container-org6ec9eaa" class="outline-3">
+<h3 id="org6ec9eaa">刷机</h3>
+<div class="outline-text-3" id="text-org6ec9eaa">
 </div>
-<div id="outline-container-org32f1cc8" class="outline-4">
-<h4 id="org32f1cc8">原生刷LEDE</h4>
-<div class="outline-text-4" id="text-org32f1cc8">
+<div id="outline-container-org686e22a" class="outline-4">
+<h4 id="org686e22a">原生刷LEDE</h4>
+<div class="outline-text-4" id="text-org686e22a">
 <p>
 直接在原生的管理界面点击升级固件，上传带有字段 <code>factory</code> 的固件即可。
 </p>
 </div>
 </div>
-<div id="outline-container-org0b8cc01" class="outline-4">
-<h4 id="org0b8cc01">LEDE升级</h4>
-<div class="outline-text-4" id="text-org0b8cc01">
+<div id="outline-container-org2409286" class="outline-4">
+<h4 id="org2409286">LEDE升级</h4>
+<div class="outline-text-4" id="text-org2409286">
 <p>
 在固件升级页面使用带有字段 <code>sysupgrade</code> 的固件。
 </p>
 </div>
 </div>
-<div id="outline-container-org04783ed" class="outline-4">
-<h4 id="org04783ed">救砖或LEDE刷回原生</h4>
-<div class="outline-text-4" id="text-org04783ed">
+<div id="outline-container-org0460ba6" class="outline-4">
+<h4 id="org0460ba6">救砖或LEDE刷回原生</h4>
+<div class="outline-text-4" id="text-org0460ba6">
 <p>
 使用 <code>nmrpflash -L</code> 列出所有网卡，找到正确的网卡，如果不知道就一个个试。
 </p>
@@ -3814,7 +3814,7 @@ Utilities  ---&gt;
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-openwrt.html">OpenWrt</a> <a href="https://lampze.github.io/tag-lede.html">LEDE</a> <a href="https://lampze.github.io/tag-router.html">router</a> </div>]]></description>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-openwrt.html">OpenWrt</a> <a href="https://lampze.github.io/tag-lede.html">LEDE</a> <a href="https://lampze.github.io/tag-router.html">router</a> </div>]]></description>
   <category><![CDATA[OpenWrt]]></category>
   <category><![CDATA[LEDE]]></category>
   <category><![CDATA[router]]></category>
@@ -3828,41 +3828,41 @@ Utilities  ---&gt;
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9118711">前言</a></li>
-<li><a href="#orga73616e">安装</a>
+<li><a href="#orgbbf193e">前言</a></li>
+<li><a href="#orgc0d27a6">安装</a>
 <ul>
-<li><a href="#org049886a">准备</a>
+<li><a href="#orgc932f62">准备</a>
 <ul>
-<li><a href="#org6dab3f2">配置选择</a></li>
-<li><a href="#orgf1f55d8">安装环境</a></li>
-<li><a href="#org415cfd8">安装准备</a></li>
+<li><a href="#org16a1678">配置选择</a></li>
+<li><a href="#org4bfbea2">安装环境</a></li>
+<li><a href="#org5441d51">安装准备</a></li>
 </ul>
 </li>
-<li><a href="#org53b0e2b">安装</a>
+<li><a href="#orga1dc35c">安装</a>
 <ul>
-<li><a href="#org34d17ba">初始系统</a></li>
-<li><a href="#org96446ba">chroot</a></li>
-<li><a href="#org23f0004">配置包管理</a></li>
-<li><a href="#orgb60c86d">内核</a></li>
-<li><a href="#orged90605">必备配置</a></li>
-<li><a href="#org8fca130">引导</a></li>
+<li><a href="#orgae8cfb0">初始系统</a></li>
+<li><a href="#org040e27b">chroot</a></li>
+<li><a href="#orgbd82bb8">配置包管理</a></li>
+<li><a href="#orgafdde12">内核</a></li>
+<li><a href="#orgcfc631a">必备配置</a></li>
+<li><a href="#orgefccea0">引导</a></li>
 </ul>
 </li>
-<li><a href="#org58d4490">配置</a>
+<li><a href="#orga03c6cf">配置</a>
 <ul>
-<li><a href="#org56c2198">地区配置</a></li>
+<li><a href="#orgce1455e">地区配置</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org185b931">后记</a></li>
+<li><a href="#orgc8a98c7">后记</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org9118711" class="outline-2">
-<h2 id="org9118711">前言</h2>
-<div class="outline-text-2" id="text-org9118711">
+<div id="outline-container-orgbbf193e" class="outline-2">
+<h2 id="orgbbf193e">前言</h2>
+<div class="outline-text-2" id="text-orgbbf193e">
 <p>
 我使用Gentoo也有一段时间了，之前还尝试了一下Funtoo最后还是换到了Gentoo下，正好把安装的过程记录一下。相比原来，现在的Gentoo变化也挺大的，没了一些坑，但又新增了一些坑。
 </p>
@@ -3882,17 +3882,17 @@ Utilities  ---&gt;
 </div>
 </div>
 
-<div id="outline-container-orga73616e" class="outline-2">
-<h2 id="orga73616e">安装</h2>
-<div class="outline-text-2" id="text-orga73616e">
+<div id="outline-container-orgc0d27a6" class="outline-2">
+<h2 id="orgc0d27a6">安装</h2>
+<div class="outline-text-2" id="text-orgc0d27a6">
 </div>
-<div id="outline-container-org049886a" class="outline-3">
-<h3 id="org049886a">准备</h3>
-<div class="outline-text-3" id="text-org049886a">
+<div id="outline-container-orgc932f62" class="outline-3">
+<h3 id="orgc932f62">准备</h3>
+<div class="outline-text-3" id="text-orgc932f62">
 </div>
-<div id="outline-container-org6dab3f2" class="outline-4">
-<h4 id="org6dab3f2">配置选择</h4>
-<div class="outline-text-4" id="text-org6dab3f2">
+<div id="outline-container-org16a1678" class="outline-4">
+<h4 id="org16a1678">配置选择</h4>
+<div class="outline-text-4" id="text-org16a1678">
 <p>
 Gentoo是把初始系统的所有文件打包起来，用户只需要把它解压到指定位置然后配置好内核和引导就可以正常使用了。
 </p>
@@ -3915,9 +3915,9 @@ cpu架构基本所有平台都有，我们一般人主要就选择x86的64或32�
 </div>
 </div>
 
-<div id="outline-container-orgf1f55d8" class="outline-4">
-<h4 id="orgf1f55d8">安装环境</h4>
-<div class="outline-text-4" id="text-orgf1f55d8">
+<div id="outline-container-org4bfbea2" class="outline-4">
+<h4 id="org4bfbea2">安装环境</h4>
+<div class="outline-text-4" id="text-org4bfbea2">
 <p>
 因为是命令行安装的，所以要想安装Gentoo需要一个现成的Linux环境，如果你已经安装了一个Linux就可以直接使用它安装Gentoo，如果没有就下个 <code>ISO</code> 境像刻录到u盘。Gentoo官方有专门的最小安装环境，最好找个和将要安装的Gentoo相同配置的环境。
 </p>
@@ -3932,9 +3932,9 @@ cpu架构基本所有平台都有，我们一般人主要就选择x86的64或32�
 </div>
 </div>
 
-<div id="outline-container-org415cfd8" class="outline-4">
-<h4 id="org415cfd8">安装准备</h4>
-<div class="outline-text-4" id="text-org415cfd8">
+<div id="outline-container-org5441d51" class="outline-4">
+<h4 id="org5441d51">安装准备</h4>
+<div class="outline-text-4" id="text-org5441d51">
 <p>
 准备无非就是看看能不能联网，要安装的硬盘能不能找到。联网一般不用特别配置，如果没网就安装 <code>NetworkManager</code> ，还不行就看这个<a href="https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Networking">网络配置</a>。
 </p>
@@ -3958,13 +3958,13 @@ cpu架构基本所有平台都有，我们一般人主要就选择x86的64或32�
 </div>
 </div>
 
-<div id="outline-container-org53b0e2b" class="outline-3">
-<h3 id="org53b0e2b">安装</h3>
-<div class="outline-text-3" id="text-org53b0e2b">
+<div id="outline-container-orga1dc35c" class="outline-3">
+<h3 id="orga1dc35c">安装</h3>
+<div class="outline-text-3" id="text-orga1dc35c">
 </div>
-<div id="outline-container-org34d17ba" class="outline-4">
-<h4 id="org34d17ba">初始系统</h4>
-<div class="outline-text-4" id="text-org34d17ba">
+<div id="outline-container-orgae8cfb0" class="outline-4">
+<h4 id="orgae8cfb0">初始系统</h4>
+<div class="outline-text-4" id="text-orgae8cfb0">
 <p>
 首先进入 <code>root</code> 分区挂载的目录，如果跟着官方教程走的话就是 <code>/mnt/gentoo</code> ，然后把下载的 <code>stage</code> 压缩包复制到这个目录。如果关心安全的话可以验证一下，下载页面有密钥的。然后直接解压 <code>stage</code> 就行了。
 </p>
@@ -3975,9 +3975,9 @@ cpu架构基本所有平台都有，我们一般人主要就选择x86的64或32�
 </div>
 </div>
 
-<div id="outline-container-org96446ba" class="outline-4">
-<h4 id="org96446ba">chroot</h4>
-<div class="outline-text-4" id="text-org96446ba">
+<div id="outline-container-org040e27b" class="outline-4">
+<h4 id="org040e27b">chroot</h4>
+<div class="outline-text-4" id="text-org040e27b">
 <p>
 复制dns的配置文件，不然 <code>chroot</code> 后是没网的。
 </p>
@@ -4011,9 +4011,9 @@ mount --make-rslave /mnt/gentoo/dev
 </div>
 </div>
 
-<div id="outline-container-org23f0004" class="outline-4">
-<h4 id="org23f0004">配置包管理</h4>
-<div class="outline-text-4" id="text-org23f0004">
+<div id="outline-container-orgbd82bb8" class="outline-4">
+<h4 id="orgbd82bb8">配置包管理</h4>
+<div class="outline-text-4" id="text-orgbd82bb8">
 <p>
 因为Gentoo安装软件是在本机编译再安装的，所以可以自定义编译时的优化配置，比如可以专门针对你的cpu进行优化什么的，我们只需要更改几个选项就行了。
 </p>
@@ -4059,9 +4059,9 @@ eselect profile set X
 </div>
 </div>
 
-<div id="outline-container-orgb60c86d" class="outline-4">
-<h4 id="orgb60c86d">内核</h4>
-<div class="outline-text-4" id="text-orgb60c86d">
+<div id="outline-container-orgafdde12" class="outline-4">
+<h4 id="orgafdde12">内核</h4>
+<div class="outline-text-4" id="text-orgafdde12">
 <p>
 内核是安装Gentoo最难的地方了，不管怎么样首先要把内核的源码安装好。
 </p>
@@ -4079,8 +4079,8 @@ eselect profile set X
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org7f4548e"></a>手动配置<br>
-<div class="outline-text-5" id="text-org7f4548e">
+<li><a id="org8fb17ff"></a>手动配置<br>
+<div class="outline-text-5" id="text-org8fb17ff">
 <p>
 进入内核源码的目录，然后参照<a href="http://www.jinbuguo.com/kernel/longterm-linux-kernel-options.html">Linux-4.4-x86_64 内核配置选项简介</a>一个一个选项进行配置。
 </p>
@@ -4097,8 +4097,8 @@ eselect profile set X
 </div>
 </div>
 </li>
-<li><a id="org019f83c"></a>现有配置<br>
-<div class="outline-text-5" id="text-org019f83c">
+<li><a id="orgb210cee"></a>现有配置<br>
+<div class="outline-text-5" id="text-orgb210cee">
 <p>
 一般的Linux都有个 <code>/proc/config.gz</code> 文件，保存着内核的配置，使用 <code>zcat</code> 命令可以读取。所以可以直接使用这个配置，当然你也可以网上下载不错的配置。
 </p>
@@ -4116,8 +4116,8 @@ zcat /proc/config.gz &gt; .config
 </div>
 </div>
 </li>
-<li><a id="org7ef71db"></a>genkernel<br>
-<div class="outline-text-5" id="text-org7ef71db">
+<li><a id="org9c23737"></a>genkernel<br>
+<div class="outline-text-5" id="text-org9c23737">
 <p>
 使用这个命令可以直接编译内核，会把所有的选项都编译一遍，记得先更新 <code>/etc/fstab</code> ，缺点就是编译时间太长了。
 </p>
@@ -4131,20 +4131,20 @@ genkernel all
 </ul>
 </div>
 
-<div id="outline-container-orged90605" class="outline-4">
-<h4 id="orged90605">必备配置</h4>
-<div class="outline-text-4" id="text-orged90605">
+<div id="outline-container-orgcfc631a" class="outline-4">
+<h4 id="orgcfc631a">必备配置</h4>
+<div class="outline-text-4" id="text-orgcfc631a">
 <p>
 开机必需的配置，比如自动挂载、网络、密码什么的
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org15dc921"></a>fstab<br>
-<div class="outline-text-5" id="text-org15dc921">
+<li><a id="org77c5d7a"></a>fstab<br>
+<div class="outline-text-5" id="text-org77c5d7a">
 <p>
 这个是启动系统前自动挂载的分区，文件是 <code>/etc/fstab</code> 。使用 <code>lsblk</code> 看分区的情况，根据官方的例子修改一下就行了。
 </p>
-<pre class="example" id="orgf7f5ddd">
+<pre class="example" id="orgdeb2f0b">
 # 分区地址  挂载位置     类型    参数
 /dev/sda2   /boot        ext2    defaults,noatime     0 2
 /dev/sda3   none         swap    sw                   0 0
@@ -4156,8 +4156,8 @@ genkernel all
 </div>
 </li>
 
-<li><a id="org5eff309"></a>网络<br>
-<div class="outline-text-5" id="text-org5eff309">
+<li><a id="org979e15f"></a>网络<br>
+<div class="outline-text-5" id="text-org979e15f">
 <p>
 要我说直接 <code>emerge networkmanager</code> 就行了，官方其它的配置都是一些可有可无的东西。
 </p>
@@ -4169,8 +4169,8 @@ rc-update add NetworkManager default
 </div>
 </li>
 
-<li><a id="orgf474786"></a>设置密码<br>
-<div class="outline-text-5" id="text-orgf474786">
+<li><a id="orgafad14a"></a>设置密码<br>
+<div class="outline-text-5" id="text-orgafad14a">
 <p>
 使用 <code>passwd</code> 设置 <code>root</code> 用户密码。
 </p>
@@ -4179,9 +4179,9 @@ rc-update add NetworkManager default
 </ul>
 </div>
 
-<div id="outline-container-org8fca130" class="outline-4">
-<h4 id="org8fca130">引导</h4>
-<div class="outline-text-4" id="text-org8fca130">
+<div id="outline-container-orgefccea0" class="outline-4">
+<h4 id="orgefccea0">引导</h4>
+<div class="outline-text-4" id="text-orgefccea0">
 <p>
 一般都用 <code>grub</code> 来引导的，现在主板有两种 <code>BIOS</code> 和 <code>UEFI</code> ，比较新的主板都是 <code>UEFI</code> 的形式了，特点是界面非常漂亮。 <br>
 自己根据情况在<a href="https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Bootloader">配置引导</a>里找相应的配置方法，我主要列出 <code>BIOS</code> 的配置过程。
@@ -4204,13 +4204,13 @@ grub-mkconfig -o /boot/grub/grub.cfg
 </div>
 </div>
 
-<div id="outline-container-org58d4490" class="outline-3">
-<h3 id="org58d4490">配置</h3>
-<div class="outline-text-3" id="text-org58d4490">
+<div id="outline-container-orga03c6cf" class="outline-3">
+<h3 id="orga03c6cf">配置</h3>
+<div class="outline-text-3" id="text-orga03c6cf">
 </div>
-<div id="outline-container-org56c2198" class="outline-4">
-<h4 id="org56c2198">地区配置</h4>
-<div class="outline-text-4" id="text-org56c2198">
+<div id="outline-container-orgce1455e" class="outline-4">
+<h4 id="orgce1455e">地区配置</h4>
+<div class="outline-text-4" id="text-orgce1455e">
 <p>
 设置时区
 </p>
@@ -4224,7 +4224,7 @@ emerge --config sys-libs/timezone-data
 <p>
 设置语言，编辑 <code>/etc/locale.gen</code>
 </p>
-<pre class="example" id="org048d792">
+<pre class="example" id="org2ce904c">
 en_US.UTF-8 UTF-8
 zh_CN.UTF_8 UTF-8
 C.UTF8 UTF-8
@@ -4242,15 +4242,15 @@ eselect locale set x
 </div>
 </div>
 </div>
-<div id="outline-container-org185b931" class="outline-2">
-<h2 id="org185b931">后记</h2>
-<div class="outline-text-2" id="text-org185b931">
+<div id="outline-container-orgc8a98c7" class="outline-2">
+<h2 id="orgc8a98c7">后记</h2>
+<div class="outline-text-2" id="text-orgc8a98c7">
 <p>
 只列举了一些必要的配置，其它应用的配置在其它 <code>blog</code> 里展示。
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-linux.html">Linux</a> <a href="https://lampze.github.io/tag-gentoo.html">Gentoo</a> <a href="https://lampze.github.io/tag-guide.html">Guide</a> </div>]]></description>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-linux.html">Linux</a> <a href="https://lampze.github.io/tag-gentoo.html">Gentoo</a> <a href="https://lampze.github.io/tag-guide.html">Guide</a> </div>]]></description>
   <category><![CDATA[Linux]]></category>
   <category><![CDATA[Gentoo]]></category>
   <category><![CDATA[Guide]]></category>
@@ -4261,9 +4261,9 @@ eselect locale set x
   <title><![CDATA[krunner工作目录在根目录的问题]]></title>
   <description><![CDATA[
 
-<div id="outline-container-org827e2ae" class="outline-2">
-<h2 id="org827e2ae">前言</h2>
-<div class="outline-text-2" id="text-org827e2ae">
+<div id="outline-container-org0a4be3b" class="outline-2">
+<h2 id="org0a4be3b">前言</h2>
+<div class="outline-text-2" id="text-org0a4be3b">
 <p>
 不知道有没有人在用 <code>plasma</code> 时发现和我一样的问题，有时 <code>Alt + Space</code> 打开 <code>konsole</code> 有时是 <code>root</code> 目录，有时是 <code>HOME</code> 目录。终端还好说直接 <code>cd</code> 就能跳转到 <code>HOME</code> 目录，但用 <code>emacs</code> 时就比较难受了。
 </p>
@@ -4274,9 +4274,9 @@ eselect locale set x
 </div>
 </div>
 
-<div id="outline-container-org0e48e2b" class="outline-2">
-<h2 id="org0e48e2b">问题与解决</h2>
-<div class="outline-text-2" id="text-org0e48e2b">
+<div id="outline-container-orgfff6879" class="outline-2">
+<h2 id="orgfff6879">问题与解决</h2>
+<div class="outline-text-2" id="text-orgfff6879">
 <p>
 我发现在桌面直接输入命令打开应用时会出现导致之后所以命令都是在 <code>root</code> 目录打开的，但使用 <code>Alt + Space</code> 命令打开 <code>krunner</code> 就不会有这个问题。
 </p>
@@ -4286,7 +4286,7 @@ eselect locale set x
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-plasma.html">plasma</a> <a href="https://lampze.github.io/tag-krunner.html">krunner</a> <a href="https://lampze.github.io/tag-linux.html">Linux</a> </div>]]></description>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-plasma.html">plasma</a> <a href="https://lampze.github.io/tag-krunner.html">krunner</a> <a href="https://lampze.github.io/tag-linux.html">Linux</a> </div>]]></description>
   <category><![CDATA[plasma]]></category>
   <category><![CDATA[krunner]]></category>
   <category><![CDATA[Linux]]></category>
@@ -4297,9 +4297,9 @@ eselect locale set x
   <title><![CDATA[谈谈Funtoo]]></title>
   <description><![CDATA[
 
-<div id="outline-container-org4d1613d" class="outline-2">
-<h2 id="org4d1613d">前言</h2>
-<div class="outline-text-2" id="text-org4d1613d">
+<div id="outline-container-orge4e2e49" class="outline-2">
+<h2 id="orge4e2e49">前言</h2>
+<div class="outline-text-2" id="text-orge4e2e49">
 <p>
 先来说说我用过的 Linux 发行版吧，在初学 Linux 时我跟着教程用的 Centos，当时还在用虚拟机，因为 centos 不适合日常使用，所以我又尝试了 Ubuntu。慢慢的又听说了 Arch 的好玩之处，觉得对自己学习 Linux 有用，就一步一步的跟着 Arch 的 wiki 用命令行安装到电脑上了。好像是尝试了三四遍才把 Arch 安装好，配置好 Arch 后我也算是正式入门 Linux 了。随后就是在摸爬滚打中慢慢的学一些操作了，平时也在论坛里学习一些额外的知识，众所周知论坛 Arch 的地方一定有人说 gentoo，这也为我再次换系统埋下了种子。
 </p>
@@ -4318,9 +4318,9 @@ eselect locale set x
 </div>
 </div>
 
-<div id="outline-container-orgd53da75" class="outline-2">
-<h2 id="orgd53da75">体验</h2>
-<div class="outline-text-2" id="text-orgd53da75">
+<div id="outline-container-orgec118b2" class="outline-2">
+<h2 id="orgec118b2">体验</h2>
+<div class="outline-text-2" id="text-orgec118b2">
 <p>
 首先 Funtoo 的系统基本都已经配置好了，用户只需要选择一些 flavor 和 mixin 就能个性化一些配置，比如桌面、显卡驱动之类的。Funtoo 的 portage 全部采用 git 来同步的，gentoo 则是使用 rsync，git 当然又快又稳定了。
 </p>
@@ -4335,9 +4335,9 @@ Funtoo 的 grub 配置也被重新设置了，使用 Funtoo 的配置文件，�
 </div>
 </div>
 
-<div id="outline-container-orgce8c4a5" class="outline-2">
-<h2 id="orgce8c4a5">后记</h2>
-<div class="outline-text-2" id="text-orgce8c4a5">
+<div id="outline-container-orgc3ae3d9" class="outline-2">
+<h2 id="orgc3ae3d9">后记</h2>
+<div class="outline-text-2" id="text-orgc3ae3d9">
 <p>
 在体验完 Funtoo 了之后我还是决定回到 gentoo 来，因为 Funtoo 的一些包比 gentoo 的落后，虽然可以加入一些 overlay，但有些地方是不兼容的。虽然 Funtoo 的一些地方比 gentoo 更好，但 Funtoo 的使用者太少了，后来我也发现了一些东西是可以在 gentoo 上实现的。最后我把 gentoo 又重新安装了一遍。
 </p>
@@ -4347,7 +4347,7 @@ Funtoo 的 grub 配置也被重新设置了，使用 Funtoo 的配置文件，�
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-linux.html">Linux</a> <a href="https://lampze.github.io/tag-funtoo.html">Funtoo</a> </div>]]></description>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-linux.html">Linux</a> <a href="https://lampze.github.io/tag-funtoo.html">Funtoo</a> </div>]]></description>
   <category><![CDATA[Linux]]></category>
   <category><![CDATA[Funtoo]]></category>
   <link>https://lampze.github.io/about-funtoo.html</link>
@@ -4357,33 +4357,33 @@ Funtoo 的 grub 配置也被重新设置了，使用 Funtoo 的配置文件，�
   <title><![CDATA[2020年蓝桥杯省模拟赛题解]]></title>
   <description><![CDATA[
 
-<div id="outline-container-org41b7e48" class="outline-2">
-<h2 id="org41b7e48">题解</h2>
-<div class="outline-text-2" id="text-org41b7e48">
+<div id="outline-container-org5fb7153" class="outline-2">
+<h2 id="org5fb7153">题解</h2>
+<div class="outline-text-2" id="text-org5fb7153">
 </div>
-<div id="outline-container-org23de421" class="outline-3">
-<h3 id="org23de421">第一题</h3>
-<div class="outline-text-3" id="text-org23de421">
+<div id="outline-container-orgfebb1f6" class="outline-3">
+<h3 id="orgfebb1f6">第一题</h3>
+<div class="outline-text-3" id="text-orgfebb1f6">
 </div>
-<div id="outline-container-org7758e24" class="outline-4">
-<h4 id="org7758e24">题目</h4>
-<div class="outline-text-4" id="text-org7758e24">
+<div id="outline-container-org1214736" class="outline-4">
+<h4 id="org1214736">题目</h4>
+<div class="outline-text-4" id="text-org1214736">
 <p>
 在计算机存储中，12.5MB 是多少字节？
 </p>
 </div>
 </div>
-<div id="outline-container-org4bfb1bb" class="outline-4">
-<h4 id="org4bfb1bb">解析</h4>
-<div class="outline-text-4" id="text-org4bfb1bb">
+<div id="outline-container-org5854efe" class="outline-4">
+<h4 id="org5854efe">解析</h4>
+<div class="outline-text-4" id="text-org5854efe">
 <p>
 1MB=1024KB，1KB=1024B
 </p>
 </div>
 </div>
-<div id="outline-container-org634b86f" class="outline-4">
-<h4 id="org634b86f">答案</h4>
-<div class="outline-text-4" id="text-org634b86f">
+<div id="outline-container-org70111e3" class="outline-4">
+<h4 id="org70111e3">答案</h4>
+<div class="outline-text-4" id="text-org70111e3">
 <p>
 13107200
 </p>
@@ -4391,13 +4391,13 @@ Funtoo 的 grub 配置也被重新设置了，使用 Funtoo 的配置文件，�
 </div>
 </div>
 
-<div id="outline-container-orgac4d47c" class="outline-3">
-<h3 id="orgac4d47c">第二题</h3>
-<div class="outline-text-3" id="text-orgac4d47c">
+<div id="outline-container-org7374fe4" class="outline-3">
+<h3 id="org7374fe4">第二题</h3>
+<div class="outline-text-3" id="text-org7374fe4">
 </div>
-<div id="outline-container-org115774b" class="outline-4">
-<h4 id="org115774b">题目</h4>
-<div class="outline-text-4" id="text-org115774b">
+<div id="outline-container-orgce5af3d" class="outline-4">
+<h4 id="orgce5af3d">题目</h4>
+<div class="outline-text-4" id="text-orgce5af3d">
 <p>
 由 1 对括号，可以组成一种合法括号序列：()。
 </p>
@@ -4411,18 +4411,18 @@ Funtoo 的 grub 配置也被重新设置了，使用 Funtoo 的配置文件，�
 </p>
 </div>
 </div>
-<div id="outline-container-orgc642db9" class="outline-4">
-<h4 id="orgc642db9">解析</h4>
-<div class="outline-text-4" id="text-orgc642db9">
+<div id="outline-container-org68e5cf0" class="outline-4">
+<h4 id="org68e5cf0">解析</h4>
+<div class="outline-text-4" id="text-org68e5cf0">
 <ul class="org-ul">
 <li>直接查找卡特兰数</li>
 <li>用栈模拟，左括号相当于入栈，右括号相当于出栈，这样将题目转换成了统计出入栈序列总数了。</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2cec388" class="outline-4">
-<h4 id="org2cec388">答案</h4>
-<div class="outline-text-4" id="text-org2cec388">
+<div id="outline-container-org55f14b1" class="outline-4">
+<h4 id="org55f14b1">答案</h4>
+<div class="outline-text-4" id="text-org55f14b1">
 <p>
 14
 </p>
@@ -4430,30 +4430,30 @@ Funtoo 的 grub 配置也被重新设置了，使用 Funtoo 的配置文件，�
 </div>
 </div>
 
-<div id="outline-container-orgc656479" class="outline-3">
-<h3 id="orgc656479">第三题</h3>
-<div class="outline-text-3" id="text-orgc656479">
+<div id="outline-container-org975c1e9" class="outline-3">
+<h3 id="org975c1e9">第三题</h3>
+<div class="outline-text-3" id="text-org975c1e9">
 </div>
-<div id="outline-container-org406a279" class="outline-4">
-<h4 id="org406a279">题目</h4>
-<div class="outline-text-4" id="text-org406a279">
+<div id="outline-container-org5003cdc" class="outline-4">
+<h4 id="org5003cdc">题目</h4>
+<div class="outline-text-4" id="text-org5003cdc">
 <p>
 将 LANQIAO 中的字母重新排列，可以得到不同的单词，LANQIAO、AAILNOQ 等，注意这 7 个字母都要被用上，单词不一定有具体的英文意义。请问，总共能排列如多少个不同的单词。
 </p>
 </div>
 </div>
-<div id="outline-container-orgf5a981f" class="outline-4">
-<h4 id="orgf5a981f">解析</h4>
-<div class="outline-text-4" id="text-orgf5a981f">
+<div id="outline-container-org1130367" class="outline-4">
+<h4 id="org1130367">解析</h4>
+<div class="outline-text-4" id="text-org1130367">
 <ul class="org-ul">
 <li>有两个字母相同，其余都是不同字母，所以可以用组合数求出： \(\tbinom{7}{2}\tbinom{5}{1}\tbinom{4}{1}\tbinom{3}{1}\tbinom{2}{1}\tbinom{1}{1}\)</li>
 <li>头铁的可以写全排序，然后去掉重复的。</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgceaaa8b" class="outline-4">
-<h4 id="orgceaaa8b">答案</h4>
-<div class="outline-text-4" id="text-orgceaaa8b">
+<div id="outline-container-orgb24fd06" class="outline-4">
+<h4 id="orgb24fd06">答案</h4>
+<div class="outline-text-4" id="text-orgb24fd06">
 <p>
 2520
 </p>
@@ -4461,30 +4461,30 @@ Funtoo 的 grub 配置也被重新设置了，使用 Funtoo 的配置文件，�
 </div>
 </div>
 
-<div id="outline-container-org02c2f9e" class="outline-3">
-<h3 id="org02c2f9e">第四题</h3>
-<div class="outline-text-3" id="text-org02c2f9e">
+<div id="outline-container-orge49c842" class="outline-3">
+<h3 id="orge49c842">第四题</h3>
+<div class="outline-text-3" id="text-orge49c842">
 </div>
-<div id="outline-container-org4d7bb82" class="outline-4">
-<h4 id="org4d7bb82">题目</h4>
-<div class="outline-text-4" id="text-org4d7bb82">
+<div id="outline-container-org8c386d9" class="outline-4">
+<h4 id="org8c386d9">题目</h4>
+<div class="outline-text-4" id="text-org8c386d9">
 <p>
 一个包含有 2019 个结点的无向连通图，最少包含多少条边？
 </p>
 </div>
 </div>
-<div id="outline-container-org2839254" class="outline-4">
-<h4 id="org2839254">解析</h4>
-<div class="outline-text-4" id="text-org2839254">
+<div id="outline-container-org1ed3cd2" class="outline-4">
+<h4 id="org1ed3cd2">解析</h4>
+<div class="outline-text-4" id="text-org1ed3cd2">
 <p>
 随便画一下两个三个结点的情况就明白了
 </p>
 </div>
 </div>
 
-<div id="outline-container-orge44fdbf" class="outline-4">
-<h4 id="orge44fdbf">答案</h4>
-<div class="outline-text-4" id="text-orge44fdbf">
+<div id="outline-container-org49caaad" class="outline-4">
+<h4 id="org49caaad">答案</h4>
+<div class="outline-text-4" id="text-org49caaad">
 <p>
 2018
 </p>
@@ -4492,14 +4492,14 @@ Funtoo 的 grub 配置也被重新设置了，使用 Funtoo 的配置文件，�
 </div>
 </div>
 
-<div id="outline-container-orgbf89cf7" class="outline-3">
-<h3 id="orgbf89cf7">第五题</h3>
-<div class="outline-text-3" id="text-orgbf89cf7">
+<div id="outline-container-org59fde9a" class="outline-3">
+<h3 id="org59fde9a">第五题</h3>
+<div class="outline-text-3" id="text-org59fde9a">
 </div>
-<div id="outline-container-org2bfa432" class="outline-4">
-<h4 id="org2bfa432">题目</h4>
-<div class="outline-text-4" id="text-org2bfa432">
-<pre class="example" id="orgd9c38eb">
+<div id="outline-container-org6c9e1c7" class="outline-4">
+<h4 id="org6c9e1c7">题目</h4>
+<div class="outline-text-4" id="text-org6c9e1c7">
+<pre class="example" id="org05e0901">
 问题描述
 　　给定三个整数 a, b, c，如果一个整数既不是 a 的整数倍也不是 b 的整数倍还不是 c 的整数倍，则这个数称为反倍数。
 　　请问在 1 至 n 中有多少个反倍数。
@@ -4522,17 +4522,17 @@ Funtoo 的 grub 配置也被重新设置了，使用 Funtoo 的配置文件，�
 </pre>
 </div>
 </div>
-<div id="outline-container-org9886b15" class="outline-4">
-<h4 id="org9886b15">解析</h4>
-<div class="outline-text-4" id="text-org9886b15">
+<div id="outline-container-org6f8a4bf" class="outline-4">
+<h4 id="org6f8a4bf">解析</h4>
+<div class="outline-text-4" id="text-org6f8a4bf">
 <p>
 直接枚举 1 至 n 所有数，然后统计就行了。
 </p>
 </div>
 </div>
-<div id="outline-container-orga9ae72a" class="outline-4">
-<h4 id="orga9ae72a">答案</h4>
-<div class="outline-text-4" id="text-orga9ae72a">
+<div id="outline-container-org0475cc5" class="outline-4">
+<h4 id="org0475cc5">答案</h4>
+<div class="outline-text-4" id="text-org0475cc5">
 <div class="org-src-container">
 <pre class="src src-c++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 
@@ -4557,14 +4557,14 @@ Funtoo 的 grub 配置也被重新设置了，使用 Funtoo 的配置文件，�
 </div>
 </div>
 
-<div id="outline-container-orgcb06945" class="outline-3">
-<h3 id="orgcb06945">第六题</h3>
-<div class="outline-text-3" id="text-orgcb06945">
+<div id="outline-container-org6e69e5c" class="outline-3">
+<h3 id="org6e69e5c">第六题</h3>
+<div class="outline-text-3" id="text-org6e69e5c">
 </div>
-<div id="outline-container-org8379661" class="outline-4">
-<h4 id="org8379661">题目</h4>
-<div class="outline-text-4" id="text-org8379661">
-<pre class="example" id="org3c8df6c">
+<div id="outline-container-org10eff62" class="outline-4">
+<h4 id="org10eff62">题目</h4>
+<div class="outline-text-4" id="text-org10eff62">
+<pre class="example" id="orgca127c7">
 问题描述
 　　给定一个单词，请使用凯撒密码将这个单词加密。
 　　凯撒密码是一种替换加密的技术，单词中的所有字母都在字母表上向后偏移3位后被替换成密文。即a变为d，b变为e，...，w变为z，x变为a，y变为b，z变为c。
@@ -4582,17 +4582,17 @@ odqtldr
 </pre>
 </div>
 </div>
-<div id="outline-container-org2ff8748" class="outline-4">
-<h4 id="org2ff8748">解析</h4>
-<div class="outline-text-4" id="text-org2ff8748">
+<div id="outline-container-org4b0238f" class="outline-4">
+<h4 id="org4b0238f">解析</h4>
+<div class="outline-text-4" id="text-org4b0238f">
 <p>
 记录字符相对于 a 的偏移，然后加 3 并对 26 取余，这样就不会超过字符 z
 </p>
 </div>
 </div>
-<div id="outline-container-orgaca5715" class="outline-4">
-<h4 id="orgaca5715">答案</h4>
-<div class="outline-text-4" id="text-orgaca5715">
+<div id="outline-container-orgd4d12b9" class="outline-4">
+<h4 id="orgd4d12b9">答案</h4>
+<div class="outline-text-4" id="text-orgd4d12b9">
 <div class="org-src-container">
 <pre class="src src-c++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 
@@ -4618,14 +4618,14 @@ odqtldr
 </div>
 </div>
 
-<div id="outline-container-orgcbbab82" class="outline-3">
-<h3 id="orgcbbab82">第七题</h3>
-<div class="outline-text-3" id="text-orgcbbab82">
+<div id="outline-container-orgcaabded" class="outline-3">
+<h3 id="orgcaabded">第七题</h3>
+<div class="outline-text-3" id="text-orgcaabded">
 </div>
-<div id="outline-container-org833da1d" class="outline-4">
-<h4 id="org833da1d">题目</h4>
-<div class="outline-text-4" id="text-org833da1d">
-<pre class="example" id="org2602347">
+<div id="outline-container-org2c33622" class="outline-4">
+<h4 id="org2c33622">题目</h4>
+<div class="outline-text-4" id="text-org2c33622">
+<pre class="example" id="orga340b4d">
 问题描述
 　　如果一个序列的奇数项都比前一项大，偶数项都比前一项小，则称为一个摆动序列。即 a[2i]&lt;a[2i-1], a[2i+1]&gt;a[2i]。
 　　小明想知道，长度为 m，每个数都是 1 到 n 之间的正整数的摆动序列一共有多少个。
@@ -4661,9 +4661,9 @@ odqtldr
 </pre>
 </div>
 </div>
-<div id="outline-container-orga2493cc" class="outline-4">
-<h4 id="orga2493cc">解析</h4>
-<div class="outline-text-4" id="text-orga2493cc">
+<div id="outline-container-org4465eff" class="outline-4">
+<h4 id="org4465eff">解析</h4>
+<div class="outline-text-4" id="text-org4465eff">
 <p>
 最朴素的做法就是用 <code>dfs</code> 搜索，但 n m 的范围太大了，会超时。
 </p>
@@ -4697,9 +4697,9 @@ odqtldr
 </p>
 </div>
 </div>
-<div id="outline-container-org8780c21" class="outline-4">
-<h4 id="org8780c21">答案</h4>
-<div class="outline-text-4" id="text-org8780c21">
+<div id="outline-container-org75ff4e6" class="outline-4">
+<h4 id="org75ff4e6">答案</h4>
+<div class="outline-text-4" id="text-org75ff4e6">
 <div class="org-src-container">
 <pre class="src src-c++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 <span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="color: #383a42;">std</span>;
@@ -4728,14 +4728,14 @@ odqtldr
 </div>
 </div>
 
-<div id="outline-container-orgadd250d" class="outline-3">
-<h3 id="orgadd250d">第八题</h3>
-<div class="outline-text-3" id="text-orgadd250d">
+<div id="outline-container-org567da12" class="outline-3">
+<h3 id="org567da12">第八题</h3>
+<div class="outline-text-3" id="text-org567da12">
 </div>
-<div id="outline-container-orgdafd93a" class="outline-4">
-<h4 id="orgdafd93a">题目</h4>
-<div class="outline-text-4" id="text-orgdafd93a">
-<pre class="example" id="org61c1073">
+<div id="outline-container-org53b6c1e" class="outline-4">
+<h4 id="org53b6c1e">题目</h4>
+<div class="outline-text-4" id="text-org53b6c1e">
+<pre class="example" id="orgb237926">
 问题描述
 　　对于一个 n 行 m 列的表格，我们可以使用螺旋的方式给表格依次填上正整数，我们称填好的表格为一个螺旋矩阵。
 　　例如，一个 4 行 5 列的螺旋矩阵如下：
@@ -4760,17 +4760,17 @@ odqtldr
 </pre>
 </div>
 </div>
-<div id="outline-container-orgfc119ca" class="outline-4">
-<h4 id="orgfc119ca">解析</h4>
-<div class="outline-text-4" id="text-orgfc119ca">
+<div id="outline-container-orga50b0e4" class="outline-4">
+<h4 id="orga50b0e4">解析</h4>
+<div class="outline-text-4" id="text-orga50b0e4">
 <p>
 最简单的方法就是把整个螺旋矩阵画出来，然后输出特定位置的数。
 </p>
 </div>
 </div>
-<div id="outline-container-org646a5d1" class="outline-4">
-<h4 id="org646a5d1">答案</h4>
-<div class="outline-text-4" id="text-org646a5d1">
+<div id="outline-container-org62aab30" class="outline-4">
+<h4 id="org62aab30">答案</h4>
+<div class="outline-text-4" id="text-org62aab30">
 <div class="org-src-container">
 <pre class="src src-c++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 
@@ -4804,14 +4804,14 @@ odqtldr
 </div>
 </div>
 </div>
-<div id="outline-container-org41a6e00" class="outline-3">
-<h3 id="org41a6e00">第九题</h3>
-<div class="outline-text-3" id="text-org41a6e00">
+<div id="outline-container-orgcc92523" class="outline-3">
+<h3 id="orgcc92523">第九题</h3>
+<div class="outline-text-3" id="text-orgcc92523">
 </div>
-<div id="outline-container-org82e14ff" class="outline-4">
-<h4 id="org82e14ff">题目</h4>
-<div class="outline-text-4" id="text-org82e14ff">
-<pre class="example" id="orgc94669d">
+<div id="outline-container-orga0ca9c0" class="outline-4">
+<h4 id="orga0ca9c0">题目</h4>
+<div class="outline-text-4" id="text-orga0ca9c0">
+<pre class="example" id="orgf974125">
 问题描述
 　　2015年，全中国实现了户户通电。作为一名电力建设者，小明正在帮助一带一路上的国家通电。
 　　这一次，小明要帮助 n 个村庄通电，其中 1 号村庄正好可以建立一个发电站，所发的电足够所有村庄使用。
@@ -4840,17 +4840,17 @@ odqtldr
 </pre>
 </div>
 </div>
-<div id="outline-container-orga5b6409" class="outline-4">
-<h4 id="orga5b6409">解析</h4>
-<div class="outline-text-4" id="text-orga5b6409">
+<div id="outline-container-orgfe1a705" class="outline-4">
+<h4 id="orgfe1a705">解析</h4>
+<div class="outline-text-4" id="text-orgfe1a705">
 <p>
 可以抽象成有 n 个全相连结点的图，边是拉电线的费用，然后找最小生成树就好了。
 </p>
 </div>
 </div>
-<div id="outline-container-org5d59d19" class="outline-4">
-<h4 id="org5d59d19">答案</h4>
-<div class="outline-text-4" id="text-org5d59d19">
+<div id="outline-container-org2f25b39" class="outline-4">
+<h4 id="org2f25b39">答案</h4>
+<div class="outline-text-4" id="text-org2f25b39">
 <div class="org-src-container">
 <pre class="src src-c++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 <span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">queue</span><span style="color: #014980;">&gt;</span>
@@ -4925,14 +4925,14 @@ odqtldr
 </div>
 </div>
 </div>
-<div id="outline-container-orgc0fb018" class="outline-3">
-<h3 id="orgc0fb018">第十题</h3>
-<div class="outline-text-3" id="text-orgc0fb018">
+<div id="outline-container-org30b5769" class="outline-3">
+<h3 id="org30b5769">第十题</h3>
+<div class="outline-text-3" id="text-org30b5769">
 </div>
-<div id="outline-container-org94cf9ff" class="outline-4">
-<h4 id="org94cf9ff">题目</h4>
-<div class="outline-text-4" id="text-org94cf9ff">
-<pre class="example" id="org56f9a1d">
+<div id="outline-container-orgf6010a6" class="outline-4">
+<h4 id="orgf6010a6">题目</h4>
+<div class="outline-text-4" id="text-orgf6010a6">
+<pre class="example" id="orgffe14a8">
 问题描述
 　　小明和朋友们一起去郊外植树，他们带了一些在自己实验室精心研究出的小树苗。
 　　小明和朋友们一共有 n 个人，他们经过精心挑选，在一块空地上每个人挑选了一个适合植树的位置，总共 n 个。他们准备把自己带的树苗都植下去。
@@ -4961,9 +4961,9 @@ odqtldr
 </pre>
 </div>
 </div>
-<div id="outline-container-org8e9de04" class="outline-4">
-<h4 id="org8e9de04">解析</h4>
-<div class="outline-text-4" id="text-org8e9de04">
+<div id="outline-container-orgca414cb" class="outline-4">
+<h4 id="orgca414cb">解析</h4>
+<div class="outline-text-4" id="text-orgca414cb">
 <p>
 只想出了 <code>dfs</code> 搜索的方法，最高有 30 层，每层最多有两个分支，所以最高会有 <code>2^30</code> 次操作，但大部分都会被剪掉，不知道能不能过全部用例。
 </p>
@@ -4973,9 +4973,9 @@ odqtldr
 </p>
 </div>
 </div>
-<div id="outline-container-orgaef5d2b" class="outline-4">
-<h4 id="orgaef5d2b">答案</h4>
-<div class="outline-text-4" id="text-orgaef5d2b">
+<div id="outline-container-org1dc34d2" class="outline-4">
+<h4 id="org1dc34d2">答案</h4>
+<div class="outline-text-4" id="text-org1dc34d2">
 <div class="org-src-container">
 <pre class="src src-c++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 
@@ -5027,7 +5027,7 @@ odqtldr
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-蓝桥杯.html">蓝桥杯</a> <a href="https://lampze.github.io/tag-算法.html">算法</a> <a href="https://lampze.github.io/tag-题解.html">题解</a> </div>]]></description>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-蓝桥杯.html">蓝桥杯</a> <a href="https://lampze.github.io/tag-算法.html">算法</a> <a href="https://lampze.github.io/tag-题解.html">题解</a> </div>]]></description>
   <category><![CDATA[蓝桥杯]]></category>
   <category><![CDATA[算法]]></category>
   <category><![CDATA[题解]]></category>
@@ -5038,9 +5038,9 @@ odqtldr
   <title><![CDATA[华夏学院抢课分析]]></title>
   <description><![CDATA[
 
-<div id="outline-container-org13cdbe2" class="outline-2">
-<h2 id="org13cdbe2">前言</h2>
-<div class="outline-text-2" id="text-org13cdbe2">
+<div id="outline-container-orge210859" class="outline-2">
+<h2 id="orge210859">前言</h2>
+<div class="outline-text-2" id="text-orge210859">
 <p>
 因为我上次抢课时认真的掐准时间时间进去抢，然后发现所有的课都秒没了，
 所以一怒之下就写了个脚本来帮我抢课。这次一试，果然选上了我想要的课。
@@ -5059,9 +5059,9 @@ odqtldr
 </div>
 </div>
 
-<div id="outline-container-org0fccb2a" class="outline-2">
-<h2 id="org0fccb2a">API</h2>
-<div class="outline-text-2" id="text-org0fccb2a">
+<div id="outline-container-org2f1a8c5" class="outline-2">
+<h2 id="org2f1a8c5">API</h2>
+<div class="outline-text-2" id="text-org2f1a8c5">
 <p>
 我使用的方法是直接获取页面上的 <code>DOM</code> 然后使用 <code>DOM</code> 的 <code>click</code> 函数，比直接用后
 端的接口肯定要慢许多，但我也不想把整个网页的代码看一遍，而且使用这种技术的人应该
@@ -5087,9 +5087,9 @@ loadCoursesByPaged();                      <span style="color: #556b2f;">// </sp
 </div>
 </div>
 
-<div id="outline-container-org353b234" class="outline-2">
-<h2 id="org353b234">代码</h2>
-<div class="outline-text-2" id="text-org353b234">
+<div id="outline-container-orgef7b505" class="outline-2">
+<h2 id="orgef7b505">代码</h2>
+<div class="outline-text-2" id="text-orgef7b505">
 <p>
 然后就可以开始写代码了，
 我只实现了基本的抢课功能，没有写定时，如果没开放系统可能会把网页卡住，想改的自己改。
@@ -5155,7 +5155,7 @@ loadCoursesByPaged();                      <span style="color: #556b2f;">// </sp
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-前端.html">前端</a> </div>]]></description>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-前端.html">前端</a> </div>]]></description>
   <category><![CDATA[前端]]></category>
   <link>https://lampze.github.io/hx-auto-select-class.html</link>
   <pubDate>Tue, 31 Mar 2020 00:00:00 +0800</pubDate>
@@ -5163,9 +5163,9 @@ loadCoursesByPaged();                      <span style="color: #556b2f;">// </sp
 <item>
   <title><![CDATA[记2020年3月25日核酸检测]]></title>
   <description><![CDATA[
-<div id="outline-container-org914ed28" class="outline-2">
-<h2 id="org914ed28">前言</h2>
-<div class="outline-text-2" id="text-org914ed28">
+<div id="outline-container-org58604d5" class="outline-2">
+<h2 id="org58604d5">前言</h2>
+<div class="outline-text-2" id="text-org58604d5">
 <p>
 我爸一直想回老家，但社区不放行，必须要我们做两次核酸检测才放，3月 25 号刚通公交，
 正好今天让我们去做检测。
@@ -5173,13 +5173,13 @@ loadCoursesByPaged();                      <span style="color: #556b2f;">// </sp
 </div>
 </div>
 
-<div id="outline-container-org9bbe2e8" class="outline-2">
-<h2 id="org9bbe2e8">过程</h2>
-<div class="outline-text-2" id="text-org9bbe2e8">
+<div id="outline-container-org4966dcd" class="outline-2">
+<h2 id="org4966dcd">过程</h2>
+<div class="outline-text-2" id="text-org4966dcd">
 </div>
-<div id="outline-container-org8d412e1" class="outline-3">
-<h3 id="org8d412e1">出小区</h3>
-<div class="outline-text-3" id="text-org8d412e1">
+<div id="outline-container-org557b5d0" class="outline-3">
+<h3 id="org557b5d0">出小区</h3>
+<div class="outline-text-3" id="text-org557b5d0">
 <p>
 先要登记，填写一个出行表才能出小区。外出必须要在两个小时内回来，不然三天都不能出
 行。
@@ -5187,9 +5187,9 @@ loadCoursesByPaged();                      <span style="color: #556b2f;">// </sp
 </div>
 </div>
 
-<div id="outline-container-orgd15d13d" class="outline-3">
-<h3 id="orgd15d13d">坐公交车去医院</h3>
-<div class="outline-text-3" id="text-orgd15d13d">
+<div id="outline-container-org4a32b47" class="outline-3">
+<h3 id="org4a32b47">坐公交车去医院</h3>
+<div class="outline-text-3" id="text-org4a32b47">
 <p>
 公交车半个小时才一辆，上车需要准备 复工证明、健康码、小区通行证明。上下车时需要
 扫码登记。
@@ -5197,9 +5197,9 @@ loadCoursesByPaged();                      <span style="color: #556b2f;">// </sp
 </div>
 </div>
 
-<div id="outline-container-orgb120e1e" class="outline-3">
-<h3 id="orgb120e1e">核酸检测</h3>
-<div class="outline-text-3" id="text-orgb120e1e">
+<div id="outline-container-orgb40fa53" class="outline-3">
+<h3 id="orgb40fa53">核酸检测</h3>
+<div class="outline-text-3" id="text-orgb40fa53">
 <p>
 核酸检测是在医院在广场上进行的，避免交叉感染，护士们都做了全身防护。做之前先要核对信息，
 然后给一个小瓶，登记册和瓶子上各贴一个条形码。然后在远处一个凳子上坐好，护士用一
@@ -5212,9 +5212,9 @@ loadCoursesByPaged();                      <span style="color: #556b2f;">// </sp
 </div>
 </div>
 
-<div id="outline-container-org833153e" class="outline-3">
-<h3 id="org833153e">坐公交车回小区</h3>
-<div class="outline-text-3" id="text-org833153e">
+<div id="outline-container-org1751d90" class="outline-3">
+<h3 id="org1751d90">坐公交车回小区</h3>
+<div class="outline-text-3" id="text-org1751d90">
 <p>
 过程上面一致，但有一伙人因为证件的问题扯了将近 10 分钟，最后司机叫了领导过来才走的。
 </p>
@@ -5225,9 +5225,9 @@ loadCoursesByPaged();                      <span style="color: #556b2f;">// </sp
 </div>
 </div>
 
-<div id="outline-container-orgc48dede" class="outline-3">
-<h3 id="orgc48dede">回小区</h3>
-<div class="outline-text-3" id="text-orgc48dede">
+<div id="outline-container-org8cfabda" class="outline-3">
+<h3 id="org8cfabda">回小区</h3>
+<div class="outline-text-3" id="text-org8cfabda">
 <p>
 回去只需要把小区通行证明交回就可以了。
 </p>
@@ -5235,16 +5235,16 @@ loadCoursesByPaged();                      <span style="color: #556b2f;">// </sp
 </div>
 </div>
 
-<div id="outline-container-org3b1c62c" class="outline-2">
-<h2 id="org3b1c62c">后记</h2>
-<div class="outline-text-2" id="text-org3b1c62c">
+<div id="outline-container-org4b8da73" class="outline-2">
+<h2 id="org4b8da73">后记</h2>
+<div class="outline-text-2" id="text-org4b8da73">
 <p>
 武汉大概率在 4 月 8 号解封，想提前离汉要做再次核酸检测。我感觉等这再次做完，离 4 月 8 号也
 不远了，也就早点回老家过清明了。
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-日常.html">日常</a> </div>]]></description>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-日常.html">日常</a> </div>]]></description>
   <category><![CDATA[日常]]></category>
   <link>https://lampze.github.io/2020-3-25-detect.html</link>
   <pubDate>Wed, 25 Mar 2020 00:00:00 +0800</pubDate>
@@ -5252,18 +5252,18 @@ loadCoursesByPaged();                      <span style="color: #556b2f;">// </sp
 <item>
   <title><![CDATA[obs直播配置]]></title>
   <description><![CDATA[
-<div id="outline-container-orga06b11c" class="outline-2">
-<h2 id="orga06b11c">obs 配置</h2>
-<div class="outline-text-2" id="text-orga06b11c">
+<div id="outline-container-org167ac96" class="outline-2">
+<h2 id="org167ac96">obs 配置</h2>
+<div class="outline-text-2" id="text-org167ac96">
 <p>
 没什么好说的，把推流地址写好，串流的输出主要调比特率，根据自己家的上行网速来填，
 最好比最大上行低一点，不然直播的延迟很大。配置好 n 卡的尽量用硬件编码。
 </p>
 </div>
 </div>
-<div id="outline-container-org434a07e" class="outline-2">
-<h2 id="org434a07e">音频输入配置</h2>
-<div class="outline-text-2" id="text-org434a07e">
+<div id="outline-container-org2ed1518" class="outline-2">
+<h2 id="org2ed1518">音频输入配置</h2>
+<div class="outline-text-2" id="text-org2ed1518">
 <p>
 主要是配置麦的滤镜，下面是我配置的滤镜，基本都是默认设置，不要随意更改顺序
 </p>
@@ -5285,9 +5285,9 @@ loadCoursesByPaged();                      <span style="color: #556b2f;">// </sp
 </ol>
 </div>
 </div>
-<div id="outline-container-org8da1f26" class="outline-2">
-<h2 id="org8da1f26">弹幕配置</h2>
-<div class="outline-text-2" id="text-org8da1f26">
+<div id="outline-container-org062fdad" class="outline-2">
+<h2 id="org062fdad">弹幕配置</h2>
+<div class="outline-text-2" id="text-org062fdad">
 <p>
 一般是用 obs 的浏览器场景的，但 Linux 下没有这个，非要用的话倒是有插件，但只适用
 于比较低版本的 obs，所以我打算利用系统通知结合网页的爬虫直接显示弹幕。
@@ -5375,7 +5375,7 @@ loadCoursesByPaged();                      <span style="color: #556b2f;">// </sp
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-obs.html">obs</a> <a href="https://lampze.github.io/tag-bilibili.html">bilibili</a> <a href="https://lampze.github.io/tag-linux.html">Linux</a> </div>]]></description>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-obs.html">obs</a> <a href="https://lampze.github.io/tag-bilibili.html">bilibili</a> <a href="https://lampze.github.io/tag-linux.html">Linux</a> </div>]]></description>
   <category><![CDATA[obs]]></category>
   <category><![CDATA[bilibili]]></category>
   <category><![CDATA[Linux]]></category>
@@ -5386,9 +5386,9 @@ loadCoursesByPaged();                      <span style="color: #556b2f;">// </sp
   <title><![CDATA[snails 在 Doom 下的bug]]></title>
   <description><![CDATA[
 
-<div id="outline-container-orgdc2dddc" class="outline-2">
-<h2 id="orgdc2dddc">问题</h2>
-<div class="outline-text-2" id="text-orgdc2dddc">
+<div id="outline-container-orgeabbb90" class="outline-2">
+<h2 id="orgeabbb90">问题</h2>
+<div class="outline-text-2" id="text-orgeabbb90">
 <p>
 自从 snails 加入了 tips 后，在 Doom 里 snails 就打不开了，会报错 <code>split-window:
 Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
@@ -5400,18 +5400,18 @@ Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
 </div>
 </div>
 
-<div id="outline-container-orgdb733e8" class="outline-2">
-<h2 id="orgdb733e8">原因</h2>
-<div class="outline-text-2" id="text-orgdb733e8">
+<div id="outline-container-orgac65fa5" class="outline-2">
+<h2 id="orgac65fa5">原因</h2>
+<div class="outline-text-2" id="text-orgac65fa5">
 <p>
 经过一番调试，发现是因为 <code>(line-pixel-height)</code> 返回的值太小了，导致不能分割窗口。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgb3ffd87" class="outline-2">
-<h2 id="orgb3ffd87">解决</h2>
-<div class="outline-text-2" id="text-orgb3ffd87">
+<div id="outline-container-org224c589" class="outline-2">
+<h2 id="org224c589">解决</h2>
+<div class="outline-text-2" id="text-org224c589">
 <p>
 两种方法
 </p>
@@ -5430,7 +5430,7 @@ Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-snails.html">snails</a> <a href="https://lampze.github.io/tag-emacs.html">Emacs</a> <a href="https://lampze.github.io/tag-doom.html">Doom</a> </div>]]></description>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-snails.html">snails</a> <a href="https://lampze.github.io/tag-emacs.html">Emacs</a> <a href="https://lampze.github.io/tag-doom.html">Doom</a> </div>]]></description>
   <category><![CDATA[snails]]></category>
   <category><![CDATA[Emacs]]></category>
   <category><![CDATA[Doom]]></category>
@@ -5440,18 +5440,18 @@ Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
 <item>
   <title><![CDATA[org-page 配置]]></title>
   <description><![CDATA[
-<div id="outline-container-org8aebccf" class="outline-2">
-<h2 id="org8aebccf">前言</h2>
-<div class="outline-text-2" id="text-org8aebccf">
+<div id="outline-container-orgcd3a71c" class="outline-2">
+<h2 id="orgcd3a71c">前言</h2>
+<div class="outline-text-2" id="text-orgcd3a71c">
 <p>
 以前用过几个博客的生成器，感觉都太复杂，太笨重了，而且对 org 的支持也不好，最后还是
 换到了 org-page
 </p>
 </div>
 </div>
-<div id="outline-container-org0acaf6c" class="outline-2">
-<h2 id="org0acaf6c">Doom 的配置</h2>
-<div class="outline-text-2" id="text-org0acaf6c">
+<div id="outline-container-org9a8f999" class="outline-2">
+<h2 id="org9a8f999">Doom 的配置</h2>
+<div class="outline-text-2" id="text-org9a8f999">
 <div class="org-src-container">
 <pre class="src src-lisp"><span style="color: #556b2f;">;; </span><span style="color: #556b2f;">&#23433;&#35013;org-page</span>
 (package! org-page)
@@ -5470,16 +5470,16 @@ Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
 </div>
 </div>
 </div>
-<div id="outline-container-org6686bf9" class="outline-2">
-<h2 id="org6686bf9">org-page 的坑</h2>
-<div class="outline-text-2" id="text-org6686bf9">
+<div id="outline-container-org3e4b8c6" class="outline-2">
+<h2 id="org3e4b8c6">org-page 的坑</h2>
+<div class="outline-text-2" id="text-org3e4b8c6">
 <ol class="org-ol">
 <li>文章的名字不能使用中文</li>
 <li>自动生成的 org 文件有两个 title，需要删掉一个，可能是 Doom的问题</li>
 </ol>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-org-page.html">org-page</a> <a href="https://lampze.github.io/tag-emacs.html">Emacs</a> <a href="https://lampze.github.io/tag-doom.html">Doom</a> </div>]]></description>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-org-page.html">org-page</a> <a href="https://lampze.github.io/tag-emacs.html">Emacs</a> <a href="https://lampze.github.io/tag-doom.html">Doom</a> </div>]]></description>
   <category><![CDATA[org-page]]></category>
   <category><![CDATA[Emacs]]></category>
   <category><![CDATA[Doom]]></category>

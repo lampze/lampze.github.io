@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="模拟与搜索的算法讲解">
@@ -21,10 +21,10 @@
         <a href="https://lampze.github.io">lampze's Blog</a>
       </div></div>
 <div id="content">
-<div class="post-date">15 1月 2021</div><h1 class="post-title"><a href="https://lampze.github.io/algorithm-basic-sim-search.html">算法基础-模拟与搜索</a></h1>
-<div id="outline-container-orgfda7be1" class="outline-2">
-<h2 id="orgfda7be1">前言</h2>
-<div class="outline-text-2" id="text-orgfda7be1">
+<div class="post-date">2021-01-15</div><h1 class="post-title"><a href="https://lampze.github.io/algorithm-basic-sim-search.html">算法基础-模拟与搜索</a></h1>
+<div id="outline-container-org9730ef4" class="outline-2">
+<h2 id="org9730ef4">前言</h2>
+<div class="outline-text-2" id="text-org9730ef4">
 <p>
 模拟既直接根据题意做题，搜索既在可能的解里寻找正确答案<br>
 </p>
@@ -34,24 +34,24 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org2252a1c" class="outline-2">
-<h2 id="org2252a1c">扫雷游戏</h2>
-<div class="outline-text-2" id="text-org2252a1c">
+<div id="outline-container-org4a6c947" class="outline-2">
+<h2 id="org4a6c947">扫雷游戏</h2>
+<div class="outline-text-2" id="text-org4a6c947">
 <p>
 <a href="https://www.luogu.com.cn/problem/P2670">https://www.luogu.com.cn/problem/P2670</a><br>
 </p>
 </div>
-<div id="outline-container-org5373fb2" class="outline-3">
-<h3 id="org5373fb2">思路</h3>
-<div class="outline-text-3" id="text-org5373fb2">
+<div id="outline-container-org41582a1" class="outline-3">
+<h3 id="org41582a1">思路</h3>
+<div class="outline-text-3" id="text-org41582a1">
 <p>
 题目要求输出每个格子周围的地雷数，那么根据模拟思维，直接统计每个格子周围的地雷数并输出即可<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgeabc8b2" class="outline-3">
-<h3 id="orgeabc8b2">代码</h3>
-<div class="outline-text-3" id="text-orgeabc8b2">
+<div id="outline-container-org04ea18c" class="outline-3">
+<h3 id="org04ea18c">代码</h3>
+<div class="outline-text-3" id="text-org04ea18c">
 <div class="org-src-container">
 <pre class="src src-C++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 
@@ -97,24 +97,24 @@
 </div>
 </div>
 
-<div id="outline-container-orgef5c31b" class="outline-2">
-<h2 id="orgef5c31b">字符串的展开</h2>
-<div class="outline-text-2" id="text-orgef5c31b">
+<div id="outline-container-orga25590a" class="outline-2">
+<h2 id="orga25590a">字符串的展开</h2>
+<div class="outline-text-2" id="text-orga25590a">
 <p>
 <a href="https://www.luogu.com.cn/problem/P1098">https://www.luogu.com.cn/problem/P1098</a><br>
 </p>
 </div>
-<div id="outline-container-orga3813f7" class="outline-3">
-<h3 id="orga3813f7">思路</h3>
-<div class="outline-text-3" id="text-orga3813f7">
+<div id="outline-container-orgf880a82" class="outline-3">
+<h3 id="orgf880a82">思路</h3>
+<div class="outline-text-3" id="text-orgf880a82">
 <p>
 这是一道复杂的模拟题目，题目已经把我们要做的操作都描述出来了，我们要学会如何分解这些复杂的操作，因为这么复杂的逻辑很容易写错，而把逻辑分解成一个个模块后再调试显然是更加方便快捷的。<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org66d35e8" class="outline-3">
-<h3 id="org66d35e8">代码</h3>
-<div class="outline-text-3" id="text-org66d35e8">
+<div id="outline-container-orgf11fd0d" class="outline-3">
+<h3 id="orgf11fd0d">代码</h3>
+<div class="outline-text-3" id="text-orgf11fd0d">
 <div class="org-src-container">
 <pre class="src src-C++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">algorithm</span><span style="color: #014980;">&gt;</span>
 <span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
@@ -193,16 +193,16 @@
 </div>
 </div>
 
-<div id="outline-container-org15c50f8" class="outline-2">
-<h2 id="org15c50f8">选数</h2>
-<div class="outline-text-2" id="text-org15c50f8">
+<div id="outline-container-org89bd1b5" class="outline-2">
+<h2 id="org89bd1b5">选数</h2>
+<div class="outline-text-2" id="text-org89bd1b5">
 <p>
 <a href="https://www.luogu.com.cn/problem/P1036">https://www.luogu.com.cn/problem/P1036</a><br>
 </p>
 </div>
-<div id="outline-container-org1f19edf" class="outline-3">
-<h3 id="org1f19edf">思路</h3>
-<div class="outline-text-3" id="text-org1f19edf">
+<div id="outline-container-org8fd7807" class="outline-3">
+<h3 id="org8fd7807">思路</h3>
+<div class="outline-text-3" id="text-org8fd7807">
 <p>
 首先题目提到了素数，那么第一步就是先把素数都筛出来，方便后续操作<br>
 </p>
@@ -213,9 +213,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgafca526" class="outline-3">
-<h3 id="orgafca526">代码</h3>
-<div class="outline-text-3" id="text-orgafca526">
+<div id="outline-container-orgaf37e24" class="outline-3">
+<h3 id="orgaf37e24">代码</h3>
+<div class="outline-text-3" id="text-orgaf37e24">
 <div class="org-src-container">
 <pre class="src src-C++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">algorithm</span><span style="color: #014980;">&gt;</span>
 <span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
@@ -265,24 +265,24 @@
 </div>
 </div>
 
-<div id="outline-container-org0d566c0" class="outline-2">
-<h2 id="org0d566c0">自然数的拆分问题</h2>
-<div class="outline-text-2" id="text-org0d566c0">
+<div id="outline-container-orge5ee173" class="outline-2">
+<h2 id="orge5ee173">自然数的拆分问题</h2>
+<div class="outline-text-2" id="text-orge5ee173">
 <p>
 <a href="https://www.luogu.com.cn/problem/P2404">https://www.luogu.com.cn/problem/P2404</a><br>
 </p>
 </div>
-<div id="outline-container-orgf212658" class="outline-3">
-<h3 id="orgf212658">思路</h3>
-<div class="outline-text-3" id="text-orgf212658">
+<div id="outline-container-org1a5cb60" class="outline-3">
+<h3 id="org1a5cb60">思路</h3>
+<div class="outline-text-3" id="text-org1a5cb60">
 <p>
 这题就不使用全排列了，只能老老实实的自己写搜索了，因为必须要把所有情况过一遍，所以使用 <code>dfs</code> 比较方便，状态只需要保存已分拆分的数字个数与剩余数字就行了。<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org181c9af" class="outline-3">
-<h3 id="org181c9af">代码</h3>
-<div class="outline-text-3" id="text-org181c9af">
+<div id="outline-container-org4cc0fbd" class="outline-3">
+<h3 id="org4cc0fbd">代码</h3>
+<div class="outline-text-3" id="text-org4cc0fbd">
 <div class="org-src-container">
 <pre class="src src-C++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 
@@ -328,25 +328,25 @@
 </div>
 </div>
 
-<div id="outline-container-orgec5dd0b" class="outline-2">
-<h2 id="orgec5dd0b">马的遍历</h2>
-<div class="outline-text-2" id="text-orgec5dd0b">
+<div id="outline-container-orgc3189c5" class="outline-2">
+<h2 id="orgc3189c5">马的遍历</h2>
+<div class="outline-text-2" id="text-orgc3189c5">
 <p>
 <a href="https://www.luogu.com.cn/problem/P1443">https://www.luogu.com.cn/problem/P1443</a><br>
 </p>
 </div>
-<div id="outline-container-org47cde0f" class="outline-3">
-<h3 id="org47cde0f">思路</h3>
-<div class="outline-text-3" id="text-org47cde0f">
+<div id="outline-container-org31fd966" class="outline-3">
+<h3 id="org31fd966">思路</h3>
+<div class="outline-text-3" id="text-org31fd966">
 <p>
 题目叫我们计算到达一个点需要多少步，那我们就模拟一只马走路即可，但一只马一步可能走好多个地方，使用循环是不能做出来的，我们必须把马的状态保存起来，每走一次更新一下。<br>
 使用队列保存马每一步的坐标与步数，每次取出一个步数最小的状态，把下一步可能的状态计算出并加入到队列就行了。<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org91651dd" class="outline-3">
-<h3 id="org91651dd">代码</h3>
-<div class="outline-text-3" id="text-org91651dd">
+<div id="outline-container-org878df86" class="outline-3">
+<h3 id="org878df86">代码</h3>
+<div class="outline-text-3" id="text-org878df86">
 <div class="org-src-container">
 <pre class="src src-C++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">cstdio</span><span style="color: #014980;">&gt;</span>
 <span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
@@ -417,16 +417,16 @@
 </div>
 </div>
 
-<div id="outline-container-org80b4f17" class="outline-2">
-<h2 id="org80b4f17">奇怪的电梯</h2>
-<div class="outline-text-2" id="text-org80b4f17">
+<div id="outline-container-org8c0d365" class="outline-2">
+<h2 id="org8c0d365">奇怪的电梯</h2>
+<div class="outline-text-2" id="text-org8c0d365">
 <p>
 <a href="https://www.luogu.com.cn/problem/P1135">https://www.luogu.com.cn/problem/P1135</a><br>
 </p>
 </div>
-<div id="outline-container-orgd862fd1" class="outline-3">
-<h3 id="orgd862fd1">思路</h3>
-<div class="outline-text-3" id="text-orgd862fd1">
+<div id="outline-container-orgbcfea2d" class="outline-3">
+<h3 id="orgbcfea2d">思路</h3>
+<div class="outline-text-3" id="text-orgbcfea2d">
 <p>
 根据题意，一个楼层最多只能跳转到另外两个楼层，一个节点表示一个楼层，画成图就是一个节点连接着两个节点，可以自己尝试的在纸上画一下。<br>
 </p>
@@ -436,9 +436,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org7d56e42" class="outline-3">
-<h3 id="org7d56e42">代码</h3>
-<div class="outline-text-3" id="text-org7d56e42">
+<div id="outline-container-org65a781f" class="outline-3">
+<h3 id="org65a781f">代码</h3>
+<div class="outline-text-3" id="text-org65a781f">
 <div class="org-src-container">
 <pre class="src src-C++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
 <span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">queue</span><span style="color: #014980;">&gt;</span>
@@ -504,7 +504,7 @@
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://lampze.github.io/tags.html">Tags</a>: <a href="https://lampze.github.io/tag-algorithm.html">algorithm</a> </div></div>
+<div class="taglist"><a href="https://lampze.github.io/tags.html">标签</a>: <a href="https://lampze.github.io/tag-algorithm.html">algorithm</a> </div></div>
 <div id="postamble" class="status"><center>
          <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"></a><br />
          <span xmlns:dct="https://purl.org/dc/terms/"
