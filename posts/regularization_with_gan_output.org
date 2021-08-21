@@ -6,30 +6,13 @@
 #+options:     H:3 num:nil toc:nil \n:t ::t |:t ^:nil -:nil f:t *:t <:t
 
 * 前言
-在玩 =GAN= 的时候，我突然想尝试一下 =L2= 正则化，因为我看的许多资料里都说 =L2= 可以有效的解决模式崩溃的问题。但当我给模型的损失函数添加了 =L2= 后，生成的图片比以往要模糊许多，所以我决定测试一下，模糊是否是由 =L2= 导致的。
+在我尝试使用正则化解决 =GAN= 模式崩溃的问题时，我发现了一个有意思的现象。我给模型添加了 =L2= 正则项后，生成的图片比以往要模糊许多，所以我决定测试一下，模糊是不是由 =L2= 导致的。
 * 测试
 本模型除了 =L1= 、 =L2= 、 =Dropout= 还使用了其他的优化方法， =LayerNorm= 、 =GELU= 、 =Adam= 。每种模型的训练次数相同，没有给图片加标签，让模式崩溃的效果更明显些。
 ** 基础代码
-后面的测试都是基于这份代码之上修改。
+后面的测试都是基于这份代码之上修改，只放了关键的模型定义与训练代码。
 
 #+begin_src python
-#!/usr/bin/env python3
-
-import torch, torch.nn as nn
-import torch.utils.data as Dataset, torchvision.datasets as dset, torchvision.transforms as transforms
-from torch.utils.data import DataLoader
-import pandas as pd, numpy as np
-import random
-import matplotlib.pyplot as plt
-
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-
-def generate_random_seed(size=4):
-    random_data = torch.randn(size).to(device)
-    return random_data
-
-
 class Discriminator(nn.Module):
     def __init__(self):
         super().__init__()
@@ -46,7 +29,6 @@ class Discriminator(nn.Module):
         self.optimiser = torch.optim.Adam(
             self.parameters(), lr=0.0001
         )
-        self.counter = 0
         self.progress = []
         pass
 
@@ -56,29 +38,9 @@ class Discriminator(nn.Module):
     def train(self, inputs, targets):
         outputs = self.forward(inputs)
         loss = self.loss_function(outputs, targets)
-        self.counter += 1
-        if self.counter % 10 == 0:
-            self.progress.append(loss.item())
-            pass
-        if self.counter % 10000 == 0:
-            print("counter = ", self.counter)
-            pass
         self.optimiser.zero_grad()
         loss.backward()
         self.optimiser.step()
-        pass
-
-    def plot_progress(self):
-        df = pd.DataFrame(self.progress, columns=["loss"])
-        df.plot(
-            ylim=(0),
-            figsize=(16, 8),
-            alpha=0.1,
-            marker=".",
-            grid=True,
-            yticks=(0, 0.25, 0.5, 1.0, 5.0),
-        )
-        plt.show()
         pass
 
 
@@ -96,7 +58,6 @@ class Generator(nn.Module):
         self.optimiser = torch.optim.Adam(
             self.parameters(), lr=0.0001
         )
-        self.counter = 0
         self.progress = []
         pass
 
@@ -107,66 +68,32 @@ class Generator(nn.Module):
         g_output = self.forward(inputs)
         d_output = D.forward(g_output.reshape(1, 28, 28))
         loss = D.loss_function(d_output, targets)
-        self.counter += 1
-        if self.counter % 10 == 0:
-            self.progress.append(loss.item())
-            pass
         self.optimiser.zero_grad()
         loss.backward()
         self.optimiser.step()
         pass
 
-    def plot_progress(self):
-        df = pd.DataFrame(self.progress, columns=["loss"])
-        df.plot(
-            ylim=(0),
-            figsize=(16, 8),
-            alpha=0.1,
-            marker=".",
-            grid=True,
-            yticks=(0, 0.25, 0.5, 1.0, 5.0),
-        )
-        plt.show()
-        pass
-
-
-trans = transforms.Compose(
-    [
-        transforms.ToTensor(),
-        # transforms.Normalize((0.5,), (1.0,))
-    ]
-)
-
-mnist_train = DataLoader(
-    dset.MNIST(root="mnist", train=True, transform=trans, download=True),
-    shuffle=True,
-    pin_memory=True,
-)
-mnist_test = dset.MNIST(root="mnist", train=False, transform=trans)
-
 D = Discriminator()
 G = Generator()
-D.to(device)
-G.to(device)
 
 for epoch in range(4):
     for image_data_tensor, label in mnist_train:
-        D.train(image_data_tensor.to(device), torch.tensor([1.0]).to(device))
+        D.train(image_data_tensor, torch.tensor([1.0]))
         D.train(
             G.forward(generate_random_seed(200)).detach().reshape(1, 28, 28),
-            torch.tensor([0.0]).to(device),
+            torch.tensor([0.0]),
         )
-        G.train(D, generate_random_seed(200), torch.tensor([1.0]).to(device))
+        G.train(D, generate_random_seed(200), torch.tensor([1.0]))
         pass
     pass
 #+end_src
 
-后面的测试只放关键位置的代码。
+后面的测试只放修改位置的代码。
 *** 训练结果
 #+attr_org: :width 500
 [[./static/img/regularization_with_gan_output/normal.png]]
 *** 评价
-很明显的模式崩溃，只有几种类型的数字，可以用肉眼识别的数字颗粒感比较严重，不够平滑。
+有些许的模式崩溃现象，只有几种类型的数字，数字的颗粒感比较严重，不够平滑。
 ** L1
 更改训练函数即可
 #+begin_src python
@@ -174,10 +101,6 @@ def train(self, D, inputs, targets):
         g_output = self.forward(inputs)
         d_output = D.forward(g_output.reshape(1, 28, 28))
         loss = D.loss_function(d_output, targets)
-        self.counter += 1
-        if self.counter % 10 == 0:
-            self.progress.append(loss.item())
-            pass
 
         l1_loss = 0
         for param in self.parameters():
@@ -196,7 +119,7 @@ def train(self, D, inputs, targets):
 *** 评价
 几乎没有可以识别的数字，可能是训练次数不够，但数字可以明显看出比较平滑，也就是那种模糊的效果。
 ** L2
-=pytorch= 的优化器自带一个参数 =weight_decay= ，这个就是 =L2= 正则的参数
+=pytorch= 的优化器通过参数 =weight_decay= 可以实现 =L2= 正则。
 #+begin_src python
 self.optimiser = torch.optim.Adam(
     self.parameters(), lr=0.0001, weight_decay=0.005
@@ -206,7 +129,7 @@ self.optimiser = torch.optim.Adam(
 #+attr_org: :width 500
 [[./static/img/regularization_with_gan_output/l2.png]]
 *** 评价
-相比 =L1= 数字周边没有包围一圈没用的像素，更加清晰一些，但模糊的效果还在，不排除随机误差的可能。
+相比 =L1= 数字周围更加干净，更加清晰一些，但模糊的效果还在，与 =L1= 的差异不排除随机误差的可能。
 ** Dropout
 这个添加一个 =Dropout= 层即可
 #+begin_src python
@@ -231,4 +154,4 @@ self.model = nn.Sequential(
 *** 评价
 数字很平滑，但都不成型。
 * 结论
-经过不严谨的实验可以发现， =L1= 与 =L2= 正则化生成的图片确实会有模糊的效果，具体的原因可能是因为 =L1= 会让神经网络的参数矩阵更加稀疏， =L2= 不会让单个参数过大，也就是不会因为一个神经元大范围改变结果，而尖锐的效果就是相邻的像素之间差别过大，故会产生模糊的效果。
+经过我不严谨的实验可以发现， =L1= 与 =L2= 正则化生成的图片确实会有模糊的效果，具体的原因可能是因为 =L1= 会让神经网络的参数矩阵更加稀疏， =L2= 不会让单个参数过大，也就不会因为一个神经元大范围改变结果，而尖锐的效果就是相邻的像素之间差别过大，故会产生模糊的效果。
