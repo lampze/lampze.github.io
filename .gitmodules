@@ -9,4 +9,4 @@
 	url = https://github.com/lampze/examSystem
 [submodule "posts/static"]
 	path = posts/static
-	url = git@github.com:lampze/static.git
+	url = https://github.com/lampze/static.git
