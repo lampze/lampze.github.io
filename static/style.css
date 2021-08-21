@@ -73,34 +73,12 @@ p {
 h1,
 h2,
 h3,
+h4,
 .taglist {
   position: relative;
-  margin: 30px 0 0px;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 1.1;
+  margin: 1em 0 0px;
   color: #111;
   text-rendering: optimizeLegibility;
-}
-h1:before,
-h2:before,
-h3:before {
-  position: absolute;
-  top: auto;
-  color: #ccc;
-  display: inline;
-}
-h1:before {
-  content: "*";
-  left: -1.25em;
-}
-h2:before {
-  content: "**";
-  left: -2em;
-}
-h3:before {
-  content: "***";
-  left: -2.5em;
 }
 i,
 em,
@@ -125,16 +103,6 @@ i:after,
 em:before,
 em:after {
   content: "/";
-}
-hr {
-  margin: 0;
-  border: 0;
-}
-hr:after {
-  display: block;
-  margin: 20px 0;
-  content: "----------------------------------------------------------------";
-  color: #ccc;
 }
 ul,
 ol {
@@ -212,144 +180,35 @@ table th.right,
 table td.right {
   text-align: right;
 }
-/******************************************************/
-/* body */
-.container {
-  margin: 0 auto;
-  max-width: 770px;
-}
-/* head */
-.masthead {
-  color: #888;
-}
-.masthead:after {
-  display: block;
-  content: "----------------------------------------------------------------";
-  margin: 10px 0;
-  color: #ccc;
-}
-.masthead a {
-  color: #333;
-}
-.masthead ul {
-  list-style: none;
-}
-.masthead li {
-  display: inline-block;
-}
-.masthead li + li:before {
-  display: inline-block;
-  content: "\00B7 \00a0";
-  color: #ccc;
-}
-/* searchform*/
-#searchform {
-  position: absolute;
-  top: 54px;
-  right: 30.4%;
-}
-#searchform #s {
-  background: url("/media/img/search.png") no-repeat 5px 6px;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ddd;
-  border-radius: 2px;
-  -moz-border-radius: 2px;
-  width: 90px;
-  height: 30px;
-  line-height: 12px;
-  padding: 4px 10px 4px 28px;
-
-  -webkit-transition-duration: 400ms;
-  -webkit-transition-property: width, background;
-  -webkit-transition-timing-function: ease;
-  -moz-transition-duration: 400ms;
-  -moz-transition-property: width, background;
-  -moz-transition-timing-function: ease;
-  -o-transition-duration: 400ms;
-  -o-transition-property: width, background;
-  -o-transition-timing-function: ease;
-}
-#searchform #s:focus {
-  background-color: #f9f9f9;
-  width: 160px;
-}
-.masthead img.avatar {
-  position: relative;
-  float: right;
-  margin-top: -100px;
-  margin-bottom: -100%;
-  margin-right: 10%;
-  width: 200px;
-  background-color: #fafafa;
-}
 /* post */
-.post {
-  position: relative;
-}
-.post:after {
-  display: block;
-  content: "----------------------------------------------------------------";
-  color: #ccc;
-}
-.post img {
-  max-width: 100%;
-}
-.post li {
+#content li {
   list-style: none outside none;
 }
-.post ul > li:before {
+#content ul > li:before {
   content: "- ";
   margin-left: -1.25em;
   color: #ccc;
 }
-.post ol {
+#content ol {
   counter-reset: o-list;
 }
-.post ol > li:before {
+#content ol > li:before {
   content: counter(o-list) ") ";
   counter-increment: o-list;
   margin-left: -1.85em;
   color: #ccc;
 }
+#content img {
+  width: 100%;
+}
 
 /* special for li in pre */
-.post pre li {
+#content pre li {
   list-style-type: decimal;
 }
 
-.post pre li:before {
+#content pre li:before {
   display: none;
-}
-
-/* meta info */
-.post-info {
-  display: inline-block;
-  margin: -10px 0 -10px;
-  color: #999;
-}
-.post-info + .post-info:before {
-  content: "\2223 \00a0";
-}
-.post-meta:after {
-  content: "----------------------------------------------------------------";
-  display: block;
-  margin-top: -1px;
-  color: #ccc;
-}
-
-/* footer */
-.footer {
-  margin: 80px 0 0;
-  text-align: center;
-  font-size: 15px;
-  color: #999;
-}
-.footer > p {
-  margin: 0;
-  line-height: 1.5;
-}
-.footpara {
-  display: inline;
 }
 
 /* Responsive
@@ -421,84 +280,6 @@ table td.right {
   margin-right: 10px;
 }
 
-/* Pretty printing styles. Used with prettify.js.
- *
- * This version is slight modified based on the original version.
- *
- * Name:    Stanley Ng
- * Email:   stanleyhlng@googlegroups.com
- *
- * Reference:
- * http://code.google.com/p/google-code-prettify/source/browse/trunk/src/prettify.css
- */
-.pln {
-  color: #bd3613;
-}
-
-.str {
-  color: #269186;
-}
-
-.kwd {
-  color: #859900;
-}
-
-.com {
-  color: #586175;
-  font-style: italic;
-}
-
-.typ {
-  color: #b58900;
-}
-
-.lit {
-  color: #2aa198;
-}
-
-.pun {
-  color: #839496;
-}
-
-.opn {
-  color: #839496;
-}
-
-.clo {
-  color: #839496;
-}
-
-.tag {
-  color: #268bd2;
-}
-
-.atn {
-  color: #586175;
-}
-
-.atv {
-  color: #2aa198;
-}
-
-.dec {
-  color: #268bd2;
-}
-
-.var {
-  color: #268bd2;
-}
-
-.fun {
-  color: #ff0000;
-}
-
-/* Put a border around prettyprinted code snippets. */
-pre.prettyprint {
-  background-color: #042029;
-  padding: 10px;
-  border: 1px solid #e1e1e8;
-}
-
 /* Specify class=linenums on a pre to get line numbering */
 ol.linenums {
   color: #4c666c;
@@ -512,4 +293,15 @@ ol.linenums li {
 
 .fold::after {
   content: "...";
+}
+
+.hide {
+  display: none;
+}
+
+.post-title ~ *,
+.outline-3,
+.outline-4 {
+  margin-left: 0.25em;
+  /* transform: translateX(0.25em); */
 }
