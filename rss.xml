@@ -4,7 +4,253 @@
 <title><![CDATA[lampze's Blog]]></title>
 <description><![CDATA[lampze's Blog]]></description>
 <link>https://lampze.github.io/</link>
-<lastBuildDate>Thu, 19 Aug 2021 14:05:15 +0800</lastBuildDate>
+<lastBuildDate>Sat, 21 Aug 2021 14:44:28 +0800</lastBuildDate>
+<item>
+  <title><![CDATA[正则化对 GAN 输出结果的影响]]></title>
+  <description><![CDATA[
+
+<div id="outline-container-orga5bc47a" class="outline-2">
+<h2 id="orga5bc47a">前言</h2>
+<div class="outline-text-2" id="text-orga5bc47a">
+<p>
+在玩 <code>GAN</code> 的时候，我突然想尝试一下 <code>L2</code> 正则化，因为我看的许多资料里都说 <code>L2</code> 可以有效的解决模式崩溃的问题。但当我给模型的损失函数添加了 <code>L2</code> 后，生成的图片比以往要模糊许多，所以我决定测试一下，模糊是否是由 <code>L2</code> 导致的。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org21c5d31" class="outline-2">
+<h2 id="org21c5d31">测试</h2>
+<div class="outline-text-2" id="text-org21c5d31">
+<p>
+本模型除了 <code>L1</code> 、 <code>L2</code> 、 <code>Dropout</code> 还使用了其他的优化方法， <code>LayerNorm</code> 、 <code>GELU</code> 、 <code>Adam</code> 。<br>
+</p>
+</div>
+<div id="outline-container-org1672b75" class="outline-3">
+<h3 id="org1672b75">基础代码</h3>
+<div class="outline-text-3" id="text-org1672b75">
+<p>
+后面的测试都是基于这份代码之上修改。<br>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #556b2f;">#</span><span style="color: #556b2f;">!/usr/bin/env python3</span>
+
+<span style="font-weight: bold;">import</span> torch, torch.nn <span style="font-weight: bold;">as</span> nn
+<span style="font-weight: bold;">import</span> torch.utils.data <span style="font-weight: bold;">as</span> Dataset, torchvision.datasets <span style="font-weight: bold;">as</span> dset, torchvision.transforms <span style="font-weight: bold;">as</span> transforms
+<span style="font-weight: bold;">from</span> torch.utils.data <span style="font-weight: bold;">import</span> DataLoader
+<span style="font-weight: bold;">import</span> pandas <span style="font-weight: bold;">as</span> pd, numpy <span style="font-weight: bold;">as</span> np
+<span style="font-weight: bold;">import</span> random
+<span style="font-weight: bold;">import</span> matplotlib.pyplot <span style="font-weight: bold;">as</span> plt
+
+<span style="color: #383a42;">device</span> = torch.device(<span style="color: #8a3b3c;">"cuda"</span> <span style="font-weight: bold;">if</span> torch.cuda.is_available() <span style="font-weight: bold;">else</span> <span style="color: #8a3b3c;">"cpu"</span>)
+
+
+<span style="font-weight: bold;">def</span> <span style="font-weight: bold;">generate_random_seed</span>(size=<span style="color: #8a3b3c; font-weight: bold;">4</span>):
+    <span style="color: #383a42;">random_data</span> = torch.randn(size).to(device)
+    <span style="font-weight: bold;">return</span> random_data
+
+
+<span style="font-weight: bold;">class</span> <span style="font-weight: bold;">Discriminator</span>(nn.Module):
+    <span style="font-weight: bold;">def</span> <span style="font-weight: bold;">__init__</span>(<span style="font-weight: bold;">self</span>):
+        <span style="font-weight: bold;">super</span>().__init__()
+
+        <span style="font-weight: bold;">self</span>.model = nn.Sequential(
+            nn.Flatten(),
+            nn.Linear(<span style="color: #8a3b3c; font-weight: bold;">28</span> * <span style="color: #8a3b3c; font-weight: bold;">28</span>, <span style="color: #8a3b3c; font-weight: bold;">200</span>),
+            nn.GELU(),
+            nn.LayerNorm(<span style="color: #8a3b3c; font-weight: bold;">200</span>),
+            nn.Linear(<span style="color: #8a3b3c; font-weight: bold;">200</span>, <span style="color: #8a3b3c; font-weight: bold;">1</span>),
+            nn.Sigmoid(),
+        )
+        <span style="font-weight: bold;">self</span>.loss_function = nn.BCELoss()
+        <span style="font-weight: bold;">self</span>.optimiser = torch.optim.Adam(
+            <span style="font-weight: bold;">self</span>.parameters(), lr=<span style="color: #8a3b3c; font-weight: bold;">0.0001</span>
+        )
+        <span style="font-weight: bold;">self</span>.counter = <span style="color: #8a3b3c; font-weight: bold;">0</span>
+        <span style="font-weight: bold;">self</span>.progress = []
+        <span style="font-weight: bold;">pass</span>
+
+    <span style="font-weight: bold;">def</span> <span style="font-weight: bold;">forward</span>(<span style="font-weight: bold;">self</span>, inputs):
+        <span style="font-weight: bold;">return</span> <span style="font-weight: bold;">self</span>.model(inputs).reshape(<span style="color: #8a3b3c; font-weight: bold;">1</span>)
+
+    <span style="font-weight: bold;">def</span> <span style="font-weight: bold;">train</span>(<span style="font-weight: bold;">self</span>, inputs, targets):
+        <span style="color: #383a42;">outputs</span> = <span style="font-weight: bold;">self</span>.forward(inputs)
+        <span style="color: #383a42;">loss</span> = <span style="font-weight: bold;">self</span>.loss_function(outputs, targets)
+        <span style="font-weight: bold;">self</span>.counter += <span style="color: #8a3b3c; font-weight: bold;">1</span>
+        <span style="font-weight: bold;">if</span> <span style="font-weight: bold;">self</span>.counter % <span style="color: #8a3b3c; font-weight: bold;">10</span> == <span style="color: #8a3b3c; font-weight: bold;">0</span>:
+            <span style="font-weight: bold;">self</span>.progress.append(loss.item())
+            <span style="font-weight: bold;">pass</span>
+        <span style="font-weight: bold;">if</span> <span style="font-weight: bold;">self</span>.counter % <span style="color: #8a3b3c; font-weight: bold;">10000</span> == <span style="color: #8a3b3c; font-weight: bold;">0</span>:
+            <span style="font-weight: bold;">print</span>(<span style="color: #8a3b3c;">"counter = "</span>, <span style="font-weight: bold;">self</span>.counter)
+            <span style="font-weight: bold;">pass</span>
+        <span style="font-weight: bold;">self</span>.optimiser.zero_grad()
+        loss.backward()
+        <span style="font-weight: bold;">self</span>.optimiser.step()
+        <span style="font-weight: bold;">pass</span>
+
+    <span style="font-weight: bold;">def</span> <span style="font-weight: bold;">plot_progress</span>(<span style="font-weight: bold;">self</span>):
+        <span style="color: #383a42;">df</span> = pd.DataFrame(<span style="font-weight: bold;">self</span>.progress, columns=[<span style="color: #8a3b3c;">"loss"</span>])
+        df.plot(
+            ylim=(<span style="color: #8a3b3c; font-weight: bold;">0</span>),
+            figsize=(<span style="color: #8a3b3c; font-weight: bold;">16</span>, <span style="color: #8a3b3c; font-weight: bold;">8</span>),
+            alpha=<span style="color: #8a3b3c; font-weight: bold;">0.1</span>,
+            marker=<span style="color: #8a3b3c;">"."</span>,
+            grid=<span style="color: #383a42;">True</span>,
+            yticks=(<span style="color: #8a3b3c; font-weight: bold;">0</span>, <span style="color: #8a3b3c; font-weight: bold;">0.25</span>, <span style="color: #8a3b3c; font-weight: bold;">0.5</span>, <span style="color: #8a3b3c; font-weight: bold;">1.0</span>, <span style="color: #8a3b3c; font-weight: bold;">5.0</span>),
+        )
+        plt.show()
+        <span style="font-weight: bold;">pass</span>
+
+
+<span style="font-weight: bold;">class</span> <span style="font-weight: bold;">Generator</span>(nn.Module):
+    <span style="font-weight: bold;">def</span> <span style="font-weight: bold;">__init__</span>(<span style="font-weight: bold;">self</span>):
+        <span style="font-weight: bold;">super</span>().__init__()
+
+        <span style="font-weight: bold;">self</span>.model = nn.Sequential(
+            nn.Linear(<span style="color: #8a3b3c; font-weight: bold;">200</span>, <span style="color: #8a3b3c; font-weight: bold;">400</span>),
+            nn.GELU(),
+            nn.LayerNorm(<span style="color: #8a3b3c; font-weight: bold;">400</span>),
+            nn.Linear(<span style="color: #8a3b3c; font-weight: bold;">400</span>, <span style="color: #8a3b3c; font-weight: bold;">28</span> * <span style="color: #8a3b3c; font-weight: bold;">28</span>),
+            nn.Sigmoid(),
+        )
+        <span style="font-weight: bold;">self</span>.optimiser = torch.optim.Adam(
+            <span style="font-weight: bold;">self</span>.parameters(), lr=<span style="color: #8a3b3c; font-weight: bold;">0.0001</span>
+        )
+        <span style="font-weight: bold;">self</span>.counter = <span style="color: #8a3b3c; font-weight: bold;">0</span>
+        <span style="font-weight: bold;">self</span>.progress = []
+        <span style="font-weight: bold;">pass</span>
+
+    <span style="font-weight: bold;">def</span> <span style="font-weight: bold;">forward</span>(<span style="font-weight: bold;">self</span>, inputs):
+        <span style="font-weight: bold;">return</span> <span style="font-weight: bold;">self</span>.model(inputs)
+
+    <span style="font-weight: bold;">def</span> <span style="font-weight: bold;">train</span>(<span style="font-weight: bold;">self</span>, D, inputs, targets):
+        <span style="color: #383a42;">g_output</span> = <span style="font-weight: bold;">self</span>.forward(inputs)
+        <span style="color: #383a42;">d_output</span> = D.forward(g_output.reshape(<span style="color: #8a3b3c; font-weight: bold;">1</span>, <span style="color: #8a3b3c; font-weight: bold;">28</span>, <span style="color: #8a3b3c; font-weight: bold;">28</span>))
+        <span style="color: #383a42;">loss</span> = D.loss_function(d_output, targets)
+        <span style="font-weight: bold;">self</span>.counter += <span style="color: #8a3b3c; font-weight: bold;">1</span>
+        <span style="font-weight: bold;">if</span> <span style="font-weight: bold;">self</span>.counter % <span style="color: #8a3b3c; font-weight: bold;">10</span> == <span style="color: #8a3b3c; font-weight: bold;">0</span>:
+            <span style="font-weight: bold;">self</span>.progress.append(loss.item())
+            <span style="font-weight: bold;">pass</span>
+        <span style="font-weight: bold;">self</span>.optimiser.zero_grad()
+        loss.backward()
+        <span style="font-weight: bold;">self</span>.optimiser.step()
+        <span style="font-weight: bold;">pass</span>
+
+    <span style="font-weight: bold;">def</span> <span style="font-weight: bold;">plot_progress</span>(<span style="font-weight: bold;">self</span>):
+        <span style="color: #383a42;">df</span> = pd.DataFrame(<span style="font-weight: bold;">self</span>.progress, columns=[<span style="color: #8a3b3c;">"loss"</span>])
+        df.plot(
+            ylim=(<span style="color: #8a3b3c; font-weight: bold;">0</span>),
+            figsize=(<span style="color: #8a3b3c; font-weight: bold;">16</span>, <span style="color: #8a3b3c; font-weight: bold;">8</span>),
+            alpha=<span style="color: #8a3b3c; font-weight: bold;">0.1</span>,
+            marker=<span style="color: #8a3b3c;">"."</span>,
+            grid=<span style="color: #383a42;">True</span>,
+            yticks=(<span style="color: #8a3b3c; font-weight: bold;">0</span>, <span style="color: #8a3b3c; font-weight: bold;">0.25</span>, <span style="color: #8a3b3c; font-weight: bold;">0.5</span>, <span style="color: #8a3b3c; font-weight: bold;">1.0</span>, <span style="color: #8a3b3c; font-weight: bold;">5.0</span>),
+        )
+        plt.show()
+        <span style="font-weight: bold;">pass</span>
+
+
+<span style="color: #383a42;">trans</span> = transforms.Compose(
+    [
+        transforms.ToTensor(),
+        <span style="color: #556b2f;"># </span><span style="color: #556b2f;">transforms.Normalize((0.5,), (1.0,))</span>
+    ]
+)
+
+<span style="color: #383a42;">mnist_train</span> = DataLoader(
+    dset.MNIST(root=<span style="color: #8a3b3c;">"mnist"</span>, train=<span style="color: #383a42;">True</span>, transform=trans, download=<span style="color: #383a42;">True</span>),
+    shuffle=<span style="color: #383a42;">True</span>,
+    pin_memory=<span style="color: #383a42;">True</span>,
+)
+<span style="color: #383a42;">mnist_test</span> = dset.MNIST(root=<span style="color: #8a3b3c;">"mnist"</span>, train=<span style="color: #383a42;">False</span>, transform=trans)
+
+<span style="color: #383a42;">D</span> = Discriminator()
+<span style="color: #383a42;">G</span> = Generator()
+D.to(device)
+G.to(device)
+
+<span style="font-weight: bold;">for</span> epoch <span style="font-weight: bold;">in</span> <span style="font-weight: bold;">range</span>(<span style="color: #8a3b3c; font-weight: bold;">4</span>):
+    <span style="font-weight: bold;">for</span> image_data_tensor, label <span style="font-weight: bold;">in</span> mnist_train:
+        D.train(image_data_tensor.to(device), torch.tensor([<span style="color: #8a3b3c; font-weight: bold;">1.0</span>]).to(device))
+        D.train(
+            G.forward(generate_random_seed(<span style="color: #8a3b3c; font-weight: bold;">200</span>)).detach().reshape(<span style="color: #8a3b3c; font-weight: bold;">1</span>, <span style="color: #8a3b3c; font-weight: bold;">28</span>, <span style="color: #8a3b3c; font-weight: bold;">28</span>),
+            torch.tensor([<span style="color: #8a3b3c; font-weight: bold;">0.0</span>]).to(device),
+        )
+        G.train(D, generate_random_seed(<span style="color: #8a3b3c; font-weight: bold;">200</span>), torch.tensor([<span style="color: #8a3b3c; font-weight: bold;">1.0</span>]).to(device))
+        <span style="font-weight: bold;">pass</span>
+    <span style="font-weight: bold;">pass</span>
+</pre>
+</div>
+
+<p>
+后面的测试只放关键位置的代码。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgf3996e3" class="outline-3">
+<h3 id="orgf3996e3">L1</h3>
+<div class="outline-text-3" id="text-orgf3996e3">
+</div>
+<div id="outline-container-org560e50d" class="outline-4">
+<h4 id="org560e50d">训练结果</h4>
+<div class="outline-text-4" id="text-org560e50d">
+
+<figure id="org6525373">
+<img src="./static/img/regularization_with_gan_output/l1.png" alt="l1.png"><br>
+
+</figure>
+</div>
+</div>
+</div>
+<div id="outline-container-org5c94921" class="outline-3">
+<h3 id="org5c94921">L2</h3>
+<div class="outline-text-3" id="text-org5c94921">
+</div>
+<div id="outline-container-org5f97cd8" class="outline-4">
+<h4 id="org5f97cd8">训练结果</h4>
+<div class="outline-text-4" id="text-org5f97cd8">
+
+<figure id="org8dbbc82">
+<img src="./static/img/regularization_with_gan_output/l2.png" alt="l2.png"><br>
+
+</figure>
+</div>
+</div>
+</div>
+<div id="outline-container-org7648344" class="outline-3">
+<h3 id="org7648344">Dropout</h3>
+<div class="outline-text-3" id="text-org7648344">
+</div>
+<div id="outline-container-org254d7b5" class="outline-4">
+<h4 id="org254d7b5">训练结果</h4>
+<div class="outline-text-4" id="text-org254d7b5">
+
+<figure id="orgbaf9d22">
+<img src="./static/img/regularization_with_gan_output/dropout.png" alt="dropout.png"><br>
+
+</figure>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb21040d" class="outline-3">
+<h3 id="orgb21040d">Dropout + L2</h3>
+<div class="outline-text-3" id="text-orgb21040d">
+</div>
+<div id="outline-container-org6b212ab" class="outline-4">
+<h4 id="org6b212ab">训练结果</h4>
+<div class="outline-text-4" id="text-org6b212ab">
+
+<figure id="org8df5814">
+<img src="./static/img/regularization_with_gan_output/dropout_l2.png" alt="dropout_l2.png"><br>
+
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="taglist"></div>]]></description>
+  <link>https://lampze.github.io/regularization_with_gan_output.html</link>
+  <pubDate>Sat, 21 Aug 2021 00:00:00 +0800</pubDate>
+</item>
 <item>
   <title><![CDATA[2021年蓝桥杯模拟赛题解]]></title>
   <description><![CDATA[

@@ -1,0 +1,176 @@
+:PROPERTIES:
+:ID:       06036706-b51b-488d-9ee6-be1e35ea82f9
+:END:
+#+title: 正则化对 GAN 输出结果的影响
+#+date:        <2021-08-21 00:00>
+#+options:     H:3 num:nil toc:nil \n:t ::t |:t ^:nil -:nil f:t *:t <:t
+
+* 前言
+在玩 =GAN= 的时候，我突然想尝试一下 =L2= 正则化，因为我看的许多资料里都说 =L2= 可以有效的解决模式崩溃的问题。但当我给模型的损失函数添加了 =L2= 后，生成的图片比以往要模糊许多，所以我决定测试一下，模糊是否是由 =L2= 导致的。
+* 测试
+本模型除了 =L1= 、 =L2= 、 =Dropout= 还使用了其他的优化方法， =LayerNorm= 、 =GELU= 、 =Adam= 。
+** 基础代码
+后面的测试都是基于这份代码之上修改。
+
+#+begin_src python
+#!/usr/bin/env python3
+
+import torch, torch.nn as nn
+import torch.utils.data as Dataset, torchvision.datasets as dset, torchvision.transforms as transforms
+from torch.utils.data import DataLoader
+import pandas as pd, numpy as np
+import random
+import matplotlib.pyplot as plt
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+
+def generate_random_seed(size=4):
+    random_data = torch.randn(size).to(device)
+    return random_data
+
+
+class Discriminator(nn.Module):
+    def __init__(self):
+        super().__init__()
+
+        self.model = nn.Sequential(
+            nn.Flatten(),
+            nn.Linear(28 * 28, 200),
+            nn.GELU(),
+            nn.LayerNorm(200),
+            nn.Linear(200, 1),
+            nn.Sigmoid(),
+        )
+        self.loss_function = nn.BCELoss()
+        self.optimiser = torch.optim.Adam(
+            self.parameters(), lr=0.0001
+        )
+        self.counter = 0
+        self.progress = []
+        pass
+
+    def forward(self, inputs):
+        return self.model(inputs).reshape(1)
+
+    def train(self, inputs, targets):
+        outputs = self.forward(inputs)
+        loss = self.loss_function(outputs, targets)
+        self.counter += 1
+        if self.counter % 10 == 0:
+            self.progress.append(loss.item())
+            pass
+        if self.counter % 10000 == 0:
+            print("counter = ", self.counter)
+            pass
+        self.optimiser.zero_grad()
+        loss.backward()
+        self.optimiser.step()
+        pass
+
+    def plot_progress(self):
+        df = pd.DataFrame(self.progress, columns=["loss"])
+        df.plot(
+            ylim=(0),
+            figsize=(16, 8),
+            alpha=0.1,
+            marker=".",
+            grid=True,
+            yticks=(0, 0.25, 0.5, 1.0, 5.0),
+        )
+        plt.show()
+        pass
+
+
+class Generator(nn.Module):
+    def __init__(self):
+        super().__init__()
+
+        self.model = nn.Sequential(
+            nn.Linear(200, 400),
+            nn.GELU(),
+            nn.LayerNorm(400),
+            nn.Linear(400, 28 * 28),
+            nn.Sigmoid(),
+        )
+        self.optimiser = torch.optim.Adam(
+            self.parameters(), lr=0.0001
+        )
+        self.counter = 0
+        self.progress = []
+        pass
+
+    def forward(self, inputs):
+        return self.model(inputs)
+
+    def train(self, D, inputs, targets):
+        g_output = self.forward(inputs)
+        d_output = D.forward(g_output.reshape(1, 28, 28))
+        loss = D.loss_function(d_output, targets)
+        self.counter += 1
+        if self.counter % 10 == 0:
+            self.progress.append(loss.item())
+            pass
+        self.optimiser.zero_grad()
+        loss.backward()
+        self.optimiser.step()
+        pass
+
+    def plot_progress(self):
+        df = pd.DataFrame(self.progress, columns=["loss"])
+        df.plot(
+            ylim=(0),
+            figsize=(16, 8),
+            alpha=0.1,
+            marker=".",
+            grid=True,
+            yticks=(0, 0.25, 0.5, 1.0, 5.0),
+        )
+        plt.show()
+        pass
+
+
+trans = transforms.Compose(
+    [
+        transforms.ToTensor(),
+        # transforms.Normalize((0.5,), (1.0,))
+    ]
+)
+
+mnist_train = DataLoader(
+    dset.MNIST(root="mnist", train=True, transform=trans, download=True),
+    shuffle=True,
+    pin_memory=True,
+)
+mnist_test = dset.MNIST(root="mnist", train=False, transform=trans)
+
+D = Discriminator()
+G = Generator()
+D.to(device)
+G.to(device)
+
+for epoch in range(4):
+    for image_data_tensor, label in mnist_train:
+        D.train(image_data_tensor.to(device), torch.tensor([1.0]).to(device))
+        D.train(
+            G.forward(generate_random_seed(200)).detach().reshape(1, 28, 28),
+            torch.tensor([0.0]).to(device),
+        )
+        G.train(D, generate_random_seed(200), torch.tensor([1.0]).to(device))
+        pass
+    pass
+#+end_src
+
+后面的测试只放关键位置的代码。
+** L1
+*** 训练结果
+[[./static/img/regularization_with_gan_output/l1.png]]
+** L2
+*** 训练结果
+[[./static/img/regularization_with_gan_output/l2.png]]
+** Dropout
+*** 训练结果
+[[./static/img/regularization_with_gan_output/dropout.png]]
+** Dropout + L2
+*** 训练结果
+[[./static/img/regularization_with_gan_output/dropout_l2.png]]
