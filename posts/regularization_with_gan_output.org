@@ -8,7 +8,7 @@
 * 前言
 在玩 =GAN= 的时候，我突然想尝试一下 =L2= 正则化，因为我看的许多资料里都说 =L2= 可以有效的解决模式崩溃的问题。但当我给模型的损失函数添加了 =L2= 后，生成的图片比以往要模糊许多，所以我决定测试一下，模糊是否是由 =L2= 导致的。
 * 测试
-本模型除了 =L1= 、 =L2= 、 =Dropout= 还使用了其他的优化方法， =LayerNorm= 、 =GELU= 、 =Adam= 。
+本模型除了 =L1= 、 =L2= 、 =Dropout= 还使用了其他的优化方法， =LayerNorm= 、 =GELU= 、 =Adam= 。每种模型的训练次数相同，没有给图片加标签，让模式崩溃的效果更明显些。
 ** 基础代码
 后面的测试都是基于这份代码之上修改。
 
@@ -162,15 +162,73 @@ for epoch in range(4):
 #+end_src
 
 后面的测试只放关键位置的代码。
+*** 训练结果
+#+attr_org: :width 500
+[[./static/img/regularization_with_gan_output/normal.png]]
+*** 评价
+很明显的模式崩溃，只有几种类型的数字，可以用肉眼识别的数字颗粒感比较严重，不够平滑。
 ** L1
+更改训练函数即可
+#+begin_src python
+def train(self, D, inputs, targets):
+        g_output = self.forward(inputs)
+        d_output = D.forward(g_output.reshape(1, 28, 28))
+        loss = D.loss_function(d_output, targets)
+        self.counter += 1
+        if self.counter % 10 == 0:
+            self.progress.append(loss.item())
+            pass
+
+        l1_loss = 0
+        for param in self.parameters():
+            l1_loss += torch.sum(torch.abs(param))
+            pass
+        loss += 0.005 * l1_loss
+
+        self.optimiser.zero_grad()
+        loss.backward()
+        self.optimiser.step()
+        pass
+#+end_src
 *** 训练结果
+#+attr_org: :width 500
 [[./static/img/regularization_with_gan_output/l1.png]]
+*** 评价
+几乎没有可以识别的数字，可能是训练次数不够，但数字可以明显看出比较平滑，也就是那种模糊的效果。
 ** L2
+=pytorch= 的优化器自带一个参数 =weight_decay= ，这个就是 =L2= 正则的参数
+#+begin_src python
+self.optimiser = torch.optim.Adam(
+    self.parameters(), lr=0.0001, weight_decay=0.005
+)
+#+end_src
 *** 训练结果
+#+attr_org: :width 500
 [[./static/img/regularization_with_gan_output/l2.png]]
+*** 评价
+相比 =L1= 数字周边没有包围一圈没用的像素，更加清晰一些，但模糊的效果还在，不排除随机误差的可能。
 ** Dropout
+这个添加一个 =Dropout= 层即可
+#+begin_src python
+self.model = nn.Sequential(
+    nn.Linear(200, 400),
+    nn.Dropout(0.5),
+    nn.GELU(),
+    nn.LayerNorm(400),
+    nn.Linear(400, 28 * 28),
+    nn.Sigmoid(),
+)
+#+end_src
 *** 训练结果
+#+attr_org: :width 500
 [[./static/img/regularization_with_gan_output/dropout.png]]
+*** 评价
+没有了模糊效果，但数字都不成形，可能是训练次数不够。
 ** Dropout + L2
 *** 训练结果
+#+attr_org: :width 500
 [[./static/img/regularization_with_gan_output/dropout_l2.png]]
+*** 评价
+数字很平滑，但都不成型。
+* 结论
+经过不严谨的实验可以发现， =L1= 与 =L2= 正则化生成的图片确实会有模糊的效果，具体的原因可能是因为 =L1= 会让神经网络的参数矩阵更加稀疏， =L2= 不会让单个参数过大，也就是不会因为一个神经元大范围改变结果，而尖锐的效果就是相邻的像素之间差别过大，故会产生模糊的效果。
