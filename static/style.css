@@ -322,7 +322,7 @@ ol.linenums li {
   width: 1em;
   top: 0;
   height: 100%;
-  left: -1.5em;
+  left: -2em;
 }
 .outline-bar:hover {
   background: linear-gradient(to right, #ccc 2px, transparent 2px);
