@@ -326,10 +326,39 @@ ol.linenums li {
 }
 .outline-bar:hover {
   background: linear-gradient(to right, #ccc 2px, transparent 2px);
+  cursor: pointer;
 }
 .outline-2,
 .outline-3,
 .outline-4 {
   position: relative;
   margin-left: 0.5em;
+}
+.org-src-container {
+  position: relative;
+}
+.src-fold {
+  max-height: 60vh;
+  clip-path: polygon(-100% 0, 100% 0, 100% 100%, -100% 100%);
+}
+.src-fold::before {
+  content: "展开↓";
+  position: absolute;
+  left: -1.25em;
+  top: 0;
+  width: 1em;
+  text-align: center;
+  line-height: 1em;
+}
+.src-bar {
+  position: absolute;
+  background: linear-gradient(to left, #ccc 2px, transparent 2px);
+  width: 1em;
+  height: 100%;
+  top: 0;
+  left: -1em;
+}
+.src-bar:hover {
+  background: linear-gradient(to left, #aaa 2px, transparent 2px);
+  cursor: pointer;
 }

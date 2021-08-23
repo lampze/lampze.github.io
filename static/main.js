@@ -42,3 +42,15 @@ $(".outline-2,.outline-3,.outline-4").each((i, h) => {
 });
 
 $('#table-of-contents h2').text('显示目录')
+
+$('.org-src-container').each((i, src) => {
+  src.classList.add('src-fold')
+  src = $(src)
+  src.append(`<div class="src-bar"></div>`)
+  src.children('.src-bar').click(() => {
+    if (src.hasClass('src-fold'))
+      src.removeClass('src-fold')
+    else
+      src.addClass('src-fold')
+  })
+})
