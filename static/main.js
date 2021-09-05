@@ -1,3 +1,10 @@
+function scrollInto(dom) {
+  setTimeout(() =>
+    $('html, body').animate({
+      scrollTop: $(dom).offset().top
+    }, 100), 100)
+}
+
 function isOutRange(bro, dom) {
   if (bro.classList.contains('outline-bar'))
     return true;
@@ -11,6 +18,7 @@ function fold(dom) {
   for (let i = 0; i < brothers.length && !isOutRange(brothers[i], dom); i++)
     $(brothers[i]).addClass("hide");
   $(dom).addClass("fold");
+  scrollInto(dom)
 }
 
 function unfold(dom) {
@@ -50,7 +58,9 @@ $('.org-src-container').each((i, src) => {
   src.children('.src-bar').click(() => {
     if (src.hasClass('src-fold'))
       src.removeClass('src-fold')
-    else
+    else {
       src.addClass('src-fold')
+      scrollInto(src)
+    }
   })
 })
