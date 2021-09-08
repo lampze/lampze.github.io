@@ -1,3 +1,9 @@
+::selection {
+  background-color: #ccc;
+}
+p::selection {
+  color: black;
+}
 #content {
   background: #fafafa;
   padding-top: 3em;
@@ -51,7 +57,7 @@ body {
   font-family: Menlo, Monaco, monospace;
   font-size: 14px;
   line-height: 1.5;
-  color: #666;
+  color: #555;
   background-color: #fafafa;
 }
 p {
@@ -168,7 +174,7 @@ img {
 a {
   font-weight: inherit;
   line-height: inherit;
-  color: #000;
+  color: #115;
   text-decoration: none;
 }
 sup a:before {
@@ -179,6 +185,7 @@ sup a:after {
 }
 a:hover {
   text-decoration: underline;
+  text-underline-position: under;
 }
 table {
   line-height: 2.5;
