@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<!-- 2021-09-16 四 18:54 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>roam与org-publish生成博客</title>
+<meta name="author" content="shirui" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+<link rel="stylesheet" href="/static/style.css" type="text/css"/>
+            <link rel="stylesheet" href="/static/org.css" type="text/css"/>
+            <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+            <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+            <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+            <a href="https://lampze.github.io">lampze's Blog</a>
+            <span id="post-date" style="float: right">2021-09-16 四 18:13</span>
+            </div>
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">roam与org-publish生成博客</h1>
+</header><div id="outline-container-org487903c" class="outline-2">
+<h2 id="org487903c">前言</h2>
+<div class="outline-text-2" id="text-org487903c">
+<p>
+自从更新到 <code>roam2</code> 后，我就开始建立个人的笔记收集系统了，因为 <code>roam</code> 的各项功能都整合的非常好，所以我就想把所有的 <code>org</code> 文件都用 <code>roam</code> 管理起来。<br>
+</p>
+
+<p>
+于是之前使用 <code>org-static-blog</code> 生成的博客就又要更改结构了，如果继续使用 <code>org-static-blog</code> 的话，可以使用软链接把想要公布的博客链接到生成目录，但手动维护非常的麻烦，而这个包的作者又不更新了，所以我决定寻找另一种生成博客的工具。<br>
+</p>
+
+<p>
+因为网上没有任何一个包能完全解决我的需求，所以我决定使用 <code>org-publish</code> 来自己定制博客。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org9fe533e" class="outline-2">
+<h2 id="org9fe533e">org文件迁移</h2>
+<div class="outline-text-2" id="text-org9fe533e">
+<p>
+因为之前从 <code>org-page</code> 迁移到 <code>org-static-blog</code> 时已经把各个字段都修改过了，剩下的字段兼容性都很好，所以只需要给每个 <code>org</code> 文件增加一个 <code>id</code> 即可。<br>
+</p>
+
+<p>
+添加 <code>id</code> 可以使用 <code>org-id-get-create</code> 命令。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org861abb7" class="outline-2">
+<h2 id="org861abb7">权限</h2>
+<div class="outline-text-2" id="text-org861abb7">
+<p>
+因为有些笔记我不想公开，为了只发布想要的笔记，我利用了 <code>roam</code> 的标签系统。<br>
+</p>
+
+<p>
+首先给每个想公布的笔记都添加 <code>Blog</code> 标签，添加标签可使用 <code>org-roam-tag-add</code> 。<br>
+</p>
+
+<p>
+然后就是想办法获得特定标签笔记的位置，我在看<a href="https://www.youtube.com/watch?v=CUkuyW6hr18&amp;t=295s">5 Org Roam Hacks for Better Productivity in Emacs</a>时发现了这些函数可以实现我所想的功能，所以把它们抄了下来。<br>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #014980;">(</span><span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">daviwil/org-roam-filter-by-tag</span> <span style="color: #a626a4;">(</span>tag-name<span style="color: #a626a4;">)</span>
+  <span style="color: #a626a4;">(</span><span style="font-weight: bold;">lambda</span> <span style="color: #556b2f;">(</span>node<span style="color: #556b2f;">)</span>
+    <span style="color: #556b2f;">(</span><span style="color: #383a42;">member</span> tag-name <span style="color: #b751b6;">(</span><span style="font-weight: bold;">org-roam-node-tags</span> node<span style="color: #b751b6;">)</span><span style="color: #556b2f;">)</span><span style="color: #a626a4;">)</span><span style="color: #014980;">)</span>
+
+<span style="color: #014980;">(</span><span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">daviwil/org-roam-list-notes-by-tag</span> <span style="color: #a626a4;">(</span>tag-name<span style="color: #a626a4;">)</span>
+  <span style="color: #a626a4;">(</span><span style="color: #383a42;">mapcar</span> <span style="color: #383a42;">#'</span><span style="color: #383a42;">org-roam-node-file</span>
+          <span style="color: #556b2f;">(</span><span style="font-weight: bold;">seq-filter</span>
+           <span style="color: #b751b6;">(</span><span style="font-weight: bold;">daviwil/org-roam-filter-by-tag</span> tag-name<span style="color: #b751b6;">)</span>
+           <span style="color: #b751b6;">(</span><span style="font-weight: bold;">org-roam-node-list</span><span style="color: #b751b6;">)</span><span style="color: #556b2f;">)</span><span style="color: #a626a4;">)</span><span style="color: #014980;">)</span>
+</pre>
+</div>
+
+<p>
+这样使用 <code>(daviwil/org-roam-list-notes-by-tag "Blog")</code> 就可以获得想发布的笔记列表了。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org3ef7daa" class="outline-2">
+<h2 id="org3ef7daa">org-publish</h2>
+<div class="outline-text-2" id="text-org3ef7daa">
+<p>
+根据<a href="https://orgmode.org/manual/Publishing.html">Publishing (The Org Manual)</a>我调试出了以下代码，大体功能已经完成，但：rss、tag、预览并不容易实现，都需要自己重定义生成函数，而且我感觉都有些鸡肋，所以就没做，等以后需要时再想办法做。<br>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #014980;">(</span><span style="font-weight: bold;">setq</span> <span style="color: #383a42;">org-publish-project-alist</span>
+      <span style="color: #383a42;">`</span><span style="color: #a626a4;">(</span><span style="color: #556b2f;">(</span><span style="color: #8a3b3c;">"blog"</span>
+         <span style="font-weight: bold;">:base-directory</span> <span style="color: #8a3b3c;">"~/.org/roam"</span>
+         <span style="font-weight: bold;">:exclude</span> <span style="color: #8a3b3c;">".*"</span>
+         <span style="font-weight: bold;">:include</span> ,<span style="color: #b751b6;">(</span><span style="color: #383a42;">mapcar</span> <span style="color: #014980;">(</span><span style="font-weight: bold;">lambda</span> <span style="color: #a626a4;">(</span>x<span style="color: #a626a4;">)</span> <span style="color: #a626a4;">(</span><span style="font-weight: bold;">string-remove-prefix</span> <span style="color: #383a42;">org-roam-directory</span> x<span style="color: #a626a4;">)</span><span style="color: #014980;">)</span>
+                           <span style="color: #014980;">(</span><span style="font-weight: bold;">daviwil/org-roam-list-notes-by-tag</span> <span style="color: #8a3b3c;">"Blog"</span><span style="color: #014980;">)</span><span style="color: #b751b6;">)</span>
+         <span style="font-weight: bold;">:publishing-function</span> org-html-publish-to-html
+         <span style="font-weight: bold;">:publishing-directory</span> <span style="color: #8a3b3c;">"~/.blog/"</span>
+         <span style="font-weight: bold;">:section-numbers</span> nil
+         <span style="font-weight: bold;">:recursive</span> t
+         <span style="font-weight: bold;">:language</span> <span style="color: #8a3b3c;">"zh"</span>
+         <span style="font-weight: bold;">:preserve-breaks</span> t
+         <span style="font-weight: bold;">:headline-levels</span> <span style="color: #8a3b3c; font-weight: bold;">3</span>
+         <span style="font-weight: bold;">:html-doctype</span> <span style="color: #8a3b3c;">"html5"</span>
+         <span style="font-weight: bold;">:html-html5-fancy</span> t
+         <span style="font-weight: bold;">:html-head</span>
+         <span style="color: #8a3b3c;">"&lt;link rel=\"stylesheet\" href=\"/static/style.css\" type=\"text/css\"/&gt;</span>
+<span style="color: #8a3b3c;">            &lt;link rel=\"stylesheet\" href=\"/static/org.css\" type=\"text/css\"/&gt;</span>
+<span style="color: #8a3b3c;">            &lt;script src=\"https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js\"&gt;&lt;/script&gt;</span>
+<span style="color: #8a3b3c;">            &lt;meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=UTF-8\" /&gt;</span>
+<span style="color: #8a3b3c;">            &lt;meta name=\"viewport\" content=\"initial-scale=1,width=device-width,minimum-scale=1\"&gt;"</span>
+         <span style="font-weight: bold;">:html-preamble</span>
+         <span style="color: #8a3b3c;">"&lt;div class=\"header\"&gt;</span>
+<span style="color: #8a3b3c;">            &lt;a href=\"https://lampze.github.io\"&gt;lampze's Blog&lt;/a&gt;</span>
+<span style="color: #8a3b3c;">            &lt;span id=\"post-date\" style=\"float: right\"&gt;%d&lt;/span&gt;</span>
+<span style="color: #8a3b3c;">            &lt;/div&gt;"</span>
+         <span style="font-weight: bold;">:html-postamble</span>
+         <span style="color: #8a3b3c;">"&lt;script type=\"text/javascript\" src=\"/static/main.js\"&gt;&lt;/script&gt;</span>
+<span style="color: #8a3b3c;">            &lt;center id=\"modi-date\"&gt;%T&lt;/center&gt;"</span>
+         <span style="font-weight: bold;">:auto-sitemap</span> t
+         <span style="font-weight: bold;">:sitemap-title</span> <span style="color: #8a3b3c;">"&#25105;&#30340;&#25991;&#31456;"</span>
+         <span style="font-weight: bold;">:sitemap-filename</span> <span style="color: #8a3b3c;">"index.org"</span>
+         <span style="font-weight: bold;">:sitemap-sort-files</span> anti-chronologically
+         <span style="font-weight: bold;">:sitemap-format-entry</span> <span style="color: #b751b6;">(</span><span style="font-weight: bold;">lambda</span> <span style="color: #014980;">(</span>entry style project<span style="color: #014980;">)</span>
+                                 <span style="color: #014980;">(</span><span style="font-weight: bold;">cond</span> <span style="color: #a626a4;">(</span><span style="color: #556b2f;">(</span><span style="color: #383a42;">not</span> <span style="color: #b751b6;">(</span><span style="color: #383a42;">directory-name-p</span> entry<span style="color: #b751b6;">)</span><span style="color: #556b2f;">)</span>
+                                        <span style="color: #556b2f;">(</span><span style="color: #383a42;">format</span> <span style="color: #8a3b3c;">"&lt;%s&gt; [[file:%s][%s]]"</span>
+                                                <span style="color: #b751b6;">(</span><span style="color: #383a42;">format-time-string</span>
+                                                 <span style="color: #8a3b3c;">"%Y-%m-%d"</span>
+                                                 <span style="color: #014980;">(</span><span style="font-weight: bold;">org-publish-find-date</span> entry project<span style="color: #014980;">)</span><span style="color: #b751b6;">)</span>
+                                                entry
+                                                <span style="color: #b751b6;">(</span><span style="font-weight: bold;">org-publish-find-title</span> entry project<span style="color: #b751b6;">)</span><span style="color: #556b2f;">)</span><span style="color: #a626a4;">)</span>
+                                       <span style="color: #a626a4;">(</span><span style="color: #556b2f;">(</span><span style="color: #383a42;">eq</span> style <span style="color: #383a42;">'</span><span style="color: #383a42;">tree</span><span style="color: #556b2f;">)</span>
+                                        <span style="color: #556b2f;">;; </span><span style="color: #556b2f;">Return only last subdir.</span>
+                                        <span style="color: #556b2f;">(</span><span style="color: #383a42;">file-name-nondirectory</span> <span style="color: #b751b6;">(</span><span style="color: #383a42;">directory-file-name</span> entry<span style="color: #b751b6;">)</span><span style="color: #556b2f;">)</span><span style="color: #a626a4;">)</span>
+                                       <span style="color: #a626a4;">(</span>t entry<span style="color: #a626a4;">)</span><span style="color: #014980;">)</span><span style="color: #b751b6;">)</span>
+         <span style="color: #556b2f;">)</span><span style="color: #a626a4;">)</span><span style="color: #014980;">)</span>
+</pre>
+</div>
+</div>
+<div id="outline-container-org9d99607" class="outline-3">
+<h3 id="org9d99607">日期</h3>
+<div class="outline-text-3" id="text-org9d99607">
+<p>
+在 <code>html-preamble</code> 与 <code>html-postamble</code> 中添加控制符可以把日期导入， <code>%d</code> 是创建时间， <code>%T</code> 是文件修改时间。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org810b7a8" class="outline-3">
+<h3 id="org810b7a8">首页</h3>
+<div class="outline-text-3" id="text-org810b7a8">
+<p>
+使用 <code>sitemap</code> 功能可以生成首页，但默认的首页是没有日期的，而修改<a href="https://orgmode.org/manual/Site-map.html#Site-map">Site-map</a>里说的 <code>:sitemap-file-entry-format</code> 并没有作用，于是只能自定义一个函数生成 <code>entry</code> 了。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orge5a179c" class="outline-3">
+<h3 id="orge5a179c">rss</h3>
+<div class="outline-text-3" id="text-orge5a179c">
+<p>
+使用 <code>ox-rss</code> 可以把首页生成一个 <code>xml</code> 文件，但尝试过后发现这个包有很严重的bug：生成的文件不能正确读取，而且每个文章的链接都是相对路径，没有找到解决方案。<br>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script type="text/javascript" src="/static/main.js"></script>
+            <center id="modi-date">2021-09-16 四 18:54</center>
+</div>
+</body>
+</html>
