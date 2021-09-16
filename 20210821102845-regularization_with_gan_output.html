@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<!-- 2021-09-16 四 17:11 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>正则化对 GAN 输出结果的影响</title>
+<meta name="author" content="shirui" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+<link rel="stylesheet" href="/static/style.css" type="text/css"/>
+            <link rel="stylesheet" href="/static/org.css" type="text/css"/>
+            <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+            <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+            <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+            <a href="https://lampze.github.io">lampze's Blog</a>
+            <span id="post-date" style="float: right">2021-08-21 六 00:00</span>
+            </div>
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">正则化对 GAN 输出结果的影响</h1>
+</header>
+<div id="outline-container-orgd431535" class="outline-2">
+<h2 id="orgd431535">前言</h2>
+<div class="outline-text-2" id="text-orgd431535">
+<p>
+在我尝试使用正则化解决 <code>GAN</code> 模式崩溃的问题时，我发现了一个有意思的现象。我给模型添加了 <code>L2</code> 正则项后，生成的图片比以往要模糊许多，所以我决定测试一下，模糊是不是由 <code>L2</code> 导致的。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org7881eac" class="outline-2">
+<h2 id="org7881eac">测试</h2>
+<div class="outline-text-2" id="text-org7881eac">
+<p>
+本模型除了 <code>L1</code> 、 <code>L2</code> 、 <code>Dropout</code> 还使用了其他的优化方法， <code>LayerNorm</code> 、 <code>GELU</code> 、 <code>Adam</code> 。每种模型的训练次数相同，没有给图片加标签，让模式崩溃的效果更明显些。<br>
+</p>
+</div>
+<div id="outline-container-orga67dfc1" class="outline-3">
+<h3 id="orga67dfc1">基础代码</h3>
+<div class="outline-text-3" id="text-orga67dfc1">
+<p>
+后面的测试都是基于这份代码之上修改，只放了关键的模型定义与训练代码。<br>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold;">class</span> <span style="font-weight: bold;">Discriminator</span>(nn.Module):
+    <span style="font-weight: bold;">def</span> <span style="font-weight: bold;">__init__</span>(<span style="font-weight: bold;">self</span>):
+        <span style="font-weight: bold;">super</span>().__init__()
+
+        <span style="font-weight: bold;">self</span>.<span style="color: #383a42;">model</span> = nn.Sequential(
+            nn.Flatten(),
+            nn.Linear(<span style="color: #8a3b3c; font-weight: bold;">28</span> * <span style="color: #8a3b3c; font-weight: bold;">28</span>, <span style="color: #8a3b3c; font-weight: bold;">200</span>),
+            nn.GELU(),
+            nn.LayerNorm(<span style="color: #8a3b3c; font-weight: bold;">200</span>),
+            nn.Linear(<span style="color: #8a3b3c; font-weight: bold;">200</span>, <span style="color: #8a3b3c; font-weight: bold;">1</span>),
+            nn.Sigmoid(),
+        )
+        <span style="font-weight: bold;">self</span>.<span style="color: #383a42;">loss_function</span> = nn.BCELoss()
+        <span style="font-weight: bold;">self</span>.<span style="color: #383a42;">optimiser</span> = torch.optim.Adam(
+            <span style="font-weight: bold;">self</span>.parameters(), lr=<span style="color: #8a3b3c; font-weight: bold;">0.0001</span>
+        )
+        <span style="font-weight: bold;">self</span>.progress = []
+        <span style="font-weight: bold;">pass</span>
+
+    <span style="font-weight: bold;">def</span> <span style="font-weight: bold;">forward</span>(<span style="font-weight: bold;">self</span>, inputs):
+        <span style="font-weight: bold;">return</span> <span style="font-weight: bold;">self</span>.model(inputs).reshape(<span style="color: #8a3b3c; font-weight: bold;">1</span>)
+
+    <span style="font-weight: bold;">def</span> <span style="font-weight: bold;">train</span>(<span style="font-weight: bold;">self</span>, inputs, targets):
+        outputs = <span style="font-weight: bold;">self</span>.forward(inputs)
+        loss = <span style="font-weight: bold;">self</span>.loss_function(outputs, targets)
+        <span style="font-weight: bold;">self</span>.optimiser.zero_grad()
+        loss.backward()
+        <span style="font-weight: bold;">self</span>.optimiser.step()
+        <span style="font-weight: bold;">pass</span>
+
+
+<span style="font-weight: bold;">class</span> <span style="font-weight: bold;">Generator</span>(nn.Module):
+    <span style="font-weight: bold;">def</span> <span style="font-weight: bold;">__init__</span>(<span style="font-weight: bold;">self</span>):
+        <span style="font-weight: bold;">super</span>().__init__()
+
+        <span style="font-weight: bold;">self</span>.model = nn.Sequential(
+            nn.Linear(<span style="color: #8a3b3c; font-weight: bold;">200</span>, <span style="color: #8a3b3c; font-weight: bold;">400</span>),
+            nn.GELU(),
+            nn.LayerNorm(<span style="color: #8a3b3c; font-weight: bold;">400</span>),
+            nn.Linear(<span style="color: #8a3b3c; font-weight: bold;">400</span>, <span style="color: #8a3b3c; font-weight: bold;">28</span> * <span style="color: #8a3b3c; font-weight: bold;">28</span>),
+            nn.Sigmoid(),
+        )
+        <span style="font-weight: bold;">self</span>.optimiser = torch.optim.Adam(
+            <span style="font-weight: bold;">self</span>.parameters(), lr=<span style="color: #8a3b3c; font-weight: bold;">0.0001</span>
+        )
+        <span style="font-weight: bold;">self</span>.progress = []
+        <span style="font-weight: bold;">pass</span>
+
+    <span style="font-weight: bold;">def</span> <span style="font-weight: bold;">forward</span>(<span style="font-weight: bold;">self</span>, inputs):
+        <span style="font-weight: bold;">return</span> <span style="font-weight: bold;">self</span>.model(inputs)
+
+    <span style="font-weight: bold;">def</span> <span style="font-weight: bold;">train</span>(<span style="font-weight: bold;">self</span>, D, inputs, targets):
+        g_output = <span style="font-weight: bold;">self</span>.forward(inputs)
+        d_output = D.forward(g_output.reshape(<span style="color: #8a3b3c; font-weight: bold;">1</span>, <span style="color: #8a3b3c; font-weight: bold;">28</span>, <span style="color: #8a3b3c; font-weight: bold;">28</span>))
+        loss = D.loss_function(d_output, targets)
+        <span style="font-weight: bold;">self</span>.optimiser.zero_grad()
+        loss.backward()
+        <span style="font-weight: bold;">self</span>.optimiser.step()
+        <span style="font-weight: bold;">pass</span>
+
+D = Discriminator()
+G = Generator()
+
+<span style="font-weight: bold;">for</span> epoch <span style="font-weight: bold;">in</span> <span style="font-weight: bold;">range</span>(<span style="color: #8a3b3c; font-weight: bold;">4</span>):
+    <span style="font-weight: bold;">for</span> image_data_tensor, label <span style="font-weight: bold;">in</span> mnist_train:
+        D.train(image_data_tensor, torch.tensor([<span style="color: #8a3b3c; font-weight: bold;">1.0</span>]))
+        D.train(
+            G.forward(generate_random_seed(<span style="color: #8a3b3c; font-weight: bold;">200</span>)).detach().reshape(<span style="color: #8a3b3c; font-weight: bold;">1</span>, <span style="color: #8a3b3c; font-weight: bold;">28</span>, <span style="color: #8a3b3c; font-weight: bold;">28</span>),
+            torch.tensor([<span style="color: #8a3b3c; font-weight: bold;">0.0</span>]),
+        )
+        G.train(D, generate_random_seed(<span style="color: #8a3b3c; font-weight: bold;">200</span>), torch.tensor([<span style="color: #8a3b3c; font-weight: bold;">1.0</span>]))
+        <span style="font-weight: bold;">pass</span>
+    <span style="font-weight: bold;">pass</span>
+</pre>
+</div>
+
+<p>
+后面的测试只放修改位置的代码。<br>
+</p>
+</div>
+<div id="outline-container-org6091e1e" class="outline-4">
+<h4 id="org6091e1e">训练结果</h4>
+<div class="outline-text-4" id="text-org6091e1e">
+
+<figure id="org9b7cd43">
+<img src="./static/img/regularization_with_gan_output/normal.png" alt="normal.png"><br>
+
+</figure>
+</div>
+</div>
+<div id="outline-container-org8da76e4" class="outline-4">
+<h4 id="org8da76e4">评价</h4>
+<div class="outline-text-4" id="text-org8da76e4">
+<p>
+有些许的模式崩溃现象，只有几种类型的数字，数字的颗粒感比较严重，不够平滑。<br>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfd4b496" class="outline-3">
+<h3 id="orgfd4b496">L1</h3>
+<div class="outline-text-3" id="text-orgfd4b496">
+<p>
+更改训练函数即可<br>
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">train</span>(<span style="font-weight: bold;">self</span>, D, inputs, targets):
+        <span style="color: #383a42;">g_output</span> = <span style="font-weight: bold;">self</span>.forward(inputs)
+        <span style="color: #383a42;">d_output</span> = D.forward(g_output.reshape(<span style="color: #8a3b3c; font-weight: bold;">1</span>, <span style="color: #8a3b3c; font-weight: bold;">28</span>, <span style="color: #8a3b3c; font-weight: bold;">28</span>))
+        <span style="color: #383a42;">loss</span> = D.loss_function(d_output, targets)
+
+        <span style="color: #383a42;">l1_loss</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>
+        <span style="font-weight: bold;">for</span> param <span style="font-weight: bold;">in</span> <span style="font-weight: bold;">self</span>.parameters():
+            <span style="color: #383a42;">l1_loss</span> += torch.<span style="font-weight: bold;">sum</span>(torch.<span style="font-weight: bold;">abs</span>(param))
+            <span style="font-weight: bold;">pass</span>
+        <span style="color: #383a42;">loss</span> += <span style="color: #8a3b3c; font-weight: bold;">0.005</span> * l1_loss
+
+        <span style="font-weight: bold;">self</span>.optimiser.zero_grad()
+        loss.backward()
+        <span style="font-weight: bold;">self</span>.optimiser.step()
+        <span style="font-weight: bold;">pass</span>
+</pre>
+</div>
+</div>
+<div id="outline-container-orgdd0617e" class="outline-4">
+<h4 id="orgdd0617e">训练结果</h4>
+<div class="outline-text-4" id="text-orgdd0617e">
+
+<figure id="org1311c4e">
+<img src="./static/img/regularization_with_gan_output/l1.png" alt="l1.png"><br>
+
+</figure>
+</div>
+</div>
+<div id="outline-container-org8e0984d" class="outline-4">
+<h4 id="org8e0984d">评价</h4>
+<div class="outline-text-4" id="text-org8e0984d">
+<p>
+几乎没有可以识别的数字，可能是训练次数不够，但数字可以明显看出比较平滑，也就是那种模糊的效果。<br>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org6266059" class="outline-3">
+<h3 id="org6266059">L2</h3>
+<div class="outline-text-3" id="text-org6266059">
+<p>
+<code>pytorch</code> 的优化器通过参数 <code>weight_decay</code> 可以实现 <code>L2</code> 正则。<br>
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold;">self</span>.<span style="color: #383a42;">optimiser</span> = torch.optim.Adam(
+    <span style="font-weight: bold;">self</span>.parameters(), lr=<span style="color: #8a3b3c; font-weight: bold;">0.0001</span>, weight_decay=<span style="color: #8a3b3c; font-weight: bold;">0.005</span>
+)
+</pre>
+</div>
+</div>
+<div id="outline-container-org38094c5" class="outline-4">
+<h4 id="org38094c5">训练结果</h4>
+<div class="outline-text-4" id="text-org38094c5">
+
+<figure id="orgc4af566">
+<img src="./static/img/regularization_with_gan_output/l2.png" alt="l2.png"><br>
+
+</figure>
+</div>
+</div>
+<div id="outline-container-org51acb9a" class="outline-4">
+<h4 id="org51acb9a">评价</h4>
+<div class="outline-text-4" id="text-org51acb9a">
+<p>
+相比 <code>L1</code> 数字周围更加干净，更加清晰一些，但模糊的效果还在，与 <code>L1</code> 的差异不排除随机误差的可能。<br>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org1dc2050" class="outline-3">
+<h3 id="org1dc2050">Dropout</h3>
+<div class="outline-text-3" id="text-org1dc2050">
+<p>
+这个添加一个 <code>Dropout</code> 层即可<br>
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold;">self</span>.<span style="color: #383a42;">model</span> = nn.Sequential(
+    nn.Linear(<span style="color: #8a3b3c; font-weight: bold;">200</span>, <span style="color: #8a3b3c; font-weight: bold;">400</span>),
+    nn.Dropout(<span style="color: #8a3b3c; font-weight: bold;">0.5</span>),
+    nn.GELU(),
+    nn.LayerNorm(<span style="color: #8a3b3c; font-weight: bold;">400</span>),
+    nn.Linear(<span style="color: #8a3b3c; font-weight: bold;">400</span>, <span style="color: #8a3b3c; font-weight: bold;">28</span> * <span style="color: #8a3b3c; font-weight: bold;">28</span>),
+    nn.Sigmoid(),
+)
+</pre>
+</div>
+</div>
+<div id="outline-container-org83d0c32" class="outline-4">
+<h4 id="org83d0c32">训练结果</h4>
+<div class="outline-text-4" id="text-org83d0c32">
+
+<figure id="orgedbe585">
+<img src="./static/img/regularization_with_gan_output/dropout.png" alt="dropout.png"><br>
+
+</figure>
+</div>
+</div>
+<div id="outline-container-orgc2b425b" class="outline-4">
+<h4 id="orgc2b425b">评价</h4>
+<div class="outline-text-4" id="text-orgc2b425b">
+<p>
+没有了模糊效果，但数字都不成形，可能是训练次数不够。<br>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc72570b" class="outline-3">
+<h3 id="orgc72570b">Dropout + L2</h3>
+<div class="outline-text-3" id="text-orgc72570b">
+</div>
+<div id="outline-container-org75ebd86" class="outline-4">
+<h4 id="org75ebd86">训练结果</h4>
+<div class="outline-text-4" id="text-org75ebd86">
+
+<figure id="org9a68a19">
+<img src="./static/img/regularization_with_gan_output/dropout_l2.png" alt="dropout_l2.png"><br>
+
+</figure>
+</div>
+</div>
+<div id="outline-container-orgff3b435" class="outline-4">
+<h4 id="orgff3b435">评价</h4>
+<div class="outline-text-4" id="text-orgff3b435">
+<p>
+数字很平滑，但都不成型。<br>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcb10a21" class="outline-2">
+<h2 id="orgcb10a21">结论</h2>
+<div class="outline-text-2" id="text-orgcb10a21">
+<p>
+经过我不严谨的实验可以发现， <code>L1</code> 与 <code>L2</code> 正则化生成的图片确实会有模糊的效果，具体的原因可能是因为 <code>L1</code> 会让神经网络的参数矩阵更加稀疏， <code>L2</code> 不会让单个参数过大，也就不会因为一个神经元大范围改变结果，而尖锐的效果就是相邻的像素之间差别过大，故会产生模糊的效果。<br>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script type="text/javascript" src="/static/main.js"></script>
+            <center id="modi-date">2021-09-16 四 17:11</center>
+</div>
+</body>
+</html>

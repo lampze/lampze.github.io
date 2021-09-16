@@ -4,8 +4,9 @@
 <!-- 2021-09-16 四 17:11 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>所有博客</title>
+<title>org-page 配置</title>
 <meta name="author" content="shirui" />
+<meta name="description" content="doom下的org-page配置" />
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -201,34 +202,51 @@
 <div id="preamble" class="status">
 <div class="header">
             <a href="https://lampze.github.io">lampze's Blog</a>
-            <span id="post-date" style="float: right"></span>
+            <span id="post-date" style="float: right">2020-03-04 三 00:00</span>
             </div>
 </div>
 <div id="content" class="content">
 <header>
-<h1 class="title">所有博客</h1>
-</header><ul class="org-ul">
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-08-21 六&gt;  </span></span>  <a href="20210821102845-regularization_with_gan_output.html">正则化对 GAN 输出结果的影响</a><br></li>
-<li>old<br>
-<ul class="org-ul">
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-22 五&gt;  </span></span>  <a href="old/2021-lanqiao-simula.html">2021年蓝桥杯模拟赛题解</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-15 五&gt;  </span></span>  <a href="old/algorithm-basic-sim-search.html">算法基础-模拟与搜索</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-08 五&gt;  </span></span>  <a href="old/intro-basic-algorithm.html">基础算法简介</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-06 三&gt;  </span></span>  <a href="old/chaoxing-statistics.html">超星是如何统计学习情况的</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-11-17 二&gt;  </span></span>  <a href="old/c-cpp-tutorial.html">C/C++简明教程</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-08-19 三&gt;  </span></span>  <a href="old/nodebilibili.html">论如何在Linux下直播显示弹幕</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-07-27 一&gt;  </span></span>  <a href="old/R6900v2-lede.html">R6900v2安装LEDE.org</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-06-30 二&gt;  </span></span>  <a href="old/2020-gentoo-install.html">2020年gentoo安装分析</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-06-23 二&gt;  </span></span>  <a href="old/krunner-cwd.html">krunner工作目录在根目录的问题</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-06-12 五&gt;  </span></span>  <a href="old/about-funtoo.html">谈谈Funtoo</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-04-20 一&gt;  </span></span>  <a href="old/2020-lanqiao-Provincial-Simulation.html">2020年蓝桥杯省模拟赛题解</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-31 二&gt;  </span></span>  <a href="old/hx-auto-select-class.html">华夏学院抢课分析</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-25 三&gt;  </span></span>  <a href="old/2020-3-25-detect.html">记2020年3月25日核酸检测</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-05 四&gt;  </span></span>  <a href="old/obs-config.html">obs直播配置</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-04 三&gt;  </span></span>  <a href="old/snails-to-small.html">snails 在 Doom 下的bug</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-04 三&gt;  </span></span>  <a href="old/org-page-config.html">org-page 配置</a></li>
-</ul></li>
-</ul>
+<h1 class="title">org-page 配置</h1>
+</header><div id="outline-container-orgccea1ed" class="outline-2">
+<h2 id="orgccea1ed">前言</h2>
+<div class="outline-text-2" id="text-orgccea1ed">
+<p>
+以前用过几个博客的生成器，感觉都太复杂，太笨重了，而且对 org 的支持也不好，最后还是
+换到了 org-page
+</p>
+</div>
+</div>
+<div id="outline-container-org60eb3d3" class="outline-2">
+<h2 id="org60eb3d3">Doom 的配置</h2>
+<div class="outline-text-2" id="text-org60eb3d3">
+<div class="org-src-container">
+<pre class="src src-lisp"><span style="color: #556b2f;">;; </span><span style="color: #556b2f;">&#23433;&#35013;org-page</span>
+(package! org-page)
+<span style="color: #556b2f;">;; </span><span style="color: #556b2f;">&#37197;&#32622;</span>
+(def-package! org-page
+  <span style="font-weight: bold;">:config</span>
+  (setq op/repository-directory <span style="color: #8a3b3c;">"~/codehome/lampze.github.io"</span>
+        op/repository-org-branch <span style="color: #8a3b3c;">"source"</span>
+        op/repository-html-branch <span style="color: #8a3b3c;">"master"</span>
+        <span style="color: #556b2f;">;; </span><span style="color: #556b2f;">&#22240;&#20026;Doom&#23433;&#35013;&#26102;&#26159;&#29992;&#36719;&#38142;&#25509;&#65292;&#25152;&#20197;&#25105;&#20204;&#35201;&#25226;org-page&#30340;&#30495;&#23454;&#30446;&#24405;&#35774;&#32622;&#22909;</span>
+        op/theme-root-directory <span style="color: #8a3b3c;">"/home/shirui/.emacs.d/.local/straight/repos/org-page/themes"</span>
+        op/load-directory <span style="color: #8a3b3c;">"/home/shirui/.emacs.d/.local/straight/repos/org-page/"</span>
+        op/personal-github-link <span style="color: #8a3b3c;">"https://github.com/lampze/"</span>
+        op/site-domain <span style="color: #8a3b3c;">"https://lampze.github.io/"</span>))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdc595ca" class="outline-2">
+<h2 id="orgdc595ca">org-page 的坑</h2>
+<div class="outline-text-2" id="text-orgdc595ca">
+<ol class="org-ol">
+<li>文章的名字不能使用中文</li>
+<li>自动生成的 org 文件有两个 title，需要删掉一个，可能是 Doom的问题</li>
+</ol>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <script type="text/javascript" src="/static/main.js"></script>

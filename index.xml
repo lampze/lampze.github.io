@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+	   xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	   xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	   xmlns:dc="http://purl.org/dc/elements/1.1/"
+	   xmlns:atom="http://www.w3.org/2005/Atom"
+	   xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	   xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	   xmlns:georss="http://www.georss.org/georss"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:media="http://search.yahoo.com/mrss/"><channel>
+  <title>Blog Posts</title>
+  <atom:link href="https://lampze.github.io/index.xml" rel="self" type="application/rss+xml" />
+  <link>https://lampze.github.io</link>
+  <description><![CDATA[]]></description>
+  <language>en</language>
+  <pubDate>Thu, 16 Sep 2021 14:57:09 +0800</pubDate>
+  <lastBuildDate>Thu, 16 Sep 2021 14:57:09 +0800</lastBuildDate>
+  <generator>Emacs 28.0 Org-mode 9.5</generator>
+  <webMaster>1229408499@qq.com (shirui)</webMaster>
+  <image>
+    <url>https://orgmode.org/img/org-mode-unicorn-logo.png</url>
+    <title>Blog Posts</title>
+    <link>https://lampze.github.io</link>
+  </image>
+
+  <ul class="org-ul">
+    <li><a href="20210821102845-regularization_with_gan_output.html">正则化对 GAN 输出结果的影响</a></li>
+    <li>old
+    <ul class="org-ul">
+      <li><a href="old/2021-lanqiao-simula.html">2021年蓝桥杯模拟赛题解</a></li>
+      <li><a href="old/algorithm-basic-sim-search.html">算法基础-模拟与搜索</a></li>
+      <li><a href="old/intro-basic-algorithm.html">基础算法简介</a></li>
+      <li><a href="old/chaoxing-statistics.html">超星是如何统计学习情况的</a></li>
+      <li><a href="old/c-cpp-tutorial.html">C/C++简明教程</a></li>
+      <li><a href="old/nodebilibili.html">论如何在Linux下直播显示弹幕</a></li>
+      <li><a href="old/R6900v2-lede.html">R6900v2安装LEDE.org</a></li>
+      <li><a href="old/2020-gentoo-install.html">2020年gentoo安装分析</a></li>
+      <li><a href="old/krunner-cwd.html">krunner工作目录在根目录的问题</a></li>
+      <li><a href="old/about-funtoo.html">谈谈Funtoo</a></li>
+      <li><a href="old/2020-lanqiao-Provincial-Simulation.html">2020年蓝桥杯省模拟赛题解</a></li>
+      <li><a href="old/hx-auto-select-class.html">华夏学院抢课分析</a></li>
+      <li><a href="old/2020-3-25-detect.html">记2020年3月25日核酸检测</a></li>
+      <li><a href="old/obs-config.html">obs直播配置</a></li>
+      <li><a href="old/snails-to-small.html">snails 在 Doom 下的bug</a></li>
+      <li><a href="old/org-page-config.html">org-page 配置</a></li>
+    </ul></li>
+  </ul>
+</channel>
+</rss>

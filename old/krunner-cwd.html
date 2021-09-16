@@ -4,8 +4,9 @@
 <!-- 2021-09-16 四 17:11 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>所有博客</title>
+<title>krunner工作目录在根目录的问题</title>
 <meta name="author" content="shirui" />
+<meta name="description" content="找到了如何避免krunner运行在根目录下的方法" />
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -201,34 +202,38 @@
 <div id="preamble" class="status">
 <div class="header">
             <a href="https://lampze.github.io">lampze's Blog</a>
-            <span id="post-date" style="float: right"></span>
+            <span id="post-date" style="float: right">2020-06-23 二 00:00</span>
             </div>
 </div>
 <div id="content" class="content">
 <header>
-<h1 class="title">所有博客</h1>
-</header><ul class="org-ul">
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-08-21 六&gt;  </span></span>  <a href="20210821102845-regularization_with_gan_output.html">正则化对 GAN 输出结果的影响</a><br></li>
-<li>old<br>
-<ul class="org-ul">
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-22 五&gt;  </span></span>  <a href="old/2021-lanqiao-simula.html">2021年蓝桥杯模拟赛题解</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-15 五&gt;  </span></span>  <a href="old/algorithm-basic-sim-search.html">算法基础-模拟与搜索</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-08 五&gt;  </span></span>  <a href="old/intro-basic-algorithm.html">基础算法简介</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-06 三&gt;  </span></span>  <a href="old/chaoxing-statistics.html">超星是如何统计学习情况的</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-11-17 二&gt;  </span></span>  <a href="old/c-cpp-tutorial.html">C/C++简明教程</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-08-19 三&gt;  </span></span>  <a href="old/nodebilibili.html">论如何在Linux下直播显示弹幕</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-07-27 一&gt;  </span></span>  <a href="old/R6900v2-lede.html">R6900v2安装LEDE.org</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-06-30 二&gt;  </span></span>  <a href="old/2020-gentoo-install.html">2020年gentoo安装分析</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-06-23 二&gt;  </span></span>  <a href="old/krunner-cwd.html">krunner工作目录在根目录的问题</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-06-12 五&gt;  </span></span>  <a href="old/about-funtoo.html">谈谈Funtoo</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-04-20 一&gt;  </span></span>  <a href="old/2020-lanqiao-Provincial-Simulation.html">2020年蓝桥杯省模拟赛题解</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-31 二&gt;  </span></span>  <a href="old/hx-auto-select-class.html">华夏学院抢课分析</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-25 三&gt;  </span></span>  <a href="old/2020-3-25-detect.html">记2020年3月25日核酸检测</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-05 四&gt;  </span></span>  <a href="old/obs-config.html">obs直播配置</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-04 三&gt;  </span></span>  <a href="old/snails-to-small.html">snails 在 Doom 下的bug</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-04 三&gt;  </span></span>  <a href="old/org-page-config.html">org-page 配置</a></li>
-</ul></li>
-</ul>
+<h1 class="title">krunner工作目录在根目录的问题</h1>
+</header>
+<div id="outline-container-org1ae5e6b" class="outline-2">
+<h2 id="org1ae5e6b">前言</h2>
+<div class="outline-text-2" id="text-org1ae5e6b">
+<p>
+不知道有没有人在用 <code>plasma</code> 时发现和我一样的问题，有时 <code>Alt + Space</code> 打开 <code>konsole</code> 有时是 <code>root</code> 目录，有时是 <code>HOME</code> 目录。终端还好说直接 <code>cd</code> 就能跳转到 <code>HOME</code> 目录，但用 <code>emacs</code> 时就比较难受了。
+</p>
+
+<p>
+在更新系统，切换版本等各种手段都用尽后我终于定位到 <code>BUG</code> 并且有比较方便的方法解决这个问题了。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3f263e0" class="outline-2">
+<h2 id="org3f263e0">问题与解决</h2>
+<div class="outline-text-2" id="text-org3f263e0">
+<p>
+我发现在桌面直接输入命令打开应用时会出现导致之后所以命令都是在 <code>root</code> 目录打开的，但使用 <code>Alt + Space</code> 命令打开 <code>krunner</code> 就不会有这个问题。
+</p>
+
+<p>
+所以只需要改变一个用户习惯，一开机就按下快捷键就解决了。但根本问题还是没有解决，但继续查下去估计就要翻源码了，想探索的同学就继续吧，我给你加油。
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <script type="text/javascript" src="/static/main.js"></script>

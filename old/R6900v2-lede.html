@@ -4,8 +4,9 @@
 <!-- 2021-09-16 四 17:11 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>所有博客</title>
+<title>R6900v2安装LEDE.org</title>
 <meta name="author" content="shirui" />
+<meta name="description" content="讲解R6900v2安装配置LEDE" />
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -201,34 +202,207 @@
 <div id="preamble" class="status">
 <div class="header">
             <a href="https://lampze.github.io">lampze's Blog</a>
-            <span id="post-date" style="float: right"></span>
+            <span id="post-date" style="float: right">2020-07-27 一 00:00</span>
             </div>
 </div>
 <div id="content" class="content">
 <header>
-<h1 class="title">所有博客</h1>
-</header><ul class="org-ul">
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-08-21 六&gt;  </span></span>  <a href="20210821102845-regularization_with_gan_output.html">正则化对 GAN 输出结果的影响</a><br></li>
-<li>old<br>
-<ul class="org-ul">
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-22 五&gt;  </span></span>  <a href="old/2021-lanqiao-simula.html">2021年蓝桥杯模拟赛题解</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-15 五&gt;  </span></span>  <a href="old/algorithm-basic-sim-search.html">算法基础-模拟与搜索</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-08 五&gt;  </span></span>  <a href="old/intro-basic-algorithm.html">基础算法简介</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-06 三&gt;  </span></span>  <a href="old/chaoxing-statistics.html">超星是如何统计学习情况的</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-11-17 二&gt;  </span></span>  <a href="old/c-cpp-tutorial.html">C/C++简明教程</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-08-19 三&gt;  </span></span>  <a href="old/nodebilibili.html">论如何在Linux下直播显示弹幕</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-07-27 一&gt;  </span></span>  <a href="old/R6900v2-lede.html">R6900v2安装LEDE.org</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-06-30 二&gt;  </span></span>  <a href="old/2020-gentoo-install.html">2020年gentoo安装分析</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-06-23 二&gt;  </span></span>  <a href="old/krunner-cwd.html">krunner工作目录在根目录的问题</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-06-12 五&gt;  </span></span>  <a href="old/about-funtoo.html">谈谈Funtoo</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-04-20 一&gt;  </span></span>  <a href="old/2020-lanqiao-Provincial-Simulation.html">2020年蓝桥杯省模拟赛题解</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-31 二&gt;  </span></span>  <a href="old/hx-auto-select-class.html">华夏学院抢课分析</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-25 三&gt;  </span></span>  <a href="old/2020-3-25-detect.html">记2020年3月25日核酸检测</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-05 四&gt;  </span></span>  <a href="old/obs-config.html">obs直播配置</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-04 三&gt;  </span></span>  <a href="old/snails-to-small.html">snails 在 Doom 下的bug</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-04 三&gt;  </span></span>  <a href="old/org-page-config.html">org-page 配置</a></li>
-</ul></li>
-</ul>
+<h1 class="title">R6900v2安装LEDE.org</h1>
+</header>
+<div id="outline-container-org5fa9cbe" class="outline-2">
+<h2 id="org5fa9cbe">前言</h2>
+<div class="outline-text-2" id="text-org5fa9cbe">
+<p>
+首先我先劝退一波想买这个路由器的同学，以下是理由。
+</p>
+
+<ol class="org-ol">
+<li>支持的固件少并且不更新，不接受的同学只能自己编译固件</li>
+<li>编译时有许多的坑，一个不小心路由器就变砖了</li>
+<li>网件原厂的固件虽然稳定，但界面不好看还慢，功能也少</li>
+</ol>
+
+<p>
+如果你能接受或者已经买了就继续往下看吧。
+</p>
+
+<p>
+编译的固件选择了 <code>LEDE</code> ，因为作者是国人，在国内很多需求是相同的。
+</p>
+
+<p>
+有些自己编译过的同学可能会发现，配置的时候找不到这个路由器，根据这个<a href="https://github.com/openwrt/openwrt/pull/2614#issuecomment-569452109">PR</a>里说的情况， <code>R6700v2</code> 、 <code>R6800</code> 、 <code>R6900v2</code> 、 <code>R7450</code> 这几个路由器的核心硬件是相同的，甚至它们的官方固件都有相同的 <code>md5</code> ，理论上来说在配置时选择这个几个路由器都行，我测试过确实是可行的，目前我选择了 <code>R6700v2</code> 。
+</p>
+
+<p>
+最后编译时要注意刷机包的大小，大于30的话，刷完机路由器是开不了的。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbd55167" class="outline-2">
+<h2 id="orgbd55167">准备</h2>
+<div class="outline-text-2" id="text-orgbd55167">
+<p>
+请自行准备好以下的东西再进行刷机
+</p>
+
+<ol class="org-ol">
+<li>可用的 <code>Linux</code> 系统</li>
+<li>根据<a href="https://github.com/coolsnowwolf/lede">官方文档</a>准备好环境，没有科学上网很慢的</li>
+<li><code>nmrpflash</code> 工具，用来救砖</li>
+</ol>
+
+<p>
+请完全准备好后再进行刷机的尝试，如果路由器变砖了就很麻烦了。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org975b5be" class="outline-2">
+<h2 id="org975b5be">制作固件</h2>
+<div class="outline-text-2" id="text-org975b5be">
+</div>
+<div id="outline-container-orgb5e0d9c" class="outline-3">
+<h3 id="orgb5e0d9c">准备</h3>
+<div class="outline-text-3" id="text-orgb5e0d9c">
+<p>
+进入 <code>LEDE</code> 目录，编辑 <code>feeds.conf.default</code> 文件，取消 <code>helloworld</code> 所在行的注释，这样就能选择 <code>ssr</code> 了，以下是示例。
+</p>
+
+<pre class="example" id="orgeffd970">
+src-git packages https://github.com/coolsnowwolf/packages
+src-git luci https://github.com/coolsnowwolf/luci
+src-git routing https://git.openwrt.org/feed/routing.git
+src-git telephony https://git.openwrt.org/feed/telephony.git
+src-git freifunk https://github.com/freifunk/openwrt-packages.git
+#src-git video https://github.com/openwrt/video.git
+#src-git targets https://github.com/openwrt/targets.git
+#src-git management https://github.com/openwrt-management/packages.git
+#src-git oldpackages http://git.openwrt.org/packages.git
+#src-link custom /usr/src/openwrt/custom-feed
+src-git helloworld https://github.com/fw876/helloworld
+</pre>
+
+<p>
+然后更新安装 <code>feed</code> ， <code>feed</code> 存放着各种软件源码。
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">./scripts/feeds update -a
+./scripts/feeds install -a
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org49563f4" class="outline-3">
+<h3 id="org49563f4">make menuconfig</h3>
+<div class="outline-text-3" id="text-org49563f4">
+<p>
+然后就是配置 <code>LEDE</code> 了， 运行命令 <code>make menuconfig</code> 。我来展示一些必要选项。
+</p>
+
+<pre class="example" id="org024473a">
+Target System (MediaTek Ralink MIPS)  ---&gt;
+Subtarget (MT7621 based boards)  ---&gt;
+Target Profile (NETGEAR R7200 v1 (NETGEAR R6700 v2))  ---&gt;
+</pre>
+
+<p>
+使用方向键移动在这三项上面，按回车进入选择菜单，选择括号中间的选项，选择这三项一定要从上往下。其中第三项还可以选择 <code>R6800</code> ，原因我就不多说了。
+</p>
+
+<p>
+选择了上面的内容就可进行下一步了，下面展示一些我的配置。
+</p>
+
+<pre class="example" id="orgdc89805">
+Extra packages  ---&gt;
+  &lt;*&gt; ipv6helper................... IPv6 Helper and Dynamic Update he.net of ip
+LuCI  ---&gt;
+  3. Applications  ---&gt;
+    &lt;*&gt; luci-app-qos..................... Quality of Service configuration module
+    &lt;*&gt; luci-app-flowoffload....................... LuCI support for Flow Offload
+    &lt;*&gt; luci-app-ssr-plus.......... SS/SSR/V2Ray/Trojan/Socks5/Tun LuCI interface
+    [ ] Include Shadowsocks V2ray Plugin
+    [*] Include V2ray
+    [ ] Include Trojan
+    [ ] Include Redsocks2
+    [ ] Include Kcptun
+    [ ] Include ShadowsocksR Server
+    &lt;*&gt; luci-app-wifischedule...... Turns WiFi on and off according to a schedule
+  4. Themes  ---&gt;
+    &lt;*&gt; luci-theme-argon............................................. Argon Theme
+Utilities  ---&gt;
+  Editors  ---&gt;
+    &lt;*&gt; vim-fuller........................ Vi IMproved - enhanced vi editor (Big)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org7e5a5f1" class="outline-3">
+<h3 id="org7e5a5f1">编译</h3>
+<div class="outline-text-3" id="text-org7e5a5f1">
+<p>
+<code>make download V=s</code> 先下载要编译的源码
+</p>
+
+<p>
+<code>make -j1</code> 编译，参数j后面是你的 <code>cpu</code> 的线程加一
+</p>
+
+<p>
+如果没有正确结束，使用这个命令查错 <code>make -j1 V=99</code>
+</p>
+
+<p>
+生成的固件在 <code>./bin/targets/ramips/mt7621</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfcc2de8" class="outline-3">
+<h3 id="orgfcc2de8">刷机</h3>
+<div class="outline-text-3" id="text-orgfcc2de8">
+</div>
+<div id="outline-container-orgcf30c6e" class="outline-4">
+<h4 id="orgcf30c6e">原生刷LEDE</h4>
+<div class="outline-text-4" id="text-orgcf30c6e">
+<p>
+直接在原生的管理界面点击升级固件，上传带有字段 <code>factory</code> 的固件即可。
+</p>
+</div>
+</div>
+<div id="outline-container-org4fd22cc" class="outline-4">
+<h4 id="org4fd22cc">LEDE升级</h4>
+<div class="outline-text-4" id="text-org4fd22cc">
+<p>
+在固件升级页面使用带有字段 <code>sysupgrade</code> 的固件。
+</p>
+</div>
+</div>
+<div id="outline-container-org3ae9c82" class="outline-4">
+<h4 id="org3ae9c82">救砖或LEDE刷回原生</h4>
+<div class="outline-text-4" id="text-org3ae9c82">
+<p>
+使用 <code>nmrpflash -L</code> 列出所有网卡，找到正确的网卡，如果不知道就一个个试。
+</p>
+
+<p>
+然后使用 <code>nmrpflash -i &lt;网卡名&gt; -f &lt;固件名&gt;</code> 命令，执行命令的瞬间重启路由器，然后就可以看到固件正在上传，等待命令执行完毕后重启路由器就刷机完毕了。
+</p>
+
+<p>
+建议在 <code>windows</code> 下使用这个工具，这个命令需要管理员权限。
+</p>
+
+<p>
+注意！！！这个命令只能对网件的路由器使用。
+</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <script type="text/javascript" src="/static/main.js"></script>

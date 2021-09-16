@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<!-- 2021-09-16 四 17:11 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>算法基础-模拟与搜索</title>
+<meta name="author" content="shirui" />
+<meta name="description" content="模拟与搜索的算法讲解" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+<link rel="stylesheet" href="/static/style.css" type="text/css"/>
+            <link rel="stylesheet" href="/static/org.css" type="text/css"/>
+            <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+            <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+            <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+            <a href="https://lampze.github.io">lampze's Blog</a>
+            <span id="post-date" style="float: right">2021-01-15 五 00:00</span>
+            </div>
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">算法基础-模拟与搜索</h1>
+</header><div id="outline-container-orgef9b7e3" class="outline-2">
+<h2 id="orgef9b7e3">前言</h2>
+<div class="outline-text-2" id="text-orgef9b7e3">
+<p>
+模拟既直接根据题意做题，搜索既在可能的解里寻找正确答案<br>
+</p>
+
+<p>
+下面我就根据几道题目来具体的讲解它们的解题思路<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org18511e7" class="outline-2">
+<h2 id="org18511e7">扫雷游戏</h2>
+<div class="outline-text-2" id="text-org18511e7">
+<p>
+<a href="https://www.luogu.com.cn/problem/P2670">https://www.luogu.com.cn/problem/P2670</a><br>
+</p>
+</div>
+<div id="outline-container-orge950259" class="outline-3">
+<h3 id="orge950259">思路</h3>
+<div class="outline-text-3" id="text-orge950259">
+<p>
+题目要求输出每个格子周围的地雷数，那么根据模拟思维，直接统计每个格子周围的地雷数并输出即可<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org8b4d6b5" class="outline-3">
+<h3 id="org8b4d6b5">代码</h3>
+<div class="outline-text-3" id="text-org8b4d6b5">
+<div class="org-src-container">
+<pre class="src src-C++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
+
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="color: #383a42;">std</span>;
+
+<span style="font-weight: bold;">bool</span> <span style="font-weight: bold;">checkb</span><span style="color: #014980;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">x</span>, <span style="font-weight: bold;">int</span> <span style="color: #383a42;">y</span>, <span style="font-weight: bold;">int</span> <span style="color: #383a42;">n</span>, <span style="font-weight: bold;">int</span> <span style="color: #383a42;">m</span><span style="color: #014980;">)</span> <span style="color: #014980;">{</span>
+  <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span>x &lt; <span style="color: #8a3b3c; font-weight: bold;">0</span> || y &lt; <span style="color: #8a3b3c; font-weight: bold;">0</span> || x &gt;= n || y &gt;= m<span style="color: #a626a4;">)</span>
+    <span style="font-weight: bold;">return</span> <span style="color: #383a42;">false</span>;
+  <span style="font-weight: bold;">return</span> <span style="color: #383a42;">true</span>;
+<span style="color: #014980;">}</span>
+
+<span style="font-weight: bold;">int</span> <span style="font-weight: bold;">main</span><span style="color: #014980;">()</span> <span style="color: #014980;">{</span>
+  <span style="font-weight: bold;">int</span> <span style="color: #383a42;">n</span>, <span style="color: #383a42;">m</span>;
+  cin &gt;&gt; n &gt;&gt; m;
+  <span style="font-weight: bold;">char</span> <span style="color: #383a42;">all</span><span style="color: #a626a4;">[</span>n<span style="color: #a626a4;">][</span>m<span style="color: #a626a4;">]</span>;
+  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#36755;&#20837;</span>
+  <span style="font-weight: bold;">for</span> <span style="color: #a626a4;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">i</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>; i &lt; n; i++<span style="color: #a626a4;">)</span>
+    <span style="font-weight: bold;">for</span> <span style="color: #a626a4;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">j</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>; j &lt; m; j++<span style="color: #a626a4;">)</span>
+      cin &gt;&gt; all<span style="color: #a626a4;">[</span>i<span style="color: #a626a4;">][</span>j<span style="color: #a626a4;">]</span>;
+
+  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#36941;&#21382;&#27599;&#20010;&#26684;&#23376;</span>
+  <span style="font-weight: bold;">for</span> <span style="color: #a626a4;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">i</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>; i &lt; n; i++<span style="color: #a626a4;">)</span> <span style="color: #a626a4;">{</span>
+    <span style="font-weight: bold;">for</span> <span style="color: #556b2f;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">j</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>; j &lt; m; j++<span style="color: #556b2f;">)</span>
+      <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#22914;&#26524;&#19981;&#26159;&#38647;&#23601;&#32479;&#35745;&#21608;&#22260;&#22320;&#38647;&#25968;</span>
+      <span style="font-weight: bold;">if</span> <span style="color: #556b2f;">(</span>all<span style="color: #b751b6;">[</span>i<span style="color: #b751b6;">][</span>j<span style="color: #b751b6;">]</span> == <span style="color: #8a3b3c;">'?'</span><span style="color: #556b2f;">)</span> <span style="color: #556b2f;">{</span>
+        <span style="font-weight: bold;">int</span> <span style="color: #383a42;">count</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>;
+        <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#36941;&#21382;&#21608;&#22260;&#20843;&#20010;&#26684;&#23376;</span>
+        <span style="font-weight: bold;">for</span> <span style="color: #b751b6;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">x</span> = -<span style="color: #8a3b3c; font-weight: bold;">1</span>; x &lt;= <span style="color: #8a3b3c; font-weight: bold;">1</span>; x++<span style="color: #b751b6;">)</span>
+          <span style="font-weight: bold;">for</span> <span style="color: #b751b6;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">y</span> = -<span style="color: #8a3b3c; font-weight: bold;">1</span>; y &lt;= <span style="color: #8a3b3c; font-weight: bold;">1</span>; y++<span style="color: #b751b6;">)</span>
+            <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#38450;&#27490;&#36234;&#30028;</span>
+            <span style="font-weight: bold;">if</span> <span style="color: #b751b6;">(</span>checkb<span style="color: #014980;">(</span>i + x, j + y, n, m<span style="color: #014980;">)</span> &amp;&amp; all<span style="color: #014980;">[</span>i + x<span style="color: #014980;">][</span>j + y<span style="color: #014980;">]</span> == <span style="color: #8a3b3c;">'*'</span><span style="color: #b751b6;">)</span>
+              count++;
+        cout &lt;&lt; count;
+      <span style="color: #556b2f;">}</span> <span style="font-weight: bold;">else</span>
+        cout &lt;&lt; <span style="color: #8a3b3c;">"*"</span>;
+    cout &lt;&lt; endl;
+  <span style="color: #a626a4;">}</span>
+  <span style="font-weight: bold;">return</span> <span style="color: #8a3b3c; font-weight: bold;">0</span>;
+<span style="color: #014980;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org39ac1f1" class="outline-2">
+<h2 id="org39ac1f1">字符串的展开</h2>
+<div class="outline-text-2" id="text-org39ac1f1">
+<p>
+<a href="https://www.luogu.com.cn/problem/P1098">https://www.luogu.com.cn/problem/P1098</a><br>
+</p>
+</div>
+<div id="outline-container-org7c1e0ff" class="outline-3">
+<h3 id="org7c1e0ff">思路</h3>
+<div class="outline-text-3" id="text-org7c1e0ff">
+<p>
+这是一道复杂的模拟题目，题目已经把我们要做的操作都描述出来了，我们要学会如何分解这些复杂的操作，因为这么复杂的逻辑很容易写错，而把逻辑分解成一个个模块后再调试显然是更加方便快捷的。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org17f1f43" class="outline-3">
+<h3 id="org17f1f43">代码</h3>
+<div class="outline-text-3" id="text-org17f1f43">
+<div class="org-src-container">
+<pre class="src src-C++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">algorithm</span><span style="color: #014980;">&gt;</span>
+<span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
+<span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">string</span><span style="color: #014980;">&gt;</span>
+
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="color: #383a42;">std</span>;
+
+<span style="font-weight: bold;">int</span> <span style="color: #383a42;">p1</span>, <span style="color: #383a42;">p2</span>, <span style="color: #383a42;">p3</span>;
+
+<span style="font-weight: bold;">bool</span> <span style="font-weight: bold;">isnum</span><span style="color: #014980;">(</span><span style="font-weight: bold;">char</span> <span style="color: #383a42;">c</span><span style="color: #014980;">)</span> <span style="color: #014980;">{</span> <span style="font-weight: bold;">return</span> c &gt;= <span style="color: #8a3b3c;">'0'</span> &amp;&amp; c &lt;= <span style="color: #8a3b3c;">'9'</span>; <span style="color: #014980;">}</span>
+
+<span style="font-weight: bold;">char</span> <span style="font-weight: bold;">tobig</span><span style="color: #014980;">(</span><span style="font-weight: bold;">char</span> <span style="color: #383a42;">c</span><span style="color: #014980;">)</span> <span style="color: #014980;">{</span>
+  <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span>c &gt;= <span style="color: #8a3b3c;">'a'</span> &amp;&amp; c &lt;= <span style="color: #8a3b3c;">'z'</span><span style="color: #a626a4;">)</span>
+    <span style="font-weight: bold;">return</span> c - <span style="color: #8a3b3c;">'a'</span> + <span style="color: #8a3b3c;">'A'</span>;
+  <span style="font-weight: bold;">return</span> c;
+<span style="color: #014980;">}</span>
+
+<span style="font-weight: bold;">char</span> <span style="font-weight: bold;">tosmall</span><span style="color: #014980;">(</span><span style="font-weight: bold;">char</span> <span style="color: #383a42;">c</span><span style="color: #014980;">)</span> <span style="color: #014980;">{</span>
+  <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span>c &gt;= <span style="color: #8a3b3c;">'A'</span> &amp;&amp; c &lt;= <span style="color: #8a3b3c;">'Z'</span><span style="color: #a626a4;">)</span>
+    <span style="font-weight: bold;">return</span> c + <span style="color: #8a3b3c;">'a'</span> - <span style="color: #8a3b3c;">'A'</span>;
+  <span style="font-weight: bold;">return</span> c;
+<span style="color: #014980;">}</span>
+
+<span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#22240;&#20026;&#26377;&#21508;&#31181;&#21442;&#25968;&#65292;&#25152;&#20197;&#20351;&#29992;&#36825;&#20010;&#20989;&#25968;&#33719;&#21462;&#30495;&#23454;&#23383;&#31526;</span>
+<span style="font-weight: bold;">char</span> <span style="font-weight: bold;">realchar</span><span style="color: #014980;">(</span><span style="font-weight: bold;">char</span> <span style="color: #383a42;">c</span><span style="color: #014980;">)</span> <span style="color: #014980;">{</span>
+  <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span>p1 == <span style="color: #8a3b3c; font-weight: bold;">3</span><span style="color: #a626a4;">)</span>
+    <span style="font-weight: bold;">return</span> <span style="color: #8a3b3c;">'*'</span>;
+  <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span>isnum<span style="color: #556b2f;">(</span>c<span style="color: #556b2f;">)</span><span style="color: #a626a4;">)</span>
+    <span style="font-weight: bold;">return</span> c;
+  <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span>p1 == <span style="color: #8a3b3c; font-weight: bold;">2</span><span style="color: #a626a4;">)</span>
+    <span style="font-weight: bold;">return</span> tobig<span style="color: #a626a4;">(</span>c<span style="color: #a626a4;">)</span>;
+  <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span>p1 == <span style="color: #8a3b3c; font-weight: bold;">1</span><span style="color: #a626a4;">)</span>
+    <span style="font-weight: bold;">return</span> tosmall<span style="color: #a626a4;">(</span>c<span style="color: #a626a4;">)</span>;
+  <span style="font-weight: bold;">return</span> c;
+<span style="color: #014980;">}</span>
+
+<span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#36820;&#22238;&#19981;&#21253;&#25324;a&#65292;b&#30340;&#25193;&#23637;&#23383;&#31526;&#20018;</span>
+<span style="font-weight: bold;">string</span> <span style="font-weight: bold;">re</span><span style="color: #014980;">(</span><span style="font-weight: bold;">char</span> <span style="color: #383a42;">a</span>, <span style="font-weight: bold;">char</span> <span style="color: #383a42;">b</span><span style="color: #014980;">)</span> <span style="color: #014980;">{</span>
+  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#20013;&#38388;&#27809;&#26377;&#21487;&#25193;&#23637;&#30340;&#23383;&#31526;&#36820;&#22238;&#31354;</span>
+  <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span>b - a == <span style="color: #8a3b3c; font-weight: bold;">1</span><span style="color: #a626a4;">)</span>
+    <span style="font-weight: bold;">return</span> <span style="color: #8a3b3c;">""</span>;
+  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">a&#22823;&#20110;b&#65292;&#19981;&#33021;&#25193;&#23637;</span>
+  <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span>a &gt;= b<span style="color: #a626a4;">)</span>
+    <span style="font-weight: bold;">return</span> <span style="color: #8a3b3c;">"-"</span>;
+  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#20004;&#20010;&#23383;&#31526;&#31867;&#22411;&#19981;&#21516;</span>
+  <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span>isnum<span style="color: #556b2f;">(</span>a<span style="color: #556b2f;">)</span> != isnum<span style="color: #556b2f;">(</span>b<span style="color: #556b2f;">)</span><span style="color: #a626a4;">)</span>
+    <span style="font-weight: bold;">return</span> <span style="color: #8a3b3c;">"-"</span>;
+  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#37117;&#26159;-&#32943;&#23450;&#19981;&#34892;</span>
+  <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span>a == <span style="color: #8a3b3c;">'-'</span> || b == <span style="color: #8a3b3c;">'-'</span><span style="color: #a626a4;">)</span>
+    <span style="font-weight: bold;">return</span> <span style="color: #8a3b3c;">"-"</span>;
+  <span style="font-weight: bold;">string</span> <span style="color: #383a42;">out</span> = <span style="color: #8a3b3c;">""</span>;
+  <span style="font-weight: bold;">char</span> <span style="color: #383a42;">c</span> = a + <span style="color: #8a3b3c; font-weight: bold;">1</span>;
+  <span style="font-weight: bold;">for</span> <span style="color: #a626a4;">(</span><span style="font-weight: bold;">char</span> <span style="color: #383a42;">c</span> = a + <span style="color: #8a3b3c; font-weight: bold;">1</span>; c &lt; b; c++<span style="color: #a626a4;">)</span>
+    <span style="font-weight: bold;">for</span> <span style="color: #a626a4;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">i</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>; i &lt; p2; i++<span style="color: #a626a4;">)</span>
+      out += realchar<span style="color: #a626a4;">(</span>c<span style="color: #a626a4;">)</span>;
+  <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span>p3 == <span style="color: #8a3b3c; font-weight: bold;">2</span><span style="color: #a626a4;">)</span>
+    reverse<span style="color: #a626a4;">(</span>out.begin<span style="color: #556b2f;">()</span>, out.end<span style="color: #556b2f;">()</span><span style="color: #a626a4;">)</span>;
+  <span style="font-weight: bold;">return</span> out;
+<span style="color: #014980;">}</span>
+
+<span style="font-weight: bold;">int</span> <span style="font-weight: bold;">main</span><span style="color: #014980;">()</span> <span style="color: #014980;">{</span>
+  <span style="font-weight: bold;">string</span> <span style="color: #383a42;">s</span>;
+  cin &gt;&gt; p1 &gt;&gt; p2 &gt;&gt; p3 &gt;&gt; s;
+  <span style="font-weight: bold;">for</span> <span style="color: #a626a4;">(</span><span style="font-weight: bold;">long</span> <span style="font-weight: bold;">long</span> <span style="color: #383a42;">i</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>; i &lt; s.size<span style="color: #556b2f;">()</span>; i++<span style="color: #a626a4;">)</span>
+    <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#31532;&#19968;&#20010;&#23383;&#31526;&#21487;&#33021;&#26159;-</span>
+    <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span>i &amp;&amp; s<span style="color: #556b2f;">[</span>i<span style="color: #556b2f;">]</span> == <span style="color: #8a3b3c;">'-'</span><span style="color: #a626a4;">)</span>
+      <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#20351;&#29992;re&#33719;&#21462;&#25193;&#23637;&#30340;&#23383;&#31526;&#20018;</span>
+      cout &lt;&lt; re<span style="color: #a626a4;">(</span>s<span style="color: #556b2f;">[</span>i - <span style="color: #8a3b3c; font-weight: bold;">1</span><span style="color: #556b2f;">]</span>, s<span style="color: #556b2f;">[</span>i + <span style="color: #8a3b3c; font-weight: bold;">1</span><span style="color: #556b2f;">]</span><span style="color: #a626a4;">)</span>;
+    <span style="font-weight: bold;">else</span>
+      cout &lt;&lt; s<span style="color: #a626a4;">[</span>i<span style="color: #a626a4;">]</span>;
+  <span style="font-weight: bold;">return</span> <span style="color: #8a3b3c; font-weight: bold;">0</span>;
+<span style="color: #014980;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7ef591f" class="outline-2">
+<h2 id="org7ef591f">选数</h2>
+<div class="outline-text-2" id="text-org7ef591f">
+<p>
+<a href="https://www.luogu.com.cn/problem/P1036">https://www.luogu.com.cn/problem/P1036</a><br>
+</p>
+</div>
+<div id="outline-container-orgda13122" class="outline-3">
+<h3 id="orgda13122">思路</h3>
+<div class="outline-text-3" id="text-orgda13122">
+<p>
+首先题目提到了素数，那么第一步就是先把素数都筛出来，方便后续操作<br>
+</p>
+
+<p>
+然后我们需要需要在 \(n\) 个整数里选出 \(k\) 个整数相加，很显然这是一个排列问题，那么我们可以使用 <code>stl</code> 自带的 <code>next_permutation</code> 对 \(n\) 个整数进行全排列，然后截取前 \(k\) 个整数，当然还需要去重。<br>
+或者我们自己使用搜索的思维来写，题目的解空间是所有的排列，每个数字有两种状态，选或不选，选中的数字有个数要求，因为必须要把所有情况过一遍，所以使用 <code>dfs</code> 即可。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org4537bae" class="outline-3">
+<h3 id="org4537bae">代码</h3>
+<div class="outline-text-3" id="text-org4537bae">
+<div class="org-src-container">
+<pre class="src src-C++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">algorithm</span><span style="color: #014980;">&gt;</span>
+<span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
+
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="color: #383a42;">std</span>;
+
+<span style="font-weight: bold;">long</span> <span style="color: #383a42;">all</span><span style="color: #014980;">[</span><span style="color: #8a3b3c; font-weight: bold;">21</span><span style="color: #014980;">]</span>, <span style="color: #383a42;">cou</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>;
+<span style="font-weight: bold;">int</span> <span style="color: #383a42;">n</span>, <span style="color: #383a42;">k</span>;
+
+<span style="font-weight: bold;">bool</span> <span style="color: #383a42;">prime</span><span style="color: #014980;">[</span><span style="color: #8a3b3c; font-weight: bold;">5000001</span><span style="color: #014980;">]</span>;
+
+<span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#19977;&#20010;&#21442;&#25968;&#20026;&#21035;&#20026;&#24403;&#21069;&#20301;&#32622;&#65292;&#36873;&#20013;&#30340;&#25968;&#23383;&#65292;&#24403;&#21069;&#30340;&#21644;</span>
+<span style="font-weight: bold;">void</span> <span style="font-weight: bold;">dfs</span><span style="color: #014980;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">now</span>, <span style="font-weight: bold;">int</span> <span style="color: #383a42;">sel</span>, <span style="font-weight: bold;">int</span> <span style="color: #383a42;">sum</span><span style="color: #014980;">)</span> <span style="color: #014980;">{</span>
+  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#22914;&#26524;&#21097;&#19979;&#30340;&#25968;&#19981;&#22815;&#36873;&#23601;&#36864;&#20986;</span>
+  <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span>n - now &lt; k - sel<span style="color: #a626a4;">)</span>
+    <span style="font-weight: bold;">return</span>;
+  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#36873;&#22815;&#20102;&#25968;</span>
+  <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span>sel == k<span style="color: #a626a4;">)</span> <span style="color: #a626a4;">{</span>
+    <span style="font-weight: bold;">if</span> <span style="color: #556b2f;">(</span><span style="color: #383a42; font-weight: bold;">!</span>prime<span style="color: #b751b6;">[</span>sum<span style="color: #b751b6;">]</span><span style="color: #556b2f;">)</span>
+      cou++;
+    <span style="font-weight: bold;">return</span>;
+  <span style="color: #a626a4;">}</span>
+  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#36941;&#21382;&#27599;&#31181;&#21487;&#33021;</span>
+  <span style="font-weight: bold;">for</span> <span style="color: #a626a4;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">i</span> = now; i &lt; n; i++<span style="color: #a626a4;">)</span>
+    dfs<span style="color: #a626a4;">(</span>i + <span style="color: #8a3b3c; font-weight: bold;">1</span>, sel + <span style="color: #8a3b3c; font-weight: bold;">1</span>, sum + all<span style="color: #556b2f;">[</span>i<span style="color: #556b2f;">]</span><span style="color: #a626a4;">)</span>;
+<span style="color: #014980;">}</span>
+
+<span style="font-weight: bold;">int</span> <span style="font-weight: bold;">main</span><span style="color: #014980;">()</span> <span style="color: #014980;">{</span>
+  <span style="font-weight: bold;">for</span> <span style="color: #a626a4;">(</span><span style="font-weight: bold;">long</span> <span style="color: #383a42;">i</span> = <span style="color: #8a3b3c; font-weight: bold;">2</span>; i &lt; <span style="color: #8a3b3c; font-weight: bold;">5000001</span>; i++<span style="color: #a626a4;">)</span>
+    <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span><span style="color: #383a42; font-weight: bold;">!</span>prime<span style="color: #556b2f;">[</span>i<span style="color: #556b2f;">]</span><span style="color: #a626a4;">)</span>
+      <span style="font-weight: bold;">for</span> <span style="color: #a626a4;">(</span><span style="font-weight: bold;">long</span> <span style="color: #383a42;">j</span> = i * <span style="color: #8a3b3c; font-weight: bold;">2</span>; j &lt; <span style="color: #8a3b3c; font-weight: bold;">5000001</span>; j += i<span style="color: #a626a4;">)</span>
+        prime<span style="color: #a626a4;">[</span>j<span style="color: #a626a4;">]</span> = <span style="color: #383a42;">true</span>;
+  prime<span style="color: #a626a4;">[</span><span style="color: #8a3b3c; font-weight: bold;">0</span><span style="color: #a626a4;">]</span> = prime<span style="color: #a626a4;">[</span><span style="color: #8a3b3c; font-weight: bold;">1</span><span style="color: #a626a4;">]</span> = <span style="color: #383a42;">true</span>;
+
+  cin &gt;&gt; n &gt;&gt; k;
+  <span style="font-weight: bold;">for</span> <span style="color: #a626a4;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">i</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>; i &lt; n; i++<span style="color: #a626a4;">)</span>
+    cin &gt;&gt; all<span style="color: #a626a4;">[</span>i<span style="color: #a626a4;">]</span>;
+
+  dfs<span style="color: #a626a4;">(</span><span style="color: #8a3b3c; font-weight: bold;">0</span>, <span style="color: #8a3b3c; font-weight: bold;">0</span>, <span style="color: #8a3b3c; font-weight: bold;">0</span><span style="color: #a626a4;">)</span>;
+
+  cout &lt;&lt; cou &lt;&lt; endl;
+  <span style="font-weight: bold;">return</span> <span style="color: #8a3b3c; font-weight: bold;">0</span>;
+<span style="color: #014980;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7affb8f" class="outline-2">
+<h2 id="org7affb8f">自然数的拆分问题</h2>
+<div class="outline-text-2" id="text-org7affb8f">
+<p>
+<a href="https://www.luogu.com.cn/problem/P2404">https://www.luogu.com.cn/problem/P2404</a><br>
+</p>
+</div>
+<div id="outline-container-orge1f2f99" class="outline-3">
+<h3 id="orge1f2f99">思路</h3>
+<div class="outline-text-3" id="text-orge1f2f99">
+<p>
+这题就不使用全排列了，只能老老实实的自己写搜索了，因为必须要把所有情况过一遍，所以使用 <code>dfs</code> 比较方便，状态只需要保存已分拆分的数字个数与剩余数字就行了。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgc70192a" class="outline-3">
+<h3 id="orgc70192a">代码</h3>
+<div class="outline-text-3" id="text-orgc70192a">
+<div class="org-src-container">
+<pre class="src src-C++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
+
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="color: #383a42;">std</span>;
+
+<span style="font-weight: bold;">int</span> <span style="color: #383a42;">n</span>, <span style="color: #383a42;">all</span><span style="color: #014980;">[</span><span style="color: #8a3b3c; font-weight: bold;">10</span><span style="color: #014980;">]</span>;
+
+<span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#24050;&#25286;&#20986;&#30340;&#25968;&#23383;&#20010;&#25968;&#65292;&#21097;&#20313;&#30340;&#25968;&#23383;</span>
+<span style="font-weight: bold;">void</span> <span style="font-weight: bold;">dfs</span><span style="color: #014980;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">now</span>, <span style="font-weight: bold;">int</span> <span style="color: #383a42;">last</span><span style="color: #014980;">)</span> <span style="color: #014980;">{</span>
+  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#27809;&#26377;&#21097;&#20313;&#30340;&#25968;&#23383;&#20102;&#23601;&#32467;&#26463;</span>
+  <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span>last == <span style="color: #8a3b3c; font-weight: bold;">0</span><span style="color: #a626a4;">)</span> <span style="color: #a626a4;">{</span>
+    <span style="color: #556b2f;">// </span><span style="color: #556b2f;">1&#34920;&#31034;&#36824;&#26159;&#21407;&#26469;&#30340;&#25968;&#23383;&#65292;&#32943;&#23450;&#19981;&#33021;&#31639;</span>
+    <span style="font-weight: bold;">if</span> <span style="color: #556b2f;">(</span>now == <span style="color: #8a3b3c; font-weight: bold;">1</span><span style="color: #556b2f;">)</span>
+      <span style="font-weight: bold;">return</span>;
+    <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#36755;&#20986;&#25286;&#20998;&#30340;&#25968;&#23383;</span>
+    <span style="font-weight: bold;">for</span> <span style="color: #556b2f;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">i</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>; i &lt; now; i++<span style="color: #556b2f;">)</span>
+      <span style="font-weight: bold;">if</span> <span style="color: #556b2f;">(</span>i<span style="color: #556b2f;">)</span>
+        cout &lt;&lt; <span style="color: #8a3b3c;">"+"</span> &lt;&lt; all<span style="color: #556b2f;">[</span>i<span style="color: #556b2f;">]</span>;
+      <span style="font-weight: bold;">else</span>
+        cout &lt;&lt; all<span style="color: #556b2f;">[</span>i<span style="color: #556b2f;">]</span>;
+    cout &lt;&lt; endl;
+    <span style="font-weight: bold;">return</span>;
+  <span style="color: #a626a4;">}</span>
+  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#36941;&#21382;&#27599;&#20010;&#21487;&#33021;&#25286;&#20998;&#30340;&#25968;&#23383;</span>
+  <span style="font-weight: bold;">for</span> <span style="color: #a626a4;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">i</span> = <span style="color: #8a3b3c; font-weight: bold;">1</span>; i &lt;= last; i++<span style="color: #a626a4;">)</span>
+    <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#22240;&#20026;&#38656;&#35201;&#20174;&#23567;&#21040;&#22823;&#25490;&#24207;</span>
+    <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#25152;&#20197;&#21482;&#38656;&#35201;&#20445;&#25345;&#27604;&#19978;&#19968;&#20010;&#25968;&#23383;&#22823;&#21363;&#21487;</span>
+    <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#31532;&#19968;&#20010;&#25968;&#23383;&#24403;&#28982;&#19981;&#29992;&#27604;&#36739;&#20102;</span>
+    <span style="font-weight: bold;">if</span> <span style="color: #a626a4;">(</span><span style="color: #383a42; font-weight: bold;">!</span>now || i &gt;= all<span style="color: #556b2f;">[</span>now - <span style="color: #8a3b3c; font-weight: bold;">1</span><span style="color: #556b2f;">]</span><span style="color: #a626a4;">)</span> <span style="color: #a626a4;">{</span>
+      all<span style="color: #556b2f;">[</span>now<span style="color: #556b2f;">]</span> = i;
+      dfs<span style="color: #556b2f;">(</span>now + <span style="color: #8a3b3c; font-weight: bold;">1</span>, last - i<span style="color: #556b2f;">)</span>;
+    <span style="color: #a626a4;">}</span>
+<span style="color: #014980;">}</span>
+
+<span style="font-weight: bold;">int</span> <span style="font-weight: bold;">main</span><span style="color: #014980;">()</span> <span style="color: #014980;">{</span>
+  cin &gt;&gt; n;
+  dfs<span style="color: #a626a4;">(</span><span style="color: #8a3b3c; font-weight: bold;">0</span>, n<span style="color: #a626a4;">)</span>;
+  <span style="font-weight: bold;">return</span> <span style="color: #8a3b3c; font-weight: bold;">0</span>;
+<span style="color: #014980;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org36a9e61" class="outline-2">
+<h2 id="org36a9e61">马的遍历</h2>
+<div class="outline-text-2" id="text-org36a9e61">
+<p>
+<a href="https://www.luogu.com.cn/problem/P1443">https://www.luogu.com.cn/problem/P1443</a><br>
+</p>
+</div>
+<div id="outline-container-orgb9c4411" class="outline-3">
+<h3 id="orgb9c4411">思路</h3>
+<div class="outline-text-3" id="text-orgb9c4411">
+<p>
+题目叫我们计算到达一个点需要多少步，那我们就模拟一只马走路即可，但一只马一步可能走好多个地方，使用循环是不能做出来的，我们必须把马的状态保存起来，每走一次更新一下。<br>
+使用队列保存马每一步的坐标与步数，每次取出一个步数最小的状态，把下一步可能的状态计算出并加入到队列就行了。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org1a2be27" class="outline-3">
+<h3 id="org1a2be27">代码</h3>
+<div class="outline-text-3" id="text-org1a2be27">
+<div class="org-src-container">
+<pre class="src src-C++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">cstdio</span><span style="color: #014980;">&gt;</span>
+<span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
+<span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">map</span><span style="color: #014980;">&gt;</span>
+<span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">queue</span><span style="color: #014980;">&gt;</span>
+
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="color: #383a42;">std</span>;
+
+<span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#20351;&#29992;&#32467;&#26500;&#20307;&#20445;&#23384;&#39532;&#30340;&#29366;&#24577;</span>
+<span style="font-weight: bold;">struct</span> <span style="font-weight: bold;">Horse</span> <span style="color: #014980;">{</span>
+  <span style="font-weight: bold;">int</span> <span style="color: #383a42;">x</span>;
+  <span style="font-weight: bold;">int</span> <span style="color: #383a42;">y</span>;
+  <span style="font-weight: bold;">int</span> <span style="color: #383a42;">time</span>;
+  <span style="font-weight: bold;">Horse</span><span style="color: #a626a4;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">a</span>, <span style="font-weight: bold;">int</span> <span style="color: #383a42;">b</span>, <span style="font-weight: bold;">int</span> <span style="color: #383a42;">c</span><span style="color: #a626a4;">)</span> <span style="color: #a626a4;">{</span>
+    x = a;
+    y = b;
+    time = c;
+  <span style="color: #a626a4;">}</span>
+<span style="color: #014980;">}</span>;
+
+<span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#35760;&#24405;&#39532;&#19979;&#19968;&#27493;&#21487;&#20197;&#36208;&#30340;&#26041;&#21521;</span>
+<span style="font-weight: bold;">int</span> <span style="color: #383a42;">nex</span><span style="color: #014980;">[</span><span style="color: #8a3b3c; font-weight: bold;">8</span><span style="color: #014980;">][</span><span style="color: #8a3b3c; font-weight: bold;">2</span><span style="color: #014980;">]</span> = <span style="color: #014980;">{</span><span style="color: #8a3b3c; font-weight: bold;">2</span>, <span style="color: #8a3b3c; font-weight: bold;">1</span>, -<span style="color: #8a3b3c; font-weight: bold;">2</span>, <span style="color: #8a3b3c; font-weight: bold;">1</span>, -<span style="color: #8a3b3c; font-weight: bold;">2</span>, -<span style="color: #8a3b3c; font-weight: bold;">1</span>, <span style="color: #8a3b3c; font-weight: bold;">2</span>, -<span style="color: #8a3b3c; font-weight: bold;">1</span>, <span style="color: #8a3b3c; font-weight: bold;">1</span>, <span style="color: #8a3b3c; font-weight: bold;">2</span>, <span style="color: #8a3b3c; font-weight: bold;">1</span>, -<span style="color: #8a3b3c; font-weight: bold;">2</span>, -<span style="color: #8a3b3c; font-weight: bold;">1</span>, -<span style="color: #8a3b3c; font-weight: bold;">2</span>, -<span style="color: #8a3b3c; font-weight: bold;">1</span>, <span style="color: #8a3b3c; font-weight: bold;">2</span><span style="color: #014980;">}</span>;
+
+<span style="font-weight: bold;">int</span> <span style="font-weight: bold;">main</span><span style="color: #014980;">()</span> <span style="color: #014980;">{</span>
+  <span style="font-weight: bold;">int</span> <span style="color: #383a42;">n</span>, <span style="color: #383a42;">m</span>, <span style="color: #383a42;">x</span>, <span style="color: #383a42;">y</span>;
+  cin &gt;&gt; n &gt;&gt; m &gt;&gt; x &gt;&gt; y;
+  <span style="font-weight: bold;">int</span> <span style="color: #383a42;">board</span><span style="color: #a626a4;">[</span>n + <span style="color: #8a3b3c; font-weight: bold;">1</span><span style="color: #a626a4;">][</span>m + <span style="color: #8a3b3c; font-weight: bold;">1</span><span style="color: #a626a4;">]</span>;
+  <span style="font-weight: bold;">bool</span> <span style="color: #383a42;">iswalk</span><span style="color: #a626a4;">[</span>n + <span style="color: #8a3b3c; font-weight: bold;">1</span><span style="color: #a626a4;">][</span>m + <span style="color: #8a3b3c; font-weight: bold;">1</span><span style="color: #a626a4;">]</span>;
+
+  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#20808;&#20840;&#25918;&#19978;-1&#65292;&#21040;&#36798;&#19981;&#20102;&#30340;&#28857;&#33258;&#28982;&#23601;&#26159;-1&#20102;</span>
+  <span style="font-weight: bold;">for</span> <span style="color: #a626a4;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">i</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>; i &lt;= n; i++<span style="color: #a626a4;">)</span>
+    <span style="font-weight: bold;">for</span> <span style="color: #a626a4;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">j</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>; j &lt;= m; j++<span style="color: #a626a4;">)</span>
+      board<span style="color: #a626a4;">[</span>i<span style="color: #a626a4;">][</span>j<span style="color: #a626a4;">]</span> = -<span style="color: #8a3b3c; font-weight: bold;">1</span>, iswalk<span style="color: #a626a4;">[</span>i<span style="color: #a626a4;">][</span>j<span style="color: #a626a4;">]</span> = <span style="color: #383a42;">false</span>;
+
+  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#25918;&#20837;&#21021;&#22987;&#26465;&#20214;</span>
+  <span style="font-weight: bold;">queue</span><span style="color: #a626a4;">&lt;</span><span style="font-weight: bold;">Horse</span><span style="color: #a626a4;">&gt;</span> <span style="color: #383a42;">q</span>;
+  q.push<span style="color: #a626a4;">(</span>Horse<span style="color: #556b2f;">(</span>x, y, <span style="color: #8a3b3c; font-weight: bold;">0</span><span style="color: #556b2f;">)</span><span style="color: #a626a4;">)</span>;
+  iswalk<span style="color: #a626a4;">[</span>x<span style="color: #a626a4;">][</span>y<span style="color: #a626a4;">]</span> = <span style="color: #383a42;">true</span>;
+
+  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#24490;&#29615;&#21040;&#38431;&#21015;&#20026;&#31354;</span>
+  <span style="font-weight: bold;">while</span> <span style="color: #a626a4;">(</span><span style="color: #383a42; font-weight: bold;">!</span>q.empty<span style="color: #556b2f;">()</span><span style="color: #a626a4;">)</span> <span style="color: #a626a4;">{</span>
+    <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#21462;&#20986;&#38431;&#39318;&#20803;&#32032;</span>
+    <span style="font-weight: bold;">Horse</span> <span style="color: #383a42;">in</span> = q.front<span style="color: #556b2f;">()</span>;
+    q.pop<span style="color: #556b2f;">()</span>;
+    <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#26356;&#26032;&#24403;&#21069;&#26368;&#23567;&#27493;&#25968;</span>
+    board<span style="color: #556b2f;">[</span>in.x<span style="color: #556b2f;">][</span>in.y<span style="color: #556b2f;">]</span> = in.time;
+
+    <span style="font-weight: bold;">for</span> <span style="color: #556b2f;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">i</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>; i &lt; <span style="color: #8a3b3c; font-weight: bold;">8</span>; i++<span style="color: #556b2f;">)</span> <span style="color: #556b2f;">{</span>
+      <span style="font-weight: bold;">int</span> <span style="color: #383a42;">nx</span> = in.x + nex<span style="color: #b751b6;">[</span>i<span style="color: #b751b6;">][</span><span style="color: #8a3b3c; font-weight: bold;">0</span><span style="color: #b751b6;">]</span>, <span style="color: #383a42;">ny</span> = in.y + nex<span style="color: #b751b6;">[</span>i<span style="color: #b751b6;">][</span><span style="color: #8a3b3c; font-weight: bold;">1</span><span style="color: #b751b6;">]</span>;
+      <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#36229;&#20986;&#36793;&#30028;&#25110;&#32773;&#24050;&#32463;&#36208;&#36807;&#23601;&#30475;&#19979;&#19968;&#31181;&#24773;&#20917;</span>
+      <span style="font-weight: bold;">if</span> <span style="color: #b751b6;">(</span><span style="font-weight: bold;">nx</span> <span style="color: #014980;">&lt;</span> <span style="color: #8a3b3c; font-weight: bold;">1</span> || <span style="font-weight: bold;">ny</span> <span style="color: #a626a4;">&lt;</span> <span style="color: #8a3b3c; font-weight: bold;">1</span> || nx <span style="color: #a626a4;">&gt;</span> n || ny <span style="color: #014980;">&gt;</span> <span style="color: #383a42;">m</span> || iswalk<span style="color: #014980;">[</span>nx<span style="color: #014980;">][</span>ny<span style="color: #014980;">]</span><span style="color: #b751b6;">)</span>
+        <span style="font-weight: bold;">continue</span>;
+      q.push<span style="color: #b751b6;">(</span>Horse<span style="color: #014980;">(</span>nx, ny, in.time + <span style="color: #8a3b3c; font-weight: bold;">1</span><span style="color: #014980;">)</span><span style="color: #b751b6;">)</span>;
+      iswalk<span style="color: #b751b6;">[</span>nx<span style="color: #b751b6;">][</span>ny<span style="color: #b751b6;">]</span> = <span style="color: #383a42;">true</span>;
+    <span style="color: #556b2f;">}</span>
+  <span style="color: #a626a4;">}</span>
+
+  <span style="font-weight: bold;">for</span> <span style="color: #a626a4;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">i</span> = <span style="color: #8a3b3c; font-weight: bold;">1</span>; i &lt;= n; i++<span style="color: #a626a4;">)</span> <span style="color: #a626a4;">{</span>
+    <span style="font-weight: bold;">for</span> <span style="color: #556b2f;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">j</span> = <span style="color: #8a3b3c; font-weight: bold;">1</span>; j &lt;= m; j++<span style="color: #556b2f;">)</span>
+      printf<span style="color: #556b2f;">(</span><span style="color: #8a3b3c;">"%-5d"</span>, board<span style="color: #b751b6;">[</span>i<span style="color: #b751b6;">][</span>j<span style="color: #b751b6;">]</span><span style="color: #556b2f;">)</span>;
+    printf<span style="color: #556b2f;">(</span><span style="color: #8a3b3c;">"\n"</span><span style="color: #556b2f;">)</span>;
+  <span style="color: #a626a4;">}</span>
+  <span style="font-weight: bold;">return</span> <span style="color: #8a3b3c; font-weight: bold;">0</span>;
+<span style="color: #014980;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbaac16c" class="outline-2">
+<h2 id="orgbaac16c">奇怪的电梯</h2>
+<div class="outline-text-2" id="text-orgbaac16c">
+<p>
+<a href="https://www.luogu.com.cn/problem/P1135">https://www.luogu.com.cn/problem/P1135</a><br>
+</p>
+</div>
+<div id="outline-container-org6f2f89c" class="outline-3">
+<h3 id="org6f2f89c">思路</h3>
+<div class="outline-text-3" id="text-org6f2f89c">
+<p>
+根据题意，一个楼层最多只能跳转到另外两个楼层，一个节点表示一个楼层，画成图就是一个节点连接着两个节点，可以自己尝试的在纸上画一下。<br>
+</p>
+
+<p>
+那么题目的意思就是在这一张图上找到起点到终点的最短距离，使用 <code>bfs</code> 即可。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org045a29d" class="outline-3">
+<h3 id="org045a29d">代码</h3>
+<div class="outline-text-3" id="text-org045a29d">
+<div class="org-src-container">
+<pre class="src src-C++"><span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">iostream</span><span style="color: #014980;">&gt;</span>
+<span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">queue</span><span style="color: #014980;">&gt;</span>
+<span style="color: #383a42; font-weight: bold;">#include</span> <span style="color: #014980;">&lt;</span><span style="color: #8a3b3c;">set</span><span style="color: #014980;">&gt;</span>
+
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="color: #383a42;">std</span>;
+
+<span style="font-weight: bold;">set</span><span style="color: #014980;">&lt;</span><span style="font-weight: bold;">int</span><span style="color: #014980;">&gt;</span> <span style="color: #383a42;">all</span>;
+<span style="color: #556b2f;">// </span><span style="color: #556b2f;">a&#21040;b&#30340;&#26368;&#23569;&#27425;&#25968;</span>
+<span style="font-weight: bold;">int</span> <span style="color: #383a42;">count</span> = -<span style="color: #8a3b3c; font-weight: bold;">1</span>;
+
+<span style="font-weight: bold;">int</span> <span style="font-weight: bold;">main</span><span style="color: #014980;">()</span> <span style="color: #014980;">{</span>
+  <span style="font-weight: bold;">int</span> <span style="color: #383a42;">n</span>, <span style="color: #383a42;">a</span>, <span style="color: #383a42;">b</span>;
+  cin &gt;&gt; n &gt;&gt; a &gt;&gt; b;
+  <span style="font-weight: bold;">int</span> <span style="color: #383a42;">k</span><span style="color: #a626a4;">[</span>n + <span style="color: #8a3b3c; font-weight: bold;">1</span><span style="color: #a626a4;">]</span>;
+  <span style="font-weight: bold;">for</span> <span style="color: #a626a4;">(</span><span style="font-weight: bold;">int</span> <span style="color: #383a42;">i</span> = <span style="color: #8a3b3c; font-weight: bold;">1</span>; i &lt;= n; i++<span style="color: #a626a4;">)</span>
+    cin &gt;&gt; k<span style="color: #a626a4;">[</span>i<span style="color: #a626a4;">]</span>;
+  <span style="font-weight: bold;">queue</span><span style="color: #a626a4;">&lt;</span><span style="font-weight: bold;">int</span><span style="color: #a626a4;">&gt;</span> <span style="color: #383a42;">q</span>;
+  q.push<span style="color: #a626a4;">(</span>a<span style="color: #a626a4;">)</span>;
+
+  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#24403;&#21069;&#25353;&#19979;&#25353;&#38062;&#30340;&#27425;&#25968;</span>
+  <span style="font-weight: bold;">int</span> <span style="color: #383a42;">c</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>;
+  <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#24490;&#29615;&#21040;&#38431;&#21015;&#20026;&#31354;</span>
+  <span style="font-weight: bold;">while</span> <span style="color: #a626a4;">(</span><span style="color: #383a42; font-weight: bold;">!</span>q.empty<span style="color: #556b2f;">()</span><span style="color: #a626a4;">)</span> <span style="color: #a626a4;">{</span>
+    <span style="font-weight: bold;">queue</span><span style="color: #556b2f;">&lt;</span><span style="font-weight: bold;">int</span><span style="color: #556b2f;">&gt;</span> <span style="color: #383a42;">p</span>;
+    <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#21040;&#32456;&#28857;&#20102;&#27809;</span>
+    <span style="font-weight: bold;">int</span> <span style="color: #383a42;">flag</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>;
+    <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#20004;&#20010;&#38431;&#21015;&#31934;&#30830;&#25511;&#21046;&#25353;&#19979;&#25353;&#38062;&#30340;&#27425;&#25968;</span>
+    <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#19981;&#20351;&#29992;&#32467;&#26500;&#20307;&#23601;&#21482;&#33021;&#36825;&#26679;&#20102;</span>
+    <span style="font-weight: bold;">while</span> <span style="color: #556b2f;">(</span><span style="color: #383a42; font-weight: bold;">!</span>q.empty<span style="color: #b751b6;">()</span><span style="color: #556b2f;">)</span> <span style="color: #556b2f;">{</span>
+      <span style="font-weight: bold;">int</span> <span style="color: #383a42;">now</span> = q.front<span style="color: #b751b6;">()</span>;
+      q.pop<span style="color: #b751b6;">()</span>;
+      <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#22914;&#26524;&#21040;&#36798;&#32456;&#28857;&#23601;&#26356;&#26032;&#25968;&#25454;</span>
+      <span style="font-weight: bold;">if</span> <span style="color: #b751b6;">(</span>now == b<span style="color: #b751b6;">)</span> <span style="color: #b751b6;">{</span>
+        count = c;
+        flag = <span style="color: #8a3b3c; font-weight: bold;">1</span>;
+        <span style="font-weight: bold;">break</span>;
+      <span style="color: #b751b6;">}</span>
+      <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#32463;&#36807;&#30340;&#27004;&#23618;&#23601;&#19981;&#35201;&#20877;&#32463;&#36807;&#20102;</span>
+      all.insert<span style="color: #b751b6;">(</span>now<span style="color: #b751b6;">)</span>;
+      <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#21482;&#26377;&#20004;&#31181;&#29366;&#24577;&#65292;&#20351;&#29992;for&#22826;&#32047;&#20102;</span>
+      <span style="font-weight: bold;">int</span> <span style="color: #383a42;">next</span> = now + k<span style="color: #b751b6;">[</span>now<span style="color: #b751b6;">]</span>;
+      <span style="font-weight: bold;">if</span> <span style="color: #b751b6;">(</span>next &gt; <span style="color: #8a3b3c; font-weight: bold;">0</span> &amp;&amp; next &lt;= n &amp;&amp; <span style="color: #383a42; font-weight: bold;">!</span>all.count<span style="color: #014980;">(</span>next<span style="color: #014980;">)</span><span style="color: #b751b6;">)</span>
+        p.push<span style="color: #b751b6;">(</span>next<span style="color: #b751b6;">)</span>;
+      <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#25152;&#20197;&#30452;&#25509;&#22797;&#21046;&#19978;&#38754;&#30340;&#20877;&#25913;&#19968;&#19979;&#23601;&#34892;&#20102;</span>
+      next = now - k<span style="color: #b751b6;">[</span>now<span style="color: #b751b6;">]</span>;
+      <span style="font-weight: bold;">if</span> <span style="color: #b751b6;">(</span>next &gt; <span style="color: #8a3b3c; font-weight: bold;">0</span> &amp;&amp; next &lt;= n &amp;&amp; <span style="color: #383a42; font-weight: bold;">!</span>all.count<span style="color: #014980;">(</span>next<span style="color: #014980;">)</span><span style="color: #b751b6;">)</span>
+        p.push<span style="color: #b751b6;">(</span>next<span style="color: #b751b6;">)</span>;
+      <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#24403;&#28982;&#36825;&#26679;&#38750;&#24120;&#19981;&#22909;&#30475;</span>
+    <span style="color: #556b2f;">}</span>
+    <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#21040;&#32456;&#28857;&#23601;&#32467;&#26463;</span>
+    <span style="font-weight: bold;">if</span> <span style="color: #556b2f;">(</span>flag<span style="color: #556b2f;">)</span>
+      <span style="font-weight: bold;">break</span>;
+    <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#26356;&#26032;&#38431;&#21015;&#19982;&#25353;&#38062;&#30340;&#27425;&#25968;</span>
+    q = p;
+    c++;
+  <span style="color: #a626a4;">}</span>
+  cout &lt;&lt; count &lt;&lt; endl;
+  <span style="font-weight: bold;">return</span> <span style="color: #8a3b3c; font-weight: bold;">0</span>;
+<span style="color: #014980;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script type="text/javascript" src="/static/main.js"></script>
+            <center id="modi-date">2021-09-16 四 17:11</center>
+</div>
+</body>
+</html>

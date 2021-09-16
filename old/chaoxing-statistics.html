@@ -4,8 +4,9 @@
 <!-- 2021-09-16 四 17:11 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>所有博客</title>
+<title>超星是如何统计学习情况的</title>
 <meta name="author" content="shirui" />
+<meta name="description" content="讲讲我对超星统计学习情况的理解" />
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -201,34 +202,111 @@
 <div id="preamble" class="status">
 <div class="header">
             <a href="https://lampze.github.io">lampze's Blog</a>
-            <span id="post-date" style="float: right"></span>
+            <span id="post-date" style="float: right">2021-01-06 三 00:00</span>
             </div>
 </div>
 <div id="content" class="content">
 <header>
-<h1 class="title">所有博客</h1>
-</header><ul class="org-ul">
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-08-21 六&gt;  </span></span>  <a href="20210821102845-regularization_with_gan_output.html">正则化对 GAN 输出结果的影响</a><br></li>
-<li>old<br>
-<ul class="org-ul">
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-22 五&gt;  </span></span>  <a href="old/2021-lanqiao-simula.html">2021年蓝桥杯模拟赛题解</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-15 五&gt;  </span></span>  <a href="old/algorithm-basic-sim-search.html">算法基础-模拟与搜索</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-08 五&gt;  </span></span>  <a href="old/intro-basic-algorithm.html">基础算法简介</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-06 三&gt;  </span></span>  <a href="old/chaoxing-statistics.html">超星是如何统计学习情况的</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-11-17 二&gt;  </span></span>  <a href="old/c-cpp-tutorial.html">C/C++简明教程</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-08-19 三&gt;  </span></span>  <a href="old/nodebilibili.html">论如何在Linux下直播显示弹幕</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-07-27 一&gt;  </span></span>  <a href="old/R6900v2-lede.html">R6900v2安装LEDE.org</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-06-30 二&gt;  </span></span>  <a href="old/2020-gentoo-install.html">2020年gentoo安装分析</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-06-23 二&gt;  </span></span>  <a href="old/krunner-cwd.html">krunner工作目录在根目录的问题</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-06-12 五&gt;  </span></span>  <a href="old/about-funtoo.html">谈谈Funtoo</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-04-20 一&gt;  </span></span>  <a href="old/2020-lanqiao-Provincial-Simulation.html">2020年蓝桥杯省模拟赛题解</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-31 二&gt;  </span></span>  <a href="old/hx-auto-select-class.html">华夏学院抢课分析</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-25 三&gt;  </span></span>  <a href="old/2020-3-25-detect.html">记2020年3月25日核酸检测</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-05 四&gt;  </span></span>  <a href="old/obs-config.html">obs直播配置</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-04 三&gt;  </span></span>  <a href="old/snails-to-small.html">snails 在 Doom 下的bug</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-04 三&gt;  </span></span>  <a href="old/org-page-config.html">org-page 配置</a></li>
-</ul></li>
-</ul>
+<h1 class="title">超星是如何统计学习情况的</h1>
+</header>
+<div id="outline-container-orgf9dfb61" class="outline-2">
+<h2 id="orgf9dfb61">前言</h2>
+<div class="outline-text-2" id="text-orgf9dfb61">
+<p>
+写这篇文章当然是因为最近我有一门网课需要刷平时分，这门课的视频个数又不多，还多个视频合在一个网页上，最后又要求我们有几百次的学习次数，然后还要求我们有2个小时的阅读时长，但读物加起来顶多只有一两百页，超星的阅读统计又有些问题。为了给后人避坑，我就把摸索出来的一些经验分享出来。<br>
+</p>
+
+<p>
+如果你的网课只需要看视频的话就不用往下看了，网上对于这种方法的解决方案有很多，简单的就是在手机上自己刷。<br>
+</p>
+
+<p>
+代码的使用方法不给出，请自行钻研，直接在控制台使用是不行的，需要在页面打开时就注入代码，实现这个功能的插件网上有很详细的教程。<br>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf97a83c" class="outline-2">
+<h2 id="orgf97a83c">章节学习次数</h2>
+<div class="outline-text-2" id="text-orgf97a83c">
+</div>
+<div id="outline-container-org39850eb" class="outline-3">
+<h3 id="org39850eb">统计方法</h3>
+<div class="outline-text-3" id="text-org39850eb">
+<p>
+每打开一个视频页面等上一小会，学习次数就会增加，尚不知不滚动会不会有不良影响<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org5afe587" class="outline-3">
+<h3 id="org5afe587">刷分方法</h3>
+<div class="outline-text-3" id="text-org5afe587">
+<p>
+只需要对一个页面不停刷新即可<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgf53b5aa" class="outline-3">
+<h3 id="orgf53b5aa">代码实现</h3>
+<div class="outline-text-3" id="text-orgf53b5aa">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#25105;&#23545;&#20110;&#22823;&#37096;&#20998;&#25805;&#20316;&#21152;&#20837;&#20102;&#38543;&#26426;&#25968;</span>
+<span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#36991;&#20813;&#21487;&#33021;&#30340;&#21518;&#21488;&#26816;&#27979;</span>
+<span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#19968;&#23450;&#26102;&#38388;&#21518;&#21047;&#26032;&#26412;&#32593;&#39029;</span>
+setTimeout(() =&gt; location.reload(), <span style="color: #8a3b3c; font-weight: bold;">1000</span> * Math.random() * <span style="color: #8a3b3c; font-weight: bold;">20</span>);
+<span style="font-weight: bold;">let</span> <span style="color: #383a42;">now</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>;
+<span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#36825;&#26159;&#28378;&#21160;&#24403;&#21069;&#39029;&#38754;&#65292;&#20063;&#26159;&#36991;&#20813;&#19981;&#33391;&#24433;&#21709;</span>
+setInterval(() =&gt; window.scroll(<span style="color: #8a3b3c; font-weight: bold;">0</span>, (now = now + Math.random() * <span style="color: #8a3b3c; font-weight: bold;">10</span>)), <span style="color: #8a3b3c; font-weight: bold;">50</span>);
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org68ce9c2" class="outline-2">
+<h2 id="org68ce9c2">阅读</h2>
+<div class="outline-text-2" id="text-org68ce9c2">
+</div>
+<div id="outline-container-org263f531" class="outline-3">
+<h3 id="org263f531">统计方法</h3>
+<div class="outline-text-3" id="text-org263f531">
+<p>
+经过测试，在网页上滚动具体阅读资料的区域刷分效果不好，我测试时第二天只增加了几分钟的阅读时长，所以只能滚动全局的页面<br>
+在刷分时我还注意到一个问题，单个页面可能有分值上限，所以我又改进了刷分方式<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org7e9e118" class="outline-3">
+<h3 id="org7e9e118">刷分方法</h3>
+<div class="outline-text-3" id="text-org7e9e118">
+<p>
+打开阅读界面，不停向下滚动到底，到底后随机打开一个阅读页面，继续上续操作<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org4b85eed" class="outline-3">
+<h3 id="org4b85eed">代码实现</h3>
+<div class="outline-text-3" id="text-org4b85eed">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#33719;&#21462;&#38543;&#26426;&#38405;&#35835;&#39029;&#38754;</span>
+<span style="font-weight: bold;">function</span> <span style="font-weight: bold;">randu</span>() {
+  <span style="font-weight: bold;">let</span> <span style="color: #383a42;">arr</span> = [];
+  document
+    .querySelectorAll(<span style="color: #8a3b3c;">".mt10 .mb15 a"</span>)
+    .forEach((dom) =&gt; arr.push(dom.href));
+  <span style="font-weight: bold;">return</span> arr[Math.floor(Math.random() * arr.length)];
+}
+<span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#21521;&#19979;&#28378;&#21160;&#30452;&#21040;&#24213;</span>
+<span style="font-weight: bold;">let</span> <span style="color: #383a42;">now</span> = <span style="color: #8a3b3c; font-weight: bold;">0</span>;
+setInterval(() =&gt; {
+  window.scroll(<span style="color: #8a3b3c; font-weight: bold;">0</span>, (now += Math.random()));
+  <span style="font-weight: bold;">if</span> (now - <span style="color: #8a3b3c; font-weight: bold;">1</span> &gt; window.scrollY)
+    setTimeout(() =&gt; (location.href = randu()), <span style="color: #8a3b3c; font-weight: bold;">1000</span> * Math.random());
+}, <span style="color: #8a3b3c; font-weight: bold;">40</span>);
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <script type="text/javascript" src="/static/main.js"></script>

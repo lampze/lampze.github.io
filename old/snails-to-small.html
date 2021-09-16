@@ -4,8 +4,9 @@
 <!-- 2021-09-16 四 17:11 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>所有博客</title>
+<title>snails 在 Doom 下的bug</title>
 <meta name="author" content="shirui" />
+<meta name="description" content="snails报错(split-window: Window #&lt;window 9 on  *snails tips*&gt; too small for splitting)的解决办法" />
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -201,34 +202,57 @@
 <div id="preamble" class="status">
 <div class="header">
             <a href="https://lampze.github.io">lampze's Blog</a>
-            <span id="post-date" style="float: right"></span>
+            <span id="post-date" style="float: right">2020-03-04 三 00:00</span>
             </div>
 </div>
 <div id="content" class="content">
 <header>
-<h1 class="title">所有博客</h1>
-</header><ul class="org-ul">
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-08-21 六&gt;  </span></span>  <a href="20210821102845-regularization_with_gan_output.html">正则化对 GAN 输出结果的影响</a><br></li>
-<li>old<br>
-<ul class="org-ul">
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-22 五&gt;  </span></span>  <a href="old/2021-lanqiao-simula.html">2021年蓝桥杯模拟赛题解</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-15 五&gt;  </span></span>  <a href="old/algorithm-basic-sim-search.html">算法基础-模拟与搜索</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-08 五&gt;  </span></span>  <a href="old/intro-basic-algorithm.html">基础算法简介</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-01-06 三&gt;  </span></span>  <a href="old/chaoxing-statistics.html">超星是如何统计学习情况的</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-11-17 二&gt;  </span></span>  <a href="old/c-cpp-tutorial.html">C/C++简明教程</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-08-19 三&gt;  </span></span>  <a href="old/nodebilibili.html">论如何在Linux下直播显示弹幕</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-07-27 一&gt;  </span></span>  <a href="old/R6900v2-lede.html">R6900v2安装LEDE.org</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-06-30 二&gt;  </span></span>  <a href="old/2020-gentoo-install.html">2020年gentoo安装分析</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-06-23 二&gt;  </span></span>  <a href="old/krunner-cwd.html">krunner工作目录在根目录的问题</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-06-12 五&gt;  </span></span>  <a href="old/about-funtoo.html">谈谈Funtoo</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-04-20 一&gt;  </span></span>  <a href="old/2020-lanqiao-Provincial-Simulation.html">2020年蓝桥杯省模拟赛题解</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-31 二&gt;  </span></span>  <a href="old/hx-auto-select-class.html">华夏学院抢课分析</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-25 三&gt;  </span></span>  <a href="old/2020-3-25-detect.html">记2020年3月25日核酸检测</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-05 四&gt;  </span></span>  <a href="old/obs-config.html">obs直播配置</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-04 三&gt;  </span></span>  <a href="old/snails-to-small.html">snails 在 Doom 下的bug</a><br></li>
-<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-04 三&gt;  </span></span>  <a href="old/org-page-config.html">org-page 配置</a></li>
-</ul></li>
-</ul>
+<h1 class="title">snails 在 Doom 下的bug</h1>
+</header>
+<div id="outline-container-org3fab653" class="outline-2">
+<h2 id="org3fab653">问题</h2>
+<div class="outline-text-2" id="text-org3fab653">
+<p>
+自从 snails 加入了 tips 后，在 Doom 里 snails 就打不开了，会报错 <code>split-window:
+Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
+</p>
+
+<p>
+但在 <code>emacs -q</code> 下就完全没有问题
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge6e8eb8" class="outline-2">
+<h2 id="orge6e8eb8">原因</h2>
+<div class="outline-text-2" id="text-orge6e8eb8">
+<p>
+经过一番调试，发现是因为 <code>(line-pixel-height)</code> 返回的值太小了，导致不能分割窗口。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6944d0b" class="outline-2">
+<h2 id="org6944d0b">解决</h2>
+<div class="outline-text-2" id="text-org6944d0b">
+<p>
+两种方法
+</p>
+<ol class="org-ol">
+<li>修改源码把 <code>(line-pixel-height)</code> 改成可以分割的值，比如在原基础上乘二，但以后
+更新就比较难维护</li>
+
+<li>把字体调大，snails 调字体需要配置 face。</li>
+</ol>
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #014980;">(</span>def-package! snails
+  <span style="color: #556b2f;">;; </span><span style="color: #556b2f;">&#35201;&#22312;&#36733;&#20837;&#23436;&#20043;&#21518;&#20462;&#25913;face</span>
+  <span style="font-weight: bold;">:config</span>
+  <span style="color: #a626a4;">(</span><span style="color: #383a42;">set-face-attribute</span> <span style="color: #383a42;">'</span><span style="color: #383a42;">snails-content-buffer-face</span> nil <span style="font-weight: bold;">:height</span> <span style="color: #8a3b3c; font-weight: bold;">240</span><span style="color: #a626a4;">)</span><span style="color: #014980;">)</span>
+</pre>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <script type="text/javascript" src="/static/main.js"></script>
