@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-<!-- 2021-09-16 四 17:11 -->
+<!-- 2021-12-09 四 17:18 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>正则化对 GAN 输出结果的影响</title>
@@ -208,24 +208,24 @@
 <header>
 <h1 class="title">正则化对 GAN 输出结果的影响</h1>
 </header>
-<div id="outline-container-orgd431535" class="outline-2">
-<h2 id="orgd431535">前言</h2>
-<div class="outline-text-2" id="text-orgd431535">
+<div id="outline-container-orgcb0898b" class="outline-2">
+<h2 id="orgcb0898b">前言</h2>
+<div class="outline-text-2" id="text-orgcb0898b">
 <p>
 在我尝试使用正则化解决 <code>GAN</code> 模式崩溃的问题时，我发现了一个有意思的现象。我给模型添加了 <code>L2</code> 正则项后，生成的图片比以往要模糊许多，所以我决定测试一下，模糊是不是由 <code>L2</code> 导致的。<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org7881eac" class="outline-2">
-<h2 id="org7881eac">测试</h2>
-<div class="outline-text-2" id="text-org7881eac">
+<div id="outline-container-orgaabc24f" class="outline-2">
+<h2 id="orgaabc24f">测试</h2>
+<div class="outline-text-2" id="text-orgaabc24f">
 <p>
 本模型除了 <code>L1</code> 、 <code>L2</code> 、 <code>Dropout</code> 还使用了其他的优化方法， <code>LayerNorm</code> 、 <code>GELU</code> 、 <code>Adam</code> 。每种模型的训练次数相同，没有给图片加标签，让模式崩溃的效果更明显些。<br>
 </p>
 </div>
-<div id="outline-container-orga67dfc1" class="outline-3">
-<h3 id="orga67dfc1">基础代码</h3>
-<div class="outline-text-3" id="text-orga67dfc1">
+<div id="outline-container-orgf4725a3" class="outline-3">
+<h3 id="orgf4725a3">基础代码</h3>
+<div class="outline-text-3" id="text-orgf4725a3">
 <p>
 后面的测试都是基于这份代码之上修改，只放了关键的模型定义与训练代码。<br>
 </p>
@@ -311,28 +311,28 @@ G = Generator()
 后面的测试只放修改位置的代码。<br>
 </p>
 </div>
-<div id="outline-container-org6091e1e" class="outline-4">
-<h4 id="org6091e1e">训练结果</h4>
-<div class="outline-text-4" id="text-org6091e1e">
+<div id="outline-container-org476dc8d" class="outline-4">
+<h4 id="org476dc8d">训练结果</h4>
+<div class="outline-text-4" id="text-org476dc8d">
 
-<figure id="org9b7cd43">
+<figure id="orgaf957af">
 <img src="./static/img/regularization_with_gan_output/normal.png" alt="normal.png"><br>
 
 </figure>
 </div>
 </div>
-<div id="outline-container-org8da76e4" class="outline-4">
-<h4 id="org8da76e4">评价</h4>
-<div class="outline-text-4" id="text-org8da76e4">
+<div id="outline-container-orgfd9449d" class="outline-4">
+<h4 id="orgfd9449d">评价</h4>
+<div class="outline-text-4" id="text-orgfd9449d">
 <p>
 有些许的模式崩溃现象，只有几种类型的数字，数字的颗粒感比较严重，不够平滑。<br>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfd4b496" class="outline-3">
-<h3 id="orgfd4b496">L1</h3>
-<div class="outline-text-3" id="text-orgfd4b496">
+<div id="outline-container-orgbe1d6fd" class="outline-3">
+<h3 id="orgbe1d6fd">L1</h3>
+<div class="outline-text-3" id="text-orgbe1d6fd">
 <p>
 更改训练函数即可<br>
 </p>
@@ -355,28 +355,28 @@ G = Generator()
 </pre>
 </div>
 </div>
-<div id="outline-container-orgdd0617e" class="outline-4">
-<h4 id="orgdd0617e">训练结果</h4>
-<div class="outline-text-4" id="text-orgdd0617e">
+<div id="outline-container-org0ee3427" class="outline-4">
+<h4 id="org0ee3427">训练结果</h4>
+<div class="outline-text-4" id="text-org0ee3427">
 
-<figure id="org1311c4e">
+<figure id="orgda7de16">
 <img src="./static/img/regularization_with_gan_output/l1.png" alt="l1.png"><br>
 
 </figure>
 </div>
 </div>
-<div id="outline-container-org8e0984d" class="outline-4">
-<h4 id="org8e0984d">评价</h4>
-<div class="outline-text-4" id="text-org8e0984d">
+<div id="outline-container-org09291a8" class="outline-4">
+<h4 id="org09291a8">评价</h4>
+<div class="outline-text-4" id="text-org09291a8">
 <p>
 几乎没有可以识别的数字，可能是训练次数不够，但数字可以明显看出比较平滑，也就是那种模糊的效果。<br>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org6266059" class="outline-3">
-<h3 id="org6266059">L2</h3>
-<div class="outline-text-3" id="text-org6266059">
+<div id="outline-container-org401c451" class="outline-3">
+<h3 id="org401c451">L2</h3>
+<div class="outline-text-3" id="text-org401c451">
 <p>
 <code>pytorch</code> 的优化器通过参数 <code>weight_decay</code> 可以实现 <code>L2</code> 正则。<br>
 </p>
@@ -387,28 +387,28 @@ G = Generator()
 </pre>
 </div>
 </div>
-<div id="outline-container-org38094c5" class="outline-4">
-<h4 id="org38094c5">训练结果</h4>
-<div class="outline-text-4" id="text-org38094c5">
+<div id="outline-container-org4d2ccc8" class="outline-4">
+<h4 id="org4d2ccc8">训练结果</h4>
+<div class="outline-text-4" id="text-org4d2ccc8">
 
-<figure id="orgc4af566">
+<figure id="org00f7cc7">
 <img src="./static/img/regularization_with_gan_output/l2.png" alt="l2.png"><br>
 
 </figure>
 </div>
 </div>
-<div id="outline-container-org51acb9a" class="outline-4">
-<h4 id="org51acb9a">评价</h4>
-<div class="outline-text-4" id="text-org51acb9a">
+<div id="outline-container-org6275533" class="outline-4">
+<h4 id="org6275533">评价</h4>
+<div class="outline-text-4" id="text-org6275533">
 <p>
 相比 <code>L1</code> 数字周围更加干净，更加清晰一些，但模糊的效果还在，与 <code>L1</code> 的差异不排除随机误差的可能。<br>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org1dc2050" class="outline-3">
-<h3 id="org1dc2050">Dropout</h3>
-<div class="outline-text-3" id="text-org1dc2050">
+<div id="outline-container-orgc8a7ec6" class="outline-3">
+<h3 id="orgc8a7ec6">Dropout</h3>
+<div class="outline-text-3" id="text-orgc8a7ec6">
 <p>
 这个添加一个 <code>Dropout</code> 层即可<br>
 </p>
@@ -424,42 +424,42 @@ G = Generator()
 </pre>
 </div>
 </div>
-<div id="outline-container-org83d0c32" class="outline-4">
-<h4 id="org83d0c32">训练结果</h4>
-<div class="outline-text-4" id="text-org83d0c32">
+<div id="outline-container-org3c0eb7b" class="outline-4">
+<h4 id="org3c0eb7b">训练结果</h4>
+<div class="outline-text-4" id="text-org3c0eb7b">
 
-<figure id="orgedbe585">
+<figure id="org67078d9">
 <img src="./static/img/regularization_with_gan_output/dropout.png" alt="dropout.png"><br>
 
 </figure>
 </div>
 </div>
-<div id="outline-container-orgc2b425b" class="outline-4">
-<h4 id="orgc2b425b">评价</h4>
-<div class="outline-text-4" id="text-orgc2b425b">
+<div id="outline-container-org6a94aad" class="outline-4">
+<h4 id="org6a94aad">评价</h4>
+<div class="outline-text-4" id="text-org6a94aad">
 <p>
 没有了模糊效果，但数字都不成形，可能是训练次数不够。<br>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc72570b" class="outline-3">
-<h3 id="orgc72570b">Dropout + L2</h3>
-<div class="outline-text-3" id="text-orgc72570b">
+<div id="outline-container-orga0f0edb" class="outline-3">
+<h3 id="orga0f0edb">Dropout + L2</h3>
+<div class="outline-text-3" id="text-orga0f0edb">
 </div>
-<div id="outline-container-org75ebd86" class="outline-4">
-<h4 id="org75ebd86">训练结果</h4>
-<div class="outline-text-4" id="text-org75ebd86">
+<div id="outline-container-org0995401" class="outline-4">
+<h4 id="org0995401">训练结果</h4>
+<div class="outline-text-4" id="text-org0995401">
 
-<figure id="org9a68a19">
+<figure id="org0057163">
 <img src="./static/img/regularization_with_gan_output/dropout_l2.png" alt="dropout_l2.png"><br>
 
 </figure>
 </div>
 </div>
-<div id="outline-container-orgff3b435" class="outline-4">
-<h4 id="orgff3b435">评价</h4>
-<div class="outline-text-4" id="text-orgff3b435">
+<div id="outline-container-org538c2aa" class="outline-4">
+<h4 id="org538c2aa">评价</h4>
+<div class="outline-text-4" id="text-org538c2aa">
 <p>
 数字很平滑，但都不成型。<br>
 </p>
@@ -467,9 +467,9 @@ G = Generator()
 </div>
 </div>
 </div>
-<div id="outline-container-orgcb10a21" class="outline-2">
-<h2 id="orgcb10a21">结论</h2>
-<div class="outline-text-2" id="text-orgcb10a21">
+<div id="outline-container-org69fd22e" class="outline-2">
+<h2 id="org69fd22e">结论</h2>
+<div class="outline-text-2" id="text-org69fd22e">
 <p>
 经过我不严谨的实验可以发现， <code>L1</code> 与 <code>L2</code> 正则化生成的图片确实会有模糊的效果，具体的原因可能是因为 <code>L1</code> 会让神经网络的参数矩阵更加稀疏， <code>L2</code> 不会让单个参数过大，也就不会因为一个神经元大范围改变结果，而尖锐的效果就是相邻的像素之间差别过大，故会产生模糊的效果。<br>
 </p>
@@ -478,7 +478,7 @@ G = Generator()
 </div>
 <div id="postamble" class="status">
 <script type="text/javascript" src="/static/main.js"></script>
-            <center id="modi-date">2021-09-16 四 17:11</center>
+            <center id="modi-date">2021-12-09 四 17:18</center>
 </div>
 </body>
 </html>

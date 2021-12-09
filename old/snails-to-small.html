@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-<!-- 2021-09-16 四 17:11 -->
+<!-- 2021-12-09 四 17:18 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>snails 在 Doom 下的bug</title>
@@ -209,9 +209,9 @@
 <header>
 <h1 class="title">snails 在 Doom 下的bug</h1>
 </header>
-<div id="outline-container-org3fab653" class="outline-2">
-<h2 id="org3fab653">问题</h2>
-<div class="outline-text-2" id="text-org3fab653">
+<div id="outline-container-orgd4a23d2" class="outline-2">
+<h2 id="orgd4a23d2">问题</h2>
+<div class="outline-text-2" id="text-orgd4a23d2">
 <p>
 自从 snails 加入了 tips 后，在 Doom 里 snails 就打不开了，会报错 <code>split-window:
 Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
@@ -223,18 +223,18 @@ Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
 </div>
 </div>
 
-<div id="outline-container-orge6e8eb8" class="outline-2">
-<h2 id="orge6e8eb8">原因</h2>
-<div class="outline-text-2" id="text-orge6e8eb8">
+<div id="outline-container-org21fde3a" class="outline-2">
+<h2 id="org21fde3a">原因</h2>
+<div class="outline-text-2" id="text-org21fde3a">
 <p>
 经过一番调试，发现是因为 <code>(line-pixel-height)</code> 返回的值太小了，导致不能分割窗口。
 </p>
 </div>
 </div>
 
-<div id="outline-container-org6944d0b" class="outline-2">
-<h2 id="org6944d0b">解决</h2>
-<div class="outline-text-2" id="text-org6944d0b">
+<div id="outline-container-org1f1a92f" class="outline-2">
+<h2 id="org1f1a92f">解决</h2>
+<div class="outline-text-2" id="text-org1f1a92f">
 <p>
 两种方法
 </p>
@@ -256,7 +256,7 @@ Window #&lt;window 9 on  *snails tips*&gt; too small for splitting</code>
 </div>
 <div id="postamble" class="status">
 <script type="text/javascript" src="/static/main.js"></script>
-            <center id="modi-date">2021-09-16 四 17:11</center>
+            <center id="modi-date">2021-12-09 四 17:18</center>
 </div>
 </body>
 </html>

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-<!-- 2021-12-09 四 17:18 -->
+<!-- 2021-12-09 四 17:20 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>krunner工作目录在根目录的问题</title>
+<title>让emacs29支持鼠标像素滚动</title>
 <meta name="author" content="shirui" />
-<meta name="description" content="找到了如何避免krunner运行在根目录下的方法" />
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -202,42 +201,99 @@
 <div id="preamble" class="status">
 <div class="header">
             <a href="https://lampze.github.io">lampze's Blog</a>
-            <span id="post-date" style="float: right">2020-06-23 二 00:00</span>
+            <span id="post-date" style="float: right">2021-12-09 四 17:19</span>
             </div>
 </div>
 <div id="content" class="content">
 <header>
-<h1 class="title">krunner工作目录在根目录的问题</h1>
+<h1 class="title">让emacs29支持鼠标像素滚动</h1>
 </header>
-<div id="outline-container-org445ae08" class="outline-2">
-<h2 id="org445ae08">前言</h2>
-<div class="outline-text-2" id="text-org445ae08">
+<div id="outline-container-org52da1b4" class="outline-2">
+<h2 id="org52da1b4">起因</h2>
+<div class="outline-text-2" id="text-org52da1b4">
 <p>
-不知道有没有人在用 <code>plasma</code> 时发现和我一样的问题，有时 <code>Alt + Space</code> 打开 <code>konsole</code> 有时是 <code>root</code> 目录，有时是 <code>HOME</code> 目录。终端还好说直接 <code>cd</code> 就能跳转到 <code>HOME</code> 目录，但用 <code>emacs</code> 时就比较难受了。
+在 <code>Emacs China</code> 上看到了<a href="https://emacs-china.org/t/emacs/19016/81">Emacs 支持像素滚动了</a>这个帖子，发现 <code>Emacs 29</code> 添加了另一种像素滚动支持的方法，那我当然要来尝试一下了。<br>
 </p>
 
 <p>
-在更新系统，切换版本等各种手段都用尽后我终于定位到 <code>BUG</code> 并且有比较方便的方法解决这个问题了。
+之前的像素滚动是在切换行时加一个动画，本质还是以行为单位滚动的，也就不可能显示出一行文字的一半。这种方法有很大的问题，因为 <code>org-mode</code> 的行内图像是占一行的，所以在浏览有图像的 <code>org-mode</code> 文件时图像会突然出现，突然消失，在极端情况下根本不能使用鼠标滚动出图像的区域。<br>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgc8f7de2" class="outline-2">
-<h2 id="orgc8f7de2">问题与解决</h2>
-<div class="outline-text-2" id="text-orgc8f7de2">
+<div id="outline-container-org11ae26b" class="outline-2">
+<h2 id="org11ae26b">支持方法</h2>
+<div class="outline-text-2" id="text-org11ae26b">
 <p>
-我发现在桌面直接输入命令打开应用时会出现导致之后所以命令都是在 <code>root</code> 目录打开的，但使用 <code>Alt + Space</code> 命令打开 <code>krunner</code> 就不会有这个问题。
+注意！！！随着 <code>Emacs</code> 的更新，下面的方法随时可能会失效！！！<br>
+</p>
+
+<blockquote>
+<p>
+Emacs 29 的用户可以开启 `pixel-scroll-precision-mode’ 直接使用（在 X11 平台需要编译时提供 “–with-xinput2”）。<br>
+</p>
+</blockquote>
+
+<p>
+上面是作者的原话，不确定是否添加 <code>--with-xinput2</code> 的 <code>Linux</code> 用户就添加上吧，其它平台不需要。<br>
 </p>
 
 <p>
-所以只需要改变一个用户习惯，一开机就按下快捷键就解决了。但根本问题还是没有解决，但继续查下去估计就要翻源码了，想探索的同学就继续吧，我给你加油。
+不同 <code>Linux</code> 发行版的支持方法不同，对于 <code>Ubuntu</code> 之类二进制包管理的发行版，就自己下载源码编译安装吧。<br>
 </p>
+</div>
+
+<div id="outline-container-org895b981" class="outline-3">
+<h3 id="org895b981">Hack</h3>
+<div class="outline-text-3" id="text-org895b981">
+<p>
+这是对于 <code>Gentoo</code> 用户的小技巧，官方随时可能支持 <code>--with-xinput2</code> ，到时直接启用相关的 <code>use</code> 关键字就行了。<br>
+</p>
+
+<ol class="org-ol">
+<li>打开 /etc/portage/make.conf 文件<br></li>
+<li>找到 <code>PORTDIR</code> 变量<br></li>
+<li><code>cd</code> 进入 <code>PORTDIR</code> 所指向的路径<br></li>
+<li>编辑 app-editors/emacs/emacs-29.0.9999.ebuild 文件<br></li>
+<li>在 <code>--with-x --without-ns</code> 这一行里添加 <code>--with-xinput2</code><br></li>
+</ol>
+
+<p>
+效果如下所示：<br>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">    <span style="font-weight: bold;">if</span> <span style="color: #383a42; font-weight: bold;">!</span> use gui; <span style="font-weight: bold;">then</span>
+        einfo <span style="color: #8a3b3c;">"Configuring to build without window system support"</span>
+        <span style="color: #383a42;">myconf</span>+=<span style="color: #8a3b3c;">" --without-x --without-ns"</span>
+    <span style="font-weight: bold;">elif</span> use aqua; <span style="font-weight: bold;">then</span>
+        einfo <span style="color: #8a3b3c;">"Configuring to build with Nextstep (Macintosh Cocoa) support"</span>
+        <span style="color: #383a42;">myconf</span>+=<span style="color: #8a3b3c;">" --with-ns --disable-ns-self-contained"</span>
+        <span style="color: #383a42;">myconf</span>+=<span style="color: #8a3b3c;">" --without-x"</span>
+    <span style="font-weight: bold;">else</span>
+        <span style="color: #383a42;">myconf</span>+=<span style="color: #8a3b3c;">" --with-x --without-ns --with-xinput2"</span> <span style="color: #556b2f;"># </span><span style="color: #556b2f;">&#22312;&#36825;&#37324;&#28155;&#21152;</span>
+        <span style="color: #383a42;">myconf</span>+=<span style="color: #8a3b3c;">" </span><span style="color: #383a42; font-weight: bold;">$(use_with gconf)</span><span style="color: #8a3b3c;">"</span>
+        <span style="color: #383a42;">myconf</span>+=<span style="color: #8a3b3c;">" </span><span style="color: #383a42; font-weight: bold;">$(use_with gsettings)</span><span style="color: #8a3b3c;">"</span>
+        <span style="color: #383a42;">myconf</span>+=<span style="color: #8a3b3c;">" </span><span style="color: #383a42; font-weight: bold;">$(use_with toolkit-scroll-bars)</span><span style="color: #8a3b3c;">"</span>
+        <span style="color: #383a42;">myconf</span>+=<span style="color: #8a3b3c;">" </span><span style="color: #383a42; font-weight: bold;">$(use_with gif)</span><span style="color: #8a3b3c;">"</span>
+        <span style="color: #383a42;">myconf</span>+=<span style="color: #8a3b3c;">" </span><span style="color: #383a42; font-weight: bold;">$(use_with jpeg)</span><span style="color: #8a3b3c;">"</span>
+        <span style="color: #383a42;">myconf</span>+=<span style="color: #8a3b3c;">" </span><span style="color: #383a42; font-weight: bold;">$(use_with png)</span><span style="color: #8a3b3c;">"</span>
+        <span style="color: #383a42;">myconf</span>+=<span style="color: #8a3b3c;">" </span><span style="color: #383a42; font-weight: bold;">$(use_with svg rsvg)</span><span style="color: #8a3b3c;">"</span>
+        <span style="color: #383a42;">myconf</span>+=<span style="color: #8a3b3c;">" </span><span style="color: #383a42; font-weight: bold;">$(use_with tiff)</span><span style="color: #8a3b3c;">"</span>
+        <span style="color: #383a42;">myconf</span>+=<span style="color: #8a3b3c;">" </span><span style="color: #383a42; font-weight: bold;">$(use_with xpm)</span><span style="color: #8a3b3c;">"</span>
+        <span style="color: #383a42;">myconf</span>+=<span style="color: #8a3b3c;">" </span><span style="color: #383a42; font-weight: bold;">$(use_with imagemagick)</span><span style="color: #8a3b3c;">"</span>
+</pre>
+</div>
+
+<p>
+接下来运行 <code>emerge emacs</code> 重新安装 <code>Emacs 29</code> 即可，当然你要先在 <code>/etc/portage/package.accept_keywords</code> 开启 <code>Emacs</code> 的 <code>**</code> 关键字。<br>
+</p>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <script type="text/javascript" src="/static/main.js"></script>
-            <center id="modi-date">2021-12-09 四 17:18</center>
+            <center id="modi-date">2021-12-09 四 17:20</center>
 </div>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-<!-- 2021-09-16 四 17:11 -->
+<!-- 2021-12-09 四 17:18 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>超星是如何统计学习情况的</title>
@@ -209,9 +209,9 @@
 <header>
 <h1 class="title">超星是如何统计学习情况的</h1>
 </header>
-<div id="outline-container-orgf9dfb61" class="outline-2">
-<h2 id="orgf9dfb61">前言</h2>
-<div class="outline-text-2" id="text-orgf9dfb61">
+<div id="outline-container-orgfac1750" class="outline-2">
+<h2 id="orgfac1750">前言</h2>
+<div class="outline-text-2" id="text-orgfac1750">
 <p>
 写这篇文章当然是因为最近我有一门网课需要刷平时分，这门课的视频个数又不多，还多个视频合在一个网页上，最后又要求我们有几百次的学习次数，然后还要求我们有2个小时的阅读时长，但读物加起来顶多只有一两百页，超星的阅读统计又有些问题。为了给后人避坑，我就把摸索出来的一些经验分享出来。<br>
 </p>
@@ -226,29 +226,29 @@
 </div>
 </div>
 
-<div id="outline-container-orgf97a83c" class="outline-2">
-<h2 id="orgf97a83c">章节学习次数</h2>
-<div class="outline-text-2" id="text-orgf97a83c">
+<div id="outline-container-orgcae4b80" class="outline-2">
+<h2 id="orgcae4b80">章节学习次数</h2>
+<div class="outline-text-2" id="text-orgcae4b80">
 </div>
-<div id="outline-container-org39850eb" class="outline-3">
-<h3 id="org39850eb">统计方法</h3>
-<div class="outline-text-3" id="text-org39850eb">
+<div id="outline-container-org541ef86" class="outline-3">
+<h3 id="org541ef86">统计方法</h3>
+<div class="outline-text-3" id="text-org541ef86">
 <p>
 每打开一个视频页面等上一小会，学习次数就会增加，尚不知不滚动会不会有不良影响<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org5afe587" class="outline-3">
-<h3 id="org5afe587">刷分方法</h3>
-<div class="outline-text-3" id="text-org5afe587">
+<div id="outline-container-orgf91f52a" class="outline-3">
+<h3 id="orgf91f52a">刷分方法</h3>
+<div class="outline-text-3" id="text-orgf91f52a">
 <p>
 只需要对一个页面不停刷新即可<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgf53b5aa" class="outline-3">
-<h3 id="orgf53b5aa">代码实现</h3>
-<div class="outline-text-3" id="text-orgf53b5aa">
+<div id="outline-container-orge203fb4" class="outline-3">
+<h3 id="orge203fb4">代码实现</h3>
+<div class="outline-text-3" id="text-orge203fb4">
 <div class="org-src-container">
 <pre class="src src-js"><span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#25105;&#23545;&#20110;&#22823;&#37096;&#20998;&#25805;&#20316;&#21152;&#20837;&#20102;&#38543;&#26426;&#25968;</span>
 <span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#36991;&#20813;&#21487;&#33021;&#30340;&#21518;&#21488;&#26816;&#27979;</span>
@@ -262,30 +262,30 @@ setInterval(() =&gt; window.scroll(<span style="color: #8a3b3c; font-weight: bol
 </div>
 </div>
 </div>
-<div id="outline-container-org68ce9c2" class="outline-2">
-<h2 id="org68ce9c2">阅读</h2>
-<div class="outline-text-2" id="text-org68ce9c2">
+<div id="outline-container-orgb1dbe02" class="outline-2">
+<h2 id="orgb1dbe02">阅读</h2>
+<div class="outline-text-2" id="text-orgb1dbe02">
 </div>
-<div id="outline-container-org263f531" class="outline-3">
-<h3 id="org263f531">统计方法</h3>
-<div class="outline-text-3" id="text-org263f531">
+<div id="outline-container-org6d62d17" class="outline-3">
+<h3 id="org6d62d17">统计方法</h3>
+<div class="outline-text-3" id="text-org6d62d17">
 <p>
 经过测试，在网页上滚动具体阅读资料的区域刷分效果不好，我测试时第二天只增加了几分钟的阅读时长，所以只能滚动全局的页面<br>
 在刷分时我还注意到一个问题，单个页面可能有分值上限，所以我又改进了刷分方式<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org7e9e118" class="outline-3">
-<h3 id="org7e9e118">刷分方法</h3>
-<div class="outline-text-3" id="text-org7e9e118">
+<div id="outline-container-org2ab04d2" class="outline-3">
+<h3 id="org2ab04d2">刷分方法</h3>
+<div class="outline-text-3" id="text-org2ab04d2">
 <p>
 打开阅读界面，不停向下滚动到底，到底后随机打开一个阅读页面，继续上续操作<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org4b85eed" class="outline-3">
-<h3 id="org4b85eed">代码实现</h3>
-<div class="outline-text-3" id="text-org4b85eed">
+<div id="outline-container-org45f8d72" class="outline-3">
+<h3 id="org45f8d72">代码实现</h3>
+<div class="outline-text-3" id="text-org45f8d72">
 <div class="org-src-container">
 <pre class="src src-js"><span style="color: #556b2f;">// </span><span style="color: #556b2f;">&#33719;&#21462;&#38543;&#26426;&#38405;&#35835;&#39029;&#38754;</span>
 <span style="font-weight: bold;">function</span> <span style="font-weight: bold;">randu</span>() {
@@ -310,7 +310,7 @@ setInterval(() =&gt; {
 </div>
 <div id="postamble" class="status">
 <script type="text/javascript" src="/static/main.js"></script>
-            <center id="modi-date">2021-09-16 四 17:11</center>
+            <center id="modi-date">2021-12-09 四 17:18</center>
 </div>
 </body>
 </html>

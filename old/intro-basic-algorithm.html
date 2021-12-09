@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-<!-- 2021-09-16 四 17:11 -->
+<!-- 2021-12-09 四 17:18 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>基础算法简介</title>
@@ -233,55 +233,55 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2597a8a">前言</a></li>
-<li><a href="#org36b2b5a">算法思想</a>
+<li><a href="#org93674ab">前言</a></li>
+<li><a href="#orgac90095">算法思想</a>
 <ul>
-<li><a href="#org7f40940">模拟</a></li>
-<li><a href="#orga3a01b1">搜索</a></li>
-<li><a href="#org24f92f2">递归</a></li>
-<li><a href="#orgbab26bf">递推</a></li>
+<li><a href="#org2a7d45c">模拟</a></li>
+<li><a href="#orgbb2532a">搜索</a></li>
+<li><a href="#org8917dad">递归</a></li>
+<li><a href="#orgdc788ad">递推</a></li>
 </ul>
 </li>
-<li><a href="#orgfb70778">算法种类</a>
+<li><a href="#org34ad412">算法种类</a>
 <ul>
-<li><a href="#orgaefb6d0">搜索</a>
+<li><a href="#org7e58816">搜索</a>
 <ul>
-<li><a href="#org0f1163e">枚举</a></li>
-<li><a href="#org3ae6930">排列</a></li>
-<li><a href="#orgd476116">子集</a></li>
-<li><a href="#org89bfe1a">DFS</a></li>
-<li><a href="#org6864423">BFS</a></li>
-<li><a href="#orgcd743e2">二分查找</a></li>
+<li><a href="#orgb36f799">枚举</a></li>
+<li><a href="#orgf4b1d59">排列</a></li>
+<li><a href="#orgdf334fc">子集</a></li>
+<li><a href="#org4704a82">DFS</a></li>
+<li><a href="#org0a7c86c">BFS</a></li>
+<li><a href="#orgc1c7797">二分查找</a></li>
 </ul>
 </li>
-<li><a href="#org6b1f3eb">动态规划</a>
+<li><a href="#org63f5cef">动态规划</a>
 <ul>
-<li><a href="#org53673cb">递推</a></li>
-<li><a href="#org02059f9">记忆化搜索</a></li>
-<li><a href="#org38e58ca">贪心</a></li>
+<li><a href="#org6ea61a1">递推</a></li>
+<li><a href="#org1d4f19b">记忆化搜索</a></li>
+<li><a href="#orgd40a588">贪心</a></li>
 </ul>
 </li>
-<li><a href="#org90bfc0c">数学</a>
+<li><a href="#org10728e8">数学</a>
 <ul>
-<li><a href="#orgd2e323f">高精度</a></li>
-<li><a href="#orgd2feb1a">快速幂</a></li>
-<li><a href="#orga34d4e5">数论</a></li>
+<li><a href="#org3f4b7dd">高精度</a></li>
+<li><a href="#org2c62e8a">快速幂</a></li>
+<li><a href="#org4de4c2f">数论</a></li>
 </ul>
 </li>
-<li><a href="#org5720f0d">数据结构</a>
+<li><a href="#org668fa9c">数据结构</a>
 <ul>
-<li><a href="#orge29eed6">栈</a></li>
-<li><a href="#org4e76769">队列</a></li>
-<li><a href="#org89f3a98">并查集</a></li>
-<li><a href="#org6c3f4c7">树状数组</a></li>
-<li><a href="#orgf14b6a9">线段树</a></li>
+<li><a href="#org2472ff5">栈</a></li>
+<li><a href="#orgef7ffea">队列</a></li>
+<li><a href="#orgab0a0da">并查集</a></li>
+<li><a href="#org048ff0a">树状数组</a></li>
+<li><a href="#org6907ba1">线段树</a></li>
 </ul>
 </li>
-<li><a href="#orgc623806">图论</a>
+<li><a href="#org8299dff">图论</a>
 <ul>
-<li><a href="#orgaa22920">最短路</a></li>
-<li><a href="#org6af4c9a">最小生成树</a></li>
-<li><a href="#org626700e">拓扑排序</a></li>
+<li><a href="#orgad791ad">最短路</a></li>
+<li><a href="#org6543fa6">最小生成树</a></li>
+<li><a href="#org17a5112">拓扑排序</a></li>
 </ul>
 </li>
 </ul>
@@ -289,9 +289,9 @@
 </ul>
 </div>
 </nav>
-<div id="outline-container-org2597a8a" class="outline-2">
-<h2 id="org2597a8a">前言</h2>
-<div class="outline-text-2" id="text-org2597a8a">
+<div id="outline-container-org93674ab" class="outline-2">
+<h2 id="org93674ab">前言</h2>
+<div class="outline-text-2" id="text-org93674ab">
 <p>
 本文将会简单介绍些竞赛会使用的各种算法<br>
 </p>
@@ -301,13 +301,13 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org36b2b5a" class="outline-2">
-<h2 id="org36b2b5a">算法思想</h2>
-<div class="outline-text-2" id="text-org36b2b5a">
+<div id="outline-container-orgac90095" class="outline-2">
+<h2 id="orgac90095">算法思想</h2>
+<div class="outline-text-2" id="text-orgac90095">
 </div>
-<div id="outline-container-org7f40940" class="outline-3">
-<h3 id="org7f40940">模拟</h3>
-<div class="outline-text-3" id="text-org7f40940">
+<div id="outline-container-org2a7d45c" class="outline-3">
+<h3 id="org2a7d45c">模拟</h3>
+<div class="outline-text-3" id="text-org2a7d45c">
 <p>
 模拟的含义就是题目说什么我们就做什么，比如赛跑、算时间、猜拳等等只需要根据题意把代码实现出来即可<br>
 模拟是我们拿到一个题目时第一个思考的破解算法，但对于大多数题目单纯的模拟是不能在规定时间内解开的。也有的题目只能使用模拟，但模拟的事物非常复杂，这时就非常考验编程功底了。<br>
@@ -318,9 +318,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orga3a01b1" class="outline-3">
-<h3 id="orga3a01b1">搜索</h3>
-<div class="outline-text-3" id="text-orga3a01b1">
+<div id="outline-container-orgbb2532a" class="outline-3">
+<h3 id="orgbb2532a">搜索</h3>
+<div class="outline-text-3" id="text-orgbb2532a">
 <p>
 搜索即是找到答案的过程，通过题目上已知的可能解，我们一个一个的去试就能找到正确的解了。<br>
 </p>
@@ -338,9 +338,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org24f92f2" class="outline-3">
-<h3 id="org24f92f2">递归</h3>
-<div class="outline-text-3" id="text-org24f92f2">
+<div id="outline-container-org8917dad" class="outline-3">
+<h3 id="org8917dad">递归</h3>
+<div class="outline-text-3" id="text-org8917dad">
 <p>
 递归既调用自身<br>
 </p>
@@ -363,9 +363,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgbab26bf" class="outline-3">
-<h3 id="orgbab26bf">递推</h3>
-<div class="outline-text-3" id="text-orgbab26bf">
+<div id="outline-container-orgdc788ad" class="outline-3">
+<h3 id="orgdc788ad">递推</h3>
+<div class="outline-text-3" id="text-orgdc788ad">
 <p>
 递推与递归相反，递推也是使用相同的数学公式，但它从下界开始算起，比如算 <code>fib(n)</code> 使用递推的思想就是从 <code>fib(1)</code> 开始一步一步往上推。<br>
 </p>
@@ -392,28 +392,28 @@
 </div>
 </div>
 
-<div id="outline-container-orgfb70778" class="outline-2">
-<h2 id="orgfb70778">算法种类</h2>
-<div class="outline-text-2" id="text-orgfb70778">
+<div id="outline-container-org34ad412" class="outline-2">
+<h2 id="org34ad412">算法种类</h2>
+<div class="outline-text-2" id="text-org34ad412">
 </div>
-<div id="outline-container-orgaefb6d0" class="outline-3">
-<h3 id="orgaefb6d0">搜索</h3>
-<div class="outline-text-3" id="text-orgaefb6d0">
+<div id="outline-container-org7e58816" class="outline-3">
+<h3 id="org7e58816">搜索</h3>
+<div class="outline-text-3" id="text-org7e58816">
 <p>
 搜索的思想已经讲过，下面我介绍一些常用的搜索方法<br>
 </p>
 </div>
-<div id="outline-container-org0f1163e" class="outline-4">
-<h4 id="org0f1163e">枚举</h4>
-<div class="outline-text-4" id="text-org0f1163e">
+<div id="outline-container-orgb36f799" class="outline-4">
+<h4 id="orgb36f799">枚举</h4>
+<div class="outline-text-4" id="text-orgb36f799">
 <p>
 简单的把每种可能性都测试一遍，循环即可<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org3ae6930" class="outline-4">
-<h4 id="org3ae6930">排列</h4>
-<div class="outline-text-4" id="text-org3ae6930">
+<div id="outline-container-orgf4b1d59" class="outline-4">
+<h4 id="orgf4b1d59">排列</h4>
+<div class="outline-text-4" id="text-orgf4b1d59">
 <p>
 对于安排时间的问题：给出很多段时间，要求找到不重合的时间段，使得总时长最大<br>
 </p>
@@ -442,9 +442,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgd476116" class="outline-4">
-<h4 id="orgd476116">子集</h4>
-<div class="outline-text-4" id="text-orgd476116">
+<div id="outline-container-orgdf334fc" class="outline-4">
+<h4 id="orgdf334fc">子集</h4>
+<div class="outline-text-4" id="text-orgdf334fc">
 <p>
 给定一些数，问你一共有多少种方法让数的和为0。<br>
 </p>
@@ -461,7 +461,7 @@
 <p>
 一个数字在集合里只有两种状态：存在或者不存在。我们用1和0表示，像下面这样<br>
 </p>
-<pre class="example" id="org559f0cd">
+<pre class="example" id="org699a909">
 1 2 3
 0 0 1
 </pre>
@@ -494,9 +494,9 @@
 </div>
 </div>
 
-<div id="outline-container-org89bfe1a" class="outline-4">
-<h4 id="org89bfe1a">DFS</h4>
-<div class="outline-text-4" id="text-org89bfe1a">
+<div id="outline-container-org4704a82" class="outline-4">
+<h4 id="org4704a82">DFS</h4>
+<div class="outline-text-4" id="text-org4704a82">
 <p>
 DFS(Depth First Search)既深度优先搜索<br>
 </p>
@@ -534,9 +534,9 @@ DFS(Depth First Search)既深度优先搜索<br>
 </div>
 </div>
 
-<div id="outline-container-org6864423" class="outline-4">
-<h4 id="org6864423">BFS</h4>
-<div class="outline-text-4" id="text-org6864423">
+<div id="outline-container-org0a7c86c" class="outline-4">
+<h4 id="org0a7c86c">BFS</h4>
+<div class="outline-text-4" id="text-org0a7c86c">
 <p>
 BFS(Breadth First Search)既广度优先搜索<br>
 </p>
@@ -546,25 +546,25 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgcd743e2" class="outline-4">
-<h4 id="orgcd743e2">二分查找</h4>
-<div class="outline-text-4" id="text-orgcd743e2">
+<div id="outline-container-orgc1c7797" class="outline-4">
+<h4 id="orgc1c7797">二分查找</h4>
+<div class="outline-text-4" id="text-orgc1c7797">
 <p>
 二分查找只能应用在有单调性的数据上，对于一个单调递增的数列，我想查找一个数字是否存在于这个数列上，就可以查找数列中间的数字，如果相等返回真，如果查找的数字比中间数字大就去右边查找，反之则去左边查找。<br>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org6b1f3eb" class="outline-3">
-<h3 id="org6b1f3eb">动态规划</h3>
-<div class="outline-text-3" id="text-org6b1f3eb">
+<div id="outline-container-org63f5cef" class="outline-3">
+<h3 id="org63f5cef">动态规划</h3>
+<div class="outline-text-3" id="text-org63f5cef">
 <p>
 动态规划是算法学习上的一道分水岭，动态规划的核心是找出题目背后的那个数学公式，而找到公式是非常困难的，所幸有许多类型的题目都有现成的公式，而找到公式后就可以非常简单轻松的完成了。<br>
 </p>
 </div>
-<div id="outline-container-org53673cb" class="outline-4">
-<h4 id="org53673cb">递推</h4>
-<div class="outline-text-4" id="text-org53673cb">
+<div id="outline-container-org6ea61a1" class="outline-4">
+<h4 id="org6ea61a1">递推</h4>
+<div class="outline-text-4" id="text-org6ea61a1">
 <p>
 递推与之前讲的内容一样，利用公式从小的情况开始出发，处理好边界情况，慢慢的向上递推到目标<br>
 </p>
@@ -574,30 +574,30 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org02059f9" class="outline-4">
-<h4 id="org02059f9">记忆化搜索</h4>
-<div class="outline-text-4" id="text-org02059f9">
+<div id="outline-container-org1d4f19b" class="outline-4">
+<h4 id="org1d4f19b">记忆化搜索</h4>
+<div class="outline-text-4" id="text-org1d4f19b">
 <p>
 因为对于复杂的公式，递推有时非常的难以确定边界，而公式一般都是递归的，我们可以直接使用递归完成题目，但时间复杂度会爆炸，因为有许多子问题是重复的，使用递归会重复计算这些内容，所以我们可以利用空间换取时间，既记录已经算过的结果，保存下来以便以后使用，这样就能在相同的时间复杂度下完成了。<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org38e58ca" class="outline-4">
-<h4 id="org38e58ca">贪心</h4>
-<div class="outline-text-4" id="text-org38e58ca">
+<div id="outline-container-orgd40a588" class="outline-4">
+<h4 id="orgd40a588">贪心</h4>
+<div class="outline-text-4" id="text-orgd40a588">
 <p>
 有些最优子结构的题目可以不使用动态规划的方法解决，单纯的最大或最小就能解决，这里只需要排序即可，但分辩这些题目是最大的难点。<br>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org90bfc0c" class="outline-3">
-<h3 id="org90bfc0c">数学</h3>
-<div class="outline-text-3" id="text-org90bfc0c">
+<div id="outline-container-org10728e8" class="outline-3">
+<h3 id="org10728e8">数学</h3>
+<div class="outline-text-3" id="text-org10728e8">
 </div>
-<div id="outline-container-orgd2e323f" class="outline-4">
-<h4 id="orgd2e323f">高精度</h4>
-<div class="outline-text-4" id="text-orgd2e323f">
+<div id="outline-container-org3f4b7dd" class="outline-4">
+<h4 id="org3f4b7dd">高精度</h4>
+<div class="outline-text-4" id="text-org3f4b7dd">
 <p>
 <code>C++</code> 的数字是有范围的，超过一定大小就会损失精度，这时可以自己模拟数字的计算来实现高精度的数字计算。<br>
 可以使用数组保存每一位的数字，然后利用平常计算加减乘除的方法就能解决了，当然这样模拟的程序是非常复杂的。<br>
@@ -608,9 +608,9 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgd2feb1a" class="outline-4">
-<h4 id="orgd2feb1a">快速幂</h4>
-<div class="outline-text-4" id="text-orgd2feb1a">
+<div id="outline-container-org2c62e8a" class="outline-4">
+<h4 id="org2c62e8a">快速幂</h4>
+<div class="outline-text-4" id="text-org2c62e8a">
 <p>
 如何快速计算 \(a^b\) ，普通的做就是使用循环一个一个相乘，这样的时间复杂度为 \(O(b)\) ，可以把 \(a^b=\) 分成三个部分 \(a^{b/2}*a^{b/2}*a\) 如果 <code>b</code> 是偶数则没有最后一个 <code>a</code> ，可以发现有两个相同的数，所以我们可以重复利用 \(a^{b/2}\) ，这样最后的复杂度只有 \(O(log(b))\)<br>
 </p>
@@ -628,9 +628,9 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </div>
 </div>
 </div>
-<div id="outline-container-orga34d4e5" class="outline-4">
-<h4 id="orga34d4e5">数论</h4>
-<div class="outline-text-4" id="text-orga34d4e5">
+<div id="outline-container-org4de4c2f" class="outline-4">
+<h4 id="org4de4c2f">数论</h4>
+<div class="outline-text-4" id="text-org4de4c2f">
 <p>
 想把数论学好，需要非常好的数学功底，但基础的题目还是非常简单的，只需要记下公式与用法即可。<br>
 </p>
@@ -641,16 +641,16 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </div>
 </div>
 </div>
-<div id="outline-container-org5720f0d" class="outline-3">
-<h3 id="org5720f0d">数据结构</h3>
-<div class="outline-text-3" id="text-org5720f0d">
+<div id="outline-container-org668fa9c" class="outline-3">
+<h3 id="org668fa9c">数据结构</h3>
+<div class="outline-text-3" id="text-org668fa9c">
 <p>
 数据结构是为了更好更快的实现特定的算法<br>
 </p>
 </div>
-<div id="outline-container-orge29eed6" class="outline-4">
-<h4 id="orge29eed6">栈</h4>
-<div class="outline-text-4" id="text-orge29eed6">
+<div id="outline-container-org2472ff5" class="outline-4">
+<h4 id="org2472ff5">栈</h4>
+<div class="outline-text-4" id="text-org2472ff5">
 <p>
 栈是个存储容器，它的数据出入顺序是先入后出，可以自己使用数组模拟，但 <code>stl</code> 有集成。<br>
 </p>
@@ -660,9 +660,9 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org4e76769" class="outline-4">
-<h4 id="org4e76769">队列</h4>
-<div class="outline-text-4" id="text-org4e76769">
+<div id="outline-container-orgef7ffea" class="outline-4">
+<h4 id="orgef7ffea">队列</h4>
+<div class="outline-text-4" id="text-orgef7ffea">
 <p>
 队列也是一个存储窗口，它的出入顺序先入选出，就像是一根管子或者排队打饭。<br>
 </p>
@@ -672,17 +672,17 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org89f3a98" class="outline-4">
-<h4 id="org89f3a98">并查集</h4>
-<div class="outline-text-4" id="text-org89f3a98">
+<div id="outline-container-orgab0a0da" class="outline-4">
+<h4 id="orgab0a0da">并查集</h4>
+<div class="outline-text-4" id="text-orgab0a0da">
 <p>
 并查集可以查找一个元素是否在一个集合内，并且可以非常快速的合并两个集合<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org6c3f4c7" class="outline-4">
-<h4 id="org6c3f4c7">树状数组</h4>
-<div class="outline-text-4" id="text-org6c3f4c7">
+<div id="outline-container-org048ff0a" class="outline-4">
+<h4 id="org048ff0a">树状数组</h4>
+<div class="outline-text-4" id="text-org048ff0a">
 <p>
 树状数组是对于前缀和问题的时间和空间上的一个平衡，单纯的前缀和需要 \(O(1)\) 的时间和 \(O(n)\) 的空间，使用树状数组保存前缀和可以做到 \(O(log(n))\) 的时空复杂度。<br>
 </p>
@@ -692,9 +692,9 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orgf14b6a9" class="outline-4">
-<h4 id="orgf14b6a9">线段树</h4>
-<div class="outline-text-4" id="text-orgf14b6a9">
+<div id="outline-container-org6907ba1" class="outline-4">
+<h4 id="org6907ba1">线段树</h4>
+<div class="outline-text-4" id="text-org6907ba1">
 <p>
 线段树是树状数组的升级，线段树不止支持区间和，还支持单点修改、区间修改、区间查询（区间求和，求区间最大值，求区间最小值）等操作，并且时间复杂度都是 \(O(log(N))\) 。<br>
 </p>
@@ -705,13 +705,13 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc623806" class="outline-3">
-<h3 id="orgc623806">图论</h3>
-<div class="outline-text-3" id="text-orgc623806">
+<div id="outline-container-org8299dff" class="outline-3">
+<h3 id="org8299dff">图论</h3>
+<div class="outline-text-3" id="text-org8299dff">
 </div>
-<div id="outline-container-orgaa22920" class="outline-4">
-<h4 id="orgaa22920">最短路</h4>
-<div class="outline-text-4" id="text-orgaa22920">
+<div id="outline-container-orgad791ad" class="outline-4">
+<h4 id="orgad791ad">最短路</h4>
+<div class="outline-text-4" id="text-orgad791ad">
 <p>
 最短路就是给定一个图，计算两个结点之间的最短路径。<br>
 </p>
@@ -725,9 +725,9 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org6af4c9a" class="outline-4">
-<h4 id="org6af4c9a">最小生成树</h4>
-<div class="outline-text-4" id="text-org6af4c9a">
+<div id="outline-container-org6543fa6" class="outline-4">
+<h4 id="org6543fa6">最小生成树</h4>
+<div class="outline-text-4" id="text-org6543fa6">
 <p>
 最小生成树是在图上找到一棵子树连接全部节点并且使得边权和最小。<br>
 </p>
@@ -741,9 +741,9 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org626700e" class="outline-4">
-<h4 id="org626700e">拓扑排序</h4>
-<div class="outline-text-4" id="text-org626700e">
+<div id="outline-container-org17a5112" class="outline-4">
+<h4 id="org17a5112">拓扑排序</h4>
+<div class="outline-text-4" id="text-org17a5112">
 <p>
 拓扑排序的目标是将所有节点排序，使得排在前面的节点不能依赖于排在后面的节点。<br>
 </p>
@@ -758,7 +758,7 @@ BFS(Breadth First Search)既广度优先搜索<br>
 </div>
 <div id="postamble" class="status">
 <script type="text/javascript" src="/static/main.js"></script>
-            <center id="modi-date">2021-09-16 四 17:11</center>
+            <center id="modi-date">2021-12-09 四 17:18</center>
 </div>
 </body>
 </html>

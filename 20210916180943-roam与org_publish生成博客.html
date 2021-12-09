@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-<!-- 2021-09-16 四 18:54 -->
+<!-- 2021-12-09 四 17:18 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>roam与org-publish生成博客</title>
@@ -207,9 +207,9 @@
 <div id="content" class="content">
 <header>
 <h1 class="title">roam与org-publish生成博客</h1>
-</header><div id="outline-container-org487903c" class="outline-2">
-<h2 id="org487903c">前言</h2>
-<div class="outline-text-2" id="text-org487903c">
+</header><div id="outline-container-org8ee25bc" class="outline-2">
+<h2 id="org8ee25bc">前言</h2>
+<div class="outline-text-2" id="text-org8ee25bc">
 <p>
 自从更新到 <code>roam2</code> 后，我就开始建立个人的笔记收集系统了，因为 <code>roam</code> 的各项功能都整合的非常好，所以我就想把所有的 <code>org</code> 文件都用 <code>roam</code> 管理起来。<br>
 </p>
@@ -223,11 +223,11 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org9fe533e" class="outline-2">
-<h2 id="org9fe533e">org文件迁移</h2>
-<div class="outline-text-2" id="text-org9fe533e">
+<div id="outline-container-org84da7fe" class="outline-2">
+<h2 id="org84da7fe">org文件迁移</h2>
+<div class="outline-text-2" id="text-org84da7fe">
 <p>
-因为之前从 <code>org-page</code> 迁移到 <code>org-static-blog</code> 时已经把各个字段都修改过了，剩下的字段兼容性都很好，所以只需要给每个 <code>org</code> 文件增加一个 <code>id</code> 即可。<br>
+因为之前从 <code>org-page</code> 迁移到 <code>org-static-blog</code> 时已经把各个字段都修改过了，剩下的字段兼容性都很好，所以只需要给每个 <code>org</code> 文件增加 <code>id</code> 即可。<br>
 </p>
 
 <p>
@@ -235,9 +235,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org861abb7" class="outline-2">
-<h2 id="org861abb7">权限</h2>
-<div class="outline-text-2" id="text-org861abb7">
+<div id="outline-container-org0c2d1b2" class="outline-2">
+<h2 id="org0c2d1b2">权限</h2>
+<div class="outline-text-2" id="text-org0c2d1b2">
 <p>
 因为有些笔记我不想公开，为了只发布想要的笔记，我利用了 <code>roam</code> 的标签系统。<br>
 </p>
@@ -268,9 +268,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org3ef7daa" class="outline-2">
-<h2 id="org3ef7daa">org-publish</h2>
-<div class="outline-text-2" id="text-org3ef7daa">
+<div id="outline-container-org943bd29" class="outline-2">
+<h2 id="org943bd29">org-publish</h2>
+<div class="outline-text-2" id="text-org943bd29">
 <p>
 根据<a href="https://orgmode.org/manual/Publishing.html">Publishing (The Org Manual)</a>我调试出了以下代码，大体功能已经完成，但：rss、tag、预览并不容易实现，都需要自己重定义生成函数，而且我感觉都有些鸡肋，所以就没做，等以后需要时再想办法做。<br>
 </p>
@@ -325,25 +325,25 @@
 </pre>
 </div>
 </div>
-<div id="outline-container-org9d99607" class="outline-3">
-<h3 id="org9d99607">日期</h3>
-<div class="outline-text-3" id="text-org9d99607">
+<div id="outline-container-orga11f402" class="outline-3">
+<h3 id="orga11f402">日期</h3>
+<div class="outline-text-3" id="text-orga11f402">
 <p>
 在 <code>html-preamble</code> 与 <code>html-postamble</code> 中添加控制符可以把日期导入， <code>%d</code> 是创建时间， <code>%T</code> 是文件修改时间。<br>
 </p>
 </div>
 </div>
-<div id="outline-container-org810b7a8" class="outline-3">
-<h3 id="org810b7a8">首页</h3>
-<div class="outline-text-3" id="text-org810b7a8">
+<div id="outline-container-org9b60eee" class="outline-3">
+<h3 id="org9b60eee">首页</h3>
+<div class="outline-text-3" id="text-org9b60eee">
 <p>
 使用 <code>sitemap</code> 功能可以生成首页，但默认的首页是没有日期的，而修改<a href="https://orgmode.org/manual/Site-map.html#Site-map">Site-map</a>里说的 <code>:sitemap-file-entry-format</code> 并没有作用，于是只能自定义一个函数生成 <code>entry</code> 了。<br>
 </p>
 </div>
 </div>
-<div id="outline-container-orge5a179c" class="outline-3">
-<h3 id="orge5a179c">rss</h3>
-<div class="outline-text-3" id="text-orge5a179c">
+<div id="outline-container-org66b34a0" class="outline-3">
+<h3 id="org66b34a0">rss</h3>
+<div class="outline-text-3" id="text-org66b34a0">
 <p>
 使用 <code>ox-rss</code> 可以把首页生成一个 <code>xml</code> 文件，但尝试过后发现这个包有很严重的bug：生成的文件不能正确读取，而且每个文章的链接都是相对路径，没有找到解决方案。<br>
 </p>
@@ -353,7 +353,7 @@
 </div>
 <div id="postamble" class="status">
 <script type="text/javascript" src="/static/main.js"></script>
-            <center id="modi-date">2021-09-16 四 18:54</center>
+            <center id="modi-date">2021-12-09 四 17:18</center>
 </div>
 </body>
 </html>
