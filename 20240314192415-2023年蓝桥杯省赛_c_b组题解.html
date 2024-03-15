@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<!-- 2024-03-15 五 15:15 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>2023年蓝桥杯省赛 C++ B组题解</title>
+<meta name="author" content="shirui" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  pre.src-C\+\+:before { content: 'C++'; }
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="/static/style.css" type="text/css"/>
+            <link rel="stylesheet" href="/static/org.css" type="text/css"/>
+            <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+            <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+            <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+            <a href="https://lampze.github.io">lampze's Blog</a>
+            <span id="post-date" style="float: right"></span>
+            </div>
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">2023年蓝桥杯省赛 C++ B组题解</h1>
+</header><div id="outline-container-org6816ecc" class="outline-2">
+<h2 id="org6816ecc">日期统计</h2>
+<div class="outline-text-2" id="text-org6816ecc">
+</div>
+<div id="outline-container-orge06e6f9" class="outline-3">
+<h3 id="orge06e6f9">题目</h3>
+<div class="outline-text-3" id="text-orge06e6f9">
+</div>
+<div id="outline-container-orgb8974cf" class="outline-4">
+<h4 id="orgb8974cf">题目描述</h4>
+<div class="outline-text-4" id="text-orgb8974cf">
+<p>
+小蓝现在有一个长度为 100 的数组，数组中的每个元素的值都在 0 到 9 的范围之内。<br>
+数组中的元素从左至右如下所示：<br>
+</p>
+
+<pre class="example" id="orgb9601ff">
+5 6 8 6 9 1 6 1 2 4 9 1 9 8 2 3 6 4 7 7 5 9 5 0 3 8 7 5 8 1 5 8 6 1 8 3 0 3 7 9 2
+7 0 5 8 8 5 7 0 9 9 1 9 4 4 6 8 6 3 3 8 5 1 6 3 4 6 7 0 7 8 2 7 6 8 9 5 6 5 6 1 4 0 1
+0 0 9 4 8 0 9 1 2 8 5 0 2 5 3 3
+</pre>
+
+<p>
+现在他想要从这个数组中寻找一些满足以下条件的子序列：<br>
+</p>
+<ol class="org-ol">
+<li>子序列的长度为 8；<br></li>
+<li>这个子序列可以按照下标顺序组成一个 yyyymmdd 格式的日期，并且<br>
+要求这个日期是 2023 年中的某一天的日期，例如 20230902，20231223。<br>
+yyyy 表示年份，mm 表示月份，dd 表示天数，当月份或者天数的长度只有一位时需要一个前导零补充。<br>
+请你帮小蓝计算下按上述条件一共能找到多少个不同的 2023 年的日期。<br>
+对于相同的日期你只需要统计一次即可。<br>
+本题的结果为一个整数，在提交答案时只输出这个整数，输出多余的内容将无法得分。<br></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf4e9521" class="outline-3">
+<h3 id="orgf4e9521">解析</h3>
+<div class="outline-text-3" id="text-orgf4e9521">
+<p>
+题目要求日期是 2023 年的某日期，那么我们肯定是需要生成这一年的所有合法日期，如果知道年份的生成规则可以自己手搓代码，但如果不知道呢？<br>
+</p>
+
+<p>
+蓝桥杯比赛提供的可不止一个编程环境，还包括 office 全家桶，可以直接使用 excel 生成一年的日期。<br>
+</p>
+
+<p>
+然后就是子序列的问题了，题目告诉了子序列的长度，那么直接写八个 for 循环也可以解决问题。高级一点的可以使用递归来生成子序列。<br>
+</p>
+
+<p>
+最后不要忘记了去重，使用 set 保存数据即可。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgc1ecae0" class="outline-3">
+<h3 id="orgc1ecae0">代码</h3>
+<div class="outline-text-3" id="text-orgc1ecae0">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;cstdio&gt;</span>
+<span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;iostream&gt;</span>
+<span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;set&gt;</span>
+
+<span style="color: #3B6EA8;">using</span> <span style="color: #3B6EA8;">namespace</span> std<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #29838D;">int</span> <span style="color: #842879;">arr</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[]</span> <span style="color: #3B6EA8;">=</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span><span style="color: #97365B;">5</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">6</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">8</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">6</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">9</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">6</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">2</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">4</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">9</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">9</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">8</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">2</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">3</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">6</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">4</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">7</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">7</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span>
+             <span style="color: #97365B;">5</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">9</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">5</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">3</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">8</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">7</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">5</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">8</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">5</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">8</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">6</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">8</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">3</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">3</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">7</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">9</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span>
+             <span style="color: #97365B;">2</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">7</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">5</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">8</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">8</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">5</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">7</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">9</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">9</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">9</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">4</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">4</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">6</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">8</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">6</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">3</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">3</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span>
+             <span style="color: #97365B;">8</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">5</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">6</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">3</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">4</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">6</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">7</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">7</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">8</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">2</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">7</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">6</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">8</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">9</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">5</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">6</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">5</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">6</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span>
+             <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">4</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">9</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">4</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">8</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">9</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">2</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">8</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">5</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">2</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">5</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">3</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">3</span><span style="color: #3B6EA8; background-color: #E5E9F0;">}</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #9A7500;">set</span><span style="color: #3B6EA8;">&lt;</span><span style="color: #29838D;">int</span><span style="color: #3B6EA8;">&gt;</span> <span style="color: #842879;">all</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #9A7500;">set</span><span style="color: #3B6EA8;">&lt;</span><span style="color: #29838D;">int</span><span style="color: #3B6EA8;">&gt;</span> <span style="color: #842879;">date</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #29838D;">void</span> <span style="color: #29838D;">srch</span><span style="color: #3B6EA8; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">idx</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #29838D;">int</span> <span style="color: #842879;">a</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #29838D;">int</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #3B6EA8;">if</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span>idx <span style="color: #3B6EA8;">&gt;=</span> <span style="color: #97365B;">8</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #3B6EA8;">if</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span>date<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">find</span><span style="color: #842879; background-color: #E5E9F0;">(</span>a<span style="color: #842879; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8;">!=</span> date<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">end</span><span style="color: #842879; background-color: #E5E9F0;">()</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span>
+      all<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">insert</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>a<span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #3B6EA8;">return</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  <span style="color: #3B6EA8;">if</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span>idx <span style="color: #3B6EA8;">==</span> <span style="color: #97365B;">4</span> <span style="color: #3B6EA8;">&amp;&amp;</span> a <span style="color: #3B6EA8;">!=</span> <span style="color: #97365B;">2023</span><span style="color: #97365B; background-color: #E5E9F0;">)</span>
+    <span style="color: #3B6EA8;">return</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;</span> <span style="color: #97365B;">100</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #97365B; background-color: #E5E9F0;">)</span>
+    <span style="color: #5d86b6; font-weight: bold;">srch</span><span style="color: #97365B; background-color: #E5E9F0;">(</span>idx <span style="color: #3B6EA8;">+</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> a <span style="color: #3B6EA8;">*</span> <span style="color: #97365B;">10</span> <span style="color: #3B6EA8;">+</span> arr<span style="color: #4F894C; background-color: #E5E9F0;">[</span>i<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> i<span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+
+<span style="color: #29838D;">int</span> <span style="color: #29838D;">main</span><span style="color: #3B6EA8; background-color: #E5E9F0;">()</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #29838D;">int</span> <span style="color: #842879;">y</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">m</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">d</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">while</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #5d86b6; font-weight: bold;">scanf</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span><span style="color: #4F894C;">"%d-%d-%d"</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #3B6EA8;">&amp;</span>y<span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #3B6EA8;">&amp;</span>m<span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #3B6EA8;">&amp;</span>d<span style="color: #4F894C; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8;">!=</span> <span style="color: #97365B;">EOF</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    date<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">insert</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>y <span style="color: #3B6EA8;">*</span> <span style="color: #97365B;">10000</span> <span style="color: #3B6EA8;">+</span> m <span style="color: #3B6EA8;">*</span> <span style="color: #97365B;">100</span> <span style="color: #3B6EA8;">+</span> d<span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  <span style="color: #5d86b6; font-weight: bold;">srch</span><span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">-1</span><span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  cout <span style="color: #3B6EA8;">&lt;&lt;</span> all<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">size</span><span style="color: #97365B; background-color: #E5E9F0;">()</span> <span style="color: #3B6EA8;">&lt;&lt;</span> endl<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">return</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgecd5b68" class="outline-3">
+<h3 id="orgecd5b68">答案</h3>
+<div class="outline-text-3" id="text-orgecd5b68">
+<p>
+235<br>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb0ebf6c" class="outline-2">
+<h2 id="orgb0ebf6c">01 串的熵</h2>
+<div class="outline-text-2" id="text-orgb0ebf6c">
+</div>
+<div id="outline-container-orgf0ea4e2" class="outline-3">
+<h3 id="orgf0ea4e2">题目</h3>
+<div class="outline-text-3" id="text-orgf0ea4e2">
+</div>
+<div id="outline-container-orgc08d995" class="outline-4">
+<h4 id="orgc08d995">题目描述</h4>
+<div class="outline-text-4" id="text-orgc08d995">
+<p>
+对于一个长度为 \(n\) 的 \(01\) 串 \(S = x_{1}x_{2}x_{3}\cdots x_{n}\).<br>
+香农信息熵的定义为：<br>
+\( H(S)=-\sum^{n}_{i=1}p(x_{i})\log_{2}(p(x_{i})) \)。<br>
+其中 \(p(0)\), \(p(1)\) 表示在这个 \(01\) 串中 \(0\) 和 \(1\) 出现的占比。<br>
+比如，对于 \(S = 100\) 来说，信息熵 \(H(S) = - 1/3 \log_2(1/3) - 2/3 \log_2(2/3) - 2/3 \log_2(2/3) = 1.3083\) 。<br>
+对于一个长度为 \(23333333\) 的 \(01\) 串，如果其信息熵为 \(11625907.5798\) ，且 \(0\) 出现次数比 \(1\) 少，那么这个 \(01\) 串中 \(0\) 出现了多少次？<br>
+本题的结果为一个整数，在提交答案时只输出这个整数，输出多余的内容将无法得分。<br>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb298642" class="outline-3">
+<h3 id="orgb298642">解析</h3>
+<div class="outline-text-3" id="text-orgb298642">
+<p>
+首先简化公式， \(S\) 中只有 \(0\) 或 \(1\) 所以只有两个概率 \(p(0)\) 和 \(p(1)\)<br>
+</p>
+
+<p>
+假设 \(0\) 有 \(x\) 个，\(1\) 有 \(y\) 个，总共有 \(n\) 个数<br>
+</p>
+
+<p>
+所以 \(p(0) = \frac{x}{n} \)，\( p(1)=\frac{y}{n} \)<br>
+</p>
+
+<p>
+\( H(S) = -(\frac{x^{2}}{n}\log_{2}{\frac{x}{n}}+\frac{y^{2}}{n}\log_{2}{\frac{y}{n}}) \)<br>
+</p>
+
+<p>
+所以只需要两个循环，遍历 \(0\) 和 \(1\) 的个数即可。<br>
+</p>
+
+<p>
+这种数值运算推荐使用 <code>python</code> 解决。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org14cd689" class="outline-3">
+<h3 id="org14cd689">代码</h3>
+<div class="outline-text-3" id="text-org14cd689">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3B6EA8;">import</span> math
+
+<span style="color: #842879;">n</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">23333333</span>
+<span style="color: #842879;">ans</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">11625907.5798</span>
+
+
+<span style="color: #3B6EA8;">def</span> <span style="color: #29838D;">H</span>(<span style="color: #842879;">x</span>, <span style="color: #842879;">y</span>):
+    <span style="color: #842879;">logx</span> <span style="color: #3B6EA8;">=</span> math.<span style="color: #5d86b6; font-weight: bold; font-style: italic;">log</span>(x <span style="color: #3B6EA8;">/</span> n, <span style="color: #97365B;">2</span>)
+    <span style="color: #842879;">logy</span> <span style="color: #3B6EA8;">=</span> math.<span style="color: #5d86b6; font-weight: bold; font-style: italic;">log</span>(y <span style="color: #3B6EA8;">/</span> n, <span style="color: #97365B;">2</span>)
+    <span style="color: #3B6EA8;">return</span> <span style="color: #3B6EA8;">-</span>(x <span style="color: #3B6EA8;">*</span> x <span style="color: #3B6EA8;">/</span> n <span style="color: #3B6EA8;">*</span> logx <span style="color: #3B6EA8;">+</span> y <span style="color: #3B6EA8;">*</span> y <span style="color: #3B6EA8;">/</span> n <span style="color: #3B6EA8;">*</span> logy)
+
+
+<span style="color: #3B6EA8;">for</span> <span style="color: #842879;">x</span> <span style="color: #3B6EA8;">in</span> <span style="color: #29838D; font-weight: bold;">range</span>(<span style="color: #97365B;">1</span>, <span style="color: #29838D; font-weight: bold;">int</span>(n <span style="color: #3B6EA8;">/</span> <span style="color: #97365B;">2</span>)):
+    <span style="color: #842879;">y</span> <span style="color: #3B6EA8;">=</span> n <span style="color: #3B6EA8;">-</span> x
+    <span style="color: #3B6EA8;">if</span> math.<span style="color: #5d86b6; font-weight: bold; font-style: italic;">fabs</span>(<span style="color: #97365B; font-weight: bold;">H</span>(x, y) <span style="color: #3B6EA8;">-</span> ans) <span style="color: #3B6EA8;">&lt;</span> <span style="color: #97365B;">1e-4</span>:
+        <span style="color: #29838D; font-weight: bold;">print</span>(x)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2ba4c01" class="outline-3">
+<h3 id="org2ba4c01">答案</h3>
+<div class="outline-text-3" id="text-org2ba4c01">
+<p>
+11027421<br>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf6fba0a" class="outline-2">
+<h2 id="orgf6fba0a">冶炼金属</h2>
+<div class="outline-text-2" id="text-orgf6fba0a">
+</div>
+<div id="outline-container-orgef8577d" class="outline-3">
+<h3 id="orgef8577d">题目</h3>
+<div class="outline-text-3" id="text-orgef8577d">
+</div>
+<div id="outline-container-orgddf44ee" class="outline-4">
+<h4 id="orgddf44ee">题目描述</h4>
+<div class="outline-text-4" id="text-orgddf44ee">
+<p>
+小蓝有一个神奇的炉子用于将普通金属 \(O\) 冶炼成为一种特殊金属 \(X\)。这个炉子有一个称作转换率的属性 \(V\)，\(V\) 是一个正整数，这意味着消耗 \(V\) 个普通金属 \(O\) 恰好可以冶炼出一个特殊金属 \(X\)。<br>
+</p>
+
+<p>
+当普通金属 \(O\) 的数目不足 \(V\) 时，无法继续冶炼。现在给出了 \(N\) 条冶炼记录，每条记录中包含两个整数 \(A\) 和 \(B\)，这表示本次投入了 \(A\) 个普通金属 \(O\)，最终冶炼出了 \(B\) 个特殊金属 \(X\)。<br>
+</p>
+
+<p>
+每条记录都是独立的，这意味着上一次没消耗完的普通金属 \(O\) 不会累加到下一次的冶炼当中。根据这 \(N\) 条冶炼记录，请你推测出转换率 \(V\) 的最小值和最大值分别可能是多少。<br>
+</p>
+
+<p>
+题目保证评测数据不存在无解的情况。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orge33003e" class="outline-4">
+<h4 id="orge33003e">输入格式</h4>
+<div class="outline-text-4" id="text-orge33003e">
+<p>
+第一行一个整数 \(N\) ，表示冶炼记录的数目。<br>
+接下来输入 \(N\) 行，每行两个整数 \(A\)、\(B\)，含义如题目所述。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgf26f156" class="outline-4">
+<h4 id="orgf26f156">输出格式</h4>
+<div class="outline-text-4" id="text-orgf26f156">
+<p>
+输出两个整数，分别表示 \(V\) 可能的最小值和最大值，中间用空格分开。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org1e2ff70" class="outline-4">
+<h4 id="org1e2ff70">样例输入</h4>
+<div class="outline-text-4" id="text-org1e2ff70">
+<pre class="example" id="org2ccfcb1">
+3
+75 3
+53 2
+59 2
+</pre>
+</div>
+</div>
+<div id="outline-container-org37b038f" class="outline-4">
+<h4 id="org37b038f">样例输出</h4>
+<div class="outline-text-4" id="text-org37b038f">
+<pre class="example" id="orgd7a9f28">
+20 25
+</pre>
+</div>
+</div>
+<div id="outline-container-orge248992" class="outline-4">
+<h4 id="orge248992">提示</h4>
+<div class="outline-text-4" id="text-orge248992">
+<p>
+当 \(V = 20\) 时，有：\(\lfloor 75/20 \rfloor = 3, \lfloor 53/20 \rfloor = 2, \lfloor 59/20 \rfloor = 2\)，可以看到符合所有冶炼记录。<br>
+当 \(V = 25\) 时，有：\(\lfloor 75/25\rfloor = 3, \lfloor 53/25 \rfloor = 2, \lfloor 59/25 \rfloor = 2\)，可以看到符合所有冶炼记录。<br>
+且再也找不到比 20 更小或者比 25 更大的符合条件的 \(V\) 值了。<br>
+</p>
+
+<p>
+对于 30% 的评测用例，\(1 \le N \le 10^2\)。<br>
+对于 60% 的评测用例，\(1 \le N \le 10^3\) 。<br>
+对于 100% 的评测用例，\(1 \le N \le 10^4, 1 \le B \le A \le 10^9\)。<br>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org0fd27e0" class="outline-3">
+<h3 id="org0fd27e0">解析</h3>
+<div class="outline-text-3" id="text-org0fd27e0">
+<p>
+对于每对 \(A, B\) 它的价格区间为：\([ \lfloor \frac{A}{B+1} \rfloor + 1 , \lfloor \frac{A}{B} \rfloor ]\)，那么就把每对的区间算出来，他们的交就是答案了。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgcde487c" class="outline-3">
+<h3 id="orgcde487c">代码</h3>
+<div class="outline-text-3" id="text-orgcde487c">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;iostream&gt;</span>
+
+<span style="color: #3B6EA8;">using</span> <span style="color: #3B6EA8;">namespace</span> std<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #29838D;">int</span> <span style="color: #29838D;">main</span><span style="color: #3B6EA8; background-color: #E5E9F0;">()</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #29838D;">int</span> <span style="color: #842879;">n</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  cin <span style="color: #3B6EA8;">&gt;&gt;</span> n<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #29838D;">int</span> <span style="color: #842879;">min_</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">max_</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #29838D;">bool</span> <span style="color: #842879;">flag</span> <span style="color: #3B6EA8;">=</span> <span style="color: #29838D;">true</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;</span> n<span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #29838D;">int</span> <span style="color: #842879;">x</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">y</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    cin <span style="color: #3B6EA8;">&gt;&gt;</span> x <span style="color: #3B6EA8;">&gt;&gt;</span> y<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #29838D;">int</span> <span style="color: #842879;">l</span> <span style="color: #3B6EA8;">=</span> x <span style="color: #3B6EA8;">/</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span>y <span style="color: #3B6EA8;">+</span> <span style="color: #97365B;">1</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8;">+</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">r</span> <span style="color: #3B6EA8;">=</span> x <span style="color: #3B6EA8;">/</span> y<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #3B6EA8;">if</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span>flag<span style="color: #4F894C; background-color: #E5E9F0;">)</span> <span style="color: #4F894C; background-color: #E5E9F0;">{</span>
+      <span style="color: #842879;">flag</span> <span style="color: #3B6EA8;">=</span> <span style="color: #29838D;">false</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+      <span style="color: #842879;">min_</span> <span style="color: #3B6EA8;">=</span> l<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+      <span style="color: #842879;">max_</span> <span style="color: #3B6EA8;">=</span> r<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #4F894C; background-color: #E5E9F0;">}</span>
+    <span style="color: #842879;">min_</span> <span style="color: #3B6EA8;">=</span> <span style="color: #5d86b6; font-weight: bold;">max</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>min_<span style="color: #3B4252; background-color: #E5E9F0;">,</span> l<span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #842879;">max_</span> <span style="color: #3B6EA8;">=</span> <span style="color: #5d86b6; font-weight: bold;">min</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>max_<span style="color: #3B4252; background-color: #E5E9F0;">,</span> r<span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  cout <span style="color: #3B6EA8;">&lt;&lt;</span> min_ <span style="color: #3B6EA8;">&lt;&lt;</span> <span style="color: #4F894C;">" "</span> <span style="color: #3B6EA8;">&lt;&lt;</span> max_ <span style="color: #3B6EA8;">&lt;&lt;</span> endl<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">return</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org387b2ee" class="outline-2">
+<h2 id="org387b2ee">飞机降落</h2>
+<div class="outline-text-2" id="text-org387b2ee">
+</div>
+<div id="outline-container-org4757d68" class="outline-3">
+<h3 id="org4757d68">题目</h3>
+<div class="outline-text-3" id="text-org4757d68">
+</div>
+<div id="outline-container-org291cf4c" class="outline-4">
+<h4 id="org291cf4c">题目描述</h4>
+<div class="outline-text-4" id="text-org291cf4c">
+<p>
+\(N\) 架飞机准备降落到某个只有一条跑道的机场。其中第 \(i\) 架飞机在 \(T_i\) 时刻到达机场上空，到达时它的剩余油料还可以继续盘旋 \(D_i\) 个单位时间。即它最早可以于 \(T_i\) 时刻开始降落，最晚可以于 \(T_i + D_i\) 时刻开始降落。<br>
+</p>
+
+<p>
+降落过程需要\(L_i\)个单位时间。一架飞机降落完毕时，另一架飞机可以立即在同一时刻开始降落。但是不能在前一架飞机完成降落前开始降落。<br>
+</p>
+
+<p>
+请你判断 \(N\) 架飞机是否可以全部安全降落。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org9f30cec" class="outline-4">
+<h4 id="org9f30cec">输入格式</h4>
+<div class="outline-text-4" id="text-org9f30cec">
+<p>
+输入包含多组数据。<br>
+第一行包含一个整数 \(T\)，代表测试数据的组数。<br>
+对于每组数据，第一行包含一个整数 \(N\)。<br>
+以下 \(N\) 行，每行包含三个整数：\(T_i\)，\(D_i\) 和 \(L_i\)。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org95ebf03" class="outline-4">
+<h4 id="org95ebf03">输出格式</h4>
+<div class="outline-text-4" id="text-org95ebf03">
+<p>
+对于每组数据，输出 YES 或者 NO，代表是否可以全部安全降落。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgc0803fb" class="outline-4">
+<h4 id="orgc0803fb">样例输入</h4>
+<div class="outline-text-4" id="text-orgc0803fb">
+<pre class="example" id="org2afaf4c">
+2
+3
+0 100 10
+10 10 10
+0 2 20
+3
+0 10 20
+10 10 20
+20 10 20
+</pre>
+</div>
+</div>
+<div id="outline-container-orgc2f8fe7" class="outline-4">
+<h4 id="orgc2f8fe7">样例输出</h4>
+<div class="outline-text-4" id="text-orgc2f8fe7">
+<pre class="example" id="org77f5d2c">
+YES
+NO
+</pre>
+</div>
+</div>
+<div id="outline-container-orgcb4cef0" class="outline-4">
+<h4 id="orgcb4cef0">提示</h4>
+<div class="outline-text-4" id="text-orgcb4cef0">
+<p>
+对于第一组数据，可以安排第 3 架飞机于 0 时刻开始降落，20 时刻完成降落。安排第 2 架飞机于 20 时刻开始降落，30 时刻完成降落。安排第 1 架飞机于 30 时刻开始降落，40 时刻完成降落。<br>
+对于第二组数据，无论如何安排，都会有飞机不能及时降落。<br>
+</p>
+
+
+<p>
+对于 30% 的数据，\(N \le 2\)。<br>
+对于 100% 的数据，\(1 \le T \le 10, 1 \le N \le 10, 0 \le T_i , D_i , L_i \le 10^5\)。<br>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaa1b2be" class="outline-3">
+<h3 id="orgaa1b2be">解析</h3>
+<div class="outline-text-3" id="text-orgaa1b2be">
+<p>
+直接暴搜即可解，时间复杂度是 \(O(n!)\)，使用贪心算法不可解。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org326a533" class="outline-3">
+<h3 id="org326a533">代码</h3>
+<div class="outline-text-3" id="text-org326a533">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;iostream&gt;</span>
+<span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;set&gt;</span>
+<span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;vector&gt;</span>
+
+<span style="color: #3B6EA8;">using</span> <span style="color: #3B6EA8;">namespace</span> std<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #3B6EA8;">struct</span> <span style="color: #9A7500;">air</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #29838D;">int</span> <span style="color: #842879; font-style: italic;">t</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879; font-style: italic;">d</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879; font-style: italic;">l</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #29838D;">bool</span> <span style="color: #29838D;">dfs</span><span style="color: #3B6EA8; background-color: #E5E9F0;">(</span><span style="color: #9A7500;">vector</span><span style="color: #97365B;">&lt;</span><span style="color: #9A7500;">air</span><span style="color: #97365B;">&gt;</span> <span style="color: #842879;">all</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #9A7500;">set</span><span style="color: #97365B;">&lt;</span><span style="color: #29838D;">int</span><span style="color: #97365B;">&gt;</span> <span style="color: #842879;">in</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #29838D;">int</span> <span style="color: #842879;">t</span><span style="color: #3B6EA8; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #29838D;">int</span> <span style="color: #842879;">n</span> <span style="color: #3B6EA8;">=</span> all<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">size</span><span style="color: #97365B; background-color: #E5E9F0;">()</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">if</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span>in<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">size</span><span style="color: #4F894C; background-color: #E5E9F0;">()</span> <span style="color: #3B6EA8;">==</span> n<span style="color: #97365B; background-color: #E5E9F0;">)</span>
+    <span style="color: #3B6EA8;">return</span> <span style="color: #29838D;">true</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;</span> n<span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #97365B; background-color: #E5E9F0;">)</span>
+    <span style="color: #3B6EA8;">if</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span>in<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">find</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>i<span style="color: #4F894C; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8;">==</span> in<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">end</span><span style="color: #4F894C; background-color: #E5E9F0;">()</span> <span style="color: #3B6EA8;">&amp;&amp;</span> t <span style="color: #3B6EA8;">&lt;=</span> all<span style="color: #4F894C; background-color: #E5E9F0;">[</span>i<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #97365B; font-style: italic;">t</span> <span style="color: #3B6EA8;">+</span> all<span style="color: #4F894C; background-color: #E5E9F0;">[</span>i<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #97365B; font-style: italic;">d</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+      in<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">insert</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>i<span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+      <span style="color: #3B6EA8;">if</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span><span style="color: #5d86b6; font-weight: bold;">dfs</span><span style="color: #842879; background-color: #E5E9F0;">(</span>all<span style="color: #3B4252; background-color: #E5E9F0;">,</span> in<span style="color: #3B4252; background-color: #E5E9F0;">,</span> t <span style="color: #3B6EA8;">+</span> all<span style="color: #3B6EA8; background-color: #E5E9F0;">[</span>i<span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #97365B; font-style: italic;">l</span><span style="color: #842879; background-color: #E5E9F0;">)</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span>
+        <span style="color: #3B6EA8;">return</span> <span style="color: #29838D;">true</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+      in<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">erase</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>i<span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  <span style="color: #3B6EA8;">return</span> <span style="color: #29838D;">false</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+
+<span style="color: #29838D;">int</span> <span style="color: #29838D;">main</span><span style="color: #3B6EA8; background-color: #E5E9F0;">()</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #29838D;">int</span> <span style="color: #842879;">t</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  cin <span style="color: #3B6EA8;">&gt;&gt;</span> t<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">while</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #842879;">t</span><span style="color: #3B6EA8;">--</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #29838D;">int</span> <span style="color: #842879;">n</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    cin <span style="color: #3B6EA8;">&gt;&gt;</span> n<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #9A7500;">vector</span><span style="color: #4F894C;">&lt;</span><span style="color: #9A7500;">air</span><span style="color: #4F894C;">&gt;</span> <span style="color: #29838D;">all</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span><span style="color: #9A7500;">n</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #3B6EA8;">for</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;</span> n<span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span>
+      cin <span style="color: #3B6EA8;">&gt;&gt;</span> all<span style="color: #4F894C; background-color: #E5E9F0;">[</span>i<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #97365B; font-style: italic;">t</span> <span style="color: #3B6EA8;">&gt;&gt;</span> all<span style="color: #4F894C; background-color: #E5E9F0;">[</span>i<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #97365B; font-style: italic;">d</span> <span style="color: #3B6EA8;">&gt;&gt;</span> all<span style="color: #4F894C; background-color: #E5E9F0;">[</span>i<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #97365B; font-style: italic;">l</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #9A7500;">set</span><span style="color: #4F894C;">&lt;</span><span style="color: #29838D;">int</span><span style="color: #4F894C;">&gt;</span> <span style="color: #842879;">in</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #29838D;">bool</span> <span style="color: #842879;">ans</span> <span style="color: #3B6EA8;">=</span> <span style="color: #5d86b6; font-weight: bold;">dfs</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>all<span style="color: #3B4252; background-color: #E5E9F0;">,</span> in<span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">0</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #3B6EA8;">if</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span>ans<span style="color: #4F894C; background-color: #E5E9F0;">)</span>
+      cout <span style="color: #3B6EA8;">&lt;&lt;</span> <span style="color: #4F894C;">"YES"</span> <span style="color: #3B6EA8;">&lt;&lt;</span> endl<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #3B6EA8;">else</span>
+      cout <span style="color: #3B6EA8;">&lt;&lt;</span> <span style="color: #4F894C;">"NO"</span> <span style="color: #3B6EA8;">&lt;&lt;</span> endl<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  <span style="color: #3B6EA8;">return</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge39c205" class="outline-2">
+<h2 id="orge39c205">接龙数列</h2>
+<div class="outline-text-2" id="text-orge39c205">
+</div>
+<div id="outline-container-orgd9dc7d9" class="outline-3">
+<h3 id="orgd9dc7d9">题目</h3>
+<div class="outline-text-3" id="text-orgd9dc7d9">
+</div>
+<div id="outline-container-orgbc5e526" class="outline-4">
+<h4 id="orgbc5e526">题目描述</h4>
+<div class="outline-text-4" id="text-orgbc5e526">
+<p>
+对于一个长度为 \(K\) 的整数数列：\(A_1, A_2, \cdots , A_K\)，我们称之为接龙数列：<br>
+当且仅当 \(A_i\) 的首位数字恰好等于 \( A_{i-1} \) 的末位数字\((2 \le i \le K)\)。<br>
+</p>
+
+<p>
+例如：12, 23, 35, 56, 61, 11 是接龙数列；12, 23, 34, 56 不是接龙数列，因为 56 的首位数字不等于 34 的末位数字。<br>
+</p>
+
+<p>
+所有长度为 1 的整数数列都是接龙数列。<br>
+</p>
+
+<p>
+现在给定一个长度为 \(N\) 的数列\(A_1, A_2, \cdots ,A_N\)，请你计算最少从中删除多少个数，可以使剩下的序列是接龙序列？<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org8669d60" class="outline-4">
+<h4 id="org8669d60">输入格式</h4>
+<div class="outline-text-4" id="text-org8669d60">
+<p>
+第一行包含一个整数 \(N\)。<br>
+第二行包含 \(N\) 个整数 \(A_1, A_2, \cdots , A_N\)。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org74dc234" class="outline-4">
+<h4 id="org74dc234">输出格式</h4>
+<div class="outline-text-4" id="text-org74dc234">
+<p>
+一个整数代表答案。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgcab5d19" class="outline-4">
+<h4 id="orgcab5d19">样例输入</h4>
+<div class="outline-text-4" id="text-orgcab5d19">
+<pre class="example" id="org9c3699b">
+5
+11 121 22 12 2023
+</pre>
+</div>
+</div>
+<div id="outline-container-org8f4d6f5" class="outline-4">
+<h4 id="org8f4d6f5">样例输出</h4>
+<div class="outline-text-4" id="text-org8f4d6f5">
+<pre class="example" id="org330e843">
+1
+</pre>
+</div>
+</div>
+<div id="outline-container-orgcc6c2ac" class="outline-4">
+<h4 id="orgcc6c2ac">提示</h4>
+<div class="outline-text-4" id="text-orgcc6c2ac">
+<p>
+删除 22，剩余 11, 121, 12, 2023 是接龙数列。<br>
+</p>
+
+
+<p>
+对于 20% 的数据，\(1 \le N \le 20\)。<br>
+对于 50% 的数据，\(1 \le N \le 10000\)。<br>
+对于 100% 的数据，\(1 \le N \le 10^5, 1 \le A_i \le 10^9\)。所有 \(A_i\) 保证不包含前导 0。<br>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org4449898" class="outline-3">
+<h3 id="org4449898">解析</h3>
+<div class="outline-text-3" id="text-org4449898">
+<p>
+动态规划可解，定义 \( dp[i][j] \) 为第 \(i\) 位时，前 \(i\) 位结尾为 \(j\) 的最大长度。\(head[i]\) 表示第 \(i\) 个数字的首位，\(tail[i]\) 为未位。<br>
+</p>
+
+\begin{equation*}
+dp[i][j] = \begin{cases}
+max(dp[i-1][j], dp[i-1][head[i]] + 1) && if & j = tail[i] \\
+dp[i-1][j] && else &
+\end{cases}
+\end{equation*}
+
+<p>
+因为前 \(i\) 位的数据不会再次被使用，所以可以做内存的优化，避免复制。<br>
+最后优化成：\( dp[tail[i]]=max(dp[i-1][tail[j]], dp[i-1][head[i]]+1) \)<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgc8a9f3e" class="outline-3">
+<h3 id="orgc8a9f3e">代码</h3>
+<div class="outline-text-3" id="text-orgc8a9f3e">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;iostream&gt;</span>
+
+<span style="color: #3B6EA8;">using</span> <span style="color: #3B6EA8;">namespace</span> std<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #29838D;">int</span> <span style="color: #842879;">res</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #97365B;">10</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #29838D;">int</span> <span style="color: #29838D;">main</span><span style="color: #3B6EA8; background-color: #E5E9F0;">()</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #29838D;">int</span> <span style="color: #842879;">n</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  cin <span style="color: #3B6EA8;">&gt;&gt;</span> n<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;</span> n<span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #29838D;">int</span> <span style="color: #842879;">x</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    cin <span style="color: #3B6EA8;">&gt;&gt;</span> x<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #29838D;">int</span> <span style="color: #842879;">tail</span> <span style="color: #3B6EA8;">=</span> x <span style="color: #3B6EA8;">%</span> <span style="color: #97365B;">10</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #29838D;">int</span> <span style="color: #842879;">head</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #3B6EA8;">while</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span>x<span style="color: #4F894C; background-color: #E5E9F0;">)</span> <span style="color: #4F894C; background-color: #E5E9F0;">{</span>
+      <span style="color: #842879;">head</span> <span style="color: #3B6EA8;">=</span> x <span style="color: #3B6EA8;">%</span> <span style="color: #97365B;">10</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+      <span style="color: #842879;">x</span> <span style="color: #3B6EA8;">/=</span> <span style="color: #97365B;">10</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #4F894C; background-color: #E5E9F0;">}</span>
+    <span style="color: #842879;">res</span><span style="color: #4F894C; background-color: #E5E9F0;">[</span>tail<span style="color: #4F894C; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> <span style="color: #5d86b6; font-weight: bold;">max</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>res<span style="color: #842879; background-color: #E5E9F0;">[</span>tail<span style="color: #842879; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> res<span style="color: #842879; background-color: #E5E9F0;">[</span>head<span style="color: #842879; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">+</span> <span style="color: #97365B;">1</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  <span style="color: #29838D;">int</span> <span style="color: #842879;">max_</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;</span> <span style="color: #97365B;">10</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #97365B; background-color: #E5E9F0;">)</span>
+    <span style="color: #842879;">max_</span> <span style="color: #3B6EA8;">=</span> <span style="color: #5d86b6; font-weight: bold;">max</span><span style="color: #97365B; background-color: #E5E9F0;">(</span>max_<span style="color: #3B4252; background-color: #E5E9F0;">,</span> res<span style="color: #4F894C; background-color: #E5E9F0;">[</span>i<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  cout <span style="color: #3B6EA8;">&lt;&lt;</span> n <span style="color: #3B6EA8;">-</span> max_ <span style="color: #3B6EA8;">&lt;&lt;</span> endl<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">return</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org4865f2c" class="outline-2">
+<h2 id="org4865f2c">岛屿个数</h2>
+<div class="outline-text-2" id="text-org4865f2c">
+</div>
+<div id="outline-container-org5e77928" class="outline-3">
+<h3 id="org5e77928">题目</h3>
+<div class="outline-text-3" id="text-org5e77928">
+</div>
+<div id="outline-container-org21f8c36" class="outline-4">
+<h4 id="org21f8c36">题目描述</h4>
+<div class="outline-text-4" id="text-org21f8c36">
+<p>
+小蓝得到了一副大小为 \(M \times N\) 的格子地图，可以将其视作一个只包含字符‘0’（代表海水）和 ‘1’（代表陆地）的二维数组，地图之外可以视作全部是海水，每个岛屿由在上/下/左/右四个方向上相邻的 ‘1’ 相连接而形成。<br>
+</p>
+
+<p>
+在岛屿 A 所占据的格子中，如果可以从中选出 \(k\) 个不同的格子，使得他们的坐标能够组成一个这样的排列：\((x_0, y_0),(x_1, y_1), \cdots ,(x_{k-1}, y_{k-1})\)，其中\((x_{(i+1)} \% k , y_{(i+1)}\% k)\) 是由 \((x_i , y_i)\) 通过上/下/左/右移动一次得来的 \((0 \le i \le k - 1)\)，此时这 \(k\) 个格子就构成了一个 “环”。如果另一个岛屿 \(B\) 所占据的格子全部位于这个 “环” 内部，此时我们将岛屿 \(B\) 视作是岛屿 \(A\) 的子岛屿。若 \(B\) 是 \(A\) 的子岛屿，\(C\) 又是 \(B\) 的子岛屿，那 \(C\) 也是 \(A\) 的子岛屿。<br>
+</p>
+
+<p>
+请问这个地图上共有多少个岛屿？在进行统计时不需要统计子岛屿的数目。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org6fe33af" class="outline-4">
+<h4 id="org6fe33af">输入格式</h4>
+<div class="outline-text-4" id="text-org6fe33af">
+<p>
+第一行一个整数 \(T\)，表示有 \(T\) 组测试数据。<br>
+接下来输入 \(T\) 组数据。对于每组数据，第一行包含两个用空格分隔的整数\(M, N\) 表示地图大小；接下来输入 \(M\) 行，每行包含 \(N\) 个字符，字符只可能是‘0’ 或 ‘1’。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgcd591da" class="outline-4">
+<h4 id="orgcd591da">输出格式</h4>
+<div class="outline-text-4" id="text-orgcd591da">
+<p>
+对于每组数据，输出一行，包含一个整数表示答案。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org2812852" class="outline-4">
+<h4 id="org2812852">样例输入</h4>
+<div class="outline-text-4" id="text-org2812852">
+<pre class="example" id="org61cc5b6">
+2
+5 5
+01111
+11001
+10101
+10001
+11111
+5 6
+111111
+100001
+010101
+100001
+111111
+</pre>
+</div>
+</div>
+<div id="outline-container-org6380061" class="outline-4">
+<h4 id="org6380061">样例输出</h4>
+<div class="outline-text-4" id="text-org6380061">
+<pre class="example" id="orgaccb051">
+1
+3
+</pre>
+</div>
+</div>
+<div id="outline-container-org0801f87" class="outline-4">
+<h4 id="org0801f87">提示</h4>
+<div class="outline-text-4" id="text-org0801f87">
+<p>
+对于第一组数据，包含两个岛屿，下面用不同的数字进行了区分：<br>
+</p>
+<pre class="example" id="org58759c2">
+01111
+11001
+10201
+10001
+11111
+</pre>
+
+<p>
+岛屿 2 在岛屿 1 的 “环” 内部，所以岛屿 2 是岛屿 1 的子岛屿，答案为 1。<br>
+对于第二组数据，包含三个岛屿，下面用不同的数字进行了区分：<br>
+</p>
+<pre class="example" id="orga70d66e">
+111111
+100001
+020301
+100001
+111111
+</pre>
+
+<p>
+注意岛屿 3 并不是岛屿 1 或者岛屿 2 的子岛屿，因为岛屿 1 和岛屿 2 中均没有“环”。<br>
+对于 30% 的评测用例，\(1 \le M, N \le 10\)。<br>
+对于 100% 的评测用例，\(1 \le T \le 10, 1 \le M, N \le 50\)。<br>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgddccf31" class="outline-3">
+<h3 id="orgddccf31">解析</h3>
+<div class="outline-text-3" id="text-orgddccf31">
+<p>
+使用广搜来写，关键是判断子岛屿，可以看岛周围的水域是否与外海连通，如果不连通就是子岛。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgf3e5d16" class="outline-3">
+<h3 id="orgf3e5d16">代码</h3>
+<div class="outline-text-3" id="text-orgf3e5d16">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;iostream&gt;</span>
+<span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;queue&gt;</span>
+
+<span style="color: #3B6EA8;">using</span> <span style="color: #3B6EA8;">namespace</span> std<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8;">typedef</span> <span style="color: #29838D;">long long</span> <span style="color: #9A7500;">ll</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #3B6EA8;">const</span> <span style="color: #29838D;">int</span> <span style="color: #842879;">dx</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #97365B;">8</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span><span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">-1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">-1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">-1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">1</span><span style="color: #3B6EA8; background-color: #E5E9F0;">}</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8;">const</span> <span style="color: #29838D;">int</span> <span style="color: #842879;">dy</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #97365B;">8</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span><span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">-1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">-1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">-1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">1</span><span style="color: #3B6EA8; background-color: #E5E9F0;">}</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #29838D;">int</span> <span style="color: #842879;">n</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">m</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #29838D;">char</span> graph<span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #97365B;">60</span><span style="color: #3B6EA8; background-color: #E5E9F0;">][</span><span style="color: #97365B;">60</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #29838D;">bool</span> vis<span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #97365B;">60</span><span style="color: #3B6EA8; background-color: #E5E9F0;">][</span><span style="color: #97365B;">60</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #29838D;">bool</span> <span style="color: #29838D;">fill</span><span style="color: #3B6EA8; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">A</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #29838D;">int</span> <span style="color: #842879;">B</span><span style="color: #3B6EA8; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;=</span> n <span style="color: #3B6EA8;">+</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #3B6EA8;">for</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">j</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> j <span style="color: #3B6EA8;">&lt;=</span> m <span style="color: #3B6EA8;">+</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">j</span><span style="color: #3B6EA8;">++</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span> <span style="color: #4F894C; background-color: #E5E9F0;">{</span>
+      vis<span style="color: #842879; background-color: #E5E9F0;">[</span>i<span style="color: #842879; background-color: #E5E9F0;">][</span>j<span style="color: #842879; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> <span style="color: #29838D;">false</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #4F894C; background-color: #E5E9F0;">}</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  <span style="color: #9A7500;">queue</span><span style="color: #97365B;">&lt;</span><span style="color: #9A7500;">pair</span><span style="color: #4F894C;">&lt;</span><span style="color: #29838D;">int</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #29838D;">int</span><span style="color: #4F894C;">&gt;</span><span style="color: #97365B;">&gt;</span> <span style="color: #842879;">q</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  q<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">emplace</span><span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #97365B;">A</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">B</span><span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  vis<span style="color: #97365B; background-color: #E5E9F0;">[</span><span style="color: #97365B;">A</span><span style="color: #97365B; background-color: #E5E9F0;">][</span><span style="color: #97365B;">B</span><span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> <span style="color: #29838D;">true</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">while</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #3B6EA8;">!</span>q<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">empty</span><span style="color: #4F894C; background-color: #E5E9F0;">()</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #9A7500;">auto</span> <span style="color: #842879;">cur</span> <span style="color: #3B6EA8;">=</span> q<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">front</span><span style="color: #4F894C; background-color: #E5E9F0;">()</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    q<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">pop</span><span style="color: #4F894C; background-color: #E5E9F0;">()</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #29838D;">int</span> <span style="color: #842879;">x</span> <span style="color: #3B6EA8;">=</span> cur<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #97365B; font-style: italic;">first</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">y</span> <span style="color: #3B6EA8;">=</span> cur<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #97365B; font-style: italic;">second</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #3B6EA8;">for</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;</span> <span style="color: #97365B;">8</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span> <span style="color: #4F894C; background-color: #E5E9F0;">{</span>
+      <span style="color: #29838D;">int</span> <span style="color: #842879;">nx</span> <span style="color: #3B6EA8;">=</span> x <span style="color: #3B6EA8;">+</span> dx<span style="color: #842879; background-color: #E5E9F0;">[</span>i<span style="color: #842879; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">ny</span> <span style="color: #3B6EA8;">=</span> y <span style="color: #3B6EA8;">+</span> dy<span style="color: #842879; background-color: #E5E9F0;">[</span>i<span style="color: #842879; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+      <span style="color: #3B6EA8;">if</span> <span style="color: #842879; background-color: #E5E9F0;">(</span>nx <span style="color: #3B6EA8;">&lt;</span> <span style="color: #97365B;">1</span> <span style="color: #3B6EA8;">||</span> nx <span style="color: #3B6EA8;">&gt;</span> n <span style="color: #3B6EA8;">||</span> ny <span style="color: #3B6EA8;">&lt;</span> <span style="color: #97365B;">1</span> <span style="color: #3B6EA8;">||</span> ny <span style="color: #3B6EA8;">&gt;</span> m<span style="color: #842879; background-color: #E5E9F0;">)</span>
+        <span style="color: #3B6EA8;">return</span> <span style="color: #29838D;">true</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+      <span style="color: #3B6EA8;">if</span> <span style="color: #842879; background-color: #E5E9F0;">(</span>graph<span style="color: #3B6EA8; background-color: #E5E9F0;">[</span>nx<span style="color: #3B6EA8; background-color: #E5E9F0;">][</span>ny<span style="color: #3B6EA8; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">==</span> <span style="color: #97365B;">'0'</span> <span style="color: #3B6EA8;">&amp;&amp;</span> <span style="color: #3B6EA8;">!</span>vis<span style="color: #3B6EA8; background-color: #E5E9F0;">[</span>nx<span style="color: #3B6EA8; background-color: #E5E9F0;">][</span>ny<span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #842879; background-color: #E5E9F0;">)</span> <span style="color: #842879; background-color: #E5E9F0;">{</span>
+        vis<span style="color: #3B6EA8; background-color: #E5E9F0;">[</span>nx<span style="color: #3B6EA8; background-color: #E5E9F0;">][</span>ny<span style="color: #3B6EA8; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> <span style="color: #29838D;">true</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+        q<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">emplace</span><span style="color: #3B6EA8; background-color: #E5E9F0;">(</span>nx<span style="color: #3B4252; background-color: #E5E9F0;">,</span> ny<span style="color: #3B6EA8; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+      <span style="color: #842879; background-color: #E5E9F0;">}</span>
+    <span style="color: #4F894C; background-color: #E5E9F0;">}</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  <span style="color: #3B6EA8;">return</span> <span style="color: #29838D;">false</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+
+<span style="color: #29838D;">void</span> <span style="color: #29838D;">bfs</span><span style="color: #3B6EA8; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">A</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #29838D;">int</span> <span style="color: #842879;">B</span><span style="color: #3B6EA8; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #9A7500;">queue</span><span style="color: #97365B;">&lt;</span><span style="color: #9A7500;">pair</span><span style="color: #4F894C;">&lt;</span><span style="color: #29838D;">int</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #29838D;">int</span><span style="color: #4F894C;">&gt;</span><span style="color: #97365B;">&gt;</span> <span style="color: #842879;">q</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  q<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">emplace</span><span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #97365B;">A</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">B</span><span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">while</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #3B6EA8;">!</span>q<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">empty</span><span style="color: #4F894C; background-color: #E5E9F0;">()</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #9A7500;">auto</span> <span style="color: #842879;">cur</span> <span style="color: #3B6EA8;">=</span> q<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">front</span><span style="color: #4F894C; background-color: #E5E9F0;">()</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    q<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">pop</span><span style="color: #4F894C; background-color: #E5E9F0;">()</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #29838D;">int</span> <span style="color: #842879;">x</span> <span style="color: #3B6EA8;">=</span> cur<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #97365B; font-style: italic;">first</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">y</span> <span style="color: #3B6EA8;">=</span> cur<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #97365B; font-style: italic;">second</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #3B6EA8;">for</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;</span> <span style="color: #97365B;">4</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span> <span style="color: #4F894C; background-color: #E5E9F0;">{</span>
+      <span style="color: #29838D;">int</span> <span style="color: #842879;">nx</span> <span style="color: #3B6EA8;">=</span> x <span style="color: #3B6EA8;">+</span> dx<span style="color: #842879; background-color: #E5E9F0;">[</span>i<span style="color: #842879; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">ny</span> <span style="color: #3B6EA8;">=</span> y <span style="color: #3B6EA8;">+</span> dy<span style="color: #842879; background-color: #E5E9F0;">[</span>i<span style="color: #842879; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+      <span style="color: #3B6EA8;">if</span> <span style="color: #842879; background-color: #E5E9F0;">(</span>nx <span style="color: #3B6EA8;">&gt;=</span> <span style="color: #97365B;">1</span> <span style="color: #3B6EA8;">&amp;&amp;</span> nx <span style="color: #3B6EA8;">&lt;=</span> n <span style="color: #3B6EA8;">&amp;&amp;</span> ny <span style="color: #3B6EA8;">&gt;=</span> <span style="color: #97365B;">1</span> <span style="color: #3B6EA8;">&amp;&amp;</span> ny <span style="color: #3B6EA8;">&lt;=</span> m <span style="color: #3B6EA8;">&amp;&amp;</span> graph<span style="color: #3B6EA8; background-color: #E5E9F0;">[</span>nx<span style="color: #3B6EA8; background-color: #E5E9F0;">][</span>ny<span style="color: #3B6EA8; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">==</span> <span style="color: #97365B;">'1'</span><span style="color: #842879; background-color: #E5E9F0;">)</span> <span style="color: #842879; background-color: #E5E9F0;">{</span>
+        graph<span style="color: #3B6EA8; background-color: #E5E9F0;">[</span>nx<span style="color: #3B6EA8; background-color: #E5E9F0;">][</span>ny<span style="color: #3B6EA8; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">'0'</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+        q<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">emplace</span><span style="color: #3B6EA8; background-color: #E5E9F0;">(</span>nx<span style="color: #3B4252; background-color: #E5E9F0;">,</span> ny<span style="color: #3B6EA8; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+      <span style="color: #842879; background-color: #E5E9F0;">}</span>
+    <span style="color: #4F894C; background-color: #E5E9F0;">}</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+
+<span style="color: #29838D;">int</span> <span style="color: #29838D;">main</span><span style="color: #3B6EA8; background-color: #E5E9F0;">()</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #9A7500;">ios</span>::<span style="color: #5d86b6; font-weight: bold;">sync_with_stdio</span><span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #29838D;">false</span><span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #29838D;">int</span> <span style="color: #842879;">T</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  cin <span style="color: #3B6EA8;">&gt;&gt;</span> <span style="color: #97365B;">T</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">while</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #842879;">T</span><span style="color: #3B6EA8;">--</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    cin <span style="color: #3B6EA8;">&gt;&gt;</span> n <span style="color: #3B6EA8;">&gt;&gt;</span> m<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #3B6EA8;">for</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;=</span> n<span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span> <span style="color: #4F894C; background-color: #E5E9F0;">{</span>
+      <span style="color: #3B6EA8;">for</span> <span style="color: #842879; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">j</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> j <span style="color: #3B6EA8;">&lt;=</span> m<span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">j</span><span style="color: #3B6EA8;">++</span><span style="color: #842879; background-color: #E5E9F0;">)</span> <span style="color: #842879; background-color: #E5E9F0;">{</span>
+        cin <span style="color: #3B6EA8;">&gt;&gt;</span> graph<span style="color: #3B6EA8; background-color: #E5E9F0;">[</span>i<span style="color: #3B6EA8; background-color: #E5E9F0;">][</span>j<span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+      <span style="color: #842879; background-color: #E5E9F0;">}</span>
+    <span style="color: #4F894C; background-color: #E5E9F0;">}</span>
+    <span style="color: #29838D;">int</span> <span style="color: #842879;">ans</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #3B6EA8;">for</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;=</span> n<span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span> <span style="color: #4F894C; background-color: #E5E9F0;">{</span>
+      <span style="color: #3B6EA8;">for</span> <span style="color: #842879; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">j</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> j <span style="color: #3B6EA8;">&lt;=</span> m<span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">j</span><span style="color: #3B6EA8;">++</span><span style="color: #842879; background-color: #E5E9F0;">)</span> <span style="color: #842879; background-color: #E5E9F0;">{</span>
+        <span style="color: #3B6EA8;">if</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">(</span>graph<span style="color: #97365B; background-color: #E5E9F0;">[</span>i<span style="color: #97365B; background-color: #E5E9F0;">][</span>j<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">==</span> <span style="color: #97365B;">'1'</span><span style="color: #3B6EA8; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+          <span style="color: #3B6EA8;">if</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #3B6EA8;">!</span><span style="color: #5d86b6; font-weight: bold;">fill</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>i<span style="color: #3B4252; background-color: #E5E9F0;">,</span> j<span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #97365B; background-color: #E5E9F0;">)</span>
+            graph<span style="color: #97365B; background-color: #E5E9F0;">[</span>i<span style="color: #97365B; background-color: #E5E9F0;">][</span>j<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">'0'</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+        <span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+      <span style="color: #842879; background-color: #E5E9F0;">}</span>
+    <span style="color: #4F894C; background-color: #E5E9F0;">}</span>
+    <span style="color: #3B6EA8;">for</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;=</span> n<span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span> <span style="color: #4F894C; background-color: #E5E9F0;">{</span>
+      <span style="color: #3B6EA8;">for</span> <span style="color: #842879; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">j</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> j <span style="color: #3B6EA8;">&lt;=</span> m<span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">j</span><span style="color: #3B6EA8;">++</span><span style="color: #842879; background-color: #E5E9F0;">)</span> <span style="color: #842879; background-color: #E5E9F0;">{</span>
+        <span style="color: #3B6EA8;">if</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">(</span>graph<span style="color: #97365B; background-color: #E5E9F0;">[</span>i<span style="color: #97365B; background-color: #E5E9F0;">][</span>j<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">==</span> <span style="color: #97365B;">'1'</span><span style="color: #3B6EA8; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+          <span style="color: #842879;">ans</span><span style="color: #3B6EA8;">++</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+          <span style="color: #5d86b6; font-weight: bold;">bfs</span><span style="color: #97365B; background-color: #E5E9F0;">(</span>i<span style="color: #3B4252; background-color: #E5E9F0;">,</span> j<span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+        <span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+      <span style="color: #842879; background-color: #E5E9F0;">}</span>
+    <span style="color: #4F894C; background-color: #E5E9F0;">}</span>
+    cout <span style="color: #3B6EA8;">&lt;&lt;</span> ans <span style="color: #3B6EA8;">&lt;&lt;</span> endl<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  <span style="color: #3B6EA8;">return</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgff357bb" class="outline-2">
+<h2 id="orgff357bb">子串简写</h2>
+<div class="outline-text-2" id="text-orgff357bb">
+</div>
+<div id="outline-container-orgb5e788f" class="outline-3">
+<h3 id="orgb5e788f">题目</h3>
+<div class="outline-text-3" id="text-orgb5e788f">
+</div>
+<div id="outline-container-org16b79a3" class="outline-4">
+<h4 id="org16b79a3">题目描述</h4>
+<div class="outline-text-4" id="text-org16b79a3">
+<p>
+程序猿圈子里正在流行一种很新的简写方法：对于一个字符串，只保留首尾字符，将首尾字符之间的所有字符用这部分的长度代替。例如internationalization简写成 i18n，Kubernetes 简写成 K8s, Lanqiao 简写成 L5o 等。<br>
+</p>
+
+<p>
+在本题中，我们规定长度大于等于 \(K\) 的字符串都可以采用这种简写方法。长度小于 \(K\) 的字符串不允许使用这种简写。<br>
+</p>
+
+<p>
+给定一个字符串 \(S\) 和两个字符 \(c1\) 和 \(c2\)。请你计算 \(S\) 有多少个以 \(c1\) 开头 \(c2\) 结尾的子串可以采用这种简写？<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org388c679" class="outline-4">
+<h4 id="org388c679">输入格式</h4>
+<div class="outline-text-4" id="text-org388c679">
+<p>
+第一行包含一个整数 \(K\)。<br>
+第二行包含一个字符串 \(S\) 和两个字符 \(c1\) 和 \(c2\)。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgec470f3" class="outline-4">
+<h4 id="orgec470f3">输出格式</h4>
+<div class="outline-text-4" id="text-orgec470f3">
+<p>
+一个整数代表答案。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org8333fc1" class="outline-4">
+<h4 id="org8333fc1">样例输入</h4>
+<div class="outline-text-4" id="text-org8333fc1">
+<pre class="example" id="org69e270d">
+4
+abababdb a b
+</pre>
+</div>
+</div>
+<div id="outline-container-org28d7e8b" class="outline-4">
+<h4 id="org28d7e8b">样例输出</h4>
+<div class="outline-text-4" id="text-org28d7e8b">
+<pre class="example" id="org5e76c5b">
+6
+</pre>
+</div>
+</div>
+<div id="outline-container-org96eb182" class="outline-4">
+<h4 id="org96eb182">提示</h4>
+<div class="outline-text-4" id="text-org96eb182">
+<p>
+符合条件的子串如下所示，中括号内是该子串：<br>
+</p>
+<pre class="example" id="org0fbef82">
+[abab]abdb
+[ababab]db
+[abababdb]
+ab[abab]db
+ab[ababdb]
+abab[abdb]
+</pre>
+<p>
+对于 20% 的数据，\(2 \le K \le |S | \le 10000\)。<br>
+对于 100% 的数据，\(2 \le K \le |S | \le 5 \times 10^5\)。\(S\) 只包含小写字母。\(c1\) 和 \(c2\) 都是小写字母。<br>
+\(|S |\) 代表字符串 \(S\) 的长度。<br>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga87cb82" class="outline-3">
+<h3 id="orga87cb82">解析</h3>
+<div class="outline-text-3" id="text-orga87cb82">
+<p>
+可以遍历所有的子串，然后判断是否合法，但过不了所有的数据点。<br>
+</p>
+
+<p>
+也可以使用类似前缀和的方法解。 \(sum[i]\) 保存前 \(i\) 个字符串中有多少个字符 \(c2\)，然后找到所有字符 \(c1\) 的位置，看他到结尾之间有多少个字符 \(c2\) 即可，同时不要忘记字符串长度要大于等于 \(K\)。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org5a681b6" class="outline-3">
+<h3 id="org5a681b6">代码</h3>
+<div class="outline-text-3" id="text-org5a681b6">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;iostream&gt;</span>
+<span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;string&gt;</span>
+
+<span style="color: #3B6EA8;">using</span> <span style="color: #3B6EA8;">namespace</span> std<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8;">typedef</span> <span style="color: #29838D;">long long</span> <span style="color: #9A7500;">ll</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #3B6EA8;">const</span> <span style="color: #29838D;">int</span> <span style="color: #842879;">maxn</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">5e5</span> <span style="color: #3B6EA8;">+</span> <span style="color: #97365B;">10</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #9A7500;">string</span> <span style="color: #842879;">s</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #29838D;">int</span> <span style="color: #842879;">sum</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #29838D;">int</span> <span style="color: #29838D;">main</span><span style="color: #3B6EA8; background-color: #E5E9F0;">()</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #29838D;">int</span> <span style="color: #842879;">k</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  cin <span style="color: #3B6EA8;">&gt;&gt;</span> k<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  cin <span style="color: #3B6EA8;">&gt;&gt;</span> s<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #29838D;">int</span> <span style="color: #842879;">n</span> <span style="color: #3B6EA8;">=</span> s<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">size</span><span style="color: #97365B; background-color: #E5E9F0;">()</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #29838D;">char</span> <span style="color: #842879;">c1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">c2</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  cin <span style="color: #3B6EA8;">&gt;&gt;</span> c1 <span style="color: #3B6EA8;">&gt;&gt;</span> c2<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;=</span> n<span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #3B6EA8;">if</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span>s<span style="color: #842879; background-color: #E5E9F0;">[</span>i <span style="color: #3B6EA8;">-</span> <span style="color: #97365B;">1</span><span style="color: #842879; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">==</span> c2<span style="color: #4F894C; background-color: #E5E9F0;">)</span>
+      <span style="color: #842879;">sum</span><span style="color: #4F894C; background-color: #E5E9F0;">[</span>i<span style="color: #4F894C; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #842879;">sum</span><span style="color: #4F894C; background-color: #E5E9F0;">[</span>i<span style="color: #4F894C; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">+=</span> sum<span style="color: #4F894C; background-color: #E5E9F0;">[</span>i <span style="color: #3B6EA8;">-</span> <span style="color: #97365B;">1</span><span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  <span style="color: #9A7500;">ll</span> <span style="color: #842879;">ans</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">+</span> k <span style="color: #3B6EA8;">-</span> <span style="color: #97365B;">1</span> <span style="color: #3B6EA8;">&lt;=</span> n<span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #3B6EA8;">if</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span>s<span style="color: #842879; background-color: #E5E9F0;">[</span>i <span style="color: #3B6EA8;">-</span> <span style="color: #97365B;">1</span><span style="color: #842879; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">==</span> c1<span style="color: #4F894C; background-color: #E5E9F0;">)</span>
+      <span style="color: #842879;">ans</span> <span style="color: #3B6EA8;">+=</span> sum<span style="color: #4F894C; background-color: #E5E9F0;">[</span>n<span style="color: #4F894C; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">-</span> sum<span style="color: #4F894C; background-color: #E5E9F0;">[</span>i <span style="color: #3B6EA8;">+</span> k <span style="color: #3B6EA8;">-</span> <span style="color: #97365B;">2</span><span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  cout <span style="color: #3B6EA8;">&lt;&lt;</span> ans <span style="color: #3B6EA8;">&lt;&lt;</span> endl<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">return</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org4190621" class="outline-2">
+<h2 id="org4190621">整数删除</h2>
+<div class="outline-text-2" id="text-org4190621">
+</div>
+<div id="outline-container-org987731c" class="outline-3">
+<h3 id="org987731c">题目</h3>
+<div class="outline-text-3" id="text-org987731c">
+</div>
+<div id="outline-container-orgc588545" class="outline-4">
+<h4 id="orgc588545">题目描述</h4>
+<div class="outline-text-4" id="text-orgc588545">
+<p>
+给定一个长度为 \(N\) 的整数数列：\(A_1, A_2, \cdots , A_N\)。你要重复以下操作 \(K\) 次：每次选择数列中最小的整数（如果最小值不止一个，选择最靠前的），将其删除。并把与它相邻的整数加上被删除的数值。输出 \(K\) 次操作后的序列。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgb9cf18f" class="outline-4">
+<h4 id="orgb9cf18f">输入格式</h4>
+<div class="outline-text-4" id="text-orgb9cf18f">
+<p>
+第一行包含两个整数 \(N\) 和 \(K\)。<br>
+第二行包含 \(N\) 个整数，\(A_1, A_2, A_3, \cdots , A_N\)。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orge5cd825" class="outline-4">
+<h4 id="orge5cd825">输出格式</h4>
+<div class="outline-text-4" id="text-orge5cd825">
+<p>
+输出 \(N - K\) 个整数，中间用一个空格隔开，代表 \(K\) 次操作后的序列。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org7e3f0d7" class="outline-4">
+<h4 id="org7e3f0d7">样例输入</h4>
+<div class="outline-text-4" id="text-org7e3f0d7">
+<pre class="example" id="org5b020c5">
+5 3
+1 4 2 8 7
+</pre>
+</div>
+</div>
+<div id="outline-container-org36fba63" class="outline-4">
+<h4 id="org36fba63">样例输出</h4>
+<div class="outline-text-4" id="text-org36fba63">
+<pre class="example" id="org4a428f1">
+17 7
+</pre>
+</div>
+</div>
+<div id="outline-container-org703d5a1" class="outline-4">
+<h4 id="org703d5a1">提示</h4>
+<div class="outline-text-4" id="text-org703d5a1">
+<p>
+数列变化如下，中括号里的数是当次操作中被选择的数：<br>
+</p>
+<pre class="example" id="org5775e3e">
+[1] 4 2 8 7
+5 [2] 8 7
+
+[7] 10 7
+17 7
+</pre>
+<p>
+对于 20% 的数据，\(1 \le K < N \le 10000\)。<br>
+对于 100% 的数据，\(1 \le K < N \le 5 \times 10^5,0 \le Ai \le 10^8\)。<br>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org0185296" class="outline-3">
+<h3 id="org0185296">解析</h3>
+<div class="outline-text-3" id="text-org0185296">
+<p>
+模拟，然后使用优先队列和链表优化。这里的链表使用了三个数组来模拟，\(v\) 保存值，\(l\) 保存左指针，\(r\) 保存右指针。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgaf59b53" class="outline-3">
+<h3 id="orgaf59b53">代码</h3>
+<div class="outline-text-3" id="text-orgaf59b53">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;iostream&gt;</span>
+<span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;queue&gt;</span>
+
+<span style="color: #3B6EA8;">using</span> <span style="color: #3B6EA8;">namespace</span> std<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8;">typedef</span> <span style="color: #29838D;">long long</span> <span style="color: #9A7500;">ll</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #3B6EA8;">const</span> <span style="color: #29838D;">int</span> <span style="color: #842879;">maxn</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">5e5</span> <span style="color: #3B6EA8;">+</span> <span style="color: #97365B;">10</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #9A7500;">ll</span> <span style="color: #842879;">v</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">l</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">r</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #29838D;">void</span> <span style="color: #29838D;">del</span><span style="color: #3B6EA8; background-color: #E5E9F0;">(</span><span style="color: #9A7500;">ll</span> <span style="color: #842879;">x</span><span style="color: #3B6EA8; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #842879;">r</span><span style="color: #97365B; background-color: #E5E9F0;">[</span>l<span style="color: #4F894C; background-color: #E5E9F0;">[</span>x<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> r<span style="color: #97365B; background-color: #E5E9F0;">[</span>x<span style="color: #97365B; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">l</span><span style="color: #97365B; background-color: #E5E9F0;">[</span>r<span style="color: #4F894C; background-color: #E5E9F0;">[</span>x<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> l<span style="color: #97365B; background-color: #E5E9F0;">[</span>x<span style="color: #97365B; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #842879;">v</span><span style="color: #97365B; background-color: #E5E9F0;">[</span>l<span style="color: #4F894C; background-color: #E5E9F0;">[</span>x<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">+=</span> v<span style="color: #97365B; background-color: #E5E9F0;">[</span>x<span style="color: #97365B; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">v</span><span style="color: #97365B; background-color: #E5E9F0;">[</span>r<span style="color: #4F894C; background-color: #E5E9F0;">[</span>x<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">+=</span> v<span style="color: #97365B; background-color: #E5E9F0;">[</span>x<span style="color: #97365B; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+
+<span style="color: #29838D;">int</span> <span style="color: #29838D;">main</span><span style="color: #3B6EA8; background-color: #E5E9F0;">()</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #29838D;">int</span> <span style="color: #842879;">n</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">k</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  cin <span style="color: #3B6EA8;">&gt;&gt;</span> n <span style="color: #3B6EA8;">&gt;&gt;</span> k<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #9A7500;">priority_queue</span><span style="color: #97365B;">&lt;</span><span style="color: #5d86b6; font-weight: bold;">pair</span><span style="color: #4F894C;">&lt;</span><span style="color: #9A7500;">ll</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #29838D;">int</span><span style="color: #4F894C;">&gt;</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #9A7500;">vector</span><span style="color: #4F894C;">&lt;</span><span style="color: #9A7500;">pair</span><span style="color: #842879;">&lt;</span><span style="color: #9A7500;">ll</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #29838D;">int</span><span style="color: #842879;">&gt;</span><span style="color: #4F894C;">&gt;</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #9A7500;">greater</span><span style="color: #4F894C;">&lt;</span><span style="color: #9A7500;">pair</span><span style="color: #842879;">&lt;</span><span style="color: #9A7500;">ll</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #29838D;">int</span><span style="color: #842879;">&gt;</span><span style="color: #4F894C;">&gt;</span><span style="color: #97365B;">&gt;</span>
+      <span style="color: #842879;">pq</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #842879;">r</span><span style="color: #97365B; background-color: #E5E9F0;">[</span><span style="color: #97365B;">0</span><span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">l</span><span style="color: #97365B; background-color: #E5E9F0;">[</span>n <span style="color: #3B6EA8;">+</span> <span style="color: #97365B;">1</span><span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> n<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;=</span> n<span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    cin <span style="color: #3B6EA8;">&gt;&gt;</span> v<span style="color: #4F894C; background-color: #E5E9F0;">[</span>i<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #842879;">l</span><span style="color: #4F894C; background-color: #E5E9F0;">[</span>i<span style="color: #4F894C; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> i <span style="color: #3B6EA8;">-</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #842879;">r</span><span style="color: #4F894C; background-color: #E5E9F0;">[</span>i<span style="color: #4F894C; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> i <span style="color: #3B6EA8;">+</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    pq<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">emplace</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>v<span style="color: #842879; background-color: #E5E9F0;">[</span>i<span style="color: #842879; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> i<span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  <span style="color: #3B6EA8;">while</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #842879;">k</span><span style="color: #3B6EA8;">--</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #9A7500;">auto</span> <span style="color: #842879;">p</span> <span style="color: #3B6EA8;">=</span> pq<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">top</span><span style="color: #4F894C; background-color: #E5E9F0;">()</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    pq<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">pop</span><span style="color: #4F894C; background-color: #E5E9F0;">()</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #3B6EA8;">if</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span>p<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #97365B; font-style: italic;">first</span> <span style="color: #3B6EA8;">!=</span> v<span style="color: #842879; background-color: #E5E9F0;">[</span>p<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #97365B; font-style: italic;">second</span><span style="color: #842879; background-color: #E5E9F0;">]</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span> <span style="color: #4F894C; background-color: #E5E9F0;">{</span>
+      pq<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">emplace</span><span style="color: #842879; background-color: #E5E9F0;">(</span>v<span style="color: #3B6EA8; background-color: #E5E9F0;">[</span>p<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #97365B; font-style: italic;">second</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> p<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #97365B; font-style: italic;">second</span><span style="color: #842879; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+      <span style="color: #842879;">k</span><span style="color: #3B6EA8;">++</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #4F894C; background-color: #E5E9F0;">}</span> <span style="color: #3B6EA8;">else</span>
+      <span style="color: #5d86b6; font-weight: bold;">del</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>p<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #97365B; font-style: italic;">second</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  <span style="color: #9A7500;">ll</span> <span style="color: #842879;">head</span> <span style="color: #3B6EA8;">=</span> r<span style="color: #97365B; background-color: #E5E9F0;">[</span><span style="color: #97365B;">0</span><span style="color: #97365B; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">while</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span>head <span style="color: #3B6EA8;">!=</span> n <span style="color: #3B6EA8;">+</span> <span style="color: #97365B;">1</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    cout <span style="color: #3B6EA8;">&lt;&lt;</span> v<span style="color: #4F894C; background-color: #E5E9F0;">[</span>head<span style="color: #4F894C; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">&lt;&lt;</span> <span style="color: #4F894C;">" "</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #842879;">head</span> <span style="color: #3B6EA8;">=</span> r<span style="color: #4F894C; background-color: #E5E9F0;">[</span>head<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  <span style="color: #3B6EA8;">return</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org4225756" class="outline-2">
+<h2 id="org4225756">景区导游</h2>
+<div class="outline-text-2" id="text-org4225756">
+</div>
+<div id="outline-container-org23dc5aa" class="outline-3">
+<h3 id="org23dc5aa">题目</h3>
+<div class="outline-text-3" id="text-org23dc5aa">
+</div>
+<div id="outline-container-org0331942" class="outline-4">
+<h4 id="org0331942">题目描述</h4>
+<div class="outline-text-4" id="text-org0331942">
+<p>
+某景区一共有 \(N\) 个景点，编号 \(1\) 到 \(N\)。景点之间共有 \(N - 1\) 条双向的摆渡车线路相连，形成一棵树状结构。在景点之间往返只能通过这些摆渡车进行，需要花费一定的时间。<br>
+</p>
+
+<p>
+小明是这个景区的资深导游，他每天都要按固定顺序带客人游览其中 \(K\) 个景点：\(A_1, A_2, \cdots , A_K\)。 今天由于时间原因，小明决定跳过其中一个景点，只带游客按顺序游览其中 \(K - 1\) 个景点。<br>
+具体来说，如果小明选择跳过 \(A_i\)，那么他会按顺序带游客游览\(A_1, A_2, \cdots , A_{i-1}, A_{i+1}, \cdots , A_K; (1 \le i \le K)\)。<br>
+</p>
+
+<p>
+请你对任意一个 \(A_i\)，计算如果跳过这个景点，小明需要花费多少时间在景点之间的摆渡车上？<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgcd37978" class="outline-4">
+<h4 id="orgcd37978">输入格式</h4>
+<div class="outline-text-4" id="text-orgcd37978">
+<p>
+第一行包含 2 个整数 \(N\) 和 \(K\)。<br>
+以下 \(N - 1\) 行，每行包含 3 个整数 \(u\), \(v\) 和 \(t\)，代表景点 \(u\) 和 \(v\) 之间有摆渡车线路，花费 \(t\) 个单位时间。<br>
+最后一行包含 \(K\) 个整数 \(A_1, A_2, \cdots , A_K\) 代表原定游览线路。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgeaccd53" class="outline-4">
+<h4 id="orgeaccd53">输出格式</h4>
+<div class="outline-text-4" id="text-orgeaccd53">
+<p>
+输出 \(K\) 个整数，其中第 \(i\) 个代表跳过 \(A_i\) 之后，花费在摆渡车上的时间。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org631869e" class="outline-4">
+<h4 id="org631869e">样例输入</h4>
+<div class="outline-text-4" id="text-org631869e">
+<pre class="example" id="org1b3756f">
+6 4
+1 2 1
+1 3 1
+3 4 2
+3 5 2
+4 6 3
+2 6 5 1
+</pre>
+</div>
+</div>
+<div id="outline-container-org41eb193" class="outline-4">
+<h4 id="org41eb193">样例输出</h4>
+<div class="outline-text-4" id="text-org41eb193">
+<pre class="example" id="org6043c7a">
+10 7 13 14
+</pre>
+</div>
+</div>
+<div id="outline-container-org150d047" class="outline-4">
+<h4 id="org150d047">提示</h4>
+<div class="outline-text-4" id="text-org150d047">
+<p>
+原路线是 2 → 6 → 5 → 1。<br>
+当跳过 2 时，路线是 6 → 5 → 1，其中 6 → 5 花费时间 3 + 2 + 2 = 7，5 → 1 花费时间 2 + 1 = 3，总时间花费 10。<br>
+当跳过 6 时，路线是 2 → 5 → 1，其中 2 → 5 花费时间 1 + 1 + 2 = 4，5 → 1 花费时间 2 + 1 = 3，总时间花费 7。<br>
+当跳过 5 时，路线是 2 → 6 → 1，其中 2 → 6 花费时间 1 + 1 + 2 + 3 = 7，6 → 1 花费时间 3 + 2 + 1 = 6，总时间花费 13。<br>
+当跳过 1 时，路线时 2 → 6 → 5，其中 2 → 6 花费时间 1 + 1 + 2 + 3 = 7，6 → 5 花费时间 3 + 2 + 2 = 7，总时间花费 14。<br>
+</p>
+
+<p>
+对于 20% 的数据，\(2 \le K \le N \le 10^2\)。<br>
+对于 40% 的数据，\(2 \le K \le N \le 10^4\)。<br>
+对于 100% 的数据，\(2 \le K \le N \le 10^5, 1 \le u, v, Ai \le N, 1 \le t \le 10^5\)。保证 \(A_i\) 两两不同。<br>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf97121c" class="outline-3">
+<h3 id="orgf97121c">解析</h3>
+<div class="outline-text-3" id="text-orgf97121c">
+<p>
+使用 <a href="https://oi-wiki.org/graph/lca">LCA</a> 即可，就是一个板子题。<br>
+</p>
+
+<p>
+先求出不删除节点的总路程。<br>
+</p>
+
+<p>
+求去除一个节点后的最短距离只需要置换掉相邻两个最短路为一个新连接的最短路。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgb04d1d2" class="outline-3">
+<h3 id="orgb04d1d2">代码</h3>
+<div class="outline-text-3" id="text-orgb04d1d2">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;algorithm&gt;</span>
+<span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;iostream&gt;</span>
+<span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;vector&gt;</span>
+
+<span style="color: #3B6EA8;">using</span> <span style="color: #3B6EA8;">namespace</span> std<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8;">typedef</span> <span style="color: #29838D;">long long</span> <span style="color: #9A7500;">ll</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #3B6EA8;">const</span> <span style="color: #29838D;">int</span> <span style="color: #842879;">maxn</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1e5</span> <span style="color: #3B6EA8;">+</span> <span style="color: #97365B;">10</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #9A7500;">vector</span><span style="color: #3B6EA8;">&lt;</span><span style="color: #9A7500;">pair</span><span style="color: #97365B;">&lt;</span><span style="color: #29838D;">int</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #29838D;">int</span><span style="color: #97365B;">&gt;</span><span style="color: #3B6EA8;">&gt;</span> <span style="color: #842879;">e</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #9A7500;">ll</span> <span style="color: #842879;">fa</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">dep</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">son</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">siz</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">top</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #9A7500;">ll</span> <span style="color: #842879;">c</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">suf</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #9A7500;">ll</span> <span style="color: #842879;">sum</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #29838D;">void</span> <span style="color: #29838D;">dfs1</span><span style="color: #3B6EA8; background-color: #E5E9F0;">(</span><span style="color: #9A7500;">ll</span> <span style="color: #842879;">u</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #9A7500;">ll</span> <span style="color: #842879;">f</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #9A7500;">ll</span> <span style="color: #842879;">val</span><span style="color: #3B6EA8; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #842879;">fa</span><span style="color: #97365B; background-color: #E5E9F0;">[</span>u<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> f<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #842879;">dep</span><span style="color: #97365B; background-color: #E5E9F0;">[</span>u<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> dep<span style="color: #97365B; background-color: #E5E9F0;">[</span>f<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">+</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #842879;">siz</span><span style="color: #97365B; background-color: #E5E9F0;">[</span>u<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #842879;">sum</span><span style="color: #97365B; background-color: #E5E9F0;">[</span>u<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> val<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #9A7500;">auto</span> x : e<span style="color: #4F894C; background-color: #E5E9F0;">[</span>u<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #9A7500;">ll</span> <span style="color: #842879;">v</span> <span style="color: #3B6EA8;">=</span> x<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #97365B; font-style: italic;">first</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #3B6EA8;">if</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span>v <span style="color: #3B6EA8;">==</span> f<span style="color: #4F894C; background-color: #E5E9F0;">)</span>
+      <span style="color: #3B6EA8;">continue</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #5d86b6; font-weight: bold;">dfs1</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>v<span style="color: #3B4252; background-color: #E5E9F0;">,</span> u<span style="color: #3B4252; background-color: #E5E9F0;">,</span> val <span style="color: #3B6EA8;">+</span> x<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #97365B; font-style: italic;">second</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #842879;">siz</span><span style="color: #4F894C; background-color: #E5E9F0;">[</span>u<span style="color: #4F894C; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">+=</span> siz<span style="color: #4F894C; background-color: #E5E9F0;">[</span>v<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #3B6EA8;">if</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span>siz<span style="color: #842879; background-color: #E5E9F0;">[</span>v<span style="color: #842879; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">&gt;</span> siz<span style="color: #842879; background-color: #E5E9F0;">[</span>son<span style="color: #3B6EA8; background-color: #E5E9F0;">[</span>u<span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #842879; background-color: #E5E9F0;">]</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span>
+      <span style="color: #842879;">son</span><span style="color: #4F894C; background-color: #E5E9F0;">[</span>u<span style="color: #4F894C; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> v<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+
+<span style="color: #29838D;">void</span> <span style="color: #29838D;">dfs2</span><span style="color: #3B6EA8; background-color: #E5E9F0;">(</span><span style="color: #9A7500;">ll</span> <span style="color: #842879;">u</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #9A7500;">ll</span> <span style="color: #842879;">t</span><span style="color: #3B6EA8; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #842879;">top</span><span style="color: #97365B; background-color: #E5E9F0;">[</span>u<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> t<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">if</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #3B6EA8;">!</span>son<span style="color: #4F894C; background-color: #E5E9F0;">[</span>u<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #97365B; background-color: #E5E9F0;">)</span>
+    <span style="color: #3B6EA8;">return</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #5d86b6; font-weight: bold;">dfs2</span><span style="color: #97365B; background-color: #E5E9F0;">(</span>son<span style="color: #4F894C; background-color: #E5E9F0;">[</span>u<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> t<span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #9A7500;">auto</span> x : e<span style="color: #4F894C; background-color: #E5E9F0;">[</span>u<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #9A7500;">ll</span> <span style="color: #842879;">v</span> <span style="color: #3B6EA8;">=</span> x<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #97365B; font-style: italic;">first</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #3B6EA8;">if</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span>v <span style="color: #3B6EA8;">!=</span> son<span style="color: #842879; background-color: #E5E9F0;">[</span>u<span style="color: #842879; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">&amp;&amp;</span> v <span style="color: #3B6EA8;">!=</span> fa<span style="color: #842879; background-color: #E5E9F0;">[</span>u<span style="color: #842879; background-color: #E5E9F0;">]</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span>
+      <span style="color: #5d86b6; font-weight: bold;">dfs2</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>v<span style="color: #3B4252; background-color: #E5E9F0;">,</span> v<span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+
+<span style="color: #9A7500;">ll</span> <span style="color: #29838D;">lca</span><span style="color: #3B6EA8; background-color: #E5E9F0;">(</span><span style="color: #9A7500;">ll</span> <span style="color: #842879;">x</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #9A7500;">ll</span> <span style="color: #842879;">y</span><span style="color: #3B6EA8; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #3B6EA8;">while</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span>top<span style="color: #4F894C; background-color: #E5E9F0;">[</span>x<span style="color: #4F894C; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">!=</span> top<span style="color: #4F894C; background-color: #E5E9F0;">[</span>y<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #3B6EA8;">if</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span>dep<span style="color: #842879; background-color: #E5E9F0;">[</span>top<span style="color: #3B6EA8; background-color: #E5E9F0;">[</span>x<span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #842879; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">&lt;</span> dep<span style="color: #842879; background-color: #E5E9F0;">[</span>top<span style="color: #3B6EA8; background-color: #E5E9F0;">[</span>y<span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #842879; background-color: #E5E9F0;">]</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span>
+      <span style="color: #5d86b6; font-weight: bold;">swap</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>x<span style="color: #3B4252; background-color: #E5E9F0;">,</span> y<span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #842879;">x</span> <span style="color: #3B6EA8;">=</span> fa<span style="color: #4F894C; background-color: #E5E9F0;">[</span>top<span style="color: #842879; background-color: #E5E9F0;">[</span>x<span style="color: #842879; background-color: #E5E9F0;">]</span><span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  <span style="color: #3B6EA8;">return</span> dep<span style="color: #97365B; background-color: #E5E9F0;">[</span>x<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">&gt;</span> dep<span style="color: #97365B; background-color: #E5E9F0;">[</span>y<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">?</span> y <span style="color: #3B6EA8;">:</span> x<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+
+<span style="color: #9A7500;">ll</span> <span style="color: #29838D;">get</span><span style="color: #3B6EA8; background-color: #E5E9F0;">(</span><span style="color: #9A7500;">ll</span> <span style="color: #842879;">x</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #9A7500;">ll</span> <span style="color: #842879;">y</span><span style="color: #3B6EA8; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #3B6EA8;">if</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span>x <span style="color: #3B6EA8;">==</span> <span style="color: #97365B;">0</span> <span style="color: #3B6EA8;">||</span> y <span style="color: #3B6EA8;">==</span> <span style="color: #97365B;">0</span><span style="color: #97365B; background-color: #E5E9F0;">)</span>
+    <span style="color: #3B6EA8;">return</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">return</span> sum<span style="color: #97365B; background-color: #E5E9F0;">[</span>x<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">+</span> sum<span style="color: #97365B; background-color: #E5E9F0;">[</span>y<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">-</span> <span style="color: #97365B;">2</span> <span style="color: #3B6EA8;">*</span> sum<span style="color: #97365B; background-color: #E5E9F0;">[</span><span style="color: #5d86b6; font-weight: bold;">lca</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>x<span style="color: #3B4252; background-color: #E5E9F0;">,</span> y<span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #97365B; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+
+<span style="color: #29838D;">int</span> <span style="color: #29838D;">main</span><span style="color: #3B6EA8; background-color: #E5E9F0;">()</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #9A7500;">ios</span>::<span style="color: #5d86b6; font-weight: bold;">sync_with_stdio</span><span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #29838D;">false</span><span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  cin<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">tie</span><span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #97365B;">nullptr</span><span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  cout<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">tie</span><span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #97365B;">nullptr</span><span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #29838D;">int</span> <span style="color: #842879;">n</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">k</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  cin <span style="color: #3B6EA8;">&gt;&gt;</span> n <span style="color: #3B6EA8;">&gt;&gt;</span> k<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;</span> n<span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #29838D;">int</span> <span style="color: #842879;">u</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">v</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">z</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    cin <span style="color: #3B6EA8;">&gt;&gt;</span> u <span style="color: #3B6EA8;">&gt;&gt;</span> v <span style="color: #3B6EA8;">&gt;&gt;</span> z<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    e<span style="color: #4F894C; background-color: #E5E9F0;">[</span>u<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">emplace_back</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>v<span style="color: #3B4252; background-color: #E5E9F0;">,</span> z<span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    e<span style="color: #4F894C; background-color: #E5E9F0;">[</span>v<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">emplace_back</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>u<span style="color: #3B4252; background-color: #E5E9F0;">,</span> z<span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  <span style="color: #5d86b6; font-weight: bold;">dfs1</span><span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">0</span><span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #5d86b6; font-weight: bold;">dfs2</span><span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">1</span><span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;=</span> k<span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #97365B; background-color: #E5E9F0;">)</span>
+    cin <span style="color: #3B6EA8;">&gt;&gt;</span> c<span style="color: #97365B; background-color: #E5E9F0;">[</span>i<span style="color: #97365B; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #842879;">k</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&gt;=</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">--</span><span style="color: #97365B; background-color: #E5E9F0;">)</span>
+    <span style="color: #842879;">suf</span><span style="color: #97365B; background-color: #E5E9F0;">[</span>i<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> suf<span style="color: #97365B; background-color: #E5E9F0;">[</span>i <span style="color: #3B6EA8;">+</span> <span style="color: #97365B;">1</span><span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">+</span> <span style="color: #5d86b6; font-weight: bold;">get</span><span style="color: #97365B; background-color: #E5E9F0;">(</span>c<span style="color: #4F894C; background-color: #E5E9F0;">[</span>i<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> c<span style="color: #4F894C; background-color: #E5E9F0;">[</span>i <span style="color: #3B6EA8;">+</span> <span style="color: #97365B;">1</span><span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #9A7500;">ll</span> <span style="color: #842879;">pre</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;=</span> k<span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    cout <span style="color: #3B6EA8;">&lt;&lt;</span> pre <span style="color: #3B6EA8;">+</span> <span style="color: #5d86b6; font-weight: bold;">get</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>c<span style="color: #842879; background-color: #E5E9F0;">[</span>i <span style="color: #3B6EA8;">-</span> <span style="color: #97365B;">1</span><span style="color: #842879; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> c<span style="color: #842879; background-color: #E5E9F0;">[</span>i <span style="color: #3B6EA8;">+</span> <span style="color: #97365B;">1</span><span style="color: #842879; background-color: #E5E9F0;">]</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8;">+</span> suf<span style="color: #4F894C; background-color: #E5E9F0;">[</span>i <span style="color: #3B6EA8;">+</span> <span style="color: #97365B;">1</span><span style="color: #4F894C; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">&lt;&lt;</span> <span style="color: #4F894C;">" "</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #842879;">pre</span> <span style="color: #3B6EA8;">+=</span> <span style="color: #5d86b6; font-weight: bold;">get</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>c<span style="color: #842879; background-color: #E5E9F0;">[</span>i <span style="color: #3B6EA8;">-</span> <span style="color: #97365B;">1</span><span style="color: #842879; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> c<span style="color: #842879; background-color: #E5E9F0;">[</span>i<span style="color: #842879; background-color: #E5E9F0;">]</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  <span style="color: #3B6EA8;">return</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf0a583a" class="outline-2">
+<h2 id="orgf0a583a">砍树</h2>
+<div class="outline-text-2" id="text-orgf0a583a">
+</div>
+<div id="outline-container-org1b5757f" class="outline-3">
+<h3 id="org1b5757f">题目</h3>
+<div class="outline-text-3" id="text-org1b5757f">
+</div>
+<div id="outline-container-org83b1497" class="outline-4">
+<h4 id="org83b1497">题目描述</h4>
+<div class="outline-text-4" id="text-org83b1497">
+<p>
+给定一棵由 \(n\) 个结点组成的树以及 \(m\) 个不重复的无序数对 \((a_1, b_1), (a_2, b_2), \cdots , (a_m, b_m)\)，其中 \(a_i\) 互不相同，\(b_i\) 互不相同，\(a_i \ne b_j(1 \le i, j \le m)\)。<br>
+</p>
+
+<p>
+小明想知道是否能够选择一条树上的边砍断，使得对于每个 \((a_i, b_i)\) 满足 \(a_i\) 和\(b_i\) 不连通。如果可以则输出应该断掉的边的编号（编号按输入顺序从 1 开始），否则输出-1。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgd2df4a7" class="outline-4">
+<h4 id="orgd2df4a7">输入格式</h4>
+<div class="outline-text-4" id="text-orgd2df4a7">
+<p>
+输入共 \(n + m\) 行，第一行为两个正整数 \(n, m\)。<br>
+后面 \(n - 1\) 行，每行两个正整数 \(x_i, y_i\) 表示第 \(i\) 条边的两个端点。<br>
+后面 \(m\) 行，每行两个正整数 \(a_i, b_i\)。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org1ab30a8" class="outline-4">
+<h4 id="org1ab30a8">输出格式</h4>
+<div class="outline-text-4" id="text-org1ab30a8">
+<p>
+一行一个整数，表示答案，如有多个答案，输出编号最大的一个。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org1f2ced7" class="outline-4">
+<h4 id="org1f2ced7">样例输入</h4>
+<div class="outline-text-4" id="text-org1f2ced7">
+<pre class="example" id="org3d09c21">
+6 2
+1 2
+2 3
+4 3
+2 5
+6 5
+3 6
+4 5
+4
+</pre>
+</div>
+</div>
+<div id="outline-container-org6944b85" class="outline-4">
+<h4 id="org6944b85">样例输出</h4>
+<div class="outline-text-4" id="text-org6944b85">
+<pre class="example" id="org08a8b78">
+4
+</pre>
+</div>
+</div>
+<div id="outline-container-org45b894c" class="outline-4">
+<h4 id="org45b894c">提示</h4>
+<div class="outline-text-4" id="text-org45b894c">
+<p>
+断开第 2 条边后形成两个连通块：{3, 4}，{1, 2, 5, 6}，满足 3 和 6 不连通，4 和 5 不连通。<br>
+断开第 4 条边后形成两个连通块：{1, 2, 3, 4}，{5, 6}，同样满足 3 和 6 不连通，4 和 5 不连通。<br>
+4 编号更大，因此答案为 4。<br>
+</p>
+
+
+<p>
+对于 30% 的数据，保证 \(1 < n \le 1000\)。<br>
+对于 100% 的数据，保证 \(1 < n \le 10^5, 1 \le m \le 2/n\)。<br>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org09d5674" class="outline-3">
+<h3 id="org09d5674">解析</h3>
+<div class="outline-text-3" id="text-org09d5674">
+<p>
+解法是使用 <a href="https://oi-wiki.org/basic/prefix-sum/#%E6%A0%91%E4%B8%8A%E5%B7%AE%E5%88%86">树上差分</a> ，也需要使用 <a href="https://oi-wiki.org/graph/lca">LCA</a> 。对于每个 \((a_i, b_i)\) 满足\(a_i\)和\(b_i\)不连通，则断开的边一定在 \( a_{i}\rightarrow LCA(a_{i},b_{i}) \) 和 \( b_{i} \rightarrow LCA(a_{i}, b_{i}) \) 上。相当于对上面区间贡献度+1，因此贡献度和为\(m\)的边为最后的解，如果不存在则无解。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-org745a6c1" class="outline-3">
+<h3 id="org745a6c1">代码</h3>
+<div class="outline-text-3" id="text-org745a6c1">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;algorithm&gt;</span>
+<span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;iostream&gt;</span>
+<span style="color: #3B6EA8; font-weight: bold;">#include</span> <span style="color: #4F894C;">&lt;vector&gt;</span>
+
+<span style="color: #3B6EA8;">using</span> <span style="color: #3B6EA8;">namespace</span> std<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8;">typedef</span> <span style="color: #29838D;">long long</span> <span style="color: #9A7500;">ll</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #3B6EA8;">const</span> <span style="color: #29838D;">int</span> <span style="color: #842879;">maxn</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1e5</span> <span style="color: #3B6EA8;">+</span> <span style="color: #97365B;">50</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #9A7500;">vector</span><span style="color: #3B6EA8;">&lt;</span><span style="color: #29838D;">int</span><span style="color: #3B6EA8;">&gt;</span> <span style="color: #842879;">e</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #9A7500;">ll</span> <span style="color: #842879;">fa</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">dep</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">son</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">siz</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">top</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #9A7500;">ll</span> <span style="color: #842879;">diff</span><span style="color: #3B6EA8; background-color: #E5E9F0;">[</span><span style="color: #842879;">maxn</span><span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+
+<span style="color: #29838D;">void</span> <span style="color: #29838D;">dfs1</span><span style="color: #3B6EA8; background-color: #E5E9F0;">(</span><span style="color: #9A7500;">ll</span> <span style="color: #842879;">u</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #9A7500;">ll</span> <span style="color: #842879;">f</span><span style="color: #3B6EA8; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #842879;">fa</span><span style="color: #97365B; background-color: #E5E9F0;">[</span>u<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> f<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #842879;">dep</span><span style="color: #97365B; background-color: #E5E9F0;">[</span>u<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> dep<span style="color: #97365B; background-color: #E5E9F0;">[</span>f<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">+</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #842879;">siz</span><span style="color: #97365B; background-color: #E5E9F0;">[</span>u<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #9A7500;">auto</span> x : e<span style="color: #4F894C; background-color: #E5E9F0;">[</span>u<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #9A7500;">ll</span> <span style="color: #842879;">v</span> <span style="color: #3B6EA8;">=</span> <span style="color: #842879;">x</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #3B6EA8;">if</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span>v <span style="color: #3B6EA8;">==</span> f<span style="color: #4F894C; background-color: #E5E9F0;">)</span>
+      <span style="color: #3B6EA8;">continue</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #5d86b6; font-weight: bold;">dfs1</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>v<span style="color: #3B4252; background-color: #E5E9F0;">,</span> u<span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #842879;">siz</span><span style="color: #4F894C; background-color: #E5E9F0;">[</span>u<span style="color: #4F894C; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">+=</span> siz<span style="color: #4F894C; background-color: #E5E9F0;">[</span>v<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #3B6EA8;">if</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span>siz<span style="color: #842879; background-color: #E5E9F0;">[</span>v<span style="color: #842879; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">&gt;</span> siz<span style="color: #842879; background-color: #E5E9F0;">[</span>son<span style="color: #3B6EA8; background-color: #E5E9F0;">[</span>u<span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #842879; background-color: #E5E9F0;">]</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span>
+      <span style="color: #842879;">son</span><span style="color: #4F894C; background-color: #E5E9F0;">[</span>u<span style="color: #4F894C; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> v<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+
+<span style="color: #29838D;">void</span> <span style="color: #29838D;">dfs2</span><span style="color: #3B6EA8; background-color: #E5E9F0;">(</span><span style="color: #9A7500;">ll</span> <span style="color: #842879;">u</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #9A7500;">ll</span> <span style="color: #842879;">t</span><span style="color: #3B6EA8; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #842879;">top</span><span style="color: #97365B; background-color: #E5E9F0;">[</span>u<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">=</span> t<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">if</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #3B6EA8;">!</span>son<span style="color: #4F894C; background-color: #E5E9F0;">[</span>u<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #97365B; background-color: #E5E9F0;">)</span>
+    <span style="color: #3B6EA8;">return</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #5d86b6; font-weight: bold;">dfs2</span><span style="color: #97365B; background-color: #E5E9F0;">(</span>son<span style="color: #4F894C; background-color: #E5E9F0;">[</span>u<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> t<span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #9A7500;">auto</span> x : e<span style="color: #4F894C; background-color: #E5E9F0;">[</span>u<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #9A7500;">ll</span> <span style="color: #842879;">v</span> <span style="color: #3B6EA8;">=</span> <span style="color: #842879;">x</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #3B6EA8;">if</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span>v <span style="color: #3B6EA8;">!=</span> son<span style="color: #842879; background-color: #E5E9F0;">[</span>u<span style="color: #842879; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">&amp;&amp;</span> v <span style="color: #3B6EA8;">!=</span> fa<span style="color: #842879; background-color: #E5E9F0;">[</span>u<span style="color: #842879; background-color: #E5E9F0;">]</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span>
+      <span style="color: #5d86b6; font-weight: bold;">dfs2</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>v<span style="color: #3B4252; background-color: #E5E9F0;">,</span> v<span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+
+<span style="color: #9A7500;">ll</span> <span style="color: #29838D;">lca</span><span style="color: #3B6EA8; background-color: #E5E9F0;">(</span><span style="color: #9A7500;">ll</span> <span style="color: #842879;">x</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #9A7500;">ll</span> <span style="color: #842879;">y</span><span style="color: #3B6EA8; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #3B6EA8;">while</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span>top<span style="color: #4F894C; background-color: #E5E9F0;">[</span>x<span style="color: #4F894C; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">!=</span> top<span style="color: #4F894C; background-color: #E5E9F0;">[</span>y<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #3B6EA8;">if</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span>dep<span style="color: #842879; background-color: #E5E9F0;">[</span>top<span style="color: #3B6EA8; background-color: #E5E9F0;">[</span>x<span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #842879; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">&lt;</span> dep<span style="color: #842879; background-color: #E5E9F0;">[</span>top<span style="color: #3B6EA8; background-color: #E5E9F0;">[</span>y<span style="color: #3B6EA8; background-color: #E5E9F0;">]</span><span style="color: #842879; background-color: #E5E9F0;">]</span><span style="color: #4F894C; background-color: #E5E9F0;">)</span>
+      <span style="color: #5d86b6; font-weight: bold;">swap</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>x<span style="color: #3B4252; background-color: #E5E9F0;">,</span> y<span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #842879;">x</span> <span style="color: #3B6EA8;">=</span> fa<span style="color: #4F894C; background-color: #E5E9F0;">[</span>top<span style="color: #842879; background-color: #E5E9F0;">[</span>x<span style="color: #842879; background-color: #E5E9F0;">]</span><span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  <span style="color: #3B6EA8;">return</span> dep<span style="color: #97365B; background-color: #E5E9F0;">[</span>x<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">&gt;</span> dep<span style="color: #97365B; background-color: #E5E9F0;">[</span>y<span style="color: #97365B; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">?</span> y <span style="color: #3B6EA8;">:</span> x<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+
+<span style="color: #29838D;">void</span> <span style="color: #29838D;">dfs</span><span style="color: #3B6EA8; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">x</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #29838D;">int</span> <span style="color: #842879;">fx</span><span style="color: #3B6EA8; background-color: #E5E9F0;">)</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #9A7500;">auto</span> y : e<span style="color: #4F894C; background-color: #E5E9F0;">[</span>x<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #3B6EA8;">if</span> <span style="color: #4F894C; background-color: #E5E9F0;">(</span>y <span style="color: #3B6EA8;">==</span> fx<span style="color: #4F894C; background-color: #E5E9F0;">)</span>
+      <span style="color: #3B6EA8;">continue</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #5d86b6; font-weight: bold;">dfs</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>y<span style="color: #3B4252; background-color: #E5E9F0;">,</span> x<span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    <span style="color: #842879;">diff</span><span style="color: #4F894C; background-color: #E5E9F0;">[</span>x<span style="color: #4F894C; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">+=</span> diff<span style="color: #4F894C; background-color: #E5E9F0;">[</span>y<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+
+<span style="color: #29838D;">int</span> <span style="color: #29838D;">main</span><span style="color: #3B6EA8; background-color: #E5E9F0;">()</span> <span style="color: #3B6EA8; background-color: #E5E9F0;">{</span>
+  <span style="color: #9A7500;">ios</span>::<span style="color: #5d86b6; font-weight: bold;">sync_with_stdio</span><span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #29838D;">false</span><span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  cin<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">tie</span><span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #97365B;">nullptr</span><span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  cout<span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">tie</span><span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #97365B;">nullptr</span><span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #29838D;">int</span> <span style="color: #842879;">n</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">m</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  cin <span style="color: #3B6EA8;">&gt;&gt;</span> n <span style="color: #3B6EA8;">&gt;&gt;</span> m<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;</span> n<span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #29838D;">int</span> <span style="color: #842879;">u</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">v</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    cin <span style="color: #3B6EA8;">&gt;&gt;</span> u <span style="color: #3B6EA8;">&gt;&gt;</span> v<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    e<span style="color: #4F894C; background-color: #E5E9F0;">[</span>u<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">emplace_back</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>v<span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    e<span style="color: #4F894C; background-color: #E5E9F0;">[</span>v<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B4252; background-color: #E5E9F0;">.</span><span style="color: #5d86b6; font-weight: bold; font-style: italic;">emplace_back</span><span style="color: #4F894C; background-color: #E5E9F0;">(</span>u<span style="color: #4F894C; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  <span style="color: #5d86b6; font-weight: bold;">dfs1</span><span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">1</span><span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #5d86b6; font-weight: bold;">dfs2</span><span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">1</span><span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;=</span> m<span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #97365B; background-color: #E5E9F0;">)</span> <span style="color: #97365B; background-color: #E5E9F0;">{</span>
+    <span style="color: #29838D;">int</span> <span style="color: #842879;">u</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">v</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    cin <span style="color: #3B6EA8;">&gt;&gt;</span> u <span style="color: #3B6EA8;">&gt;&gt;</span> v<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+    diff<span style="color: #4F894C; background-color: #E5E9F0;">[</span>u<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B6EA8;">++</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> diff<span style="color: #4F894C; background-color: #E5E9F0;">[</span>v<span style="color: #4F894C; background-color: #E5E9F0;">]</span><span style="color: #3B6EA8;">++</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #842879;">diff</span><span style="color: #4F894C; background-color: #E5E9F0;">[</span><span style="color: #5d86b6; font-weight: bold;">lca</span><span style="color: #842879; background-color: #E5E9F0;">(</span>u<span style="color: #3B4252; background-color: #E5E9F0;">,</span> v<span style="color: #842879; background-color: #E5E9F0;">)</span><span style="color: #4F894C; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">-=</span> <span style="color: #97365B;">2</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #97365B; background-color: #E5E9F0;">}</span>
+  <span style="color: #5d86b6; font-weight: bold;">dfs</span><span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">,</span> <span style="color: #97365B;">0</span><span style="color: #97365B; background-color: #E5E9F0;">)</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #9A7500;">ll</span> <span style="color: #842879;">ans</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">-1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">for</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span><span style="color: #29838D;">int</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span> i <span style="color: #3B6EA8;">&lt;=</span> n<span style="color: #3B4252; background-color: #E5E9F0;">;</span> <span style="color: #842879;">i</span><span style="color: #3B6EA8;">++</span><span style="color: #97365B; background-color: #E5E9F0;">)</span>
+    <span style="color: #3B6EA8;">if</span> <span style="color: #97365B; background-color: #E5E9F0;">(</span>diff<span style="color: #4F894C; background-color: #E5E9F0;">[</span>i<span style="color: #4F894C; background-color: #E5E9F0;">]</span> <span style="color: #3B6EA8;">&gt;=</span> m<span style="color: #97365B; background-color: #E5E9F0;">)</span>
+      <span style="color: #842879;">ans</span> <span style="color: #3B6EA8;">=</span> i <span style="color: #3B6EA8;">-</span> <span style="color: #97365B;">1</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  cout <span style="color: #3B6EA8;">&lt;&lt;</span> ans <span style="color: #3B6EA8;">&lt;&lt;</span> endl<span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+  <span style="color: #3B6EA8;">return</span> <span style="color: #97365B;">0</span><span style="color: #3B4252; background-color: #E5E9F0;">;</span>
+<span style="color: #3B6EA8; background-color: #E5E9F0;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script type="text/javascript" src="/static/main.js"></script>
+            <center id="modi-date">2024-03-15 五 15:15</center>
+</div>
+</body>
+</html>

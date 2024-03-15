@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<!-- 2024-03-15 五 10:57 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Python的性能</title>
+<meta name="author" content="shirui" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  pre.src-C\+\+:before { content: 'C++'; }
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="/static/style.css" type="text/css"/>
+            <link rel="stylesheet" href="/static/org.css" type="text/css"/>
+            <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+            <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+            <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+            <a href="https://lampze.github.io">lampze's Blog</a>
+            <span id="post-date" style="float: right"></span>
+            </div>
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">Python的性能</h1>
+</header><div id="outline-container-org4a1d5b1" class="outline-2">
+<h2 id="org4a1d5b1">常见语言性能对比</h2>
+<div class="outline-text-2" id="text-org4a1d5b1">
+<p>
+下面的数据是从 <a href="https://github.com/kostya/benchmarks">benchmarks</a> 项目得来的。<br>
+<img src="file:///home/shirui/.org/.attach/e2/c0ea64-f4e2-4d98-bd1a-0310c0a3e926/_20230823_225240screenshot.png" alt="_20230823_225240screenshot.png"><br>
+</p>
+</div>
+<div id="outline-container-org8095eeb" class="outline-3">
+<h3 id="org8095eeb">分析</h3>
+<div class="outline-text-3" id="text-org8095eeb">
+<p>
+红色表示最慢，绿色表示最快。可以发现只有 <code>Python</code> 和 <code>Java no JIT</code> 存在最慢的测试任务， <code>Java no JIT</code> 和 <code>C</code> 都是没优化时的性能，但一般编译器都会默认启用优化。<br>
+</p>
+
+<p>
+在最常见的循环任务中 <code>Python</code> 比 <code>Java</code> 慢 11 倍，比 <code>C</code> 慢 21 倍。<br>
+</p>
+
+<p>
+同时 <code>Python</code> 函数调用很慢，导致 <code>Python</code> 在递归时异常缓慢。<br>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org8ac0398" class="outline-2">
+<h2 id="org8ac0398">Python慢的原因</h2>
+<div class="outline-text-2" id="text-org8ac0398">
+<ul class="org-ul">
+<li><code>Python</code> 是一门解释型语言，虽然是字节码编译的，但它并没有进行真正优化<br></li>
+<li><code>Python</code> 使用垃圾收集，但主要使用引用计数，因此它比 <code>Java</code> 表现得更快、或者说至少更具有确定性<br></li>
+<li>默认没有 JIT 编译器<br></li>
+<li>作为一门弱类型的动态语言有它慢的地方（并且使得构建 JIT 变得更加困难）<br></li>
+<li>函数调用的实现异常缓慢<br></li>
+<li>全局 GIL 导致多线程不能真正并发<br></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org171819a" class="outline-2">
+<h2 id="org171819a">即时编译（Just-in-time compilation）</h2>
+<div class="outline-text-2" id="text-org171819a">
+<p>
+Just-In-Time（JIT）技术为解释语言提供了一种优化，极大提升代码执行速度，同时保留Python语言的易用性。使用JIT技术时，JIT编译器将Python源代码编译成机器直接可以执行的机器语言，并可以直接在CPU等硬件上运行。这样就跳过了原来的虚拟机，执行速度几乎与用C语言编程速度并无二致。<br>
+</p>
+</div>
+<div id="outline-container-org12d1bd5" class="outline-3">
+<h3 id="org12d1bd5">Numba</h3>
+<div class="outline-text-3" id="text-org12d1bd5">
+<p>
+使用 <code>Numba</code> 只需要对函数加一个jit装饰器即可。经过jit装饰的函数可以达到 <code>C</code> 语言的性能水平，但因为运行前会先编译，所以对于小规模的计算性能可能反而降低。<br>
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3B6EA8;">from</span> numba <span style="color: #3B6EA8;">import</span> njit
+<span style="color: #3B6EA8;">import</span> random
+
+<span style="color: #3B6EA8; font-weight: bold;">@</span><span style="color: #3B6EA8; font-weight: bold;">njit</span>
+<span style="color: #3B6EA8;">def</span> <span style="color: #29838D;">monte_carlo_pi</span>(<span style="color: #842879;">nsamples</span>):
+    <span style="color: #842879;">acc</span> <span style="color: #3B6EA8;">=</span> <span style="color: #97365B;">0</span>
+    <span style="color: #3B6EA8;">for</span> <span style="color: #842879;">i</span> <span style="color: #3B6EA8;">in</span> <span style="color: #29838D; font-weight: bold;">range</span>(nsamples):
+        <span style="color: #842879;">x</span> <span style="color: #3B6EA8;">=</span> random.<span style="color: #5d86b6; font-weight: bold; font-style: italic;">random</span>()
+        <span style="color: #842879;">y</span> <span style="color: #3B6EA8;">=</span> random.<span style="color: #5d86b6; font-weight: bold; font-style: italic;">random</span>()
+        <span style="color: #3B6EA8;">if</span> (x <span style="color: #3B6EA8;">**</span> <span style="color: #97365B;">2</span> <span style="color: #3B6EA8;">+</span> y <span style="color: #3B6EA8;">**</span> <span style="color: #97365B;">2</span>) <span style="color: #3B6EA8;">&lt;</span> <span style="color: #97365B;">1.0</span>:
+            <span style="color: #842879;">acc</span> <span style="color: #3B6EA8;">+=</span> <span style="color: #97365B;">1</span>
+    <span style="color: #3B6EA8;">return</span> <span style="color: #97365B;">4.0</span> <span style="color: #3B6EA8;">*</span> acc <span style="color: #3B6EA8;">/</span> nsamples
+</pre>
+</div>
+
+<p>
+但是 <code>Numba</code> 只支持了 <code>Python</code> 原生函数和部分 <code>NumPy</code> 函数，其他一些场景可能不适用。如 <code>scikit-learn</code> ， <code>tensorflow</code> ， <code>pytorch</code> 等，已经做了大量的优化，不适合再使用 <code>Numba</code> 做加速。<br>
+</p>
+</div>
+<div id="outline-container-org4e6487d" class="outline-4">
+<h4 id="org4e6487d">装饰器</h4>
+<div class="outline-text-4" id="text-org4e6487d">
+<p>
+装饰器就是一个输入是函数输出是函数的函数。<br>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3B6EA8;">def</span> <span style="color: #29838D;">a_new_decorator</span>(<span style="color: #842879;">a_func</span>):
+
+    <span style="color: #3B6EA8;">def</span> <span style="color: #29838D;">wrapTheFunction</span>():
+        <span style="color: #29838D; font-weight: bold;">print</span>(<span style="color: #4F894C;">"I am doing some boring work before executing a_func()"</span>)
+
+        <span style="color: #5d86b6; font-weight: bold;">a_func</span>()
+
+        <span style="color: #29838D; font-weight: bold;">print</span>(<span style="color: #4F894C;">"I am doing some boring work after executing a_func()"</span>)
+
+    <span style="color: #3B6EA8;">return</span> wrapTheFunction
+
+<span style="color: #3B6EA8;">def</span> <span style="color: #29838D;">a_function_requiring_decoration</span>():
+    <span style="color: #29838D; font-weight: bold;">print</span>(<span style="color: #4F894C;">"I am the function which needs some decoration to remove my foul smell"</span>)
+
+<span style="color: #5d86b6; font-weight: bold;">a_function_requiring_decoration</span>()
+<span style="color: #8b94a5;">#outputs: "I am the function which needs some decoration to remove my foul smell"</span>
+
+<span style="color: #8b94a5;"># @a_new_decorator</span>
+<span style="color: #8b94a5;"># def a_function_requiring_decoration():</span>
+<span style="color: #842879;">a_function_requiring_decoration</span> <span style="color: #3B6EA8;">=</span> <span style="color: #5d86b6; font-weight: bold;">a_new_decorator</span>(a_function_requiring_decoration)
+<span style="color: #8b94a5;">#now a_function_requiring_decoration is wrapped by wrapTheFunction()</span>
+
+<span style="color: #5d86b6; font-weight: bold;">a_function_requiring_decoration</span>()
+<span style="color: #8b94a5;">#outputs:I am doing some boring work before executing a_func()</span>
+<span style="color: #8b94a5;">#        I am the function which needs some decoration to remove my foul smell</span>
+<span style="color: #8b94a5;">#        I am doing some boring work after executing a_func()</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf790638" class="outline-3">
+<h3 id="orgf790638">PyPy</h3>
+<div class="outline-text-3" id="text-orgf790638">
+<p>
+<code>PyPy</code> 使用 <code>Python</code> 语言的子集 <code>RPython</code> 实现的解释器，一般情况下 <code>PyPy</code> 比 <code>CPython</code> 快4.2倍。 <code>PyPy</code> 是使用 <code>Python</code> 实现的解释器，也就是自举，因为使用了 JIT 所以相比 <code>CPython</code> 更快。但只适用于纯 <code>Python</code> 的项目，现在大多数科学计算的库都调用了 <code>C</code> 用来优化，这种情况下它的兼容性就不那么好了。<br>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org0975a07" class="outline-2">
+<h2 id="org0975a07">PyTorch</h2>
+<div class="outline-text-2" id="text-org0975a07">
+<p>
+<code>PyTorch</code> 是基于 <code>Torch</code> 构建的，而 <code>Torch</code> 底层采用的是 <code>C</code> ，所以它的性能是与 <code>C</code> 相当的。<br>
+</p>
+
+<p>
+<code>PyTorch</code> 从面世以来一直以「易用性」著称，最贴合原生 <code>Python</code> 的开发方式，这得益于 <code>PyTorch</code> 的「动态图」结构，我们可以在 <code>PyTorch</code> 的模型前向中加任何 <code>Python</code> 的流程控制语句，甚至是下断点单步跟进都不会有任何问题。<br>
+</p>
+
+<p>
+<code>PyTorch</code> 也有JIT的特性，但它的JIT是用来把 <code>PyTorch</code> 模型转为语言无关的模块，主要是为了生产环境准备的。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orgf8a1fc9" class="outline-2">
+<h2 id="orgf8a1fc9">万恶的 GIL</h2>
+<div class="outline-text-2" id="text-orgf8a1fc9">
+<p>
+GIL是 <code>CPython</code> 解析器中引入的，并不是 <code>Python</code> 语言的特性。GIL全称 Global Interpreter Lock 也就是全局解释器锁，官方给出的解释是：<br>
+</p>
+
+<blockquote>
+<p>
+在 CPython 中，全局解释器锁（GIL）是一个互斥体，可防止多个本机线程同时执行 Python 字节码。这个锁是必要的，主要是因为 CPython 的内存管理不是线程安全的。 （但是，自从 GIL 存在以来，其他功能已经开始依赖于它所强制执行的保证。）<br>
+</p>
+</blockquote>
+<p>
+这也导致了社区中大量的开发者重度依赖这种特性，导致 GIL 非常难以去除了。通俗来说，这导致了 <code>Python</code> 只能使用一个核心。甚至多线程比单线程还慢，因为 GIL 不支持同时运行。<br>
+</p>
+</div>
+<div id="outline-container-org7659710" class="outline-3">
+<h3 id="org7659710">multiprocessing</h3>
+<div class="outline-text-3" id="text-org7659710">
+<p>
+multiprocessing 库的出现很大程度上是为了弥补 thread 库因为 GIL 而低效的缺陷。它完整的复制了一套 thread所 提供的接口方便迁移。唯一的不同就是它使用了多进程而不是多线程。每个进程有自己的独立的 GIL ，因此也不会出现进程之间的 GIL 争抢。<br>
+</p>
+
+<p>
+但它的引入会增加程序实现时线程间数据通讯和同步的困难，因为每个进程都是隔离的，不能看到互相的数据。<br>
+</p>
+</div>
+</div>
+<div id="outline-container-orge1f314b" class="outline-3">
+<h3 id="orge1f314b">PEP 703</h3>
+<div class="outline-text-3" id="text-orge1f314b">
+<p>
+<a href="https://peps.python.org/pep-0703/">PEP 703</a> 提案使得 GIL 成为一个可选项，在编译时安装时指定要不要编译一个没有 GIL 的版本，目前已经在 Python 3.12 中实现了，估计2023年10月就会出正式版了。但要把社区中所有库中 GIL 的依赖祛除还有很长一段路要走。<br>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script type="text/javascript" src="/static/main.js"></script>
+            <center id="modi-date">2024-03-15 五 10:57</center>
+</div>
+</body>
+</html>
